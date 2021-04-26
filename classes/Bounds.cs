@@ -17,6 +17,22 @@ namespace tink_oblig.classes
         public Bound(Portfolio.Position ps)
         {
             Base = ps;
+            Nominal = 0m;
+            Next_pay_dt = new DateTime();
+            End_pay_dt = new DateTime();
+            Pay_period = 0;
+            Cpn_val = 0m;
+            Cpn_Percent = 0m;
+            Payed_cpn_list = new List<decimal>();
+            Total_payed_cnt = 0;
+            Total_cash_back = 0m;
+        }
+        public decimal Price_now
+        {
+            get
+            {
+                return Base.AveragePositionPrice.Value + (Base.ExpectedYield.Value / Base.Lots);
+            }
         }
 
         #region NoTinkoffInfo
