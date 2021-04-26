@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "tink_oblig", "tink_oblig.csproj", "{EBA398C6-05FB-45EA-9FAF-438840BC6C0C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EBA398C6-05FB-45EA-9FAF-438840BC6C0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBA398C6-05FB-45EA-9FAF-438840BC6C0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBA398C6-05FB-45EA-9FAF-438840BC6C0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBA398C6-05FB-45EA-9FAF-438840BC6C0C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8A69EABC-4FE1-4C40-83E0-E34350973EB2}
+	EndGlobalSection
+EndGlobal
