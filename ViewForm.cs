@@ -11,9 +11,15 @@ namespace tink_oblig
 {
     public partial class ViewForm : Form
     {
-        public ViewForm()
+        public Bounds Selected_portfail { get; set; }
+        public ViewForm(Bounds acc)
         {
             InitializeComponent();
+            Selected_portfail = acc;
+            foreach (var bd in Selected_portfail.BoundsList)
+            {
+                LoadBounds(bd);
+            }
         }
         private void LoadBounds(Bound bd)
         {
@@ -23,6 +29,11 @@ namespace tink_oblig
             newOne.BorderStyle = BorderStyle.FixedSingle;
             newOne.Dock = DockStyle.Top;
             BoundListLayPannel.Controls.Add(newOne, 0, BoundListLayPannel.RowCount);
+        }
+
+        private void ViewForm_Load(object sender, EventArgs e)
+        {
+            total_money_lbl.DataBindings.Add(new Binding("Text", Selected_portfail, "SumB_Coast", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
         }
     }
 }

@@ -7,6 +7,59 @@ using Tinkoff.Trading.OpenApi.Models;
 
 namespace tink_oblig.classes
 {
+    public class Bounds : INotifyPropertyChanged
+    {
+        public event PropertyChangedEventHandler PropertyChanged;
+        public Bounds()
+        {
+            BoundsList = new List<Bound>();
+        }
+        public List<Bound> BoundsList { get; set; }
+        #region SUMMINFO
+        public decimal SumB_Coast
+        {
+            get
+            {
+                return BoundsList.Sum(t => t.Price_now_total);
+            }
+        }
+        public decimal SumB_Buy
+        {
+            get
+            {
+                return BoundsList.Sum(t => t.Base.AveragePositionPriceNoNkd.Value);
+            }
+        }
+        public decimal SumB_Coupons_cnt
+        {
+            get
+            {
+                return BoundsList.Sum(t => t.Total_payed_cnt);
+            }
+        }
+        public decimal SumB_CashBack
+        {
+            get
+            {
+                return BoundsList.Sum(t => t.Total_cash_back);
+            }
+        }
+        public decimal SumB_Coupons_profit
+        {
+            get
+            {
+                return BoundsList.Sum(t => t.Total_payed);
+            }
+        }
+        public decimal SumB_TOTAL
+        {
+            get
+            {
+                return SumB_Coast + SumB_Coupons_profit - SumB_Buy;
+            }
+        }
+        #endregion
+    }
     public class Bound : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
@@ -27,13 +80,22 @@ namespace tink_oblig.classes
             Total_payed_cnt = 0;
             Total_cash_back = 0m;
         }
-        public decimal Price_now
+        #region NoNKD
+        public decimal Price_now_one
         {
             get
             {
                 return Base.AveragePositionPrice.Value + (Base.ExpectedYield.Value / Base.Lots);
             }
         }
+        public decimal Price_now_total
+        {
+            get
+            {
+                return Price_now_one * Base.Lots;
+            }
+        }
+        #endregion
 
         #region NoTinkoffInfo
         //искать в инфо о бумаге

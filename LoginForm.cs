@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using tink_oblig.classes;
 using Tinkoff.Trading.OpenApi.Network;
 
 namespace tink_oblig
@@ -44,10 +45,20 @@ namespace tink_oblig
                 result = await Task.Run(() => do_login(keypare_cmb.SelectedText));
             if (result)
             {
-                ViewForm wfrm = new ViewForm();
+                var o = Program.InnerAccount.Portfolios.Keys.Where(t => t.BrokerAccountType == Tinkoff.Trading.OpenApi.Models.BrokerAccountType.Tinkoff).Single();
+                foreach (var item in Program.InnerAccount.Portfolios[o].BoundsList)
+                {
+                    await Accounts.LoadInfoBound(item);
+                }
+                ViewForm wfrm = new ViewForm(Program.InnerAccount.Portfolios[o]);
                 wfrm.Show();
                 this.Hide();
             }
+        }
+
+        private void exit_btn_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
