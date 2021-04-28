@@ -26,14 +26,14 @@ namespace tink_oblig
             cpn_perc_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Cpn_Percent", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
             cpn_val_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Cpn_val",true,DataSourceUpdateMode.OnPropertyChanged,0m,"F2"));
             next_pay_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Next_pay_dt", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "dd.MM.yyyy"));
-            price_sum_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Price_now_total", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
-            pictureBox1.DataBindings.Add(new Binding("Image", _Bnb,
-                                    "Img_exct", true));
+            price_sum_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Price_now_total_avg", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
+            //pictureBox1.DataBindings.Add(new Binding("Image", _Bnb, "Img_exct", true));
         }
 
         private void ListBoundWatch_DoubleClick(object sender, EventArgs e)
         {
-            MessageBox.Show($"HELLO from bound {_Bnb.Base.Name}");
+            BoundWatchForm bwf = new BoundWatchForm(_Bnb);
+            bwf.Show();
         }
     }
 }

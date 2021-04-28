@@ -42,8 +42,8 @@ namespace tink_oblig
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // name_lbl
@@ -72,7 +72,7 @@ namespace tink_oblig
             // 
             this.count_lbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.count_lbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.count_lbl.Location = new System.Drawing.Point(237, 23);
+            this.count_lbl.Location = new System.Drawing.Point(248, 23);
             this.count_lbl.Name = "count_lbl";
             this.count_lbl.Size = new System.Drawing.Size(69, 23);
             this.count_lbl.TabIndex = 2;
@@ -83,7 +83,7 @@ namespace tink_oblig
             // 
             this.price_sum_lbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.price_sum_lbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.price_sum_lbl.Location = new System.Drawing.Point(211, 1);
+            this.price_sum_lbl.Location = new System.Drawing.Point(222, 1);
             this.price_sum_lbl.Name = "price_sum_lbl";
             this.price_sum_lbl.Size = new System.Drawing.Size(95, 23);
             this.price_sum_lbl.TabIndex = 3;
@@ -104,7 +104,7 @@ namespace tink_oblig
             // 
             this.cpn_perc_lbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cpn_perc_lbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cpn_perc_lbl.Location = new System.Drawing.Point(189, 59);
+            this.cpn_perc_lbl.Location = new System.Drawing.Point(200, 59);
             this.cpn_perc_lbl.Name = "cpn_perc_lbl";
             this.cpn_perc_lbl.Size = new System.Drawing.Size(58, 23);
             this.cpn_perc_lbl.TabIndex = 7;
@@ -115,7 +115,7 @@ namespace tink_oblig
             // 
             this.cpn_val_lbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cpn_val_lbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cpn_val_lbl.Location = new System.Drawing.Point(248, 59);
+            this.cpn_val_lbl.Location = new System.Drawing.Point(259, 59);
             this.cpn_val_lbl.Name = "cpn_val_lbl";
             this.cpn_val_lbl.Size = new System.Drawing.Size(58, 23);
             this.cpn_val_lbl.TabIndex = 8;
@@ -136,7 +136,7 @@ namespace tink_oblig
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(189, 46);
+            this.label2.Location = new System.Drawing.Point(200, 46);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(117, 12);
             this.label2.TabIndex = 10;
@@ -147,7 +147,7 @@ namespace tink_oblig
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(189, 82);
+            this.label3.Location = new System.Drawing.Point(200, 82);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 13);
             this.label3.TabIndex = 11;
@@ -158,7 +158,7 @@ namespace tink_oblig
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(248, 82);
+            this.label4.Location = new System.Drawing.Point(259, 82);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(58, 13);
             this.label4.TabIndex = 12;
@@ -169,7 +169,7 @@ namespace tink_oblig
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(194, 23);
+            this.label5.Location = new System.Drawing.Point(205, 23);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(42, 23);
             this.label5.TabIndex = 13;
@@ -180,28 +180,39 @@ namespace tink_oblig
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(177, 1);
+            this.label6.Location = new System.Drawing.Point(188, 1);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(34, 23);
             this.label6.TabIndex = 14;
             this.label6.Text = "Сумм";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // pictureBox1
+            // label7
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(48, 111);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(80, 80);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 15;
-            this.pictureBox1.TabStop = false;
+            this.label7.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label7.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label7.Location = new System.Drawing.Point(0, 106);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(323, 1);
+            this.label7.TabIndex = 15;
+            // 
+            // label8
+            // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label8.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label8.Location = new System.Drawing.Point(0, 101);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(320, 1);
+            this.label8.TabIndex = 16;
             // 
             // ListBoundWatch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.price_sum_lbl);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -216,10 +227,9 @@ namespace tink_oblig
             this.Controls.Add(this.ticker_lbl);
             this.Controls.Add(this.name_lbl);
             this.Name = "ListBoundWatch";
-            this.Size = new System.Drawing.Size(309, 265);
+            this.Size = new System.Drawing.Size(323, 107);
             this.Load += new System.EventHandler(this.ListBoundWatch_Load);
             this.DoubleClick += new System.EventHandler(this.ListBoundWatch_DoubleClick);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -239,6 +249,7 @@ namespace tink_oblig
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
     }
 }

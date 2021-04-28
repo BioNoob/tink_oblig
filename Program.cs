@@ -1,12 +1,8 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Tinkoff.Trading.OpenApi.Network;
-using Tinkoff.Trading.OpenApi.Models;
-using tink_oblig.classes;
 using System.Drawing;
+using System.Windows.Forms;
+using tink_oblig.classes;
+using Tinkoff.Trading.OpenApi.Network;
 
 namespace tink_oblig
 {
@@ -51,7 +47,7 @@ namespace tink_oblig
             drawing.Dispose();
 
             //create a new image of the right size
-            img = new Bitmap((int)160, 160);
+            img = new Bitmap((int)80, 80);
 
             drawing = Graphics.FromImage(img);
 
@@ -61,7 +57,7 @@ namespace tink_oblig
             //create a brush for the text
             Brush textBrush = new SolidBrush(textColor);
 
-            drawing.DrawString(text, font, textBrush, 80-textSize.Width/2, 80-textSize.Height/2);
+            drawing.DrawString(text, font, textBrush, 40 - textSize.Width / 2, 40 + 1 - textSize.Height / 2);
 
             drawing.Save();
 

@@ -38,6 +38,7 @@ namespace tink_oblig
 
         private async void login_btn_Click(object sender, EventArgs e)
         {
+            login_btn.Enabled = false;
             bool result;
             if (string.IsNullOrEmpty(keypare_cmb.SelectedText))
                 result = await Task.Run(() => do_login()); //await do_login();
@@ -45,14 +46,21 @@ namespace tink_oblig
                 result = await Task.Run(() => do_login(keypare_cmb.SelectedText));
             if (result)
             {
+                //тут припелить выбор аккаунта
                 var o = Program.InnerAccount.Portfolios.Keys.Where(t => t.BrokerAccountType == Tinkoff.Trading.OpenApi.Models.BrokerAccountType.Tinkoff).Single();
                 foreach (var item in Program.InnerAccount.Portfolios[o].BoundsList)
                 {
                     await Accounts.LoadInfoBound(item);
                 }
+                await Accounts.LoadHistoryBound(Program.InnerAccount.Portfolios[o]);
                 ViewForm wfrm = new ViewForm(Program.InnerAccount.Portfolios[o]);
                 wfrm.Show();
                 this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Test");
+                login_btn.Enabled = true;
             }
         }
 

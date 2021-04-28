@@ -32,10 +32,10 @@ namespace tink_oblig
             this.BoundListLayPannel = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.total_money_lbl = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.summ_cpn_lbl = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.total_money_lbl = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,7 +47,7 @@ namespace tink_oblig
             this.BoundListLayPannel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BoundListLayPannel.Location = new System.Drawing.Point(0, 47);
             this.BoundListLayPannel.Name = "BoundListLayPannel";
-            this.BoundListLayPannel.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.BoundListLayPannel.Padding = new System.Windows.Forms.Padding(5);
             this.BoundListLayPannel.RowCount = 1;
             this.BoundListLayPannel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.BoundListLayPannel.Size = new System.Drawing.Size(395, 316);
@@ -55,6 +55,7 @@ namespace tink_oblig
             // 
             // panel2
             // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
@@ -63,6 +64,7 @@ namespace tink_oblig
             // 
             // panel1
             // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.summ_cpn_lbl);
             this.panel1.Controls.Add(this.label1);
@@ -72,26 +74,6 @@ namespace tink_oblig
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(395, 40);
             this.panel1.TabIndex = 5;
-            // 
-            // total_money_lbl
-            // 
-            this.total_money_lbl.AutoEllipsis = true;
-            this.total_money_lbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.total_money_lbl.Location = new System.Drawing.Point(72, 8);
-            this.total_money_lbl.Name = "total_money_lbl";
-            this.total_money_lbl.Size = new System.Drawing.Size(107, 23);
-            this.total_money_lbl.TabIndex = 7;
-            this.total_money_lbl.Text = "summ total";
-            this.total_money_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label1
-            // 
-            this.label1.Location = new System.Drawing.Point(5, 2);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 35);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Всего на сумму";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label2
             // 
@@ -112,6 +94,26 @@ namespace tink_oblig
             this.summ_cpn_lbl.TabIndex = 9;
             this.summ_cpn_lbl.Text = "summ total";
             this.summ_cpn_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(5, 2);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(61, 35);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Всего на сумму";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // total_money_lbl
+            // 
+            this.total_money_lbl.AutoEllipsis = true;
+            this.total_money_lbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.total_money_lbl.Location = new System.Drawing.Point(72, 8);
+            this.total_money_lbl.Name = "total_money_lbl";
+            this.total_money_lbl.Size = new System.Drawing.Size(107, 23);
+            this.total_money_lbl.TabIndex = 7;
+            this.total_money_lbl.Text = "summ total";
+            this.total_money_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // ViewForm
             // 

@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
-using Tinkoff.Trading.OpenApi.Models;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using System.Xml;
 using System.Xml.Linq;
-using System.Globalization;
+using Tinkoff.Trading.OpenApi.Models;
 
 namespace tink_oblig.classes
 {
@@ -32,7 +29,7 @@ namespace tink_oblig.classes
                 foreach (var item in acc)
                 {
                     var prtfl = await Program.CurrentContext.PortfolioAsync(item.BrokerAccountId);
-                    Bounds lbd = new Bounds();
+                    Bounds lbd = new Bounds(item);
                     var lpl = prtfl.Positions.Where(t => t.InstrumentType == InstrumentType.Bond).ToList();
                     foreach (var itm in lpl)
                     {
@@ -71,10 +68,18 @@ namespace tink_oblig.classes
             bo.Next_pay_dt = DateTime.TryParse(dic["COUPONDATE"], out dt) ? dt : dt;
             bo.End_pay_dt = DateTime.TryParse(dic["MATDATE"], out dt) ? dt : dt;
             bo.Nominal = decimal.TryParse(dic["FACEVALUE"], NumberStyles.Float, CultureInfo.InvariantCulture, out b) ? b : 0;
-            bo.Pay_period = int.TryParse(dic["COUPONFREQUENCY"], NumberStyles.Float, CultureInfo.InvariantCulture, out i) ? i : 0;
+            bo.Pay_period = int.TryParse(dic["COUPONFREQUENCY"], NumberStyles.Float, CultureInfo.InvariantCulture, out i) ? 365/i : 0;
             bo.Cpn_Percent = decimal.TryParse(dic["COUPONPERCENT"], NumberStyles.Float, CultureInfo.InvariantCulture, out b) ? b : 0;
             bo.Cpn_val = decimal.TryParse(dic["COUPONVALUE"], NumberStyles.Float, CultureInfo.InvariantCulture, out b) ? b : 0;
             bo.LoadImagePath();
+        }
+        public static async Task LoadHistoryBound(Bounds bounds)//string ticker)
+        {
+            foreach (var bo in bounds.BoundsList)
+            {
+                bo.Payed_cpn_list =  await Program.CurrentContext.OperationsAsync(new DateTime(2015, 01, 01), DateTime.Now, bo.Base.Figi, bounds.Acc.BrokerAccountId);
+            }
+
         }
     }
 }

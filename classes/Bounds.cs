@@ -7,7 +7,6 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Text;
 using Tinkoff.Trading.OpenApi.Models;
 
 namespace tink_oblig.classes
@@ -15,17 +14,20 @@ namespace tink_oblig.classes
     public class Bounds : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        public Bounds()
+        public Bounds(Account acc)
         {
             BoundsList = new List<Bound>();
+            Acc = acc;
         }
         public List<Bound> BoundsList { get; set; }
+        public Account Acc { get; set; }
+        /*
         #region SUMMINFO
         public decimal SumB_Coast
         {
             get
             {
-                return BoundsList.Sum(t => t.Price_now_total);
+                return BoundsList.Sum(t => t.Price_now_one_market);
             }
         }
         public decimal SumB_Buy
@@ -64,6 +66,7 @@ namespace tink_oblig.classes
             }
         }
         #endregion
+        */
     }
     public class Bound : INotifyPropertyChanged
     {
@@ -81,9 +84,9 @@ namespace tink_oblig.classes
             Pay_period = 0;
             Cpn_val = 0m;
             Cpn_Percent = 0m;
-            Payed_cpn_list = new List<decimal>();
-            Total_payed_cnt = 0;
-            Total_cash_back = 0m;
+            Payed_cpn_list = new List<Operation>();
+            //Total_payed_cnt = 0;
+            //Total_cash_back = 0m;
         }
         //https://www.tinkoff.ru/api/trading/bonds/get?ticker=RU000A1005T9
         public string Img_path { get; private set; }
@@ -126,26 +129,55 @@ namespace tink_oblig.classes
 
                 }
             else
-                Img_exct = Program.DrawText(Base.Name.Substring(0, 1), new Font("Arial", 64), Text_color, Img_color);
+                Img_exct = Program.DrawText(Base.Name.Substring(0, 1), new Font("Arial", 36), Text_color, Img_color);
+
+            //Img_exct = Program.ClipToCircle(Img_exct, new PointF(40, 40), 100, Color.Transparent);
         }
 
         #region NoNKD
-        public decimal Price_now_one
+        public decimal Price_now_one_market
         {
             get
             {
-                return Base.AveragePositionPrice.Value + (Base.ExpectedYield.Value / Base.Lots);
+                return Base.AveragePositionPriceNoNkd.Value + (Base.ExpectedYield.Value / Base.Lots);
             }
         }
-        public decimal Price_now_total
+        public decimal Price_now_total_market
         {
             get
             {
-                return Price_now_one * Base.Lots;
+                return Price_now_one_market * Base.Lots;
+            }
+        }
+        public decimal Price_now_one_avg
+        {
+            get
+            {
+                return Base.AveragePositionPriceNoNkd.Value;
+            }
+        }
+        public decimal Price_now_total_avg
+        {
+            get
+            {
+                return Price_now_one_avg * Base.Lots;
+            }
+        }
+        public decimal Nkd_one
+        {
+            get
+            {
+                return Base.AveragePositionPrice.Value - Base.AveragePositionPriceNoNkd.Value;
+            }
+        }
+        public decimal Nkd_sum
+        {
+            get
+            {
+                return (Base.AveragePositionPrice.Value - Base.AveragePositionPriceNoNkd.Value) * Base.Lots;
             }
         }
         #endregion
-
         #region NoTinkoffInfo
         //искать в инфо о бумаге
         public decimal Nominal { get; set; }
@@ -157,10 +189,48 @@ namespace tink_oblig.classes
         public decimal Cpn_Percent { get; set; }
 
         //искать в истории
-        public List<decimal> Payed_cpn_list { get; set; }
-        public decimal Total_payed { get { return Payed_cpn_list.Sum(); } }
-        public int Total_payed_cnt { get; set; }
-        public decimal Total_cash_back { get; set; }
+        public List<Operation> Payed_cpn_list { get; set; }
+
+        public decimal Last_Coupon_payed 
+        { 
+            get
+            {
+                var buf = Payed_cpn_list.Where(t => t.OperationType == ExtendedOperationType.Coupon).ToList();
+                if (buf.Count > 0)
+                {
+                    return buf.Last().Payment;
+                }
+                return 0;
+            }
+        }
+
+        public decimal Last_Coupon_payed_perc
+        {
+            get
+            {
+                var buf = Payed_cpn_list.Where(t => t.OperationType == ExtendedOperationType.Coupon).ToList();
+                if (buf.Count > 0)
+                {
+                    return buf.Last().Payment; /// buf.Last(); //?
+                }
+                return 0;
+            }
+        }
+        public decimal Last_Coupon_summ 
+        {
+            get
+            {
+                var buf = Payed_cpn_list.Where(t => t.OperationType == ExtendedOperationType.Coupon).ToList();
+                if (buf.Count > 0)
+                {
+                    return buf.Sum(t => t.Payment);
+                }
+                return 0;
+            }
+        }
+        //public decimal Total_payed { get { return Payed_cpn_list.Sum(); } }
+        //public int Total_payed_cnt { get; set; }
+        //public decimal Total_cash_back { get; set; }
         #endregion  
     }
 }

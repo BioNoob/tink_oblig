@@ -26,14 +26,14 @@ namespace tink_oblig
             BoundListLayPannel.RowCount++;
             BoundListLayPannel.RowStyles.Add(new RowStyle(SizeType.AutoSize));
             ListBoundWatch newOne = new ListBoundWatch(bd);//("Test", "TST","lol", 10, 11, 12, 13, 1));
-            newOne.BorderStyle = BorderStyle.FixedSingle;
+            newOne.BorderStyle = BorderStyle.None;
             newOne.Dock = DockStyle.Top;
             BoundListLayPannel.Controls.Add(newOne, 0, BoundListLayPannel.RowCount);
         }
 
         private void ViewForm_Load(object sender, EventArgs e)
         {
-            total_money_lbl.DataBindings.Add(new Binding("Text", Selected_portfail, "SumB_Coast", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
+            //total_money_lbl.DataBindings.Add(new Binding("Text", Selected_portfail, "SumB_Coast", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
         }
     }
 }
