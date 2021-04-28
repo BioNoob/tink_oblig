@@ -74,6 +74,7 @@ namespace tink_oblig.classes
             bo.Pay_period = int.TryParse(dic["COUPONFREQUENCY"], NumberStyles.Float, CultureInfo.InvariantCulture, out i) ? i : 0;
             bo.Cpn_Percent = decimal.TryParse(dic["COUPONPERCENT"], NumberStyles.Float, CultureInfo.InvariantCulture, out b) ? b : 0;
             bo.Cpn_val = decimal.TryParse(dic["COUPONVALUE"], NumberStyles.Float, CultureInfo.InvariantCulture, out b) ? b : 0;
+            bo.LoadImagePath();
         }
     }
 }

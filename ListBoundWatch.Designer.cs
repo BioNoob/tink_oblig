@@ -42,6 +42,8 @@ namespace tink_oblig
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // name_lbl
@@ -185,11 +187,21 @@ namespace tink_oblig
             this.label6.Text = "Сумм";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(48, 111);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(80, 80);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 15;
+            this.pictureBox1.TabStop = false;
+            // 
             // ListBoundWatch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.price_sum_lbl);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -204,8 +216,10 @@ namespace tink_oblig
             this.Controls.Add(this.ticker_lbl);
             this.Controls.Add(this.name_lbl);
             this.Name = "ListBoundWatch";
-            this.Size = new System.Drawing.Size(309, 98);
+            this.Size = new System.Drawing.Size(309, 265);
             this.Load += new System.EventHandler(this.ListBoundWatch_Load);
+            this.DoubleClick += new System.EventHandler(this.ListBoundWatch_DoubleClick);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -225,5 +239,6 @@ namespace tink_oblig
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

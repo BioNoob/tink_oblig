@@ -1,7 +1,12 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using Tinkoff.Trading.OpenApi.Models;
 
@@ -80,6 +85,50 @@ namespace tink_oblig.classes
             Total_payed_cnt = 0;
             Total_cash_back = 0m;
         }
+        //https://www.tinkoff.ru/api/trading/bonds/get?ticker=RU000A1005T9
+        public string Img_path { get; private set; }
+        public Image Img_exct { get; private set; }
+        public Color Img_color { get; private set; }
+        public Color Text_color { get; private set; }
+        public async void LoadImagePath()
+        {
+            WebClient wx = new WebClient();
+            string json = await wx.DownloadStringTaskAsync($"https://www.tinkoff.ru/api/trading/bonds/get?ticker={Base.Ticker}");
+            var data = (JObject)JsonConvert.DeserializeObject(json);
+            var b = data["payload"]["symbol"]["logoName"];
+            Img_path = b != null ? $"https://static.tinkoff.ru/brands/traiding/{b.Value<string>().Replace(".png", "")}x160.png" : "";
+            b = data["payload"]["symbol"]["color"];
+            Img_color = b != null ? ColorTranslator.FromHtml(b.Value<string>()) : ColorTranslator.FromHtml("#FFFFFF");
+
+            b = data["payload"]["symbol"]["textColor"];
+            Text_color = b != null ? ColorTranslator.FromHtml(b.Value<string>()) : ColorTranslator.FromHtml("#FFFFFF");
+            DrawImg();
+
+        }
+        private void DrawImg()
+        {
+            if (!string.IsNullOrEmpty(Img_path))
+                using (WebClient webClient = new WebClient())
+                {
+                    try
+                    {
+                        using (Stream stream = webClient.OpenRead(Img_path))
+                        {
+                            Img_exct = Image.FromStream(stream);
+                        }
+                    }
+                    catch (Exception)
+                    {
+
+                        Img_path = "";
+                        DrawImg();
+                    }
+
+                }
+            else
+                Img_exct = Program.DrawText(Base.Name.Substring(0, 1), new Font("Arial", 64), Text_color, Img_color);
+        }
+
         #region NoNKD
         public decimal Price_now_one
         {

@@ -48,7 +48,7 @@
             this.exit_btn.Location = new System.Drawing.Point(268, 41);
             this.exit_btn.Name = "exit_btn";
             this.exit_btn.Size = new System.Drawing.Size(67, 22);
-            this.exit_btn.TabIndex = 0;
+            this.exit_btn.TabIndex = 1;
             this.exit_btn.Text = "Exit";
             this.exit_btn.UseVisualStyleBackColor = true;
             this.exit_btn.Click += new System.EventHandler(this.exit_btn_Click);
