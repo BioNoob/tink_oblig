@@ -92,6 +92,7 @@ namespace tink_oblig
             this.label26 = new System.Windows.Forms.Label();
             this.buy_back_lbl = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label28 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_box_pb)).BeginInit();
@@ -678,6 +679,7 @@ namespace tink_oblig
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.label28);
             this.groupBox5.Controls.Add(this.label36);
             this.groupBox5.Controls.Add(this.label37);
             this.groupBox5.Controls.Add(this.profit_sum_lbl);
@@ -796,6 +798,16 @@ namespace tink_oblig
             this.dataGridView1.Size = new System.Drawing.Size(378, 182);
             this.dataGridView1.TabIndex = 51;
             // 
+            // label28
+            // 
+            this.label28.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label28.Location = new System.Drawing.Point(109, 16);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(122, 23);
+            this.label28.TabIndex = 44;
+            this.label28.Text = "кол-во купонов!";
+            this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // BoundWatchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -905,5 +917,6 @@ namespace tink_oblig
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label buy_back_lbl;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label28;
     }
 }
