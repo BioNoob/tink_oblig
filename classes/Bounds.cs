@@ -21,6 +21,21 @@ namespace tink_oblig.classes
         }
         public List<Bound> BoundsList { get; set; }
         public Account Acc { get; set; }
+
+        public decimal SumB_Coast
+        {
+            get
+            {
+                return BoundsList.Sum(t => t.Price_now_total_avg);
+            }
+        }
+        public decimal SumB_Coupons
+        {
+            get
+            {
+                return BoundsList.Sum(t => t.Coupon_summ);
+            }
+        }
         /*
         #region SUMMINFO
         public decimal SumB_Coast
