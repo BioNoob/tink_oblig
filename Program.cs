@@ -1,5 +1,6 @@
 using System;
 using System.Drawing;
+using System.Net;
 using System.Windows.Forms;
 using tink_oblig.classes;
 using Tinkoff.Trading.OpenApi.Network;
@@ -66,6 +67,15 @@ namespace tink_oblig
 
             return img;
 
+        }
+    }
+    public class xWebClient : WebClient
+    {
+        protected override WebRequest GetWebRequest(Uri uri)
+        {
+            WebRequest w = base.GetWebRequest(uri);
+            w.Timeout = 100000;
+            return w;
         }
     }
 }

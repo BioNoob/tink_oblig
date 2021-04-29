@@ -129,6 +129,7 @@ namespace tink_oblig
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ViewForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ViewForm";
             this.Load += new System.EventHandler(this.ViewForm_Load);
             this.panel1.ResumeLayout(false);

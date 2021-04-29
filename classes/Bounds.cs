@@ -93,45 +93,51 @@ namespace tink_oblig.classes
         public Image Img_exct { get; private set; }
         public Color Img_color { get; private set; }
         public Color Text_color { get; private set; }
-        public async void LoadImagePath()
+        public void LoadImagePath()
         {
-            WebClient wx = new WebClient();
-            string json = await wx.DownloadStringTaskAsync($"https://www.tinkoff.ru/api/trading/bonds/get?ticker={Base.Ticker}");
-            var data = (JObject)JsonConvert.DeserializeObject(json);
-            var b = data["payload"]["symbol"]["logoName"];
-            Img_path = b != null ? $"https://static.tinkoff.ru/brands/traiding/{b.Value<string>().Replace(".png", "")}x160.png" : "";
-            b = data["payload"]["symbol"]["color"];
-            Img_color = b != null ? ColorTranslator.FromHtml(b.Value<string>()) : ColorTranslator.FromHtml("#FFFFFF");
-
-            b = data["payload"]["symbol"]["textColor"];
-            Text_color = b != null ? ColorTranslator.FromHtml(b.Value<string>()) : ColorTranslator.FromHtml("#FFFFFF");
-            DrawImg();
-
+            xWebClient wx = new xWebClient();
+            wx.DownloadStringCompleted += Wx_DownloadStringCompleted;
+            wx.DownloadStringAsync(new Uri($"https://www.tinkoff.ru/api/trading/bonds/get?ticker={Base.Ticker}"));
         }
+
+        private void Wx_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
+        {
+                var data = (JObject)JsonConvert.DeserializeObject(e.Result);
+                var b = data["payload"]["symbol"]["logoName"];
+                Img_path = b != null ? $"https://static.tinkoff.ru/brands/traiding/{b.Value<string>().Replace(".png", "")}x160.png" : "";
+                b = data["payload"]["symbol"]["color"];
+                Img_color = b != null ? ColorTranslator.FromHtml(b.Value<string>()) : ColorTranslator.FromHtml("#FFFFFF");
+
+                b = data["payload"]["symbol"]["textColor"];
+                Text_color = b != null ? ColorTranslator.FromHtml(b.Value<string>()) : ColorTranslator.FromHtml("#FFFFFF");
+                DrawImg();
+        }
+
         private void DrawImg()
         {
             if (!string.IsNullOrEmpty(Img_path))
-                using (WebClient webClient = new WebClient())
-                {
-                    try
-                    {
-                        using (Stream stream = webClient.OpenRead(Img_path))
-                        {
-                            Img_exct = Image.FromStream(stream);
-                        }
-                    }
-                    catch (Exception)
-                    {
-
-                        Img_path = "";
-                        DrawImg();
-                    }
-
-                }
+            {
+                xWebClient wx = new xWebClient();
+                wx.OpenReadCompleted += Wx_OpenReadCompleted;
+                wx.OpenReadAsync(new Uri(Img_path));
+            }
             else
                 Img_exct = Program.DrawText(Base.Name.Substring(0, 1), new Font("Arial", 36), Text_color, Img_color);
+        }
 
-            //Img_exct = Program.ClipToCircle(Img_exct, new PointF(40, 40), 100, Color.Transparent);
+        private void Wx_OpenReadCompleted(object sender, OpenReadCompletedEventArgs e)
+        {
+            try
+            {
+                Img_exct = Image.FromStream(e.Result);
+            }
+            catch (Exception ex)
+            {
+                if (ex.InnerException.Message.Contains("404"))
+                    Img_path = "";
+                    DrawImg();
+            }
+
         }
 
         #region NoNKD
@@ -191,32 +197,33 @@ namespace tink_oblig.classes
         //искать в истории
         public List<Operation> Payed_cpn_list { get; set; }
 
-        public decimal Last_Coupon_payed 
-        { 
-            get
-            {
-                var buf = Payed_cpn_list.Where(t => t.OperationType == ExtendedOperationType.Coupon).ToList();
-                if (buf.Count > 0)
-                {
-                    return buf.Last().Payment;
-                }
-                return 0;
-            }
-        }
-
-        public decimal Last_Coupon_payed_perc
+        public decimal Last_Coupon_payed
         {
             get
             {
                 var buf = Payed_cpn_list.Where(t => t.OperationType == ExtendedOperationType.Coupon).ToList();
                 if (buf.Count > 0)
                 {
-                    return buf.Last().Payment; /// buf.Last(); //?
+                    return buf.First().Payment;
                 }
                 return 0;
             }
         }
-        public decimal Last_Coupon_summ 
+
+        //public decimal Last_Coupon_payed_perc
+        //{
+        //    get
+        //    {
+        //        var buf = Payed_cpn_list.Where(t => t.OperationType == ExtendedOperationType.Coupon).ToList();
+        //        if (buf.Count > 0)
+        //        {
+        //            var o = buf.First().Payment/Base.Lots / Nominal * 100 * Math.Ceiling(365m / Pay_period); //меняется сумма при покупках надо это чекать
+        //            return o;/// buf.Last(); //?
+        //        }
+        //        return 0;
+        //    }
+        //}
+        public decimal Coupon_summ
         {
             get
             {
@@ -226,6 +233,65 @@ namespace tink_oblig.classes
                     return buf.Sum(t => t.Payment);
                 }
                 return 0;
+            }
+        }
+        public decimal Coupon_Tax_summ
+        {
+            get
+            {
+                var buf = Payed_cpn_list.Where(t => t.OperationType == ExtendedOperationType.TaxCoupon).ToList();
+                if (buf.Count > 0)
+                {
+                    return Math.Abs(buf.Sum(t => t.Payment));
+                }
+                return 0;
+            }
+        }
+        public decimal Buy_Back_summ
+        {
+            get
+            {
+                var buf = Payed_cpn_list.Where(t => t.OperationType == ExtendedOperationType.PartRepayment).ToList();
+                if (buf.Count > 0)
+                {
+                    return Math.Abs(buf.Sum(t => t.Payment));
+                }
+                return 0;
+            }
+        }
+        //без нкд
+        public decimal Profit_summ
+        {
+            get
+            {
+                return (Price_now_total_avg + Coupon_summ - Coupon_Tax_summ + (Price_now_total_market - Price_now_total_avg)) - Price_now_total_avg;
+            }
+        }
+        public decimal Profit_summ_perc
+        {
+            get
+            {
+                var o = (((Price_now_total_avg + Coupon_summ - Coupon_Tax_summ + (Price_now_total_market - Price_now_total_avg)) * 100) / Price_now_total_avg) - 100;
+                return o;
+            }
+        }
+        public string Profit_summ_perc_string
+        {
+            get
+            {
+                if (Profit_summ_perc > 0)
+                    return string.Format("+{0:#0.0}", Math.Abs(Profit_summ_perc));
+                else if (Profit_summ_perc < 0)
+                    return string.Format("-{0:#0.0}", Math.Abs(Profit_summ_perc));
+                else
+                    return string.Format("{0:#0.0}", Math.Abs(Profit_summ_perc));
+            }
+        }
+        public Color Font_profit_clr
+        {
+            get
+            {
+                return Profit_summ >= 0 ? Color.DarkGreen : Color.DarkRed;
             }
         }
         //public decimal Total_payed { get { return Payed_cpn_list.Sum(); } }

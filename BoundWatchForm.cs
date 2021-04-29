@@ -37,20 +37,23 @@ namespace tink_oblig
             cpn_perc_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Cpn_Percent", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
             cpn_val_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Cpn_val", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
 
-            last_cpn_perc_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Last_Coupon_payed_perc", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
             last_cpn_val_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Last_Coupon_payed", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
-            cpn_sum_val_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Last_Coupon_summ", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
+            cpn_sum_val_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Coupon_summ", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
 
-            pay_period_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Pay_period", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "D")); ;
-            nkd_one_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Nkd_one", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2")); ;
-            nkd_sum_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Nkd_sum", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2")); ;
+            pay_period_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Pay_period", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "D"));
+            nkd_one_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Nkd_one", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
+            nkd_sum_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Nkd_sum", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
 
-            //profit_perc_lbl;
-            //profit_sum_lbl;
+            profit_perc_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Profit_summ_perc_string", true, DataSourceUpdateMode.OnPropertyChanged));
+            profit_sum_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Profit_summ", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
 
+            profit_perc_lbl.DataBindings.Add(new Binding("ForeColor", _Bnb, "Font_profit_clr", true, DataSourceUpdateMode.OnPropertyChanged));
+            profit_sum_lbl.DataBindings.Add(new Binding("ForeColor", _Bnb, "Font_profit_clr", true, DataSourceUpdateMode.OnPropertyChanged));
             //trade_event_lst;
 
-            //cpn_tax_sum_lbl;
+            cpn_tax_sum_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Coupon_Tax_summ", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
+
+            buy_back_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Buy_Back_summ", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
 
             GraphicsPath gp = new GraphicsPath();
             gp.AddEllipse(pic_box_pb.DisplayRectangle);

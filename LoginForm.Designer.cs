@@ -72,10 +72,12 @@
             this.Controls.Add(this.keypare_cmb);
             this.Controls.Add(this.exit_btn);
             this.Controls.Add(this.login_btn);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "LoginForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.ResumeLayout(false);
 
