@@ -3,6 +3,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -209,6 +210,17 @@ namespace tink_oblig.classes
         public decimal Cpn_val { get; set; }
         public decimal Cpn_Percent { get; set; }
 
+        private void ForDebug()
+        {
+            var a = Payed_cpn_list.Where(t=>t.Status == OperationStatus.Done).Select(t => t.Date).ToList();
+            var b = Payed_cpn_list.Where(t => t.Status == OperationStatus.Done).Select(t => t.OperationType).ToList();
+            var c = Payed_cpn_list.Where(t => t.Status == OperationStatus.Done).Select(t => t.Payment).ToList();
+            var e = Payed_cpn_list.Where(t => t.Status == OperationStatus.Done).Select(t => t.Price).ToList();
+            var g = Payed_cpn_list.Where(t => t.Status == OperationStatus.Done).Select(t => t.Trades).ToList();
+            
+            Debug.WriteLine($"");
+        }
+
         //искать в истории
         public List<Operation> Payed_cpn_list { get; set; }
 
@@ -266,6 +278,7 @@ namespace tink_oblig.classes
         {
             get
             {
+                ForDebug();
                 var buf = Payed_cpn_list.Where(t => t.OperationType == ExtendedOperationType.PartRepayment).ToList();
                 if (buf.Count > 0)
                 {
@@ -307,6 +320,29 @@ namespace tink_oblig.classes
             get
             {
                 return Profit_summ >= 0 ? Color.DarkGreen : Color.DarkRed;
+            }
+        }
+
+        public decimal Comission_total_summ
+        {
+            get
+            {
+                var buf = Payed_cpn_list.Where(t => t.OperationType == ExtendedOperationType.BrokerCommission).ToList();
+                if (buf.Count > 0)
+                {
+                    return Math.Abs(buf.Sum(t => Math.Abs(t.Payment)));
+                }
+                return 0;
+            }
+        }
+
+        public decimal ROI //периодику считать?
+        {
+            get
+            {
+                var o = (Price_now_one_market - Price_now_one_avg) * Base.Lots + Buy_Back_summ + Coupon_summ - Coupon_Tax_summ - Comission_total_summ;
+                o = (o / (Price_now_total_avg) * 100);
+                return o;
             }
         }
         //public decimal Total_payed { get { return Payed_cpn_list.Sum(); } }
