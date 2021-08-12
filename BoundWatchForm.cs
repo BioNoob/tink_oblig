@@ -54,6 +54,8 @@ namespace tink_oblig
             cpn_tax_sum_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Coupon_Tax_summ", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
 
             buy_back_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Buy_Back_summ", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
+            cpn_cnt_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Coupon_Cnt_summ", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "D"));
+
 
             GraphicsPath gp = new GraphicsPath();
             gp.AddEllipse(pic_box_pb.DisplayRectangle);

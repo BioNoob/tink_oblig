@@ -33,7 +33,7 @@ namespace tink_oblig.classes
                     var lpl = prtfl.Positions.Where(t => t.InstrumentType == InstrumentType.Bond).ToList();
                     foreach (var itm in lpl)
                     {
-                        lbd.BoundsList.Add(new Bound(itm));
+                        lbd.BoundsList.Add(new Bound(itm)); //лист сейчас. Для истории надо грузить через операции..
                     }
                     Portfolios.Add(item, lbd);
                 }
@@ -75,9 +75,26 @@ namespace tink_oblig.classes
         }
         public static async Task LoadHistoryBound(Bounds bounds)//string ticker)
         {
+            //По отношению к времени не верно. Нужно сканить от даты покупки, если перед ней кол-во = 0
             foreach (var bo in bounds.BoundsList)
             {
                 bo.Payed_cpn_list =  await Program.CurrentContext.OperationsAsync(new DateTime(2015, 01, 01), DateTime.Now, bo.Base.Figi, bounds.Acc.BrokerAccountId);
+            }
+        }
+
+        public static async Task LoadAllBndHistory(Bounds bounds)
+        {
+            var z = await Program.CurrentContext.OperationsAsync(new DateTime(2015, 01, 01), DateTime.Now, "", bounds.Acc.BrokerAccountId);
+            var selectedz = z.Where(t => t.InstrumentType == InstrumentType.Bond).Select(t=>t.Figi).Distinct().ToList();
+            var notfnd = selectedz.Except(bounds.BoundsList.Select(t=>t.Base.Figi)).ToList();
+            //для этих получить инфу (
+            foreach (var item in notfnd)
+            {
+                var t = await Program.CurrentContext.MarketSearchByFigiAsync(item); 
+                Bound b = new Bound(new Portfolio.Position(t.Name,item,t.Ticker,t.Isin,t.Type,0,0,new MoneyAmount(t.Currency, 0),0,new MoneyAmount(t.Currency, 0),new MoneyAmount(t.Currency, 0)));
+                b.Payed_cpn_list = z.Where(t => t.Figi == item).ToList();
+                b.Simplify = true;
+                bounds.BoundsList.Add(b);
             }
 
         }

@@ -18,7 +18,7 @@ namespace tink_oblig
         {
             InitializeComponent();
         }
-        public async Task<bool> do_login(string token = "t.ah7Yy_ylysKKaAGeK-8zo5CxwrWIyRoijeXSjakp9vJBphO1gKmakiNpyqouupEjmNWpMqckzGkywsKTnaRpqQ")
+        public async Task<bool> do_login(string token = "t.lQPDdG2GWl7DHrLTdOrmbh1M3bCnq5k_tflcuHC7mETEO8p4_jqXCjrzBceN_FSWlUM2JmBjvB5DaNI1j09v0g")
         {
             var connection = ConnectionFactory.GetConnection(token);
             var context = connection.Context;
@@ -52,6 +52,7 @@ namespace tink_oblig
                 {
                     await Accounts.LoadInfoBound(item);
                 }
+                await Accounts.LoadAllBndHistory(Program.InnerAccount.Portfolios[o]);
                 await Accounts.LoadHistoryBound(Program.InnerAccount.Portfolios[o]);
                 ViewForm wfrm = new ViewForm(Program.InnerAccount.Portfolios[o]);
                 wfrm.Show();
