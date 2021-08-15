@@ -12,13 +12,22 @@ namespace tink_oblig
     public partial class ViewForm : Form
     {
         public Bounds Selected_portfail { get; set; }
-        public ViewForm(Bounds acc)
+        public ViewForm(Bounds acc, bool history)
         {
             InitializeComponent();
             Selected_portfail = acc;
             foreach (var bd in Selected_portfail.BoundsList)
             {
-                if(!bd.Simplify)
+                if (history)
+                {
+                    if (bd.Simplify)
+                        LoadBounds(bd);
+                }
+                else
+                {
+                    if (!bd.Simplify)
+                        LoadBounds(bd);
+                }
                 LoadBounds(bd);
             }
         }
@@ -42,7 +51,7 @@ namespace tink_oblig
             total_profit_lbl.DataBindings.Add(new Binding("Text", Selected_portfail, "Sum_Profit", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
             total_profit_perc_lbl.DataBindings.Add(new Binding("ForeColor", Selected_portfail, "Font_Profit_Clr", true, DataSourceUpdateMode.OnPropertyChanged));
             total_profit_lbl.DataBindings.Add(new Binding("ForeColor", Selected_portfail, "Font_Profit_Clr", true, DataSourceUpdateMode.OnPropertyChanged));
-           
+
             total_cnt_cpn_lbl.DataBindings.Add(new Binding("Text", Selected_portfail, "Cpn_Cnt", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "D"));
             total_cnt_lbl.DataBindings.Add(new Binding("Text", Selected_portfail, "Bnd_Cnt", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "D"));
 

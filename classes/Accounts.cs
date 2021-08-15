@@ -68,7 +68,7 @@ namespace tink_oblig.classes
             bo.Next_pay_dt = DateTime.TryParse(dic["COUPONDATE"], out dt) ? dt : dt;
             bo.End_pay_dt = DateTime.TryParse(dic["MATDATE"], out dt) ? dt : dt;
             bo.Nominal = decimal.TryParse(dic["FACEVALUE"], NumberStyles.Float, CultureInfo.InvariantCulture, out b) ? b : 0;
-            bo.Pay_period = int.TryParse(dic["COUPONFREQUENCY"], NumberStyles.Float, CultureInfo.InvariantCulture, out i) ? 365/i : 0;
+            bo.Pay_period = int.TryParse(dic["COUPONFREQUENCY"], NumberStyles.Float, CultureInfo.InvariantCulture, out i) ? 365 / i : 0;
             bo.Cpn_Percent = decimal.TryParse(dic["COUPONPERCENT"], NumberStyles.Float, CultureInfo.InvariantCulture, out b) ? b : 0;
             bo.Cpn_val = decimal.TryParse(dic["COUPONVALUE"], NumberStyles.Float, CultureInfo.InvariantCulture, out b) ? b : 0;
             bo.LoadImagePath();
@@ -78,25 +78,35 @@ namespace tink_oblig.classes
             //По отношению к времени не верно. Нужно сканить от даты покупки, если перед ней кол-во = 0
             foreach (var bo in bounds.BoundsList)
             {
-                bo.Payed_cpn_list =  await Program.CurrentContext.OperationsAsync(new DateTime(2015, 01, 01), DateTime.Now, bo.Base.Figi, bounds.Acc.BrokerAccountId);
+                bo.Payed_cpn_list = await Program.CurrentContext.OperationsAsync(new DateTime(2015, 01, 01), DateTime.Now, bo.Base.Figi, bounds.Acc.BrokerAccountId);
             }
         }
 
         public static async Task LoadAllBndHistory(Bounds bounds)
         {
             var z = await Program.CurrentContext.OperationsAsync(new DateTime(2015, 01, 01), DateTime.Now, "", bounds.Acc.BrokerAccountId);
-            var selectedz = z.Where(t => t.InstrumentType == InstrumentType.Bond).Select(t=>t.Figi).Distinct().ToList();
-            var notfnd = selectedz.Except(bounds.BoundsList.Select(t=>t.Base.Figi)).ToList();
+            var selectedz = z.Where(t => t.InstrumentType == InstrumentType.Bond).Select(t => t.Figi).Distinct().ToList();
+            var notfnd = selectedz.Except(bounds.BoundsList.Select(t => t.Base.Figi)).ToList();
             //для этих получить инфу (
             foreach (var item in notfnd)
             {
-                var t = await Program.CurrentContext.MarketSearchByFigiAsync(item); 
-                Bound b = new Bound(new Portfolio.Position(t.Name,item,t.Ticker,t.Isin,t.Type,0,0,new MoneyAmount(t.Currency, 0),0,new MoneyAmount(t.Currency, 0),new MoneyAmount(t.Currency, 0)));
+                var t = await Program.CurrentContext.MarketSearchByFigiAsync(item);
+                var data = z.Where(t => t.Figi == item && t.OperationType == ExtendedOperationType.Buy && t.Status == OperationStatus.Done).ToList();
+                //смотреть в трейдс а не в общем(
+                var trd = data.Select(a => a.Trades).ToList();
+                var cnt = trd.Sum(a => a.Sum(c=>c.Quantity));
+
+                var avg = data.Sum(a => Math.Abs(a.Payment)) / cnt;
+                var buf_nkd = data.Sum(a => Math.Abs(a.Payment)  - (a.Price * a.Trades.Sum(c=>c.Quantity))); //- (a.Price * a.Quantity));
+                var avg_no_nkd = avg - buf_nkd;
+                var price_now = await Program.CurrentContext.MarketOrderbookAsync(item, 1);
+                var expt_yeld = price_now.ClosePrice - avg_no_nkd; //грузим свечки берем последнюю цену
+                Bound b = new Bound(new Portfolio.Position(t.Name, item, t.Ticker, t.Isin, t.Type, cnt, 0, new MoneyAmount(t.Currency, expt_yeld), cnt, new MoneyAmount(t.Currency, avg), new MoneyAmount(t.Currency, avg_no_nkd)));
+
                 b.Payed_cpn_list = z.Where(t => t.Figi == item).ToList();
                 b.Simplify = true;
                 bounds.BoundsList.Add(b);
             }
-
         }
     }
 }

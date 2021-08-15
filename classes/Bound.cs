@@ -28,8 +28,6 @@ namespace tink_oblig.classes
             Cpn_Percent = 0m;
             Payed_cpn_list = new List<Operation>();
             Simplify = false;
-            //Total_payed_cnt = 0;
-            //Total_cash_back = 0m;
         }
         //https://www.tinkoff.ru/api/trading/bonds/get?ticker=RU000A1005T9
         public string Img_path { get; private set; }
@@ -88,7 +86,8 @@ namespace tink_oblig.classes
         {
             get
             {
-                return Base.AveragePositionPriceNoNkd.Value + (Base.ExpectedYield.Value / Base.Lots);
+                var b = Base.ExpectedYield.Value != 0 ? (Base.ExpectedYield.Value / Base.Lots) : 0;
+                return Base.AveragePositionPriceNoNkd.Value + b; 
             }
         }
         public decimal Price_now_total_market

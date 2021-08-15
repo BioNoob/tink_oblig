@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using tink_oblig.classes;
+using System.Linq;
 
 namespace tink_oblig
 {
@@ -13,6 +14,10 @@ namespace tink_oblig
             InitializeComponent();
             _Bnb = bnb;
             this.BackColor = Color.FromArgb(126, _Bnb.Img_color);
+            foreach (Control item in this.Controls)
+            {
+                item.DoubleClick += ListBoundWatch_DoubleClick;
+            }
         }
 
         private void ListBoundWatch_Load(object sender, EventArgs e)
@@ -28,7 +33,20 @@ namespace tink_oblig
 
         private void ListBoundWatch_DoubleClick(object sender, EventArgs e)
         {
+            foreach (Form item in Application.OpenForms)
+            {
+                if (item.Visible)
+                    if (item.Tag != null)
+                        if (!string.IsNullOrEmpty(item.Tag.ToString()))
+                            if (item.Tag.ToString() == _Bnb.Base.Ticker)
+                            {
+                                item.Focus();
+                                return;
+                            }
+                                
+            }
             BoundWatchForm bwf = new BoundWatchForm(_Bnb);
+            bwf.Tag = $"{_Bnb.Base.Ticker}";
             bwf.Show();
         }
     }

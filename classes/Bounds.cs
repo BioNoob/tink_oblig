@@ -20,6 +20,13 @@ namespace tink_oblig.classes
         public List<Bound> BoundsList { get; set; }
         public Account Acc { get; set; }
 
+        public enum SeeHistory
+        {
+            NoHistrory,
+            History,
+            WithHistory
+        }
+        public SeeHistory Mode { get; set; }
         public decimal SumB_Coast
         {
             get

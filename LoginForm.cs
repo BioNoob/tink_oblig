@@ -48,13 +48,14 @@ namespace tink_oblig
             {
                 //тут припелить выбор аккаунта
                 var o = Program.InnerAccount.Portfolios.Keys.Where(t => t.BrokerAccountType == Tinkoff.Trading.OpenApi.Models.BrokerAccountType.Tinkoff).Single();
+                await Accounts.LoadAllBndHistory(Program.InnerAccount.Portfolios[o]);
+                await Accounts.LoadHistoryBound(Program.InnerAccount.Portfolios[o]);
                 foreach (var item in Program.InnerAccount.Portfolios[o].BoundsList)
                 {
                     await Accounts.LoadInfoBound(item);
                 }
-                await Accounts.LoadAllBndHistory(Program.InnerAccount.Portfolios[o]);
-                await Accounts.LoadHistoryBound(Program.InnerAccount.Portfolios[o]);
-                ViewForm wfrm = new ViewForm(Program.InnerAccount.Portfolios[o]);
+
+                ViewForm wfrm = new ViewForm(Program.InnerAccount.Portfolios[o],false);
                 wfrm.Show();
                 this.Hide();
             }
