@@ -1,36 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using tink_oblig.classes;
+using Tinkoff.Trading.OpenApi.Models;
+using static tink_oblig.classes.Accounts;
 
 namespace tink_oblig
 {
     public partial class ViewForm : Form
     {
         public Bounds Selected_portfail { get; set; }
-        public ViewForm(Bounds acc, bool history)
+        SeeHistory SeeHistory { get; set; }
+        public ViewForm(Bounds acc, SeeHistory history)
         {
+            //Program.InnerAccount.LoadInfoDone += InnerAccount_LoadInfoDone;
             InitializeComponent();
+            SeeHistory = history;
             Selected_portfail = acc;
             foreach (var bd in Selected_portfail.BoundsList)
             {
-                if (history)
+                switch (SeeHistory)
                 {
-                    if (bd.Simplify)
+                    case SeeHistory.NoHistrory:
+                        if (!bd.Simplify)
+                            LoadBounds(bd);
+                        break;
+                    case SeeHistory.History:
+                        if (bd.Simplify)
+                            LoadBounds(bd);
+                        break;
+                    case SeeHistory.WithHistory:
                         LoadBounds(bd);
+                        break;
                 }
-                else
-                {
-                    if (!bd.Simplify)
-                        LoadBounds(bd);
-                }
-                LoadBounds(bd);
             }
+
         }
+
         private void LoadBounds(Bound bd)
         {
             BoundListLayPannel.RowCount++;

@@ -32,7 +32,7 @@ namespace tink_oblig
                 }
                 result = t;
             };
-            await Program.InnerAccount.doLoad();
+            await Program.InnerAccount.DoLoad_Portfail();
             return result;
         }
 
@@ -46,22 +46,22 @@ namespace tink_oblig
                 result = await Task.Run(() => do_login(keypare_cmb.SelectedText));
             if (result)
             {
-                //тут припелить выбор аккаунта
-                var o = Program.InnerAccount.Portfolios.Keys.Where(t => t.BrokerAccountType == Tinkoff.Trading.OpenApi.Models.BrokerAccountType.Tinkoff).Single();
-                await Accounts.LoadAllBndHistory(Program.InnerAccount.Portfolios[o]);
-                await Accounts.LoadHistoryBound(Program.InnerAccount.Portfolios[o]);
-                foreach (var item in Program.InnerAccount.Portfolios[o].BoundsList)
+                Program.InnerAccount.LoadInfoDone += (t, mes) =>
                 {
-                    await Accounts.LoadInfoBound(item);
-                }
+                    if (!string.IsNullOrEmpty(mes))
+                    {
+                        MessageBox.Show($"Error {mes}");
+                    }
+                    ViewForm wfrm = new ViewForm(t, Accounts.SeeHistory.NoHistrory);
+                    wfrm.Show();
+                    this.Hide();
+                };
+                await Program.InnerAccount.DoLoad_ObligList();
 
-                ViewForm wfrm = new ViewForm(Program.InnerAccount.Portfolios[o],false);
-                wfrm.Show();
-                this.Hide();
             }
             else
             {
-                MessageBox.Show("Test");
+                //MessageBox.Show("Test");
                 login_btn.Enabled = true;
             }
         }

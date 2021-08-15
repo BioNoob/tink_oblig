@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using Tinkoff.Trading.OpenApi.Models;
+using static tink_oblig.classes.Accounts;
 
 namespace tink_oblig.classes
 {
@@ -14,31 +13,47 @@ namespace tink_oblig.classes
         public event PropertyChangedEventHandler PropertyChanged;
         public Bounds(Account acc)
         {
-            BoundsList = new List<Bound>();
+            _boundslist = new List<Bound>();
             Acc = acc;
         }
-        public List<Bound> BoundsList { get; set; }
+        public SeeHistory Mode { get; set; }
+        private List<Bound> _boundslist;
+        public List<Bound> BoundsList
+        {
+            get
+            {
+                return _boundslist;
+                //switch (Mode)
+                //{
+                //    case SeeHistory.NoHistrory:
+                //        return _boundslist.Where(t => !t.Simplify).ToList();
+                //    case SeeHistory.History:
+                //    case SeeHistory.WithHistory:
+                //    default:
+                //        return _boundslist.Where(t => t.Simplify).ToList();
+                //}
+            }
+        }
         public Account Acc { get; set; }
 
-        public enum SeeHistory
-        {
-            NoHistrory,
-            History,
-            WithHistory
-        }
-        public SeeHistory Mode { get; set; }
         public decimal SumB_Coast
         {
             get
             {
-                return BoundsList.Sum(t => t.Price_now_total_avg);
+                if (BoundsList.Count != 0)
+                    return BoundsList.Sum(t => t.Price_now_total_avg);
+                else
+                    return 0;
             }
         }
         public decimal SumB_Coupons
         {
             get
             {
-                return BoundsList.Sum(t => t.Coupon_summ);
+                if (BoundsList.Count != 0)
+                    return BoundsList.Sum(t => t.Coupon_summ);
+                else
+                    return 0;
             }
         }
 
@@ -46,43 +61,60 @@ namespace tink_oblig.classes
         {
             get
             {
-                return BoundsList.Sum(t => t.Base.Lots);
+                if (BoundsList.Count != 0)
+                    return BoundsList.Sum(t => t.Base.Lots);
+                else
+                    return 0;
             }
         }
         public decimal Total_diff_price
         {
             get
             {
-                return BoundsList.Sum(t => t.Price_now_total_market - t.Price_now_total_avg);
+                if (BoundsList.Count != 0)
+                    return BoundsList.Sum(t => t.Price_now_total_market - t.Price_now_total_avg);
+                else
+                    return 0;
             }
         }
         public int Cpn_Cnt
         {
             get
             {
-                return BoundsList.Sum(t => t.Coupon_Cnt_summ);
+                if (BoundsList.Count != 0)
+                    return BoundsList.Sum(t => t.Coupon_Cnt_summ);
+                else
+                    return 0;
             }
         }
         public decimal Cpn_Taxes
         {
             get
             {
-                return BoundsList.Sum(t => t.Coupon_Tax_summ);
+                if (BoundsList.Count != 0)
+                    return BoundsList.Sum(t => t.Coupon_Tax_summ);
+                else
+                    return 0;
             }
         }
         public decimal Sum_Profit
         {
             get
             {
-                return BoundsList.Sum(t => t.Profit_summ);
+                if (BoundsList.Count != 0)
+                    return BoundsList.Sum(t => t.Profit_summ);
+                else
+                    return 0;
             }
         }
         public decimal Sum_Profit_Perc //WRONG
         {
             get
             {
-                //return (((Price_now_total_avg + Coupon_summ - Coupon_Tax_summ + (Price_now_total_market - Price_now_total_avg)) * 100) / Price_now_total_avg) - 100;
-                return (((SumB_Coast + SumB_Coupons - Cpn_Taxes + (BoundsList.Sum(t => t.Price_now_total_market) - SumB_Coast)) * 100) / SumB_Coast) - 100;
+                if (BoundsList.Count != 0)
+                    return (((SumB_Coast + SumB_Coupons - Cpn_Taxes + (BoundsList.Sum(t => t.Price_now_total_market) - SumB_Coast)) * 100) / SumB_Coast) - 100;
+                else
+                    return 0;
             }
         }
 

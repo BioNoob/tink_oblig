@@ -16,12 +16,19 @@ namespace tink_oblig.classes
         {
             Portfolios = new Dictionary<Account, Bounds>();
         }
+        public enum SeeHistory
+        {
+            NoHistrory,
+            History,
+            WithHistory
+        }
         public Dictionary<Account, Bounds> Portfolios { get; set; }
 
         public delegate void JobInfo(bool ok, string mes = "");
+        public delegate void JobBounds(Bounds bnd,string mes = "");
         public event JobInfo JobsDone;
-
-        public async Task doLoad()
+        public event JobBounds LoadInfoDone;
+        public async Task DoLoad_Portfail()
         {
             try
             {
@@ -45,7 +52,24 @@ namespace tink_oblig.classes
                 JobsDone?.Invoke(false, ex.Message);
             }
         }
-        public static async Task LoadInfoBound(Bound bo)//string ticker)
+        public async Task DoLoad_ObligList() //грузим инфу по портфелью
+        {
+            //тут припелить выбор аккаунта
+            var o = Program.InnerAccount.Portfolios.Keys.Where(t => t.BrokerAccountType == BrokerAccountType.Tinkoff).Single();
+            var bounds = Program.InnerAccount.Portfolios[o];
+
+            foreach (var item in bounds.BoundsList)
+            {
+                item.Payed_cpn_list = await Program.CurrentContext.OperationsAsync(new DateTime(2015, 01, 01), DateTime.Now, item.Base.Figi, bounds.Acc.BrokerAccountId);
+            }
+            await LoadAllBndHistory(bounds);
+            foreach (var item in bounds.BoundsList)
+            {
+                await LoadInfoBound(item);
+            }
+            LoadInfoDone?.Invoke(Program.InnerAccount.Portfolios[o]);
+        }
+        public static async Task LoadInfoBound(Bound bo)//string ticker) грузим с мос биржи
         {
             string xmlStr;
             using (var wc = new WebClient())
@@ -73,16 +97,8 @@ namespace tink_oblig.classes
             bo.Cpn_val = decimal.TryParse(dic["COUPONVALUE"], NumberStyles.Float, CultureInfo.InvariantCulture, out b) ? b : 0;
             bo.LoadImagePath();
         }
-        public static async Task LoadHistoryBound(Bounds bounds)//string ticker)
-        {
-            //По отношению к времени не верно. Нужно сканить от даты покупки, если перед ней кол-во = 0
-            foreach (var bo in bounds.BoundsList)
-            {
-                bo.Payed_cpn_list = await Program.CurrentContext.OperationsAsync(new DateTime(2015, 01, 01), DateTime.Now, bo.Base.Figi, bounds.Acc.BrokerAccountId);
-            }
-        }
 
-        public static async Task LoadAllBndHistory(Bounds bounds)
+        public static async Task LoadAllBndHistory(Bounds bounds) //грузим для тех кого нет в живых
         {
             var z = await Program.CurrentContext.OperationsAsync(new DateTime(2015, 01, 01), DateTime.Now, "", bounds.Acc.BrokerAccountId);
             var selectedz = z.Where(t => t.InstrumentType == InstrumentType.Bond).Select(t => t.Figi).Distinct().ToList();
@@ -98,7 +114,7 @@ namespace tink_oblig.classes
 
                 var avg = data.Sum(a => Math.Abs(a.Payment)) / cnt;
                 var buf_nkd = data.Sum(a => Math.Abs(a.Payment)  - (a.Price * a.Trades.Sum(c=>c.Quantity))); //- (a.Price * a.Quantity));
-                var avg_no_nkd = avg - buf_nkd;
+                var avg_no_nkd = avg - buf_nkd / cnt;
                 var price_now = await Program.CurrentContext.MarketOrderbookAsync(item, 1);
                 var expt_yeld = price_now.ClosePrice - avg_no_nkd; //грузим свечки берем последнюю цену
                 Bound b = new Bound(new Portfolio.Position(t.Name, item, t.Ticker, t.Isin, t.Type, cnt, 0, new MoneyAmount(t.Currency, expt_yeld), cnt, new MoneyAmount(t.Currency, avg), new MoneyAmount(t.Currency, avg_no_nkd)));

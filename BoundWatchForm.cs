@@ -51,6 +51,11 @@ namespace tink_oblig
             profit_sum_lbl.DataBindings.Add(new Binding("ForeColor", _Bnb, "Font_profit_clr", true, DataSourceUpdateMode.OnPropertyChanged));
             //trade_event_lst;
 
+            diff_price_summ_lbl.DataBindings.Add(new Binding("ForeColor", _Bnb, "Font_diff_clr", true, DataSourceUpdateMode.OnPropertyChanged));
+            diff_price_one_lbl.DataBindings.Add(new Binding("ForeColor", _Bnb, "Font_diff_clr", true, DataSourceUpdateMode.OnPropertyChanged));
+            diff_price_summ_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Diff_price_string", true, DataSourceUpdateMode.OnPropertyChanged));
+            diff_price_one_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Diff_price_one_string", true, DataSourceUpdateMode.OnPropertyChanged));
+
             cpn_tax_sum_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Coupon_Tax_summ", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
 
             buy_back_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Buy_Back_summ", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));

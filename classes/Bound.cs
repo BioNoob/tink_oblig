@@ -29,6 +29,7 @@ namespace tink_oblig.classes
             Payed_cpn_list = new List<Operation>();
             Simplify = false;
         }
+        public bool Simplify { get; set; }
         //https://www.tinkoff.ru/api/trading/bonds/get?ticker=RU000A1005T9
         public string Img_path { get; private set; }
         public Image Img_exct { get; private set; }
@@ -47,7 +48,7 @@ namespace tink_oblig.classes
             var b = data["payload"]["symbol"]["logoName"];
             Img_path = b != null ? $"https://static.tinkoff.ru/brands/traiding/{b.Value<string>().Replace(".png", "")}x160.png" : "";
             b = data["payload"]["symbol"]["color"];
-            Img_color = b != null ? ColorTranslator.FromHtml(b.Value<string>()) : ColorTranslator.FromHtml("#FFFFFF");
+            Img_color = b != null ? ColorTranslator.FromHtml(b.Value<string>()) : ColorTranslator.FromHtml("#1E90FF");
 
             b = data["payload"]["symbol"]["textColor"];
             Text_color = b != null ? ColorTranslator.FromHtml(b.Value<string>()) : ColorTranslator.FromHtml("#FFFFFF");
@@ -80,14 +81,14 @@ namespace tink_oblig.classes
             }
 
         }
-        public bool Simplify { get; set; }
+
         #region NoNKD
         public decimal Price_now_one_market
         {
             get
             {
                 var b = Base.ExpectedYield.Value != 0 ? (Base.ExpectedYield.Value / Base.Lots) : 0;
-                return Base.AveragePositionPriceNoNkd.Value + b; 
+                return Base.AveragePositionPriceNoNkd.Value + b;
             }
         }
         public decimal Price_now_total_market
@@ -151,20 +152,6 @@ namespace tink_oblig.classes
                 return 0;
             }
         }
-
-        //public decimal Last_Coupon_payed_perc
-        //{
-        //    get
-        //    {
-        //        var buf = Payed_cpn_list.Where(t => t.OperationType == ExtendedOperationType.Coupon).ToList();
-        //        if (buf.Count > 0)
-        //        {
-        //            var o = buf.First().Payment/Base.Lots / Nominal * 100 * Math.Ceiling(365m / Pay_period); //меняется сумма при покупках надо это чекать
-        //            return o;/// buf.Last(); //?
-        //        }
-        //        return 0;
-        //    }
-        //}
         public decimal Coupon_summ
         {
             get
@@ -206,14 +193,30 @@ namespace tink_oblig.classes
         {
             get
             {
-                return (Price_now_total_avg + Coupon_summ - Coupon_Tax_summ + (Price_now_total_market - Price_now_total_avg)) - Price_now_total_avg;
+                if (Simplify)
+                {
+
+                    var buf = Payed_cpn_list.Where(t => t.OperationType == ExtendedOperationType.Sell && t.Status == OperationStatus.Done).Sum(t => t.Payment);
+                    var bb = (Price_now_total_avg + Coupon_summ - Coupon_Tax_summ + (buf - Price_now_total_avg)) - Price_now_total_avg;
+                    return bb;
+                }
+                else
+                    return (Price_now_total_avg + Coupon_summ - Coupon_Tax_summ + (Price_now_total_market - Price_now_total_avg)) - Price_now_total_avg;
             }
         }
         public decimal Profit_summ_perc
         {
             get
             {
-                return (((Price_now_total_avg + Coupon_summ - Coupon_Tax_summ + (Price_now_total_market - Price_now_total_avg)) * 100) / Price_now_total_avg) - 100;
+                if (Simplify)
+                {
+
+                    var buf = Payed_cpn_list.Where(t => t.OperationType == ExtendedOperationType.Sell && t.Status == OperationStatus.Done).Sum(t => t.Payment);
+                    var bb = (((Price_now_total_avg + Coupon_summ - Coupon_Tax_summ + (buf - Price_now_total_avg)) * 100) / Price_now_total_avg) - 100;
+                    return bb;
+                }
+                else
+                    return (((Price_now_total_avg + Coupon_summ - Coupon_Tax_summ + (Price_now_total_market - Price_now_total_avg)) * 100) / Price_now_total_avg) - 100;
             }
         }
         public int Coupon_Cnt_summ
@@ -235,6 +238,53 @@ namespace tink_oblig.classes
                     return string.Format("{0:#0.0}", Math.Abs(Profit_summ_perc));
             }
         }
+        public decimal Diff_price_one
+        {
+            get
+            {
+                return Price_now_one_market - Price_now_one_avg;
+            }
+        }
+        public string Diff_price_one_string
+        {
+            get
+            {
+                if (Diff_price_one > 0)
+                    return string.Format("+{0:#0.0}", Math.Abs(Diff_price_one));
+                else if (Diff_price_one < 0)
+                    return string.Format("-{0:#0.0}", Math.Abs(Diff_price_one));
+                else
+                    return string.Format("{0:#0.0}", Math.Abs(Diff_price_one));
+            }
+        }
+        public decimal Diff_price
+        {
+            get
+            {
+                return Price_now_total_market - Price_now_total_avg;
+            }
+        }
+        public string Diff_price_string
+        {
+            get
+            {
+                if (Diff_price > 0)
+                    return string.Format("+{0:#0.0}", Math.Abs(Diff_price));
+                else if (Diff_price < 0)
+                    return string.Format("-{0:#0.0}", Math.Abs(Diff_price));
+                else
+                    return string.Format("{0:#0.0}", Math.Abs(Diff_price));
+            }
+        }
+        public Color Font_diff_clr
+        {
+            get
+            {
+                return Diff_price >= 0 ? Color.DarkGreen : Color.DarkRed;
+            }
+        }
+
+
         public Color Font_profit_clr
         {
             get
