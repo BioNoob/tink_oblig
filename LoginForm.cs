@@ -46,18 +46,21 @@ namespace tink_oblig
                 result = await Task.Run(() => do_login(keypare_cmb.SelectedText));
             if (result)
             {
-                Program.InnerAccount.LoadInfoDone += (t, mes) =>
-                {
-                    if (!string.IsNullOrEmpty(mes))
-                    {
-                        MessageBox.Show($"Error {mes}");
-                    }
-                    Program.InnerAccount.SetSelectedPrtf(t);
-                    //ViewForm wfrm = new ViewForm(t, Accounts.SeeHistory.NoHistrory);
-                    //wfrm.Show();
-                    //this.Hide();
-                };
-                await Program.InnerAccount.DoLoad_ObligList();
+                //Program.InnerAccount.LoadObligInfoDone += (t, mes) =>
+                //{
+                //    if (!string.IsNullOrEmpty(mes))
+                //    {
+                //        MessageBox.Show($"Error {mes}");
+                //    }
+                //    Program.InnerAccount.SetSelectedPrtf(t);
+                //    //ViewForm wfrm = new ViewForm(t, Accounts.SeeHistory.NoHistrory);
+                //    //wfrm.Show();
+                //    //this.Hide();
+                //};
+                //await Program.InnerAccount.DoLoad_ObligList();
+                ManagerForm mf = new ManagerForm();
+                mf.Show();
+                this.Hide();
 
             }
             else

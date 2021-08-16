@@ -26,7 +26,7 @@ namespace tink_oblig.classes
             Pay_period = 0;
             Cpn_val = 0m;
             Cpn_Percent = 0m;
-            Payed_cpn_list = new List<Operation>();
+            Operations_list = new List<Operation>();
             Simplify = false;
         }
         /// <summary>
@@ -141,13 +141,13 @@ namespace tink_oblig.classes
         public decimal Cpn_Percent { get; set; }
 
         //искать в истории
-        public List<Operation> Payed_cpn_list { get; set; }
+        public List<Operation> Operations_list { get; set; }
 
         public decimal Last_Coupon_payed
         {
             get
             {
-                var buf = Payed_cpn_list.Where(t => t.OperationType == ExtendedOperationType.Coupon).ToList();
+                var buf = Operations_list.Where(t => t.OperationType == ExtendedOperationType.Coupon).ToList();
                 if (buf.Count > 0)
                 {
                     return buf.First().Payment;
@@ -159,7 +159,7 @@ namespace tink_oblig.classes
         {
             get
             {
-                var buf = Payed_cpn_list.Where(t => t.OperationType == ExtendedOperationType.Coupon).ToList();
+                var buf = Operations_list.Where(t => t.OperationType == ExtendedOperationType.Coupon).ToList();
                 if (buf.Count > 0)
                 {
                     return buf.Sum(t => t.Payment);
@@ -171,7 +171,7 @@ namespace tink_oblig.classes
         {
             get
             {
-                var buf = Payed_cpn_list.Where(t => t.OperationType == ExtendedOperationType.TaxCoupon).ToList();
+                var buf = Operations_list.Where(t => t.OperationType == ExtendedOperationType.TaxCoupon).ToList();
                 if (buf.Count > 0)
                 {
                     return Math.Abs(buf.Sum(t => t.Payment));
@@ -183,7 +183,7 @@ namespace tink_oblig.classes
         {
             get
             {
-                var buf = Payed_cpn_list.Where(t => t.OperationType == ExtendedOperationType.PartRepayment).ToList();
+                var buf = Operations_list.Where(t => t.OperationType == ExtendedOperationType.PartRepayment).ToList();
                 if (buf.Count > 0)
                 {
                     return Math.Abs(buf.Sum(t => t.Payment));
@@ -198,7 +198,7 @@ namespace tink_oblig.classes
         {
             get
             {
-                return Payed_cpn_list.Where(t => t.OperationType == ExtendedOperationType.Sell && t.Status == OperationStatus.Done).Sum(t => t.Payment);
+                return Operations_list.Where(t => t.OperationType == ExtendedOperationType.Sell && t.Status == OperationStatus.Done).Sum(t => t.Payment);
             }
         }
         public decimal Diff_sell
@@ -206,10 +206,10 @@ namespace tink_oblig.classes
             get
             {
                 decimal diff = 0;
-                var sell = Payed_cpn_list.Where(t => t.OperationType == ExtendedOperationType.Sell && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
+                var sell = Operations_list.Where(t => t.OperationType == ExtendedOperationType.Sell && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
                 if (sell.Count() != 0)
                 {
-                    var buy = Payed_cpn_list.Where(t => t.OperationType == ExtendedOperationType.Buy && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
+                    var buy = Operations_list.Where(t => t.OperationType == ExtendedOperationType.Buy && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
                     var bbuy = new List<Operation>();
                     foreach (var item in buy)
                     {
@@ -223,8 +223,8 @@ namespace tink_oblig.classes
                         int sold_cnt = item.Trades.Sum(t => t.Quantity);
                         diff += item.Payment - Math.Abs(bbuy.Take(sold_cnt).Sum(t => t.Payment));
 
-                        var cpn = Payed_cpn_list.Where(t => t.OperationType == ExtendedOperationType.Coupon && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
-                        var cpn_tax = Payed_cpn_list.Where(t => t.OperationType == ExtendedOperationType.TaxCoupon && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
+                        var cpn = Operations_list.Where(t => t.OperationType == ExtendedOperationType.Coupon && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
+                        var cpn_tax = Operations_list.Where(t => t.OperationType == ExtendedOperationType.TaxCoupon && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
                         //до момента продажи, но с момента первой поукпки из оставшихся
                         Coupon_sell = Math.Abs(cpn.Where(t => t.Date <= item.Date && t.Date >= bbuy.First().Date).Sum(t => t.Payment));
                         Coupon_sell_tax = Math.Abs(cpn_tax.Where(t => t.Date <= item.Date && t.Date >= bbuy.First().Date).Sum(t => t.Payment));
@@ -238,7 +238,7 @@ namespace tink_oblig.classes
         {
             get
             {
-                var b = Payed_cpn_list.Where(t => t.OperationType == ExtendedOperationType.Sell && t.Status == OperationStatus.Done).ToList();
+                var b = Operations_list.Where(t => t.OperationType == ExtendedOperationType.Sell && t.Status == OperationStatus.Done).ToList();
                 return b.Select(t => t.Trades).Sum(t => t.Select(t => t.Quantity).Sum());
             }
         }
@@ -299,7 +299,7 @@ namespace tink_oblig.classes
             {
                 if (Simplify)
                 {
-                    var buf = Payed_cpn_list.Where(t => t.OperationType == ExtendedOperationType.Sell && t.Status == OperationStatus.Done).Sum(t => t.Payment);
+                    var buf = Operations_list.Where(t => t.OperationType == ExtendedOperationType.Sell && t.Status == OperationStatus.Done).Sum(t => t.Payment);
                     var bb = (Price_now_total_avg + Coupon_summ - Coupon_Tax_summ + (buf - Price_now_total_avg)) - Price_now_total_avg;
                     return bb;
                 }
@@ -317,7 +317,7 @@ namespace tink_oblig.classes
                 if (Simplify)
                 {
 
-                    var buf = Payed_cpn_list.Where(t => t.OperationType == ExtendedOperationType.Sell && t.Status == OperationStatus.Done).Sum(t => t.Payment);
+                    var buf = Operations_list.Where(t => t.OperationType == ExtendedOperationType.Sell && t.Status == OperationStatus.Done).Sum(t => t.Payment);
                     var bb = (((Price_now_total_avg + Coupon_summ - Coupon_Tax_summ + (buf - Price_now_total_avg)) * 100) / Price_now_total_avg) - 100;
                     return bb;
                 }
@@ -332,7 +332,7 @@ namespace tink_oblig.classes
         {
             get
             {
-                return Payed_cpn_list.Count;
+                return Operations_list.Count;
             }
         }
         public string Profit_summ_perc_string
@@ -406,7 +406,7 @@ namespace tink_oblig.classes
         {
             get
             {
-                var buf = Payed_cpn_list.Where(t => t.OperationType == ExtendedOperationType.BrokerCommission).ToList();
+                var buf = Operations_list.Where(t => t.OperationType == ExtendedOperationType.BrokerCommission).ToList();
                 if (buf.Count > 0)
                 {
                     return Math.Abs(buf.Sum(t => Math.Abs(t.Payment)));

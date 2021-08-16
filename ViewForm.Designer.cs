@@ -55,13 +55,7 @@ namespace tink_oblig
             this.summ_cpn_lbl = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.total_money_lbl = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.acc_id_lbl = new System.Windows.Forms.Label();
-            this.acc_type_lbl = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // BoundListLayPannel
@@ -70,12 +64,12 @@ namespace tink_oblig
             this.BoundListLayPannel.ColumnCount = 1;
             this.BoundListLayPannel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.BoundListLayPannel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BoundListLayPannel.Location = new System.Drawing.Point(0, 51);
+            this.BoundListLayPannel.Location = new System.Drawing.Point(0, 0);
             this.BoundListLayPannel.Name = "BoundListLayPannel";
             this.BoundListLayPannel.Padding = new System.Windows.Forms.Padding(5);
             this.BoundListLayPannel.RowCount = 1;
             this.BoundListLayPannel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.BoundListLayPannel.Size = new System.Drawing.Size(395, 455);
+            this.BoundListLayPannel.Size = new System.Drawing.Size(395, 506);
             this.BoundListLayPannel.TabIndex = 4;
             // 
             // panel1
@@ -360,73 +354,17 @@ namespace tink_oblig
             this.total_money_lbl.Text = "summ total";
             this.total_money_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // panel2
-            // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.label13);
-            this.panel2.Controls.Add(this.label11);
-            this.panel2.Controls.Add(this.acc_id_lbl);
-            this.panel2.Controls.Add(this.acc_type_lbl);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(395, 51);
-            this.panel2.TabIndex = 6;
-            // 
-            // label13
-            // 
-            this.label13.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label13.Location = new System.Drawing.Point(132, 30);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(156, 13);
-            this.label13.TabIndex = 10;
-            this.label13.Text = "Идентификатор аккаунта";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label11
-            // 
-            this.label11.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label11.Location = new System.Drawing.Point(5, 30);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(106, 13);
-            this.label11.TabIndex = 9;
-            this.label11.Text = "Тип аккаунта";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // acc_id_lbl
-            // 
-            this.acc_id_lbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.acc_id_lbl.Location = new System.Drawing.Point(132, 7);
-            this.acc_id_lbl.Name = "acc_id_lbl";
-            this.acc_id_lbl.Size = new System.Drawing.Size(156, 23);
-            this.acc_id_lbl.TabIndex = 1;
-            this.acc_id_lbl.Text = "account id";
-            this.acc_id_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // acc_type_lbl
-            // 
-            this.acc_type_lbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.acc_type_lbl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.acc_type_lbl.Location = new System.Drawing.Point(5, 7);
-            this.acc_type_lbl.Name = "acc_type_lbl";
-            this.acc_type_lbl.Size = new System.Drawing.Size(106, 23);
-            this.acc_type_lbl.TabIndex = 0;
-            this.acc_type_lbl.Text = "accout type";
-            this.acc_type_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // ViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.BoundListLayPannel);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
             this.Name = "ViewForm";
             this.Size = new System.Drawing.Size(395, 628);
             this.Load += new System.EventHandler(this.ViewForm_Load);
             this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -459,10 +397,5 @@ namespace tink_oblig
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label buy_back_lbl;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label acc_type_lbl;
-        private System.Windows.Forms.Label acc_id_lbl;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label11;
     }
 }

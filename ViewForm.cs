@@ -15,6 +15,7 @@ namespace tink_oblig
 
         public void Switch_representation(Bounds acc, SeeHistory history)
         {
+            BoundListLayPannel.Controls.Clear();
             SeeHistory = history;
             Selected_portfail = acc.Copy();
             switch (SeeHistory)
@@ -49,7 +50,6 @@ namespace tink_oblig
             //Program.InnerAccount.LoadInfoDone += InnerAccount_LoadInfoDone;
             InitializeComponent();
             Switch_representation(acc, history);
-
         }
 
         private void LoadBounds(Bound bd)
@@ -67,7 +67,6 @@ namespace tink_oblig
             total_money_lbl.DataBindings.Add(new Binding("Text", Selected_portfail, "SumB_Coast", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
             summ_cpn_lbl.DataBindings.Add(new Binding("Text", Selected_portfail, "SumB_Coupons", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
 
-
             total_profit_perc_lbl.DataBindings.Add(new Binding("Text", Selected_portfail, "Profit_Summ_Perc_String", true, DataSourceUpdateMode.OnPropertyChanged));
             total_profit_lbl.DataBindings.Add(new Binding("Text", Selected_portfail, "Sum_Profit", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
             total_profit_perc_lbl.DataBindings.Add(new Binding("ForeColor", Selected_portfail, "Font_Profit_Clr", true, DataSourceUpdateMode.OnPropertyChanged));
@@ -82,14 +81,11 @@ namespace tink_oblig
             total_price_diff_lbl.DataBindings.Add(new Binding("ForeColor", Selected_portfail, "Font_Diff_Clr", true, DataSourceUpdateMode.OnPropertyChanged));
 
             buy_back_lbl.DataBindings.Add(new Binding("Text", Selected_portfail, "Buy_back", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
-            acc_id_lbl.DataBindings.Add(new Binding("Text", Selected_portfail, "Acc.BrokerAccountId", true, DataSourceUpdateMode.OnPropertyChanged));
-            acc_type_lbl.DataBindings.Add(new Binding("Text", Selected_portfail, "Acc_Type", true, DataSourceUpdateMode.OnPropertyChanged));
         }
-
-        private void change_history_btn_Click(object sender, EventArgs e)
-        {
-            ViewForm vfm = new ViewForm(Program.InnerAccount.Selected_portfail_backup, SeeHistory.History);
-            vfm.Show();
-        }
+        //private void change_history_btn_Click(object sender, EventArgs e)
+        //{
+        //    ViewForm vfm = new ViewForm(Program.InnerAccount.Selected_portfail_backup, SeeHistory.History);
+        //    vfm.Show();
+        //}
     }
 }

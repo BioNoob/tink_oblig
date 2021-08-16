@@ -58,6 +58,30 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="refresh_btn.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAARUSURBVGhD7ZnLbxtVFMadAuVRyiOAKM9WIlCBlTSemWvXCohIlJegPPsUGzbwH7CChSUELJAq
+        KPXceycJVVlGgg0SO4S6hk0Xbjxzx3ZREUKCDYIFQqDhnObYGiZn4vHEcVwpP+mTHPucm+/6vs5cF7bp
+        Q1mZqqPMy5WF9t301tWF44UnHBWctGTz2FXZCTTflVD+8dJS8176aLyYP9u5obTY3iu8YFa45klbm2ds
+        3Xoh3gGUJc0xW1+8h9K2lqPL0TVWPZxCs92pkkWrnbi0hZ2oRTusevCoUK3XOINZhNNpSzpR+tzcZcng
+        Rc7UoLKk/yo1OxoqyjzmSD/zVOmnEXYgmhBeS3Am8mqkU8jWnQpnIq9GuoiFZ4qcibzCb/6A9O+j5jeX
+        8rmVOzgTqZLB67YOKgdlZ9+0++PtxXrj5vjn+M2LemcPNb/5wIItxw2kq33EcZv78Vyg1B75SoloYuaL
+        C7umvjHX0xv5sFz/ibVmE5Jm3tY/30Qpa1gt5pqZizkcPdyduu0LNziEI0kfD4Y402f+y3CuEEUTFL5h
+        Smfae7n/I1T78Hztu2spLDvF5cZO2w1f4RrF0SnUajsodONAW2Uv7H3zSZW91iMUORhzS7/uhpLhqV5j
+        cJCVVMsZqnlg9mzntrjhpIQKn6PQfFRPXb6xeKoxiaNCbw0VqFxv5YzHlXstjIZoIr54OWHlS8HjCZ4h
+        nPGeYFun0PGksmDuZ42ToB47RKHjSeW0uYUz3pNrXqLQ8aRYa+xkjXcFpQqF9gdrlpHWLQg86bHGu/Ja
+        2ToAz7hHHWX+AUUg39HmMxy+uaXmbgrZFHCrZo2T8ESm0PUR2vxA5pP6G3TeVsF7+IBD4UND1Bt7OONd
+        lT3zLIWmU11sTILJf2OmU2Ur8yGlDQU4zKY5411hYUih6eBC4cxygg7UKS0/sWKQu0f6n9z2fgpNR0jj
+        cmYT+hMq0XenTm+sXgfDj+N6s9zmDLx+kDUdU3Xx8iSlpgPfasAYTmoFFxyl5MZ2fbbS5ZRpAYt6+ABj
+        lpcOFaXlBp8nOLOcSso/QGnpCBm8yZpNEZS471NqLrA448wmhRcB1eUMIw7zf4Ez2kfn8p4PyYf+NJXx
+        +SMLQodvg6G/HBV+ST9M/BYzmi5tLgkZvoU31NRUZvCA5EzHJZQ5jIUepfQBjnN6hXP0BGs4Xb/gLgZ6
+        A3cVamZdHNnOePMRnMx1nwSjIRmjWfW95YY2NcWS9iCfFKy347l+4cG7Hthav2bMZdXvB+XKPmpuDTjt
+        OMOrMkfw8mBWXXx45uMLuyhlcHDPh/rnq4SxARRoaoqld4G2evP9tK1Xpm3t3znMKxsaifAT3uD6wsOR
+        mkkFb+JsHV1Hf24ejhc+D4Z+4oyuI5/SxwO8w4Gd5iMw9kfCKCvYYj+l1PECf25ydPAOjEiDM35F2hiM
+        o5TxBarKh/Awu3IOKPMtmD/vSPMBXrNTyDbbbDN0CoX/AHF/Q5Xo3aHgAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="change_history_btn.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAu5JREFUaEPt

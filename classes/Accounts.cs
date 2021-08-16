@@ -12,25 +12,27 @@ namespace tink_oblig.classes
 {
     public class Account_m : Account
     {
-        public Account_m(BrokerAccountType brk, string id) : base(brk,id)
+        public Account_m(BrokerAccountType brk, string id) : base(brk, id)
         {
+        }
+        public string TypeAcc
+        {
+            get
+            {
+                switch (BrokerAccountType)
+                {
+                    case BrokerAccountType.Tinkoff:
+                        return "Брокерский";
+                    case BrokerAccountType.TinkoffIis:
+                        return "ИИС";
+                    default:
+                        return "Неопознаный мамонт";
+                }
+            }
         }
         public override string ToString()
         {
-            string buf;
-            switch (BrokerAccountType)
-            {
-                case BrokerAccountType.Tinkoff:
-                    buf = "Брокерский";
-                    break;
-                case BrokerAccountType.TinkoffIis:
-                    buf = "ИИС";
-                    break;
-                default:
-                    buf = "Неопознаный мамонт";
-                    break;
-            }
-            return $"{buf}\t{BrokerAccountId}";
+            return $"{TypeAcc}  ({BrokerAccountId})";
         }
     }
     public class Accounts
@@ -54,9 +56,13 @@ namespace tink_oblig.classes
         }
 
         public delegate void JobInfo(bool ok, string mes = "");
-        public delegate void JobBounds(Bounds bnd,string mes = "");
+        public delegate void JobBounds(Bounds bnd, string mes = "");
         public event JobInfo JobsDone;
-        public event JobBounds LoadInfoDone;
+        public event JobBounds LoadObligInfoDone;
+        /// <summary>
+        /// Грузим список бумаг по всем аккаунтам
+        /// </summary>
+        /// <returns></returns>
         public async Task DoLoad_Portfail()
         {
             try
@@ -65,7 +71,7 @@ namespace tink_oblig.classes
                 foreach (var item in acc)
                 {
                     var prtfl = await Program.CurrentContext.PortfolioAsync(item.BrokerAccountId);
-                    Bounds lbd = new Bounds(new Account_m(item.BrokerAccountType,item.BrokerAccountId));
+                    Bounds lbd = new Bounds(new Account_m(item.BrokerAccountType, item.BrokerAccountId));
                     var lpl = prtfl.Positions.Where(t => t.InstrumentType == InstrumentType.Bond).ToList();
                     foreach (var itm in lpl)
                     {
@@ -81,23 +87,39 @@ namespace tink_oblig.classes
                 JobsDone?.Invoke(false, ex.Message);
             }
         }
-        public async Task DoLoad_ObligList() //грузим инфу по портфелью
+        /// <summary>
+        /// Грузим список опреаций для расчетов по бумаге для выбранного аккаунта
+        /// </summary>
+        /// <param name="acc">аккаунт</param>
+        /// <returns></returns>
+        public async Task DoLoad_ObligList(Account_m acc, bool fl_refresh = false) //грузим инфу по портфелью
         {
-            //тут припелить выбор аккаунта
-            var o = Program.InnerAccount.Portfolios.Keys.Where(t => t.BrokerAccountType == BrokerAccountType.Tinkoff).Single();
-            var bounds = Program.InnerAccount.Portfolios[o];
-
+            var bounds = Program.InnerAccount.Portfolios[acc];
+            var load_signal = bounds.BoundsList.Select(t => t.Operations_list).Select(t => t.Count).Sum(); //если операции загружены то > 0
+            if (load_signal > 0)
+            {
+                if (!fl_refresh)
+                {
+                    LoadObligInfoDone?.Invoke(Program.InnerAccount.Portfolios[acc]);
+                    return;
+                }
+            }
             foreach (var item in bounds.BoundsList)
             {
-                item.Payed_cpn_list = await Program.CurrentContext.OperationsAsync(new DateTime(2015, 01, 01), DateTime.Now, item.Base.Figi, bounds.Acc.BrokerAccountId);
+                item.Operations_list = await Program.CurrentContext.OperationsAsync(new DateTime(2015, 01, 01), DateTime.Now, item.Base.Figi, bounds.Acc.BrokerAccountId);
             }
             await LoadAllBndHistory(bounds);
             foreach (var item in bounds.BoundsList)
             {
                 await LoadInfoBound(item);
             }
-            LoadInfoDone?.Invoke(Program.InnerAccount.Portfolios[o]);
+            LoadObligInfoDone?.Invoke(Program.InnerAccount.Portfolios[acc]);
         }
+        /// <summary>
+        /// Копаем инфу с мосбиржи для бумажки
+        /// </summary>
+        /// <param name="bo">бумажка</param>
+        /// <returns></returns>
         public static async Task LoadInfoBound(Bound bo)//string ticker) грузим с мос биржи
         {
             string xmlStr;
@@ -126,7 +148,11 @@ namespace tink_oblig.classes
             bo.Cpn_val = decimal.TryParse(dic["COUPONVALUE"], NumberStyles.Float, CultureInfo.InvariantCulture, out b) ? b : 0;
             bo.LoadImagePath();
         }
-
+        /// <summary>
+        /// Грузим исторические сведенья для облиг в портфеле
+        /// </summary>
+        /// <param name="bounds">список облигаций</param>
+        /// <returns></returns>
         public static async Task LoadAllBndHistory(Bounds bounds) //грузим для тех кого нет в живых
         {
             var z = await Program.CurrentContext.OperationsAsync(new DateTime(2015, 01, 01), DateTime.Now, "", bounds.Acc.BrokerAccountId);
@@ -139,16 +165,16 @@ namespace tink_oblig.classes
                 var data = z.Where(t => t.Figi == item && t.OperationType == ExtendedOperationType.Buy && t.Status == OperationStatus.Done).ToList();
                 //смотреть в трейдс а не в общем(
                 var trd = data.Select(a => a.Trades).ToList();
-                var cnt = trd.Sum(a => a.Sum(c=>c.Quantity));
+                var cnt = trd.Sum(a => a.Sum(c => c.Quantity));
 
                 var avg = data.Sum(a => Math.Abs(a.Payment)) / cnt;
-                var buf_nkd = data.Sum(a => Math.Abs(a.Payment)  - (a.Price * a.Trades.Sum(c=>c.Quantity))); //- (a.Price * a.Quantity));
+                var buf_nkd = data.Sum(a => Math.Abs(a.Payment) - (a.Price * a.Trades.Sum(c => c.Quantity))); //- (a.Price * a.Quantity));
                 var avg_no_nkd = avg - buf_nkd / cnt;
                 var price_now = await Program.CurrentContext.MarketOrderbookAsync(item, 1);
                 var expt_yeld = price_now.ClosePrice - avg_no_nkd; //грузим свечки берем последнюю цену
                 Bound b = new Bound(new Portfolio.Position(t.Name, item, t.Ticker, t.Isin, t.Type, cnt, 0, new MoneyAmount(t.Currency, expt_yeld), cnt, new MoneyAmount(t.Currency, avg), new MoneyAmount(t.Currency, avg_no_nkd)));
 
-                b.Payed_cpn_list = z.Where(t => t.Figi == item).ToList();
+                b.Operations_list = z.Where(t => t.Figi == item).ToList();
                 b.Simplify = true;
                 bounds.BoundsList.Add(b);
             }

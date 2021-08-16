@@ -31,19 +31,19 @@ namespace tink_oblig
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManagerForm));
             this.control_panel = new System.Windows.Forms.Panel();
-            this.view_panel = new System.Windows.Forms.Panel();
-            this.account_switcher_cmb = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.change_history_btn = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.account_switcher_cmb = new System.Windows.Forms.ComboBox();
+            this.view_panel = new System.Windows.Forms.Panel();
+            this.refresh_btn = new System.Windows.Forms.Button();
             this.control_panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // control_panel
             // 
+            this.control_panel.Controls.Add(this.refresh_btn);
             this.control_panel.Controls.Add(this.change_history_btn);
-            this.control_panel.Controls.Add(this.label3);
             this.control_panel.Controls.Add(this.label2);
             this.control_panel.Controls.Add(this.label1);
             this.control_panel.Controls.Add(this.account_switcher_cmb);
@@ -53,13 +53,36 @@ namespace tink_oblig
             this.control_panel.Size = new System.Drawing.Size(391, 70);
             this.control_panel.TabIndex = 0;
             // 
-            // view_panel
+            // change_history_btn
             // 
-            this.view_panel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.view_panel.Location = new System.Drawing.Point(0, 70);
-            this.view_panel.Name = "view_panel";
-            this.view_panel.Size = new System.Drawing.Size(391, 527);
-            this.view_panel.TabIndex = 1;
+            this.change_history_btn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.change_history_btn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("change_history_btn.BackgroundImage")));
+            this.change_history_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.change_history_btn.Location = new System.Drawing.Point(339, 21);
+            this.change_history_btn.Name = "change_history_btn";
+            this.change_history_btn.Size = new System.Drawing.Size(40, 40);
+            this.change_history_btn.TabIndex = 4;
+            this.change_history_btn.UseVisualStyleBackColor = true;
+            this.change_history_btn.Click += new System.EventHandler(this.change_history_btn_Click);
+            // 
+            // label2
+            // 
+            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label2.Location = new System.Drawing.Point(12, 47);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(269, 19);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Тип аккаунта  (идентификатор аккаунта)";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(118, 15);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Выбранный аккаунт";
             // 
             // account_switcher_cmb
             // 
@@ -70,45 +93,25 @@ namespace tink_oblig
             this.account_switcher_cmb.TabIndex = 0;
             this.account_switcher_cmb.SelectionChangeCommitted += new System.EventHandler(this.account_switcher_cmb_SelectionChangeCommitted);
             // 
-            // label1
+            // view_panel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 4);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(118, 15);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Выбранный аккаунт";
+            this.view_panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.view_panel.Location = new System.Drawing.Point(0, 70);
+            this.view_panel.Name = "view_panel";
+            this.view_panel.Size = new System.Drawing.Size(391, 527);
+            this.view_panel.TabIndex = 1;
             // 
-            // label2
+            // refresh_btn
             // 
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.Location = new System.Drawing.Point(12, 47);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(137, 19);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Тип";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label3
-            // 
-            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label3.Location = new System.Drawing.Point(155, 47);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(112, 19);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Id";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // change_history_btn
-            // 
-            this.change_history_btn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.change_history_btn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("change_history_btn.BackgroundImage")));
-            this.change_history_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.change_history_btn.Location = new System.Drawing.Point(324, 11);
-            this.change_history_btn.Name = "change_history_btn";
-            this.change_history_btn.Size = new System.Drawing.Size(55, 55);
-            this.change_history_btn.TabIndex = 4;
-            this.change_history_btn.UseVisualStyleBackColor = true;
+            this.refresh_btn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.refresh_btn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("refresh_btn.BackgroundImage")));
+            this.refresh_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.refresh_btn.Location = new System.Drawing.Point(293, 21);
+            this.refresh_btn.Name = "refresh_btn";
+            this.refresh_btn.Size = new System.Drawing.Size(40, 40);
+            this.refresh_btn.TabIndex = 5;
+            this.refresh_btn.UseVisualStyleBackColor = true;
+            this.refresh_btn.Click += new System.EventHandler(this.refresh_btn_Click);
             // 
             // ManagerForm
             // 
@@ -131,8 +134,8 @@ namespace tink_oblig
         private System.Windows.Forms.Panel view_panel;
         private System.Windows.Forms.ComboBox account_switcher_cmb;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button change_history_btn;
+        private System.Windows.Forms.Button refresh_btn;
     }
 }
