@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using tink_oblig.classes;
 using Tinkoff.Trading.OpenApi.Models;
@@ -7,16 +8,24 @@ using static tink_oblig.classes.Accounts;
 
 namespace tink_oblig
 {
-    public partial class ViewForm : Form
+    public partial class ViewForm : UserControl
     {
         public Bounds Selected_portfail { get; set; }
         SeeHistory SeeHistory { get; set; }
-        public ViewForm(Bounds acc, SeeHistory history)
+
+        public void Switch_representation(Bounds acc, SeeHistory history)
         {
-            //Program.InnerAccount.LoadInfoDone += InnerAccount_LoadInfoDone;
-            InitializeComponent();
             SeeHistory = history;
-            Selected_portfail = acc;
+            Selected_portfail = acc.Copy();
+            switch (SeeHistory)
+            {
+                case SeeHistory.NoHistrory:
+                    Selected_portfail.BoundsList = Selected_portfail.BoundsList.Where(t => !t.Simplify).ToList();
+                    break;
+                case SeeHistory.History:
+                    Selected_portfail.BoundsList = Selected_portfail.BoundsList.Where(t => t.Simplify).ToList();
+                    break;
+            }
             foreach (var bd in Selected_portfail.BoundsList)
             {
                 switch (SeeHistory)
@@ -34,6 +43,12 @@ namespace tink_oblig
                         break;
                 }
             }
+        }
+        public ViewForm(Bounds acc, SeeHistory history)
+        {
+            //Program.InnerAccount.LoadInfoDone += InnerAccount_LoadInfoDone;
+            InitializeComponent();
+            Switch_representation(acc, history);
 
         }
 
@@ -66,6 +81,15 @@ namespace tink_oblig
             total_price_diff_lbl.DataBindings.Add(new Binding("Text", Selected_portfail, "Total_Diff_String", true, DataSourceUpdateMode.OnPropertyChanged));
             total_price_diff_lbl.DataBindings.Add(new Binding("ForeColor", Selected_portfail, "Font_Diff_Clr", true, DataSourceUpdateMode.OnPropertyChanged));
 
+            buy_back_lbl.DataBindings.Add(new Binding("Text", Selected_portfail, "Buy_back", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
+            acc_id_lbl.DataBindings.Add(new Binding("Text", Selected_portfail, "Acc.BrokerAccountId", true, DataSourceUpdateMode.OnPropertyChanged));
+            acc_type_lbl.DataBindings.Add(new Binding("Text", Selected_portfail, "Acc_Type", true, DataSourceUpdateMode.OnPropertyChanged));
+        }
+
+        private void change_history_btn_Click(object sender, EventArgs e)
+        {
+            ViewForm vfm = new ViewForm(Program.InnerAccount.Selected_portfail_backup, SeeHistory.History);
+            vfm.Show();
         }
     }
 }

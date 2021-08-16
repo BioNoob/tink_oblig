@@ -29,6 +29,9 @@ namespace tink_oblig.classes
             Payed_cpn_list = new List<Operation>();
             Simplify = false;
         }
+        /// <summary>
+        /// Флаг для пометки того что позиция по бумаге была закрыта и ее нет в списке портфеля 
+        /// </summary>
         public bool Simplify { get; set; }
         //https://www.tinkoff.ru/api/trading/bonds/get?ticker=RU000A1005T9
         public string Img_path { get; private set; }
@@ -189,19 +192,122 @@ namespace tink_oblig.classes
             }
         }
         //без нкд
+        public decimal Coupon_sell { get; set; }
+        public decimal Coupon_sell_tax { get; set; }
+        public decimal Summ_Sell
+        {
+            get
+            {
+                return Payed_cpn_list.Where(t => t.OperationType == ExtendedOperationType.Sell && t.Status == OperationStatus.Done).Sum(t => t.Payment);
+            }
+        }
+        public decimal Diff_sell
+        {//это разница по всем сделкам на все кол-во
+            get
+            {
+                decimal diff = 0;
+                var sell = Payed_cpn_list.Where(t => t.OperationType == ExtendedOperationType.Sell && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
+                if (sell.Count() != 0)
+                {
+                    var buy = Payed_cpn_list.Where(t => t.OperationType == ExtendedOperationType.Buy && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
+                    var bbuy = new List<Operation>();
+                    foreach (var item in buy)
+                    {
+                        for (int i = 0; i < item.Quantity; i++)
+                        {
+                            bbuy.Add(new Operation(item.Id, OperationStatus.Done, new List<Trade>(), new MoneyAmount(Currency.Rub, item.Commission.Value / item.Trades.Sum(t => t.Quantity)), Currency.Rub, item.Payment / item.Trades.Sum(t => t.Quantity), item.Price, 1, item.Figi, item.InstrumentType, false, item.Date, item.OperationType));
+                        }
+                    }
+                    foreach (var item in sell)
+                    {
+                        int sold_cnt = item.Trades.Sum(t => t.Quantity);
+                        diff += item.Payment - Math.Abs(bbuy.Take(sold_cnt).Sum(t => t.Payment));
+
+                        var cpn = Payed_cpn_list.Where(t => t.OperationType == ExtendedOperationType.Coupon && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
+                        var cpn_tax = Payed_cpn_list.Where(t => t.OperationType == ExtendedOperationType.TaxCoupon && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
+                        //до момента продажи, но с момента первой поукпки из оставшихся
+                        Coupon_sell = Math.Abs(cpn.Where(t => t.Date <= item.Date && t.Date >= bbuy.First().Date).Sum(t => t.Payment));
+                        Coupon_sell_tax = Math.Abs(cpn_tax.Where(t => t.Date <= item.Date && t.Date >= bbuy.First().Date).Sum(t => t.Payment));
+                        bbuy.RemoveRange(0, sold_cnt);
+                    }
+                }
+                return diff;
+            }
+        }
+        public int Cnt_sell
+        {
+            get
+            {
+                var b = Payed_cpn_list.Where(t => t.OperationType == ExtendedOperationType.Sell && t.Status == OperationStatus.Done).ToList();
+                return b.Select(t => t.Trades).Sum(t => t.Select(t => t.Quantity).Sum());
+            }
+        }
+        public decimal Profit_sell
+        {
+            get
+            {
+                //сумма купонов за период владения - их налог + разница в продаже
+                var a = Diff_sell;
+                var c = Coupon_sell - Coupon_sell_tax;
+                return a + c;
+
+            }
+        }
+        public decimal Profit_sell_prc
+        {
+            get
+            {
+                if (Profit_sell == 0)
+                    return 0;
+                return ((Profit_sell * 100) / Price_now_total_avg);
+            }
+        }
+        public string Profit_sell_perc_string
+        {
+            get
+            {
+                if (Profit_sell_prc > 0)
+                    return string.Format("+{0:#0.0}", Math.Abs(Profit_sell_prc));
+                else if (Profit_sell_prc < 0)
+                    return string.Format("-{0:#0.0}", Math.Abs(Profit_sell_prc));
+                else
+                    return string.Format("{0:#0.0}", Math.Abs(Profit_sell_prc));
+            }
+        }
+        public string Profit_sell_string
+        {
+            get
+            {
+                if (Profit_sell > 0)
+                    return string.Format("+{0:#0.0}", Math.Abs(Profit_sell));
+                else if (Profit_sell < 0)
+                    return string.Format("-{0:#0.0}", Math.Abs(Profit_sell));
+                else
+                    return string.Format("{0:#0.0}", Math.Abs(Profit_sell));
+            }
+        }
+        public Color Font_sell_profit_clr
+        {
+            get
+            {
+                return Profit_sell >= 0 ? Color.DarkGreen : Color.DarkRed;
+            }
+        }
         public decimal Profit_summ
         {
             get
             {
                 if (Simplify)
                 {
-
                     var buf = Payed_cpn_list.Where(t => t.OperationType == ExtendedOperationType.Sell && t.Status == OperationStatus.Done).Sum(t => t.Payment);
                     var bb = (Price_now_total_avg + Coupon_summ - Coupon_Tax_summ + (buf - Price_now_total_avg)) - Price_now_total_avg;
                     return bb;
                 }
                 else
-                    return (Price_now_total_avg + Coupon_summ - Coupon_Tax_summ + (Price_now_total_market - Price_now_total_avg)) - Price_now_total_avg;
+                {
+                    return (Price_now_total_avg + Coupon_summ - Coupon_Tax_summ + (Price_now_total_market - Price_now_total_avg) + Diff_sell) - Price_now_total_avg;
+                }
+
             }
         }
         public decimal Profit_summ_perc
@@ -216,7 +322,10 @@ namespace tink_oblig.classes
                     return bb;
                 }
                 else
-                    return (((Price_now_total_avg + Coupon_summ - Coupon_Tax_summ + (Price_now_total_market - Price_now_total_avg)) * 100) / Price_now_total_avg) - 100;
+                {
+                    return (((Price_now_total_avg + Coupon_summ - Coupon_Tax_summ + (Price_now_total_market - Price_now_total_avg) + Diff_sell) * 100) / Price_now_total_avg) - 100;
+                }
+
             }
         }
         public int Coupon_Cnt_summ

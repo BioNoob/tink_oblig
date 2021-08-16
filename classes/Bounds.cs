@@ -11,31 +11,44 @@ namespace tink_oblig.classes
     public class Bounds : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        public Bounds(Account acc)
+        public Bounds(Account_m acc)
         {
             _boundslist = new List<Bound>();
             Acc = acc;
         }
-        public SeeHistory Mode { get; set; }
+        public Bounds Copy ()
+        {
+            var b =  new Bounds(this.Acc) { BoundsList = new List<Bound>(this.BoundsList) };
+            return b;
+        }
         private List<Bound> _boundslist;
         public List<Bound> BoundsList
         {
             get
             {
                 return _boundslist;
-                //switch (Mode)
-                //{
-                //    case SeeHistory.NoHistrory:
-                //        return _boundslist.Where(t => !t.Simplify).ToList();
-                //    case SeeHistory.History:
-                //    case SeeHistory.WithHistory:
-                //    default:
-                //        return _boundslist.Where(t => t.Simplify).ToList();
-                //}
+            }
+            set
+            {
+                _boundslist = value; 
             }
         }
-        public Account Acc { get; set; }
-
+        public Account_m Acc { get; set; }
+        public string Acc_Type
+        {
+            get
+            {
+                switch (Acc.BrokerAccountType)
+                {
+                    case BrokerAccountType.Tinkoff:
+                        return "Брокерский";
+                    case BrokerAccountType.TinkoffIis:
+                        return "ИИС";
+                    default:
+                        return "Неопознаный мамонт";
+                }
+            }
+        }
         public decimal SumB_Coast
         {
             get
@@ -156,52 +169,12 @@ namespace tink_oblig.classes
                 return Total_diff_price >= 0 ? Color.DarkGreen : Color.DarkRed;
             }
         }
-
-        /*
-        #region SUMMINFO
-        public decimal SumB_Coast
+        public decimal Buy_back
         {
             get
             {
-                return BoundsList.Sum(t => t.Price_now_one_market);
+                return BoundsList.Sum(t => t.Buy_Back_summ);
             }
         }
-        public decimal SumB_Buy
-        {
-            get
-            {
-                return BoundsList.Sum(t => t.Base.AveragePositionPriceNoNkd.Value);
-            }
-        }
-        public decimal SumB_Coupons_cnt
-        {
-            get
-            {
-                return BoundsList.Sum(t => t.Total_payed_cnt);
-            }
-        }
-        public decimal SumB_CashBack
-        {
-            get
-            {
-                return BoundsList.Sum(t => t.Total_cash_back);
-            }
-        }
-        public decimal SumB_Coupons_profit
-        {
-            get
-            {
-                return BoundsList.Sum(t => t.Total_payed);
-            }
-        }
-        public decimal SumB_TOTAL
-        {
-            get
-            {
-                return SumB_Coast + SumB_Coupons_profit - SumB_Buy;
-            }
-        }
-        #endregion
-        */
     }
 }

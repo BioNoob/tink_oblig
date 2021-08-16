@@ -10,11 +10,34 @@ using Tinkoff.Trading.OpenApi.Models;
 
 namespace tink_oblig.classes
 {
+    public class Account_m : Account
+    {
+        public Account_m(BrokerAccountType brk, string id) : base(brk,id)
+        {
+        }
+        public override string ToString()
+        {
+            string buf;
+            switch (BrokerAccountType)
+            {
+                case BrokerAccountType.Tinkoff:
+                    buf = "Брокерский";
+                    break;
+                case BrokerAccountType.TinkoffIis:
+                    buf = "ИИС";
+                    break;
+                default:
+                    buf = "Неопознаный мамонт";
+                    break;
+            }
+            return $"{buf}\t{BrokerAccountId}";
+        }
+    }
     public class Accounts
     {
         public Accounts()
         {
-            Portfolios = new Dictionary<Account, Bounds>();
+            Portfolios = new Dictionary<Account_m, Bounds>();
         }
         public enum SeeHistory
         {
@@ -22,7 +45,13 @@ namespace tink_oblig.classes
             History,
             WithHistory
         }
-        public Dictionary<Account, Bounds> Portfolios { get; set; }
+        public Dictionary<Account_m, Bounds> Portfolios { get; set; }
+        private Bounds _selected_portf_bckp;
+        public Bounds Selected_portfail_backup { get { return _selected_portf_bckp; } }
+        public void SetSelectedPrtf(Bounds b)
+        {
+            _selected_portf_bckp = b;
+        }
 
         public delegate void JobInfo(bool ok, string mes = "");
         public delegate void JobBounds(Bounds bnd,string mes = "");
@@ -36,13 +65,13 @@ namespace tink_oblig.classes
                 foreach (var item in acc)
                 {
                     var prtfl = await Program.CurrentContext.PortfolioAsync(item.BrokerAccountId);
-                    Bounds lbd = new Bounds(item);
+                    Bounds lbd = new Bounds(new Account_m(item.BrokerAccountType,item.BrokerAccountId));
                     var lpl = prtfl.Positions.Where(t => t.InstrumentType == InstrumentType.Bond).ToList();
                     foreach (var itm in lpl)
                     {
                         lbd.BoundsList.Add(new Bound(itm)); //лист сейчас. Для истории надо грузить через операции..
                     }
-                    Portfolios.Add(item, lbd);
+                    Portfolios.Add(lbd.Acc, lbd);
                 }
 
                 JobsDone?.Invoke(true);

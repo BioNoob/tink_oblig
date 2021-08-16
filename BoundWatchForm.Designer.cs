@@ -61,6 +61,9 @@ namespace tink_oblig
             this.label11 = new System.Windows.Forms.Label();
             this.pic_box_pb = new System.Windows.Forms.PictureBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.diff_price_summ_lbl = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.market_sum_price_lbl = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -79,6 +82,9 @@ namespace tink_oblig
             this.avg_one_price_lbl = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label34 = new System.Windows.Forms.Label();
+            this.diff_price_one_lbl = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.nkd_one_lbl = new System.Windows.Forms.Label();
@@ -92,18 +98,24 @@ namespace tink_oblig
             this.label22 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.buy_back_lbl = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.diff_price_one_lbl = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.diff_price_summ_lbl = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label47 = new System.Windows.Forms.Label();
+            this.label45 = new System.Windows.Forms.Label();
+            this.profit_sell_lbl = new System.Windows.Forms.Label();
+            this.label44 = new System.Windows.Forms.Label();
+            this.label43 = new System.Windows.Forms.Label();
+            this.cnt_sell_lbl = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.summ_lbl_sell = new System.Windows.Forms.Label();
+            this.label40 = new System.Windows.Forms.Label();
+            this.profit_sell_prc_lbl = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_box_pb)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // price_sum_lbl
@@ -360,7 +372,7 @@ namespace tink_oblig
             // label15
             // 
             this.label15.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label15.Location = new System.Drawing.Point(156, 160);
+            this.label15.Location = new System.Drawing.Point(156, 161);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(24, 23);
             this.label15.TabIndex = 47;
@@ -471,6 +483,37 @@ namespace tink_oblig
             this.groupBox3.TabIndex = 33;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Суммарная цена";
+            // 
+            // label33
+            // 
+            this.label33.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label33.Location = new System.Drawing.Point(160, 74);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(24, 23);
+            this.label33.TabIndex = 53;
+            this.label33.Text = "RUB";
+            this.label33.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // diff_price_summ_lbl
+            // 
+            this.diff_price_summ_lbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.diff_price_summ_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.diff_price_summ_lbl.Location = new System.Drawing.Point(64, 73);
+            this.diff_price_summ_lbl.Name = "diff_price_summ_lbl";
+            this.diff_price_summ_lbl.Size = new System.Drawing.Size(95, 23);
+            this.diff_price_summ_lbl.TabIndex = 52;
+            this.diff_price_summ_lbl.Text = "price_diff";
+            this.diff_price_summ_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label38
+            // 
+            this.label38.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label38.Location = new System.Drawing.Point(8, 78);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(55, 14);
+            this.label38.TabIndex = 51;
+            this.label38.Text = "Разница";
+            this.label38.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label17
             // 
@@ -669,6 +712,37 @@ namespace tink_oblig
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Штучная цена";
             // 
+            // label34
+            // 
+            this.label34.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label34.Location = new System.Drawing.Point(157, 74);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(24, 23);
+            this.label34.TabIndex = 50;
+            this.label34.Text = "RUB";
+            this.label34.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // diff_price_one_lbl
+            // 
+            this.diff_price_one_lbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.diff_price_one_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.diff_price_one_lbl.Location = new System.Drawing.Point(61, 73);
+            this.diff_price_one_lbl.Name = "diff_price_one_lbl";
+            this.diff_price_one_lbl.Size = new System.Drawing.Size(95, 23);
+            this.diff_price_one_lbl.TabIndex = 49;
+            this.diff_price_one_lbl.Text = "price_diff";
+            this.diff_price_one_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label31
+            // 
+            this.label31.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label31.Location = new System.Drawing.Point(6, 78);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(55, 14);
+            this.label31.TabIndex = 48;
+            this.label31.Text = "Разница";
+            this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // label12
             // 
             this.label12.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -808,73 +882,137 @@ namespace tink_oblig
             this.buy_back_lbl.Text = "buy_back_sum";
             this.buy_back_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label31
+            // groupBox6
             // 
-            this.label31.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label31.Location = new System.Drawing.Point(6, 78);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(55, 14);
-            this.label31.TabIndex = 48;
-            this.label31.Text = "Разница";
-            this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.groupBox6.Controls.Add(this.label47);
+            this.groupBox6.Controls.Add(this.label45);
+            this.groupBox6.Controls.Add(this.profit_sell_lbl);
+            this.groupBox6.Controls.Add(this.label44);
+            this.groupBox6.Controls.Add(this.label43);
+            this.groupBox6.Controls.Add(this.cnt_sell_lbl);
+            this.groupBox6.Controls.Add(this.label36);
+            this.groupBox6.Controls.Add(this.summ_lbl_sell);
+            this.groupBox6.Controls.Add(this.label40);
+            this.groupBox6.Controls.Add(this.profit_sell_prc_lbl);
+            this.groupBox6.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBox6.Location = new System.Drawing.Point(8, 430);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.groupBox6.Size = new System.Drawing.Size(378, 71);
+            this.groupBox6.TabIndex = 51;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Закрытые позции";
             // 
-            // diff_price_one_lbl
+            // label47
             // 
-            this.diff_price_one_lbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.diff_price_one_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.diff_price_one_lbl.Location = new System.Drawing.Point(61, 73);
-            this.diff_price_one_lbl.Name = "diff_price_one_lbl";
-            this.diff_price_one_lbl.Size = new System.Drawing.Size(95, 23);
-            this.diff_price_one_lbl.TabIndex = 49;
-            this.diff_price_one_lbl.Text = "price_diff";
-            this.diff_price_one_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label47.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label47.Location = new System.Drawing.Point(160, 21);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(89, 14);
+            this.label47.TabIndex = 58;
+            this.label47.Text = "Профит продаж";
+            this.label47.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label34
+            // label45
             // 
-            this.label34.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label34.Location = new System.Drawing.Point(157, 74);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(24, 23);
-            this.label34.TabIndex = 50;
-            this.label34.Text = "RUB";
-            this.label34.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label45.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label45.Location = new System.Drawing.Point(346, 17);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(24, 23);
+            this.label45.TabIndex = 56;
+            this.label45.Text = "RUB";
+            this.label45.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label33
+            // profit_sell_lbl
             // 
-            this.label33.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label33.Location = new System.Drawing.Point(160, 74);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(24, 23);
-            this.label33.TabIndex = 53;
-            this.label33.Text = "RUB";
-            this.label33.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.profit_sell_lbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.profit_sell_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.profit_sell_lbl.Location = new System.Drawing.Point(250, 16);
+            this.profit_sell_lbl.Name = "profit_sell_lbl";
+            this.profit_sell_lbl.Size = new System.Drawing.Size(95, 23);
+            this.profit_sell_lbl.TabIndex = 57;
+            this.profit_sell_lbl.Text = "profit_sum";
+            this.profit_sell_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // diff_price_summ_lbl
+            // label44
             // 
-            this.diff_price_summ_lbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.diff_price_summ_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.diff_price_summ_lbl.Location = new System.Drawing.Point(64, 73);
-            this.diff_price_summ_lbl.Name = "diff_price_summ_lbl";
-            this.diff_price_summ_lbl.Size = new System.Drawing.Size(95, 23);
-            this.diff_price_summ_lbl.TabIndex = 52;
-            this.diff_price_summ_lbl.Text = "price_diff";
-            this.diff_price_summ_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label44.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label44.Location = new System.Drawing.Point(6, 46);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(41, 18);
+            this.label44.TabIndex = 55;
+            this.label44.Text = "Сумма";
+            this.label44.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label38
+            // label43
             // 
-            this.label38.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label38.Location = new System.Drawing.Point(8, 78);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(55, 14);
-            this.label38.TabIndex = 51;
-            this.label38.Text = "Разница";
-            this.label38.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label43.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label43.Location = new System.Drawing.Point(5, 19);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(41, 18);
+            this.label43.TabIndex = 54;
+            this.label43.Text = "Кол-во";
+            this.label43.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // cnt_sell_lbl
+            // 
+            this.cnt_sell_lbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cnt_sell_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cnt_sell_lbl.Location = new System.Drawing.Point(47, 16);
+            this.cnt_sell_lbl.Name = "cnt_sell_lbl";
+            this.cnt_sell_lbl.Size = new System.Drawing.Size(44, 23);
+            this.cnt_sell_lbl.TabIndex = 43;
+            this.cnt_sell_lbl.Text = "count";
+            this.cnt_sell_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label36
+            // 
+            this.label36.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label36.Location = new System.Drawing.Point(142, 43);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(24, 23);
+            this.label36.TabIndex = 33;
+            this.label36.Text = "RUB";
+            this.label36.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // summ_lbl_sell
+            // 
+            this.summ_lbl_sell.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.summ_lbl_sell.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.summ_lbl_sell.Location = new System.Drawing.Point(47, 42);
+            this.summ_lbl_sell.Name = "summ_lbl_sell";
+            this.summ_lbl_sell.Size = new System.Drawing.Size(95, 23);
+            this.summ_lbl_sell.TabIndex = 42;
+            this.summ_lbl_sell.Text = "profit_sum";
+            this.summ_lbl_sell.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label40
+            // 
+            this.label40.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label40.Location = new System.Drawing.Point(346, 43);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(24, 23);
+            this.label40.TabIndex = 33;
+            this.label40.Text = "%";
+            this.label40.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // profit_sell_prc_lbl
+            // 
+            this.profit_sell_prc_lbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.profit_sell_prc_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.profit_sell_prc_lbl.Location = new System.Drawing.Point(301, 42);
+            this.profit_sell_prc_lbl.Name = "profit_sell_prc_lbl";
+            this.profit_sell_prc_lbl.Size = new System.Drawing.Size(44, 23);
+            this.profit_sell_prc_lbl.TabIndex = 40;
+            this.profit_sell_prc_lbl.Text = "profit_perc";
+            this.profit_sell_prc_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // BoundWatchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(391, 432);
+            this.ClientSize = new System.Drawing.Size(391, 503);
+            this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.label26);
             this.Controls.Add(this.buy_back_lbl);
@@ -908,6 +1046,7 @@ namespace tink_oblig
             this.groupBox3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -983,5 +1122,16 @@ namespace tink_oblig
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label diff_price_one_lbl;
         private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Label summ_lbl_sell;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.Label profit_sell_prc_lbl;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.Label cnt_sell_lbl;
+        private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.Label profit_sell_lbl;
     }
 }

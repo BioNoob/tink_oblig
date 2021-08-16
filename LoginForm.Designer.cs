@@ -66,6 +66,7 @@
             this.AcceptButton = this.login_btn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Window;
             this.CancelButton = this.exit_btn;
             this.ClientSize = new System.Drawing.Size(347, 72);
             this.ControlBox = false;
@@ -73,7 +74,7 @@
             this.Controls.Add(this.exit_btn);
             this.Controls.Add(this.login_btn);
             this.DoubleBuffered = true;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "LoginForm";

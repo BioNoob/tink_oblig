@@ -52,9 +52,10 @@ namespace tink_oblig
                     {
                         MessageBox.Show($"Error {mes}");
                     }
-                    ViewForm wfrm = new ViewForm(t, Accounts.SeeHistory.NoHistrory);
-                    wfrm.Show();
-                    this.Hide();
+                    Program.InnerAccount.SetSelectedPrtf(t);
+                    //ViewForm wfrm = new ViewForm(t, Accounts.SeeHistory.NoHistrory);
+                    //wfrm.Show();
+                    //this.Hide();
                 };
                 await Program.InnerAccount.DoLoad_ObligList();
 
