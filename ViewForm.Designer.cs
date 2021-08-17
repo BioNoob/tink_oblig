@@ -32,6 +32,17 @@ namespace tink_oblig
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewForm));
             this.BoundListLayPannel = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.total_profit_perc_lbl = new System.Windows.Forms.Label();
+            this.total_profit_lbl = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.worst_ptofit_btn = new System.Windows.Forms.Button();
+            this.better_profit_btn = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.refresh_btn = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.buy_back_lbl = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -41,7 +52,6 @@ namespace tink_oblig
             this.total_cnt_cpn_lbl = new System.Windows.Forms.Label();
             this.total_price_diff_lbl = new System.Windows.Forms.Label();
             this.total_cnt_lbl = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -52,20 +62,10 @@ namespace tink_oblig
             this.summ_cpn_lbl = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.total_money_lbl = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.refresh_btn = new System.Windows.Forms.Button();
-            this.better_profit_btn = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.total_profit_perc_lbl = new System.Windows.Forms.Label();
-            this.total_profit_lbl = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.worst_ptofit_btn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // BoundListLayPannel
@@ -111,6 +111,132 @@ namespace tink_oblig
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(395, 162);
             this.panel1.TabIndex = 5;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label18);
+            this.groupBox1.Controls.Add(this.total_profit_perc_lbl);
+            this.groupBox1.Controls.Add(this.total_profit_lbl);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Location = new System.Drawing.Point(-2, 77);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(247, 42);
+            this.groupBox1.TabIndex = 66;
+            this.groupBox1.TabStop = false;
+            // 
+            // label18
+            // 
+            this.label18.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label18.Location = new System.Drawing.Point(114, 15);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(24, 23);
+            this.label18.TabIndex = 65;
+            this.label18.Text = "RUB";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // total_profit_perc_lbl
+            // 
+            this.total_profit_perc_lbl.AutoEllipsis = true;
+            this.total_profit_perc_lbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.total_profit_perc_lbl.Location = new System.Drawing.Point(163, 14);
+            this.total_profit_perc_lbl.Name = "total_profit_perc_lbl";
+            this.total_profit_perc_lbl.Size = new System.Drawing.Size(69, 23);
+            this.total_profit_perc_lbl.TabIndex = 64;
+            this.total_profit_perc_lbl.Text = "perc profit";
+            this.total_profit_perc_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // total_profit_lbl
+            // 
+            this.total_profit_lbl.AutoEllipsis = true;
+            this.total_profit_lbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.total_profit_lbl.Location = new System.Drawing.Point(6, 14);
+            this.total_profit_lbl.Name = "total_profit_lbl";
+            this.total_profit_lbl.Size = new System.Drawing.Size(107, 23);
+            this.total_profit_lbl.TabIndex = 63;
+            this.total_profit_lbl.Text = "profit";
+            this.total_profit_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label8
+            // 
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label8.Location = new System.Drawing.Point(231, 20);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(15, 13);
+            this.label8.TabIndex = 62;
+            this.label8.Text = "%";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label9
+            // 
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label9.Location = new System.Drawing.Point(100, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(47, 13);
+            this.label9.TabIndex = 51;
+            this.label9.Text = "Профит";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.worst_ptofit_btn);
+            this.panel2.Controls.Add(this.better_profit_btn);
+            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Controls.Add(this.refresh_btn);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 121);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(393, 39);
+            this.panel2.TabIndex = 65;
+            // 
+            // worst_ptofit_btn
+            // 
+            this.worst_ptofit_btn.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.worst_ptofit_btn.Location = new System.Drawing.Point(123, 4);
+            this.worst_ptofit_btn.Name = "worst_ptofit_btn";
+            this.worst_ptofit_btn.Size = new System.Drawing.Size(107, 30);
+            this.worst_ptofit_btn.TabIndex = 8;
+            this.worst_ptofit_btn.Text = "худший показатель";
+            this.worst_ptofit_btn.UseVisualStyleBackColor = true;
+            this.worst_ptofit_btn.Click += new System.EventHandler(this.worst_ptofit_btn_Click);
+            // 
+            // better_profit_btn
+            // 
+            this.better_profit_btn.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.better_profit_btn.Location = new System.Drawing.Point(4, 4);
+            this.better_profit_btn.Name = "better_profit_btn";
+            this.better_profit_btn.Size = new System.Drawing.Size(107, 30);
+            this.better_profit_btn.TabIndex = 7;
+            this.better_profit_btn.Text = "лучший показатель";
+            this.better_profit_btn.UseVisualStyleBackColor = true;
+            this.better_profit_btn.Click += new System.EventHandler(this.better_profit_btn_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Image = global::tink_oblig.Properties.Resources.icons8_повтор;
+            this.pictureBox1.Location = new System.Drawing.Point(338, 8);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(22, 22);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
+            this.pictureBox1.WaitOnLoad = true;
+            // 
+            // refresh_btn
+            // 
+            this.refresh_btn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.refresh_btn.BackColor = System.Drawing.Color.Transparent;
+            this.refresh_btn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("refresh_btn.BackgroundImage")));
+            this.refresh_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.refresh_btn.Location = new System.Drawing.Point(334, 4);
+            this.refresh_btn.Name = "refresh_btn";
+            this.refresh_btn.Size = new System.Drawing.Size(30, 30);
+            this.refresh_btn.TabIndex = 6;
+            this.refresh_btn.UseVisualStyleBackColor = false;
+            this.refresh_btn.Click += new System.EventHandler(this.refresh_btn_Click);
             // 
             // label10
             // 
@@ -206,16 +332,6 @@ namespace tink_oblig
             this.total_cnt_lbl.TabIndex = 53;
             this.total_cnt_lbl.Text = "cnt";
             this.total_cnt_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label9
-            // 
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(100, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(47, 13);
-            this.label9.TabIndex = 51;
-            this.label9.Text = "Профит";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label4
             // 
@@ -319,122 +435,6 @@ namespace tink_oblig
             this.total_money_lbl.Text = "summ total";
             this.total_money_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.worst_ptofit_btn);
-            this.panel2.Controls.Add(this.better_profit_btn);
-            this.panel2.Controls.Add(this.pictureBox1);
-            this.panel2.Controls.Add(this.refresh_btn);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 121);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(393, 39);
-            this.panel2.TabIndex = 65;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Image = global::tink_oblig.Properties.Resources.icons8_повтор;
-            this.pictureBox1.Location = new System.Drawing.Point(363, 8);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(22, 22);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Visible = false;
-            this.pictureBox1.WaitOnLoad = true;
-            // 
-            // refresh_btn
-            // 
-            this.refresh_btn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.refresh_btn.BackColor = System.Drawing.Color.Transparent;
-            this.refresh_btn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("refresh_btn.BackgroundImage")));
-            this.refresh_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.refresh_btn.Location = new System.Drawing.Point(359, 4);
-            this.refresh_btn.Name = "refresh_btn";
-            this.refresh_btn.Size = new System.Drawing.Size(30, 30);
-            this.refresh_btn.TabIndex = 6;
-            this.refresh_btn.UseVisualStyleBackColor = false;
-            this.refresh_btn.Click += new System.EventHandler(this.refresh_btn_Click);
-            // 
-            // better_profit_btn
-            // 
-            this.better_profit_btn.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.better_profit_btn.Location = new System.Drawing.Point(4, 4);
-            this.better_profit_btn.Name = "better_profit_btn";
-            this.better_profit_btn.Size = new System.Drawing.Size(107, 30);
-            this.better_profit_btn.TabIndex = 7;
-            this.better_profit_btn.Text = "лучший показатель";
-            this.better_profit_btn.UseVisualStyleBackColor = true;
-            this.better_profit_btn.Click += new System.EventHandler(this.better_profit_btn_Click);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.label18);
-            this.groupBox1.Controls.Add(this.total_profit_perc_lbl);
-            this.groupBox1.Controls.Add(this.total_profit_lbl);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Location = new System.Drawing.Point(-2, 77);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(247, 42);
-            this.groupBox1.TabIndex = 66;
-            this.groupBox1.TabStop = false;
-            // 
-            // label18
-            // 
-            this.label18.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label18.Location = new System.Drawing.Point(114, 15);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(24, 23);
-            this.label18.TabIndex = 65;
-            this.label18.Text = "RUB";
-            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // total_profit_perc_lbl
-            // 
-            this.total_profit_perc_lbl.AutoEllipsis = true;
-            this.total_profit_perc_lbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.total_profit_perc_lbl.Location = new System.Drawing.Point(163, 14);
-            this.total_profit_perc_lbl.Name = "total_profit_perc_lbl";
-            this.total_profit_perc_lbl.Size = new System.Drawing.Size(69, 23);
-            this.total_profit_perc_lbl.TabIndex = 64;
-            this.total_profit_perc_lbl.Text = "perc profit";
-            this.total_profit_perc_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // total_profit_lbl
-            // 
-            this.total_profit_lbl.AutoEllipsis = true;
-            this.total_profit_lbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.total_profit_lbl.Location = new System.Drawing.Point(6, 14);
-            this.total_profit_lbl.Name = "total_profit_lbl";
-            this.total_profit_lbl.Size = new System.Drawing.Size(107, 23);
-            this.total_profit_lbl.TabIndex = 63;
-            this.total_profit_lbl.Text = "profit";
-            this.total_profit_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label8
-            // 
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(231, 20);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(15, 13);
-            this.label8.TabIndex = 62;
-            this.label8.Text = "%";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // worst_ptofit_btn
-            // 
-            this.worst_ptofit_btn.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.worst_ptofit_btn.Location = new System.Drawing.Point(123, 4);
-            this.worst_ptofit_btn.Name = "worst_ptofit_btn";
-            this.worst_ptofit_btn.Size = new System.Drawing.Size(107, 30);
-            this.worst_ptofit_btn.TabIndex = 8;
-            this.worst_ptofit_btn.Text = "худший показатель";
-            this.worst_ptofit_btn.UseVisualStyleBackColor = true;
-            this.worst_ptofit_btn.Click += new System.EventHandler(this.worst_ptofit_btn_Click);
-            // 
             // ViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -447,9 +447,9 @@ namespace tink_oblig
             this.Size = new System.Drawing.Size(395, 593);
             this.Load += new System.EventHandler(this.ViewForm_Load);
             this.panel1.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

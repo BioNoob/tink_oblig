@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="SelectedAcc" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Hello</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="SelectedHistoryMode" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>

@@ -3,6 +3,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Net;
@@ -17,6 +18,8 @@ namespace tink_oblig.classes
         /// Tinkoff Position Base Class
         /// </summary>
         public Portfolio.Position Base { get; set; }
+        private bool _IsChanged;
+        public bool IsChanged { get { return _IsChanged;} set { _IsChanged = value; Debug.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"); } }
         public Bound(Portfolio.Position ps)
         {
             Base = ps;
@@ -133,6 +136,7 @@ namespace tink_oblig.classes
         #region NoTinkoffInfo
         //искать в инфо о бумаге
         public decimal Nominal { get; set; }
+
         public DateTime Prev_pay_dt { get { return Next_pay_dt.AddDays(-Pay_period); } }
         public DateTime Next_pay_dt { get; set; }
         public DateTime End_pay_dt { get; set; }

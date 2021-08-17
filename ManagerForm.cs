@@ -50,6 +50,7 @@ namespace tink_oblig
             account_switcher_cmb.SelectionChangeCommitted -= account_switcher_cmb_SelectionChangeCommitted;
             history_cmb.SelectionChangeCommitted -= history_cmb_SelectionChangeCommitted;
             Account_m acm = null;
+
             if (!string.IsNullOrEmpty(Settings.Default.SelectedAcc))
             {
                 Account acma = JsonConvert.DeserializeObject<Account>(Settings.Default.SelectedAcc);
@@ -72,7 +73,9 @@ namespace tink_oblig
             }
             Mode = (SeeHistory)Settings.Default.SelectedHistoryMode;
             if ((int)Mode == 0)
-                history_cmb.SelectedIndex = 0;
+            {
+                history_cmb.SelectedIndex = 0; Mode = SeeHistory.NoHistrory;
+            }
             else
                 history_cmb.SelectedIndex = (int)Mode - 1;
 

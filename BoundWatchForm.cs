@@ -1,4 +1,7 @@
-﻿using System;
+﻿using PropertyChanged;
+using System;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
@@ -6,19 +9,32 @@ using tink_oblig.classes;
 
 namespace tink_oblig
 {
-    public partial class BoundWatchForm : Form
+    public partial class BoundWatchForm : Form, INotifyPropertyChanged
     {
-        Bound _Bnb { get; set; }
+        private Bound _Bnb { get; set; }
         public BoundWatchForm(Bound bnb)
         {
             InitializeComponent();
-            _Bnb = bnb;
+            DoLoad(bnb);
         }
 
-        private void BoundWatchForm_Load(object sender, EventArgs e)
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void SetSource(Bound bnb)
         {
-            name_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Base.Name"));
-            ticker_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Base.Ticker"));
+            _Bnb = bnb;
+        }
+        private void DoLoad(Bound bnb)
+        {
+            _Bnb = bnb;
+
+            profit_sell_prc_lbl.DataBindings.Add(new Binding("ForeColor", _Bnb, "Font_sell_profit_clr", true, DataSourceUpdateMode.OnPropertyChanged));
+
+            date_last_sell_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Last_sell_dt", true, DataSourceUpdateMode.OnPropertyChanged, "Нет продаж", "dd.MM.yyyy"));
+
+
+            name_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Base.Name", true, DataSourceUpdateMode.OnPropertyChanged));
+            ticker_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Base.Ticker", true, DataSourceUpdateMode.OnPropertyChanged));
             count_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Base.Lots", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "D"));
             nominal_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Nominal", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F1"));
 
@@ -49,7 +65,6 @@ namespace tink_oblig
 
             profit_perc_lbl.DataBindings.Add(new Binding("ForeColor", _Bnb, "Font_profit_clr", true, DataSourceUpdateMode.OnPropertyChanged));
             profit_sum_lbl.DataBindings.Add(new Binding("ForeColor", _Bnb, "Font_profit_clr", true, DataSourceUpdateMode.OnPropertyChanged));
-            //trade_event_lst;
 
             diff_price_summ_lbl.DataBindings.Add(new Binding("ForeColor", _Bnb, "Font_diff_clr", true, DataSourceUpdateMode.OnPropertyChanged));
             diff_price_one_lbl.DataBindings.Add(new Binding("ForeColor", _Bnb, "Font_diff_clr", true, DataSourceUpdateMode.OnPropertyChanged));
@@ -66,15 +81,18 @@ namespace tink_oblig
             profit_sell_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Profit_sell_string", true, DataSourceUpdateMode.OnPropertyChanged));
             profit_sell_prc_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Profit_sell_perc_string", true, DataSourceUpdateMode.OnPropertyChanged));
             profit_sell_lbl.DataBindings.Add(new Binding("ForeColor", _Bnb, "Font_sell_profit_clr", true, DataSourceUpdateMode.OnPropertyChanged));
-            profit_sell_prc_lbl.DataBindings.Add(new Binding("ForeColor", _Bnb, "Font_sell_profit_clr", true, DataSourceUpdateMode.OnPropertyChanged));
 
-            date_last_sell_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Last_sell_dt", true, DataSourceUpdateMode.OnPropertyChanged, "Нет продаж", "dd.MM.yyyy"));
 
-            this.Text = _Bnb.Base.Name;
+
 
             GraphicsPath gp = new GraphicsPath();
             gp.AddEllipse(pic_box_pb.DisplayRectangle);
             pic_box_pb.Region = new Region(gp);
+
+            this.Text = _Bnb.Base.Name;
+        }
+        private void BoundWatchForm_Load(object sender, EventArgs e)
+        {
         }
 
         private void show_history_cmb_Click(object sender, EventArgs e)

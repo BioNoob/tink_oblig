@@ -73,9 +73,9 @@ namespace tink_oblig
             // label3
             // 
             this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label3.Location = new System.Drawing.Point(208, 32);
+            this.label3.Location = new System.Drawing.Point(193, 32);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(124, 19);
+            this.label3.Size = new System.Drawing.Size(139, 19);
             this.label3.TabIndex = 7;
             this.label3.Text = "Включение истории";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -83,9 +83,9 @@ namespace tink_oblig
             // history_cmb
             // 
             this.history_cmb.FormattingEnabled = true;
-            this.history_cmb.Location = new System.Drawing.Point(208, 6);
+            this.history_cmb.Location = new System.Drawing.Point(193, 6);
             this.history_cmb.Name = "history_cmb";
-            this.history_cmb.Size = new System.Drawing.Size(124, 23);
+            this.history_cmb.Size = new System.Drawing.Size(139, 23);
             this.history_cmb.TabIndex = 6;
             this.history_cmb.SelectionChangeCommitted += new System.EventHandler(this.history_cmb_SelectionChangeCommitted);
             // 
@@ -107,7 +107,7 @@ namespace tink_oblig
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label2.Location = new System.Drawing.Point(12, 32);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(190, 19);
+            this.label2.Size = new System.Drawing.Size(175, 19);
             this.label2.TabIndex = 2;
             this.label2.Text = "Тип аккаунта  (ID)";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -117,7 +117,7 @@ namespace tink_oblig
             this.account_switcher_cmb.FormattingEnabled = true;
             this.account_switcher_cmb.Location = new System.Drawing.Point(12, 6);
             this.account_switcher_cmb.Name = "account_switcher_cmb";
-            this.account_switcher_cmb.Size = new System.Drawing.Size(190, 23);
+            this.account_switcher_cmb.Size = new System.Drawing.Size(175, 23);
             this.account_switcher_cmb.TabIndex = 0;
             this.account_switcher_cmb.SelectionChangeCommitted += new System.EventHandler(this.account_switcher_cmb_SelectionChangeCommitted);
             // 

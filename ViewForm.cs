@@ -111,9 +111,9 @@ namespace tink_oblig
         {
             if (Selected_portfail.BoundsList.Count > 0)
             {
-                var a = Selected_portfail.BoundsList.Max(t => t.Profit_summ);
-                BoundWatchForm bwf = new BoundWatchForm(Selected_portfail.BoundsList.Where(t => t.Profit_summ == a).Single());
-                bwf.Show();
+                //var a = Selected_portfail.BoundsList.Max(t => t.Profit_summ);
+                //bwf_best.SetSource(Selected_portfail.BoundsList.Where(t => t.Profit_summ == a).Single());
+                //bwf_best.Show();
             }
 
         }
@@ -122,9 +122,11 @@ namespace tink_oblig
         {
             if (Selected_portfail.BoundsList.Count > 0)
             {
-                var a = Selected_portfail.BoundsList.Min(t => t.Profit_summ);
-                BoundWatchForm bwf = new BoundWatchForm(Selected_portfail.BoundsList.Where(t => t.Profit_summ == a).Single());
-                bwf.Show(); //ПОЧЕМУ ТО ВИСНЕТ НАХРЕН
+                //var a = Selected_portfail.BoundsList.Min(t => t.Profit_summ);
+                ////BoundWatchForm bwf = new BoundWatchForm(;
+                ////bwf_worst.SetSource(Selected_portfail.BoundsList.Where(t => t.Profit_summ == a).Single());
+                //bwf_worst = new BoundWatchForm(Selected_portfail.BoundsList.Where(t => t.Profit_summ == a).Single());
+                //bwf_worst.Show();
             }
         }
         //private void change_history_btn_Click(object sender, EventArgs e)
