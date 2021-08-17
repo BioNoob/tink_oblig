@@ -31,87 +31,103 @@ namespace tink_oblig
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManagerForm));
             this.control_panel = new System.Windows.Forms.Panel();
-            this.change_history_btn = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.history_cmb = new System.Windows.Forms.ComboBox();
+            this.refresh_btn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.account_switcher_cmb = new System.Windows.Forms.ComboBox();
             this.view_panel = new System.Windows.Forms.Panel();
-            this.refresh_btn = new System.Windows.Forms.Button();
             this.control_panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // control_panel
             // 
+            this.control_panel.Controls.Add(this.pictureBox1);
+            this.control_panel.Controls.Add(this.label3);
+            this.control_panel.Controls.Add(this.history_cmb);
             this.control_panel.Controls.Add(this.refresh_btn);
-            this.control_panel.Controls.Add(this.change_history_btn);
             this.control_panel.Controls.Add(this.label2);
-            this.control_panel.Controls.Add(this.label1);
             this.control_panel.Controls.Add(this.account_switcher_cmb);
             this.control_panel.Dock = System.Windows.Forms.DockStyle.Top;
             this.control_panel.Location = new System.Drawing.Point(0, 0);
             this.control_panel.Name = "control_panel";
-            this.control_panel.Size = new System.Drawing.Size(391, 70);
+            this.control_panel.Size = new System.Drawing.Size(391, 55);
             this.control_panel.TabIndex = 0;
             // 
-            // change_history_btn
+            // pictureBox1
             // 
-            this.change_history_btn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.change_history_btn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("change_history_btn.BackgroundImage")));
-            this.change_history_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.change_history_btn.Location = new System.Drawing.Point(339, 21);
-            this.change_history_btn.Name = "change_history_btn";
-            this.change_history_btn.Size = new System.Drawing.Size(40, 40);
-            this.change_history_btn.TabIndex = 4;
-            this.change_history_btn.UseVisualStyleBackColor = true;
-            this.change_history_btn.Click += new System.EventHandler(this.change_history_btn_Click);
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Image = global::tink_oblig.Properties.Resources.icons8_повтор;
+            this.pictureBox1.Location = new System.Drawing.Point(345, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(34, 34);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
+            this.pictureBox1.WaitOnLoad = true;
+            // 
+            // label3
+            // 
+            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label3.Location = new System.Drawing.Point(208, 32);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(124, 19);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Включение истории";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // history_cmb
+            // 
+            this.history_cmb.FormattingEnabled = true;
+            this.history_cmb.Location = new System.Drawing.Point(208, 6);
+            this.history_cmb.Name = "history_cmb";
+            this.history_cmb.Size = new System.Drawing.Size(124, 23);
+            this.history_cmb.TabIndex = 6;
+            this.history_cmb.SelectionChangeCommitted += new System.EventHandler(this.history_cmb_SelectionChangeCommitted);
+            // 
+            // refresh_btn
+            // 
+            this.refresh_btn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.refresh_btn.BackColor = System.Drawing.Color.Transparent;
+            this.refresh_btn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("refresh_btn.BackgroundImage")));
+            this.refresh_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.refresh_btn.Location = new System.Drawing.Point(342, 9);
+            this.refresh_btn.Name = "refresh_btn";
+            this.refresh_btn.Size = new System.Drawing.Size(40, 40);
+            this.refresh_btn.TabIndex = 5;
+            this.refresh_btn.UseVisualStyleBackColor = false;
+            this.refresh_btn.Click += new System.EventHandler(this.refresh_btn_Click);
             // 
             // label2
             // 
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.Location = new System.Drawing.Point(12, 47);
+            this.label2.Location = new System.Drawing.Point(12, 32);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(269, 19);
+            this.label2.Size = new System.Drawing.Size(190, 19);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Тип аккаунта  (идентификатор аккаунта)";
+            this.label2.Text = "Тип аккаунта  (ID)";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 3);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(118, 15);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Выбранный аккаунт";
             // 
             // account_switcher_cmb
             // 
             this.account_switcher_cmb.FormattingEnabled = true;
-            this.account_switcher_cmb.Location = new System.Drawing.Point(12, 21);
+            this.account_switcher_cmb.Location = new System.Drawing.Point(12, 6);
             this.account_switcher_cmb.Name = "account_switcher_cmb";
-            this.account_switcher_cmb.Size = new System.Drawing.Size(269, 23);
+            this.account_switcher_cmb.Size = new System.Drawing.Size(190, 23);
             this.account_switcher_cmb.TabIndex = 0;
             this.account_switcher_cmb.SelectionChangeCommitted += new System.EventHandler(this.account_switcher_cmb_SelectionChangeCommitted);
             // 
             // view_panel
             // 
             this.view_panel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.view_panel.Location = new System.Drawing.Point(0, 70);
+            this.view_panel.Location = new System.Drawing.Point(0, 55);
             this.view_panel.Name = "view_panel";
-            this.view_panel.Size = new System.Drawing.Size(391, 527);
+            this.view_panel.Size = new System.Drawing.Size(391, 542);
             this.view_panel.TabIndex = 1;
-            // 
-            // refresh_btn
-            // 
-            this.refresh_btn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.refresh_btn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("refresh_btn.BackgroundImage")));
-            this.refresh_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.refresh_btn.Location = new System.Drawing.Point(293, 21);
-            this.refresh_btn.Name = "refresh_btn";
-            this.refresh_btn.Size = new System.Drawing.Size(40, 40);
-            this.refresh_btn.TabIndex = 5;
-            this.refresh_btn.UseVisualStyleBackColor = true;
-            this.refresh_btn.Click += new System.EventHandler(this.refresh_btn_Click);
             // 
             // ManagerForm
             // 
@@ -120,10 +136,14 @@ namespace tink_oblig
             this.ClientSize = new System.Drawing.Size(391, 597);
             this.Controls.Add(this.view_panel);
             this.Controls.Add(this.control_panel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ManagerForm";
-            this.Text = "ManagerForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Облигатор";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ManagerForm_FormClosed);
+            this.Shown += new System.EventHandler(this.ManagerForm_Shown);
             this.control_panel.ResumeLayout(false);
-            this.control_panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -133,9 +153,10 @@ namespace tink_oblig
         private System.Windows.Forms.Panel control_panel;
         private System.Windows.Forms.Panel view_panel;
         private System.Windows.Forms.ComboBox account_switcher_cmb;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button change_history_btn;
         private System.Windows.Forms.Button refresh_btn;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox history_cmb;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

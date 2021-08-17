@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -30,6 +31,15 @@ namespace tink_oblig.classes
                 }
             }
         }
+        public Account GetBase()
+        {
+            return new Account(BrokerAccountType,BrokerAccountId);
+        }
+        public string GetJson()
+        {
+            return JsonConvert.SerializeObject(GetBase());
+            //return JsonSerializer.Serialize(this);//JsonConvert.SerializeObject(this);
+        }
         public override string ToString()
         {
             return $"{TypeAcc}  ({BrokerAccountId})";
@@ -41,9 +51,9 @@ namespace tink_oblig.classes
         {
             Portfolios = new Dictionary<Account_m, Bounds>();
         }
-        public enum SeeHistory
+        public enum SeeHistory 
         {
-            NoHistrory,
+            NoHistrory = 1,
             History,
             WithHistory
         }

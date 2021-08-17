@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using tink_oblig.classes;
+using tink_oblig.Properties;
 using Tinkoff.Trading.OpenApi.Network;
 
 namespace tink_oblig
@@ -46,22 +47,14 @@ namespace tink_oblig
                 result = await Task.Run(() => do_login(keypare_cmb.SelectedText));
             if (result)
             {
-                //Program.InnerAccount.LoadObligInfoDone += (t, mes) =>
-                //{
-                //    if (!string.IsNullOrEmpty(mes))
-                //    {
-                //        MessageBox.Show($"Error {mes}");
-                //    }
-                //    Program.InnerAccount.SetSelectedPrtf(t);
-                //    //ViewForm wfrm = new ViewForm(t, Accounts.SeeHistory.NoHistrory);
-                //    //wfrm.Show();
-                //    //this.Hide();
-                //};
-                //await Program.InnerAccount.DoLoad_ObligList();
+
+                //Settings.Default.SelectedAcc = "";
+                //Settings.Default.SelectedHistoryMode = 0;
+                //Settings.Default.Save();
                 ManagerForm mf = new ManagerForm();
+                mf.StartPosition = FormStartPosition.CenterParent;
                 mf.Show();
                 this.Hide();
-
             }
             else
             {

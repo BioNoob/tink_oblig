@@ -69,7 +69,7 @@ namespace tink_oblig
             this.BoundListLayPannel.Padding = new System.Windows.Forms.Padding(5);
             this.BoundListLayPannel.RowCount = 1;
             this.BoundListLayPannel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.BoundListLayPannel.Size = new System.Drawing.Size(395, 506);
+            this.BoundListLayPannel.Size = new System.Drawing.Size(395, 471);
             this.BoundListLayPannel.TabIndex = 4;
             // 
             // panel1
@@ -100,7 +100,7 @@ namespace tink_oblig
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.total_money_lbl);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 506);
+            this.panel1.Location = new System.Drawing.Point(0, 471);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(395, 122);
             this.panel1.TabIndex = 5;
@@ -361,8 +361,9 @@ namespace tink_oblig
             this.Controls.Add(this.BoundListLayPannel);
             this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
+            this.MinimumSize = new System.Drawing.Size(395, 288);
             this.Name = "ViewForm";
-            this.Size = new System.Drawing.Size(395, 628);
+            this.Size = new System.Drawing.Size(395, 593);
             this.Load += new System.EventHandler(this.ViewForm_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
