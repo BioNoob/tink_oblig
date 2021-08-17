@@ -19,7 +19,7 @@ namespace tink_oblig.classes
         /// </summary>
         public Portfolio.Position Base { get; set; }
         private bool _IsChanged;
-        public bool IsChanged { get { return _IsChanged;} set { _IsChanged = value; Debug.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"); } }
+        public bool IsChanged { get { return _IsChanged;} set { _IsChanged = value; } }
         public Bound(Portfolio.Position ps)
         {
             Base = ps;

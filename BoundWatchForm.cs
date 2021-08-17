@@ -29,9 +29,7 @@ namespace tink_oblig
             _Bnb = bnb;
 
             profit_sell_prc_lbl.DataBindings.Add(new Binding("ForeColor", _Bnb, "Font_sell_profit_clr", true, DataSourceUpdateMode.OnPropertyChanged));
-
             date_last_sell_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Last_sell_dt", true, DataSourceUpdateMode.OnPropertyChanged, "Нет продаж", "dd.MM.yyyy"));
-
 
             name_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Base.Name", true, DataSourceUpdateMode.OnPropertyChanged));
             ticker_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Base.Ticker", true, DataSourceUpdateMode.OnPropertyChanged));
@@ -85,9 +83,9 @@ namespace tink_oblig
 
 
 
-            GraphicsPath gp = new GraphicsPath();
-            gp.AddEllipse(pic_box_pb.DisplayRectangle);
-            pic_box_pb.Region = new Region(gp);
+            //GraphicsPath gp = new GraphicsPath();
+            //gp.AddEllipse(pic_box_pb.DisplayRectangle);
+            //pic_box_pb.Region = new Region(gp);
 
             this.Text = _Bnb.Base.Name;
         }

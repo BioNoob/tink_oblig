@@ -122,11 +122,11 @@ namespace tink_oblig
         {
             if (Selected_portfail.BoundsList.Count > 0)
             {
-                //var a = Selected_portfail.BoundsList.Min(t => t.Profit_summ);
-                ////BoundWatchForm bwf = new BoundWatchForm(;
-                ////bwf_worst.SetSource(Selected_portfail.BoundsList.Where(t => t.Profit_summ == a).Single());
-                //bwf_worst = new BoundWatchForm(Selected_portfail.BoundsList.Where(t => t.Profit_summ == a).Single());
-                //bwf_worst.Show();
+                var a = Selected_portfail.BoundsList.Min(t => t.Profit_summ);
+                var l = Selected_portfail.BoundsList.Where(t => t.Profit_summ == a).Single(); //ОПЕРЕЙШЕН ЛИСТ ОГРОМНЫЙ ИЛИ В НЕМ ЧЕ ТО НЕ ТАК ( возможно в подгрузке истории LoadAllBndHistory)
+                BoundWatchForm bwf_worst = new BoundWatchForm(l);
+                bwf_worst.Tag = $"{l.Base.Ticker}";
+                bwf_worst.Show();
             }
         }
         //private void change_history_btn_Click(object sender, EventArgs e)
