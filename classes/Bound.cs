@@ -136,6 +136,16 @@ namespace tink_oblig.classes
         public DateTime Prev_pay_dt { get { return Next_pay_dt.AddDays(-Pay_period); } }
         public DateTime Next_pay_dt { get; set; }
         public DateTime End_pay_dt { get; set; }
+        public DateTime? Last_sell_dt
+        {
+            get
+            {
+                var b = Operations_list.Where(t => t.OperationType == ExtendedOperationType.Sell && t.Status == OperationStatus.Done);
+                if (b.Count() < 1)
+                    return null;
+                return b.OrderBy(t=>t.Date).Select(t => t.Date).Last();
+            }
+        }
         public int Pay_period { get; set; }
         public decimal Cpn_val { get; set; }
         public decimal Cpn_Percent { get; set; }

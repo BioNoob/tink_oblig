@@ -18,16 +18,22 @@ namespace tink_oblig
             BoundListLayPannel.Controls.Clear();
             SeeHistory = history;
             Selected_portfail = acc.Copy();
+            string buf_text = "";
             switch (SeeHistory)
             {
                 case SeeHistory.NoHistrory:
                     Selected_portfail.BoundsList = Selected_portfail.BoundsList.Where(t => !t.Simplify).ToList();
+                    buf_text = "Купите что-нибудь из облигаций";
                     break;
                 case SeeHistory.History:
                     Selected_portfail.BoundsList = Selected_portfail.BoundsList.Where(t => t.Simplify).ToList();
+                    buf_text = "Продайте что-нибудь из облигаций";
+                    break;
+                case SeeHistory.WithHistory:
+                    buf_text = "Купите что-нибудь из облигаций";
                     break;
             }
-            foreach (var bd in Selected_portfail.BoundsList)
+            foreach (var bd in Selected_portfail.BoundsList.OrderByDescending(t=>t.Last_sell_dt))
             {
                 switch (SeeHistory)
                 {
@@ -43,6 +49,19 @@ namespace tink_oblig
                         LoadBounds(bd);
                         break;
                 }
+            }
+            if(Selected_portfail.BoundsList.Count < 1)
+            {
+                BoundListLayPannel.RowCount++;
+                BoundListLayPannel.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+                var newOne = new Label();
+                newOne.Text = buf_text;
+                newOne.Font = new System.Drawing.Font("Segoe UI",15F,System.Drawing.FontStyle.Bold);
+                newOne.BorderStyle = BorderStyle.FixedSingle;
+                newOne.Dock = DockStyle.Top;
+                newOne.AutoSize = true;
+                newOne.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+                BoundListLayPannel.Controls.Add(newOne, 0, BoundListLayPannel.RowCount);
             }
         }
         public ViewForm(Bounds acc, SeeHistory history)
@@ -81,6 +100,32 @@ namespace tink_oblig
             total_price_diff_lbl.DataBindings.Add(new Binding("ForeColor", Selected_portfail, "Font_Diff_Clr", true, DataSourceUpdateMode.OnPropertyChanged));
 
             buy_back_lbl.DataBindings.Add(new Binding("Text", Selected_portfail, "Buy_back", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
+        }
+
+        private void refresh_btn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void better_profit_btn_Click(object sender, EventArgs e)
+        {
+            if (Selected_portfail.BoundsList.Count > 0)
+            {
+                var a = Selected_portfail.BoundsList.Max(t => t.Profit_summ);
+                BoundWatchForm bwf = new BoundWatchForm(Selected_portfail.BoundsList.Where(t => t.Profit_summ == a).Single());
+                bwf.Show();
+            }
+
+        }
+
+        private void worst_ptofit_btn_Click(object sender, EventArgs e)
+        {
+            if (Selected_portfail.BoundsList.Count > 0)
+            {
+                var a = Selected_portfail.BoundsList.Min(t => t.Profit_summ);
+                BoundWatchForm bwf = new BoundWatchForm(Selected_portfail.BoundsList.Where(t => t.Profit_summ == a).Single());
+                bwf.Show(); //ПОЧЕМУ ТО ВИСНЕТ НАХРЕН
+            }
         }
         //private void change_history_btn_Click(object sender, EventArgs e)
         //{

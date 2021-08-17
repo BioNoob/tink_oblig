@@ -29,6 +29,7 @@ namespace tink_oblig
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BoundWatchForm));
             this.price_sum_lbl = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -99,7 +100,7 @@ namespace tink_oblig
             this.label26 = new System.Windows.Forms.Label();
             this.buy_back_lbl = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.label47 = new System.Windows.Forms.Label();
+            this.label39 = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
             this.profit_sell_lbl = new System.Windows.Forms.Label();
             this.label44 = new System.Windows.Forms.Label();
@@ -109,6 +110,11 @@ namespace tink_oblig
             this.summ_lbl_sell = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
             this.profit_sell_prc_lbl = new System.Windows.Forms.Label();
+            this.date_last_sell_lbl = new System.Windows.Forms.Label();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.label47 = new System.Windows.Forms.Label();
+            this.label42 = new System.Windows.Forms.Label();
+            this.show_history_cmb = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_box_pb)).BeginInit();
@@ -116,6 +122,7 @@ namespace tink_oblig
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // price_sum_lbl
@@ -884,39 +891,37 @@ namespace tink_oblig
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.label47);
-            this.groupBox6.Controls.Add(this.label45);
-            this.groupBox6.Controls.Add(this.profit_sell_lbl);
+            this.groupBox6.Controls.Add(this.show_history_cmb);
+            this.groupBox6.Controls.Add(this.label42);
+            this.groupBox6.Controls.Add(this.groupBox7);
+            this.groupBox6.Controls.Add(this.date_last_sell_lbl);
+            this.groupBox6.Controls.Add(this.label39);
             this.groupBox6.Controls.Add(this.label44);
             this.groupBox6.Controls.Add(this.label43);
             this.groupBox6.Controls.Add(this.cnt_sell_lbl);
             this.groupBox6.Controls.Add(this.label36);
             this.groupBox6.Controls.Add(this.summ_lbl_sell);
-            this.groupBox6.Controls.Add(this.label40);
-            this.groupBox6.Controls.Add(this.profit_sell_prc_lbl);
             this.groupBox6.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.groupBox6.Location = new System.Drawing.Point(8, 430);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.groupBox6.Size = new System.Drawing.Size(378, 71);
+            this.groupBox6.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.groupBox6.Size = new System.Drawing.Size(378, 91);
             this.groupBox6.TabIndex = 51;
             this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Закрытые позции";
             // 
-            // label47
+            // label39
             // 
-            this.label47.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label47.Location = new System.Drawing.Point(160, 21);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(89, 14);
-            this.label47.TabIndex = 58;
-            this.label47.Text = "Профит продаж";
-            this.label47.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(143, 1);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(86, 12);
+            this.label39.TabIndex = 59;
+            this.label39.Text = "Закрытые позции";
             // 
             // label45
             // 
             this.label45.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label45.Location = new System.Drawing.Point(346, 17);
+            this.label45.Location = new System.Drawing.Point(99, 17);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(24, 23);
             this.label45.TabIndex = 56;
@@ -927,12 +932,12 @@ namespace tink_oblig
             // 
             this.profit_sell_lbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.profit_sell_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.profit_sell_lbl.Location = new System.Drawing.Point(250, 16);
+            this.profit_sell_lbl.Location = new System.Drawing.Point(3, 16);
             this.profit_sell_lbl.Name = "profit_sell_lbl";
             this.profit_sell_lbl.Size = new System.Drawing.Size(95, 23);
             this.profit_sell_lbl.TabIndex = 57;
             this.profit_sell_lbl.Text = "profit_sum";
-            this.profit_sell_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.profit_sell_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label44
             // 
@@ -963,12 +968,12 @@ namespace tink_oblig
             this.cnt_sell_lbl.Size = new System.Drawing.Size(44, 23);
             this.cnt_sell_lbl.TabIndex = 43;
             this.cnt_sell_lbl.Text = "count";
-            this.cnt_sell_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.cnt_sell_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label36
             // 
             this.label36.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label36.Location = new System.Drawing.Point(142, 43);
+            this.label36.Location = new System.Drawing.Point(143, 43);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(24, 23);
             this.label36.TabIndex = 33;
@@ -984,34 +989,89 @@ namespace tink_oblig
             this.summ_lbl_sell.Size = new System.Drawing.Size(95, 23);
             this.summ_lbl_sell.TabIndex = 42;
             this.summ_lbl_sell.Text = "profit_sum";
-            this.summ_lbl_sell.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.summ_lbl_sell.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label40
             // 
             this.label40.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label40.Location = new System.Drawing.Point(346, 43);
+            this.label40.Location = new System.Drawing.Point(174, 18);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(24, 23);
             this.label40.TabIndex = 33;
             this.label40.Text = "%";
-            this.label40.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label40.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // profit_sell_prc_lbl
             // 
             this.profit_sell_prc_lbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.profit_sell_prc_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.profit_sell_prc_lbl.Location = new System.Drawing.Point(301, 42);
+            this.profit_sell_prc_lbl.Location = new System.Drawing.Point(129, 17);
             this.profit_sell_prc_lbl.Name = "profit_sell_prc_lbl";
             this.profit_sell_prc_lbl.Size = new System.Drawing.Size(44, 23);
             this.profit_sell_prc_lbl.TabIndex = 40;
             this.profit_sell_prc_lbl.Text = "profit_perc";
-            this.profit_sell_prc_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.profit_sell_prc_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // date_last_sell_lbl
+            // 
+            this.date_last_sell_lbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.date_last_sell_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.date_last_sell_lbl.Location = new System.Drawing.Point(269, 60);
+            this.date_last_sell_lbl.Name = "date_last_sell_lbl";
+            this.date_last_sell_lbl.Size = new System.Drawing.Size(95, 23);
+            this.date_last_sell_lbl.TabIndex = 60;
+            this.date_last_sell_lbl.Text = "last deal";
+            this.date_last_sell_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox7.Controls.Add(this.profit_sell_prc_lbl);
+            this.groupBox7.Controls.Add(this.label40);
+            this.groupBox7.Controls.Add(this.profit_sell_lbl);
+            this.groupBox7.Controls.Add(this.label47);
+            this.groupBox7.Controls.Add(this.label45);
+            this.groupBox7.Location = new System.Drawing.Point(191, 11);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(187, 46);
+            this.groupBox7.TabIndex = 61;
+            this.groupBox7.TabStop = false;
+            // 
+            // label47
+            // 
+            this.label47.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label47.Location = new System.Drawing.Point(50, 0);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(89, 14);
+            this.label47.TabIndex = 58;
+            this.label47.Text = "Профит продаж";
+            this.label47.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label42
+            // 
+            this.label42.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label42.Location = new System.Drawing.Point(179, 59);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(89, 25);
+            this.label42.TabIndex = 62;
+            this.label42.Text = "Дата последней продажи";
+            this.label42.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // show_history_cmb
+            // 
+            this.show_history_cmb.Location = new System.Drawing.Point(47, 67);
+            this.show_history_cmb.Name = "show_history_cmb";
+            this.show_history_cmb.Size = new System.Drawing.Size(95, 23);
+            this.show_history_cmb.TabIndex = 63;
+            this.show_history_cmb.Text = "История сделок";
+            this.show_history_cmb.UseVisualStyleBackColor = true;
+            this.show_history_cmb.Click += new System.EventHandler(this.show_history_cmb_Click);
             // 
             // BoundWatchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(391, 503);
+            this.ClientSize = new System.Drawing.Size(391, 524);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.label26);
@@ -1033,10 +1093,10 @@ namespace tink_oblig
             this.Controls.Add(this.name_lbl);
             this.Controls.Add(this.groupBox5);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "BoundWatchForm";
-            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = " ";
             this.Load += new System.EventHandler(this.BoundWatchForm_Load);
@@ -1047,6 +1107,8 @@ namespace tink_oblig
             this.groupBox4.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1130,8 +1192,13 @@ namespace tink_oblig
         private System.Windows.Forms.Label label44;
         private System.Windows.Forms.Label label43;
         private System.Windows.Forms.Label cnt_sell_lbl;
-        private System.Windows.Forms.Label label47;
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.Label profit_sell_lbl;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Button show_history_cmb;
+        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.Label date_last_sell_lbl;
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.login_btn = new System.Windows.Forms.Button();
             this.exit_btn = new System.Windows.Forms.Button();
             this.keypare_cmb = new System.Windows.Forms.ComboBox();
@@ -75,11 +76,13 @@
             this.Controls.Add(this.login_btn);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "LoginForm";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Login";
+            this.Text = "Вход";
             this.ResumeLayout(false);
 
         }

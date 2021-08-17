@@ -68,9 +68,18 @@ namespace tink_oblig
             profit_sell_lbl.DataBindings.Add(new Binding("ForeColor", _Bnb, "Font_sell_profit_clr", true, DataSourceUpdateMode.OnPropertyChanged));
             profit_sell_prc_lbl.DataBindings.Add(new Binding("ForeColor", _Bnb, "Font_sell_profit_clr", true, DataSourceUpdateMode.OnPropertyChanged));
 
+            date_last_sell_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Last_sell_dt", true, DataSourceUpdateMode.OnPropertyChanged, "Нет продаж", "dd.MM.yyyy"));
+
+            this.Text = _Bnb.Base.Name;
+
             GraphicsPath gp = new GraphicsPath();
             gp.AddEllipse(pic_box_pb.DisplayRectangle);
             pic_box_pb.Region = new Region(gp);
+        }
+
+        private void show_history_cmb_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
