@@ -59,7 +59,7 @@ namespace tink_oblig
             nkd_sum_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Nkd_sum", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
 
             profit_perc_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Profit_summ_perc_string", true, DataSourceUpdateMode.OnPropertyChanged));
-            profit_sum_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Profit_summ", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
+            profit_sum_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Profit_summ_string", true, DataSourceUpdateMode.OnPropertyChanged));
 
             profit_perc_lbl.DataBindings.Add(new Binding("ForeColor", _Bnb, "Font_profit_clr", true, DataSourceUpdateMode.OnPropertyChanged));
             profit_sum_lbl.DataBindings.Add(new Binding("ForeColor", _Bnb, "Font_profit_clr", true, DataSourceUpdateMode.OnPropertyChanged));
@@ -76,16 +76,19 @@ namespace tink_oblig
 
             cnt_sell_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Cnt_sell", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "D"));
             summ_lbl_sell.DataBindings.Add(new Binding("Text", _Bnb, "Summ_Sell", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
+            
             profit_sell_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Profit_sell_string", true, DataSourceUpdateMode.OnPropertyChanged));
             profit_sell_prc_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Profit_sell_perc_string", true, DataSourceUpdateMode.OnPropertyChanged));
+            
+            
             profit_sell_lbl.DataBindings.Add(new Binding("ForeColor", _Bnb, "Font_sell_profit_clr", true, DataSourceUpdateMode.OnPropertyChanged));
 
 
 
 
-            //GraphicsPath gp = new GraphicsPath();
-            //gp.AddEllipse(pic_box_pb.DisplayRectangle);
-            //pic_box_pb.Region = new Region(gp);
+            GraphicsPath gp = new GraphicsPath();
+            gp.AddEllipse(pic_box_pb.DisplayRectangle);
+            pic_box_pb.Region = new Region(gp);
 
             this.Text = _Bnb.Base.Name;
         }

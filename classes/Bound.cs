@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using PropertyChanged;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,7 +20,7 @@ namespace tink_oblig.classes
         /// </summary>
         public Portfolio.Position Base { get; set; }
         private bool _IsChanged;
-        public bool IsChanged { get { return _IsChanged;} set { _IsChanged = value; } }
+        public bool IsChanged { get { return _IsChanged; } set { _IsChanged = value; } }
         public Bound(Portfolio.Position ps)
         {
             Base = ps;
@@ -88,6 +89,8 @@ namespace tink_oblig.classes
 
         }
 
+
+
         #region NoNKD
         public decimal Price_now_one_market
         {
@@ -111,7 +114,7 @@ namespace tink_oblig.classes
                 return Base.AveragePositionPriceNoNkd.Value;
             }
         }
-        public decimal Price_now_total_avg
+        public decimal Price_now_total_avg //(без нкд) //
         {
             get
             {
@@ -144,10 +147,10 @@ namespace tink_oblig.classes
         {
             get
             {
-                var b = Operations_list.Where(t => t.OperationType == ExtendedOperationType.Sell && t.Status == OperationStatus.Done);
+                var b = _sell_list;
                 if (b.Count() < 1)
                     return null;
-                return b.OrderBy(t=>t.Date).Select(t => t.Date).Last();
+                return b.OrderBy(t => t.Date).Select(t => t.Date).Last();
             }
         }
         public int Pay_period { get; set; }
@@ -155,16 +158,78 @@ namespace tink_oblig.classes
         public decimal Cpn_Percent { get; set; }
 
         //искать в истории
+        [OnChangedMethod(nameof(Operations_listChanged))]
         public List<Operation> Operations_list { get; set; }
+
+        
+        //sell buy coupon taxcoupon partrepayment brokercomission
+        private List<Operation> _sell_list;
+        private List<Operation> _buy_list;
+        private List<Operation> _coupon_list;
+        private List<Operation> _coupon_tax_list;
+        private List<Operation> _partrepayment_list;
+        private List<Operation> _brokercomission_list;
+
+        private void Operations_listChanged()
+        {
+            _sell_list = Operations_list.Where(t => t.OperationType == ExtendedOperationType.Sell && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
+            _buy_list = Operations_list.Where(t => t.OperationType == ExtendedOperationType.Buy && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
+            _coupon_list = Operations_list.Where(t => t.OperationType == ExtendedOperationType.Coupon && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
+            _coupon_tax_list = Operations_list.Where(t => t.OperationType == ExtendedOperationType.TaxCoupon && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
+            _partrepayment_list = Operations_list.Where(t => t.OperationType == ExtendedOperationType.PartRepayment && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
+            _brokercomission_list = Operations_list.Where(t => t.OperationType == ExtendedOperationType.BrokerCommission && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
+
+            if (_sell_list.Count() != 0)
+            {
+                var buy = _buy_list;
+                var bbuy = new List<Operation>();
+                foreach (var item in buy)
+                {
+                    for (int i = 0; i < item.Quantity; i++)
+                    {
+                        bbuy.Add(new Operation(item.Id, OperationStatus.Done, new List<Trade>(), new MoneyAmount(Currency.Rub, item.Commission.Value / item.Trades.Sum(t => t.Quantity)), Currency.Rub, item.Payment / item.Trades.Sum(t => t.Quantity), item.Price, 1, item.Figi, item.InstrumentType, false, item.Date, item.OperationType));
+                    }
+                }
+                List<Operation> s = new List<Operation>(bbuy);
+                foreach (var item in _sell_list)
+                {
+                    int sold_cnt = item.Trades.Sum(t => t.Quantity);
+                    Diff_sell += item.Payment - Math.Abs(bbuy.Take(sold_cnt).Sum(t => t.Payment));
+                    bbuy.RemoveRange(0, sold_cnt);
+                }
+
+                var cpn = _coupon_list;
+                var cpn_tax = _coupon_tax_list;
+                //var selected = cpn.Where().ToList();
+                //берем диапазаон от первой покупки до последней продажи на кол-во продаж (из всех покупок)
+                s = s.Where(t => t.Date <= _sell_list.Last().Date.AddDays(14) && t.Date >= s.First().Date).Take(Cnt_sell).ToList();
+                //считаем купоны за этот период
+                Coupon_sell = Math.Abs(cpn.Where(t => t.Date <= _sell_list.Last().Date.AddDays(14) && t.Date >= s.First().Date).Sum(t=>t.Payment));// 14 дней для дохода купонов после продажи
+                //считаем комисиию за этот период
+                Coupon_sell_tax = Math.Abs(cpn_tax.Where(t => t.Date <= _sell_list.Last().Date.AddDays(14) && t.Date >= s.First().Date).Sum(t => t.Payment));
+
+
+                /*список всех покупок, всех продаж.
+                берем диапазаон от первой покупки до последней продажи на кол-во продаж (из всех покупок)
+                чтобы осталось то что было куплено но не продано
+                считаем купоны за этот период
+                вычитаем это из листа операций. составляем список операций для актуальных бумаг!! 
+                тоесть кол-во бумаг по факту (base.lots) остается Cnt_sell = кол-во проданных
+                а остальное вырезается 
+                (изменить для закрытых позиций в LoadAllBndHistory кол-во на 0) использовать другой счетчик 
+                 */
+
+            }
+        }
 
         public decimal Last_Coupon_payed
         {
             get
             {
-                var buf = Operations_list.Where(t => t.OperationType == ExtendedOperationType.Coupon).ToList();
+                var buf = _coupon_list;
                 if (buf.Count > 0)
                 {
-                    return buf.First().Payment;
+                    return buf.Last().Payment;
                 }
                 return 0;
             }
@@ -173,7 +238,7 @@ namespace tink_oblig.classes
         {
             get
             {
-                var buf = Operations_list.Where(t => t.OperationType == ExtendedOperationType.Coupon).ToList();
+                var buf = _coupon_list;
                 if (buf.Count > 0)
                 {
                     return buf.Sum(t => t.Payment);
@@ -185,7 +250,7 @@ namespace tink_oblig.classes
         {
             get
             {
-                var buf = Operations_list.Where(t => t.OperationType == ExtendedOperationType.TaxCoupon).ToList();
+                var buf = _coupon_tax_list;
                 if (buf.Count > 0)
                 {
                     return Math.Abs(buf.Sum(t => t.Payment));
@@ -197,7 +262,7 @@ namespace tink_oblig.classes
         {
             get
             {
-                var buf = Operations_list.Where(t => t.OperationType == ExtendedOperationType.PartRepayment).ToList();
+                var buf = _partrepayment_list;
                 if (buf.Count > 0)
                 {
                     return Math.Abs(buf.Sum(t => t.Payment));
@@ -212,47 +277,29 @@ namespace tink_oblig.classes
         {
             get
             {
-                return Operations_list.Where(t => t.OperationType == ExtendedOperationType.Sell && t.Status == OperationStatus.Done).Sum(t => t.Payment);
+                return _sell_list.Sum(t => t.Payment);
             }
         }
+
+        private decimal _diff_sell;
+
         public decimal Diff_sell
         {//это разница по всем сделкам на все кол-во
             get
             {
-                decimal diff = 0;
-                var sell = Operations_list.Where(t => t.OperationType == ExtendedOperationType.Sell && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
-                if (sell.Count() != 0)
-                {
-                    var buy = Operations_list.Where(t => t.OperationType == ExtendedOperationType.Buy && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
-                    var bbuy = new List<Operation>();
-                    foreach (var item in buy)
-                    {
-                        for (int i = 0; i < item.Quantity; i++)
-                        {
-                            bbuy.Add(new Operation(item.Id, OperationStatus.Done, new List<Trade>(), new MoneyAmount(Currency.Rub, item.Commission.Value / item.Trades.Sum(t => t.Quantity)), Currency.Rub, item.Payment / item.Trades.Sum(t => t.Quantity), item.Price, 1, item.Figi, item.InstrumentType, false, item.Date, item.OperationType));
-                        }
-                    }
-                    foreach (var item in sell)
-                    {
-                        int sold_cnt = item.Trades.Sum(t => t.Quantity);
-                        diff += item.Payment - Math.Abs(bbuy.Take(sold_cnt).Sum(t => t.Payment));
 
-                        var cpn = Operations_list.Where(t => t.OperationType == ExtendedOperationType.Coupon && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
-                        var cpn_tax = Operations_list.Where(t => t.OperationType == ExtendedOperationType.TaxCoupon && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
-                        //до момента продажи, но с момента первой поукпки из оставшихся
-                        Coupon_sell = Math.Abs(cpn.Where(t => t.Date <= item.Date && t.Date >= bbuy.First().Date).Sum(t => t.Payment));
-                        Coupon_sell_tax = Math.Abs(cpn_tax.Where(t => t.Date <= item.Date && t.Date >= bbuy.First().Date).Sum(t => t.Payment));
-                        bbuy.RemoveRange(0, sold_cnt);
-                    }
-                }
-                return diff;
+                return _diff_sell;
+            }
+            set
+            {
+                _diff_sell = value;
             }
         }
         public int Cnt_sell
         {
             get
             {
-                var b = Operations_list.Where(t => t.OperationType == ExtendedOperationType.Sell && t.Status == OperationStatus.Done).ToList();
+                var b = _sell_list;
                 return b.Select(t => t.Trades).Sum(t => t.Select(t => t.Quantity).Sum());
             }
         }
@@ -263,7 +310,7 @@ namespace tink_oblig.classes
                 //сумма купонов за период владения - их налог + разница в продаже
                 var a = Diff_sell;
                 var c = Coupon_sell - Coupon_sell_tax;
-                return a + c;
+                return a + c + Buy_Back_summ;
 
             }
         }
@@ -293,11 +340,11 @@ namespace tink_oblig.classes
             get
             {
                 if (Profit_sell > 0)
-                    return string.Format("+{0:#0.0}", Math.Abs(Profit_sell));
+                    return string.Format("+{0:#0.00}", Math.Abs(Profit_sell));
                 else if (Profit_sell < 0)
-                    return string.Format("-{0:#0.0}", Math.Abs(Profit_sell));
+                    return string.Format("-{0:#0.00}", Math.Abs(Profit_sell));
                 else
-                    return string.Format("{0:#0.0}", Math.Abs(Profit_sell));
+                    return string.Format("{0:#0.00}", Math.Abs(Profit_sell));
             }
         }
         public Color Font_sell_profit_clr
@@ -313,13 +360,13 @@ namespace tink_oblig.classes
             {
                 if (Simplify)
                 {
-                    var buf = Operations_list.Where(t => t.OperationType == ExtendedOperationType.Sell && t.Status == OperationStatus.Done).Sum(t => t.Payment);
-                    var bb = (Price_now_total_avg + Coupon_summ - Coupon_Tax_summ + (buf - Price_now_total_avg)) - Price_now_total_avg;
+                    var buf = _sell_list.Sum(t => t.Payment);
+                    var bb = Coupon_summ - Coupon_Tax_summ + buf - Price_now_total_avg - Nkd_sum + Buy_Back_summ;
                     return bb;
                 }
                 else
                 {
-                    return (Price_now_total_avg + Coupon_summ - Coupon_Tax_summ + (Price_now_total_market - Price_now_total_avg) + Diff_sell) - Price_now_total_avg;
+                    return Coupon_summ - Coupon_Tax_summ + Price_now_total_market + Diff_sell - Price_now_total_avg - Nkd_sum + Buy_Back_summ;
                 }
 
             }
@@ -328,17 +375,17 @@ namespace tink_oblig.classes
         {
             get
             {
-                if (Simplify)
-                {
+                //if (Simplify)
+                //{
 
-                    var buf = Operations_list.Where(t => t.OperationType == ExtendedOperationType.Sell && t.Status == OperationStatus.Done).Sum(t => t.Payment);
-                    var bb = (((Price_now_total_avg + Coupon_summ - Coupon_Tax_summ + (buf - Price_now_total_avg)) * 100) / Price_now_total_avg) - 100;
+                //var buf = _sell_list.Sum(t => t.Payment);
+                var bb = ((Profit_summ * 100) / Price_now_total_avg);// - 100;//(((Price_now_total_avg + Coupon_summ - Coupon_Tax_summ + (buf - Price_now_total_avg)) * 100) / Price_now_total_avg) - 100;
                     return bb;
-                }
-                else
-                {
-                    return (((Price_now_total_avg + Coupon_summ - Coupon_Tax_summ + (Price_now_total_market - Price_now_total_avg) + Diff_sell) * 100) / Price_now_total_avg) - 100;
-                }
+                //}
+                //else
+                //{
+                    //return (((Price_now_total_avg + Coupon_summ - Coupon_Tax_summ + (Price_now_total_market - Price_now_total_avg) + Diff_sell) * 100) / Price_now_total_avg) - 100;
+                //}
 
             }
         }
@@ -346,7 +393,7 @@ namespace tink_oblig.classes
         {
             get
             {
-                return Operations_list.Count;
+                return _coupon_list.Count;
             }
         }
         public string Profit_summ_perc_string
@@ -359,6 +406,18 @@ namespace tink_oblig.classes
                     return string.Format("-{0:#0.0}", Math.Abs(Profit_summ_perc));
                 else
                     return string.Format("{0:#0.0}", Math.Abs(Profit_summ_perc));
+            }
+        }
+        public string Profit_summ_string
+        {
+            get
+            {
+                if (Profit_summ > 0)
+                    return string.Format("+{0:#0.00}", Math.Abs(Profit_summ));
+                else if (Profit_summ < 0)
+                    return string.Format("-{0:#0.00}", Math.Abs(Profit_summ));
+                else
+                    return string.Format("{0:#0.00}", Math.Abs(Profit_summ));
             }
         }
         public decimal Diff_price_one
@@ -406,8 +465,6 @@ namespace tink_oblig.classes
                 return Diff_price >= 0 ? Color.DarkGreen : Color.DarkRed;
             }
         }
-
-
         public Color Font_profit_clr
         {
             get
@@ -415,12 +472,11 @@ namespace tink_oblig.classes
                 return Profit_summ >= 0 ? Color.DarkGreen : Color.DarkRed;
             }
         }
-
         public decimal Comission_total_summ
         {
             get
             {
-                var buf = Operations_list.Where(t => t.OperationType == ExtendedOperationType.BrokerCommission).ToList();
+                var buf = _brokercomission_list;
                 if (buf.Count > 0)
                 {
                     return Math.Abs(buf.Sum(t => Math.Abs(t.Payment)));
