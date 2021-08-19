@@ -57,6 +57,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label41.Text" xml:space="preserve">
+    <value>Слева блок акутальных данных
+Справа блок проданных
+Сверху блок информации
+Если актуальных не осталось, выводить все в 0, кроме цен на сегодня 
+и дат выплат
+
+Даты выплат вообще вынести в блок информации
+
+Может вообще сделать две разные формы, под закртые и открытые позиции
+И если есть обе показывать то и показывать две формы</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
