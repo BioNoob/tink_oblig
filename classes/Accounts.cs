@@ -80,6 +80,7 @@ namespace tink_oblig.classes
                 var acc = await Program.CurrentContext.AccountsAsync();
                 foreach (var item in acc)
                 {
+                    var price_now = await Program.CurrentContext.MarketOrderbookAsync("", 1);
                     var prtfl = await Program.CurrentContext.PortfolioAsync(item.BrokerAccountId);
                     Bounds lbd = new Bounds(new Account_m(item.BrokerAccountType, item.BrokerAccountId));
                     var lpl = prtfl.Positions.Where(t => t.InstrumentType == InstrumentType.Bond).ToList();
