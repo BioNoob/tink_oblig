@@ -101,5 +101,53 @@ namespace tink_oblig.classes
                 return _sell_list.Select(t => t.Trades).Sum(t => t.Select(t => t.Quantity).Sum());
             }
         }
+
+        /// <summary>
+        /// Сумма полученных платежей за все продажи
+        /// </summary>
+        public decimal Summ_Sell
+        {
+            get
+            {
+                return _sell_list.Sum(t => t.Payment);
+            }
+        }
+
+
+        private decimal _diff_sell;
+        /// <summary>
+        /// 
+        /// </summary>
+        public decimal Diff_sell
+        {//это разница по всем сделкам на все кол-во
+            get
+            {
+
+                return _diff_sell;
+            }
+            set
+            {
+                _diff_sell = value;
+            }
+        }
+        public decimal Profit
+        {
+            get
+            {
+                var a = Diff_sell;
+                var c = Coupon_summ - Coupon_Tax_summ;
+                return a + c + Buy_Back_summ;
+
+            }
+        }
+        public decimal Profit_prc
+        {
+            get
+            {
+                if (Profit == 0)
+                    return 0;
+                return ((Profit * 100) / Price_now_total_avg);
+            }
+        }
     }
 }
