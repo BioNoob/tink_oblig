@@ -101,29 +101,28 @@ namespace tink_oblig.classes
 
         #region OperationsList
         //искать в истории
-        [OnChangedMethod(nameof(Operations_listChanged))]
         public List<Operation> Operations_list { get; set; }
 
         protected List<Operation> Operations_for_now { get; set; }
         protected List<Operation> Operations_for_sold { get; set; }
 
         //sell buy coupon taxcoupon partrepayment brokercomission
-        private List<Operation> _sell_list;
-        private List<Operation> _buy_list;
-        private List<Operation> _coupon_list;
-        private List<Operation> _coupon_tax_list;
-        private List<Operation> _partrepayment_list;
-        private List<Operation> _brokercomission_list;
-        private List<Operation> _repayment_list;
-        private void Operations_listChanged()
+        //private List<Operation> _sell_list;
+        //private List<Operation> _buy_list;
+        //private List<Operation> _coupon_list;
+        //private List<Operation> _coupon_tax_list;
+        //private List<Operation> _partrepayment_list;
+        //private List<Operation> _brokercomission_list;
+        //private List<Operation> _repayment_list;
+        /*private void Operations_listChanged()
         {
-            _sell_list = Operations_list.Where(t => t.OperationType == ExtendedOperationType.Sell && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
-            _buy_list = Operations_list.Where(t => t.OperationType == ExtendedOperationType.Buy && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
-            _coupon_list = Operations_list.Where(t => t.OperationType == ExtendedOperationType.Coupon && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
-            _coupon_tax_list = Operations_list.Where(t => t.OperationType == ExtendedOperationType.TaxCoupon && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
-            _partrepayment_list = Operations_list.Where(t => t.OperationType == ExtendedOperationType.PartRepayment && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
-            _brokercomission_list = Operations_list.Where(t => t.OperationType == ExtendedOperationType.BrokerCommission && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
-            _repayment_list = Operations_list.Where(t => t.OperationType == ExtendedOperationType.Repayment && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
+            //_sell_list = Operations_list.Where(t => t.OperationType == ExtendedOperationType.Sell && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
+            //_buy_list = Operations_list.Where(t => t.OperationType == ExtendedOperationType.Buy && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
+            //_coupon_list = Operations_list.Where(t => t.OperationType == ExtendedOperationType.Coupon && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
+            //_coupon_tax_list = Operations_list.Where(t => t.OperationType == ExtendedOperationType.TaxCoupon && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
+            //_partrepayment_list = Operations_list.Where(t => t.OperationType == ExtendedOperationType.PartRepayment && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
+            //_brokercomission_list = Operations_list.Where(t => t.OperationType == ExtendedOperationType.BrokerCommission && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
+            //_repayment_list = Operations_list.Where(t => t.OperationType == ExtendedOperationType.Repayment && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
 
             //if (_sell_list.Count() != 0)
             //{
@@ -157,7 +156,7 @@ namespace tink_oblig.classes
                 //    Coupon_sell_tax = Math.Abs(cpn_tax.Where(t => t.Date <= _sell_list.Last().Date.AddDays(14) && t.Date >= s.First().Date).Sum(t => t.Payment));
 
 
-                //    /*список всех покупок, всех продаж.
+                //    список всех покупок, всех продаж.
                 //    берем диапазаон от первой покупки до последней продажи на кол-во продаж (из всех покупок)
                 //    чтобы осталось то что было куплено но не продано
                 //    считаем купоны за этот период
@@ -165,14 +164,15 @@ namespace tink_oblig.classes
                 //    тоесть кол-во бумаг по факту (base.lots) остается Cnt_sell = кол-во проданных
                 //    а остальное вырезается 
                 //    (изменить для закрытых позиций в LoadAllBndHistory кол-во на 0) использовать другой счетчик 
-                //     */
+                //    
 
                 //}
             //}
         }
+    */
         #endregion
 
-        public static void Splitter_sold_out(List<Operation> operations,ref List<Operation> sold_list, ref List<Operation> now_list)
+        public static void Splitter_sold_out(List<Operation> operations, ref List<Operation> sold_list, ref List<Operation> now_list)
         {
             /*
              * Определить периоды когда позиция закрыта (или частично закрыта)
@@ -194,11 +194,11 @@ namespace tink_oblig.classes
             foreach (var item in sell_list)
             {
                 int sold_cnt = item.Trades.Sum(t => t.Quantity);
-                var a = buf_list.Take(sold_cnt).Select(t=>t.Date); //взяли операции с первой купленной (после последней продажи, или первой покупки)
-                sold_list.AddRange(operations.Where(t=>t.Date < a.Last() && t.Date >= a.First()).ToList());            
+                var a = buf_list.Take(sold_cnt).Select(t => t.Date); //взяли операции с первой купленной (после последней продажи, или первой покупки)
+                sold_list.AddRange(operations.Where(t => t.Date < a.Last() && t.Date >= a.First()).ToList());
                 buf_list.RemoveRange(0, sold_cnt); // удаляем записанные
             }
-            now_list =  operations.Except(sold_list).ToList();//РАБОТАЕТ ЛИ?
+            now_list = operations.Except(sold_list).ToList();//РАБОТАЕТ ЛИ?
 
         }
 

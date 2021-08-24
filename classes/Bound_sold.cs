@@ -17,13 +17,36 @@ namespace tink_oblig.classes
         public Bound_sold(Portfolio.Position ps) : base(ps)
         {
             Base = ps;
+
+            _buy_list = Operations_for_sold.Where(t => t.OperationType == ExtendedOperationType.Buy && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
             _sell_list = Operations_for_sold.Where(t => t.OperationType == ExtendedOperationType.Sell && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
             _coupon_list = Operations_for_sold.Where(t => t.OperationType == ExtendedOperationType.Coupon && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
             _coupon_tax_list = Operations_for_sold.Where(t => t.OperationType == ExtendedOperationType.TaxCoupon && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
             _partrepayment_list = Operations_for_sold.Where(t => t.OperationType == ExtendedOperationType.PartRepayment && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
             _brokercomission_list = Operations_for_sold.Where(t => t.OperationType == ExtendedOperationType.BrokerCommission && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
             _repayment_list = Operations_for_sold.Where(t => t.OperationType == ExtendedOperationType.Repayment && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
+
+
+            List<Operation> buf_list = new List<Operation>();
+            foreach (var item in _buy_list)
+            {
+                for (int i = 0; i < item.Quantity; i++)
+                {
+                    buf_list.Add(new Operation(item.Id, OperationStatus.Done, new List<Trade>(), new MoneyAmount(Currency.Rub, item.Commission.Value / item.Trades.Sum(t => t.Quantity)), Currency.Rub,
+                        item.Payment / item.Trades.Sum(t => t.Quantity), item.Price, 1, null, item.Figi, item.InstrumentType, false, item.Date, item.OperationType));
+                }
+            }
+            buf_list = buf_list.OrderBy(t => t.Date).ToList();
+            foreach (var item in _sell_list)
+            {
+                int sold_cnt = item.Trades.Sum(t => t.Quantity);
+                Diff_sell += item.Payment - Math.Abs(buf_list.Take(sold_cnt).Sum(t => t.Payment));
+                buf_list.RemoveRange(0, sold_cnt); // удаляем записанные
+            }
+
         }
+
+        private List<Operation> _buy_list;
         private List<Operation> _sell_list;
         private List<Operation> _coupon_list;
         private List<Operation> _coupon_tax_list;
@@ -80,7 +103,13 @@ namespace tink_oblig.classes
                 return 0;
             }
         }
-
+        public decimal Broker_comission_total
+        {
+            get
+            {
+                return _brokercomission_list.Sum(t => t.Payment);
+            }
+        }
         /// <summary>
         /// Дата закрытия (полсденей продажи)
         /// </summary>
@@ -116,7 +145,7 @@ namespace tink_oblig.classes
 
         private decimal _diff_sell;
         /// <summary>
-        /// 
+        /// Суммарная разница по закрытым позициям
         /// </summary>
         public decimal Diff_sell
         {//это разница по всем сделкам на все кол-во
@@ -136,7 +165,7 @@ namespace tink_oblig.classes
             {
                 var a = Diff_sell;
                 var c = Coupon_summ - Coupon_Tax_summ;
-                return a + c + Buy_Back_summ;
+                return a + c + Buy_Back_summ - Broker_comission_total;
 
             }
         }
@@ -146,7 +175,7 @@ namespace tink_oblig.classes
             {
                 if (Profit == 0)
                     return 0;
-                return ((Profit * 100) / Price_now_total_avg);
+                return ((Profit * 100) / Avg_buy_paid_total);
             }
         }
     }
