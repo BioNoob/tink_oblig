@@ -94,7 +94,7 @@ namespace tink_oblig.classes
             get
             {
                 return Coupon_summ - Coupon_Tax_summ + Buy_Back_summ + Market_price_total
-                    + Nkd_sum - Avg_buy_paid_total - Broker_comission_total;
+                    + Nkd_for_now - Avg_buy_paid_total - Broker_comission_total;
             }
         }
         public decimal Profit_perc

@@ -12,7 +12,7 @@ using Tinkoff.Trading.OpenApi.Models;
 
 namespace tink_oblig.classes
 {
-    class Bound_sold : Bound, INotifyPropertyChanged
+    public class Bound_sold : Bound, INotifyPropertyChanged
     {
         public Bound_sold(Portfolio.Position ps) : base(ps)
         {
@@ -169,13 +169,45 @@ namespace tink_oblig.classes
 
             }
         }
-        public decimal Profit_prc
+        public decimal Profit_perc
         {
             get
             {
                 if (Profit == 0)
                     return 0;
                 return ((Profit * 100) / Avg_buy_paid_total);
+            }
+        }
+
+        public string Profit_perc_string
+        {
+            get
+            {
+                if (Profit_perc > 0)
+                    return string.Format("+{0:#0.0}", Math.Abs(Profit_perc));
+                else if (Profit_perc < 0)
+                    return string.Format("-{0:#0.0}", Math.Abs(Profit_perc));
+                else
+                    return string.Format("{0:#0.0}", Math.Abs(Profit_perc));
+            }
+        }
+        public string Profit_string
+        {
+            get
+            {
+                if (Profit > 0)
+                    return string.Format("+{0:#0.00}", Math.Abs(Profit));
+                else if (Profit < 0)
+                    return string.Format("-{0:#0.00}", Math.Abs(Profit));
+                else
+                    return string.Format("{0:#0.00}", Math.Abs(Profit));
+            }
+        }
+        public Color Font_profit_clr
+        {
+            get
+            {
+                return Profit >= 0 ? Color.DarkGreen : Color.DarkRed;
             }
         }
     }

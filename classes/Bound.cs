@@ -245,7 +245,7 @@ namespace tink_oblig.classes
             }
         }
         /// <summary>
-        /// Накопленный купонный доход на одну акцию
+        /// Накопленный купонный доход на одну акцию при покупке
         /// </summary>
         public decimal Nkd_one
         {
@@ -255,13 +255,24 @@ namespace tink_oblig.classes
             }
         }
         /// <summary>
-        /// Сумма нкд
+        /// Сумма нкд по покупке
         /// </summary>
         public decimal Nkd_sum
         {
             get
             {
                 return Nkd_one * Base.Lots;
+            }
+        }
+        /// <summary>
+        /// Нкд рыночный
+        /// </summary>
+        public decimal Nkd_for_now
+        {
+            get
+            {
+                var days = (int)Math.Floor((DateTime.Now - Prev_pay_dt).TotalDays);
+                return (Cpn_val / Pay_period) * days;
             }
         }
         /// <summary>
@@ -305,7 +316,20 @@ namespace tink_oblig.classes
             }
         }
 
-
+        public decimal Diff_price_sum_no_nkd
+        {
+            get
+            {
+                return Market_price_total - Avg_buy_paid_total;
+            }
+        }
+        public decimal Diff_price_sum_nkd
+        {
+            get
+            {
+                return Market_price_total + Nkd_for_now - Avg_buy_paid_total;
+            }
+        }
 
 
 

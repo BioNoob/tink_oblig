@@ -616,7 +616,7 @@ namespace tink_oblig
             this.groupBox4.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.groupBox4.Location = new System.Drawing.Point(205, 295);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(187, 101);
+            this.groupBox4.Size = new System.Drawing.Size(189, 101);
             this.groupBox4.TabIndex = 70;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Суммарные значения покупки";
@@ -723,9 +723,9 @@ namespace tink_oblig
             this.groupBox5.Controls.Add(this.textBox16);
             this.groupBox5.Controls.Add(this.label35);
             this.groupBox5.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox5.Location = new System.Drawing.Point(204, 402);
+            this.groupBox5.Location = new System.Drawing.Point(205, 402);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(187, 136);
+            this.groupBox5.Size = new System.Drawing.Size(189, 136);
             this.groupBox5.TabIndex = 72;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Суммарные значения продажи";
@@ -861,7 +861,7 @@ namespace tink_oblig
             this.groupBox6.Controls.Add(this.textBox19);
             this.groupBox6.Controls.Add(this.label41);
             this.groupBox6.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox6.Location = new System.Drawing.Point(11, 402);
+            this.groupBox6.Location = new System.Drawing.Point(12, 402);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(187, 136);
             this.groupBox6.TabIndex = 71;
@@ -992,9 +992,9 @@ namespace tink_oblig
             this.groupBox7.Controls.Add(this.textBox22);
             this.groupBox7.Controls.Add(this.label46);
             this.groupBox7.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox7.Location = new System.Drawing.Point(11, 534);
+            this.groupBox7.Location = new System.Drawing.Point(12, 534);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(188, 90);
+            this.groupBox7.Size = new System.Drawing.Size(187, 90);
             this.groupBox7.TabIndex = 73;
             this.groupBox7.TabStop = false;
             // 
@@ -1012,7 +1012,7 @@ namespace tink_oblig
             this.label47.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label47.Location = new System.Drawing.Point(162, 12);
             this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(25, 23);
+            this.label47.Size = new System.Drawing.Size(24, 23);
             this.label47.TabIndex = 63;
             this.label47.Text = "RUB";
             this.label47.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1054,9 +1054,9 @@ namespace tink_oblig
             this.groupBox8.Controls.Add(this.textBox24);
             this.groupBox8.Controls.Add(this.label49);
             this.groupBox8.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox8.Location = new System.Drawing.Point(204, 534);
+            this.groupBox8.Location = new System.Drawing.Point(205, 534);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(188, 90);
+            this.groupBox8.Size = new System.Drawing.Size(189, 90);
             this.groupBox8.TabIndex = 74;
             this.groupBox8.TabStop = false;
             // 
@@ -1146,7 +1146,6 @@ namespace tink_oblig
             this.Controls.Add(this.textBox26);
             this.Controls.Add(this.label52);
             this.Controls.Add(this.label53);
-            this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox4);
@@ -1165,7 +1164,10 @@ namespace tink_oblig
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.groupBox7);
+            this.Controls.Add(this.groupBox8);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(422, 669);
             this.Name = "BoundWatchSellFrm";
             ((System.ComponentModel.ISupportInitialize)(this.pic_box_pb)).EndInit();
