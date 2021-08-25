@@ -264,7 +264,7 @@ namespace tink_oblig
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.groupBox2.Location = new System.Drawing.Point(205, 89);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(189, 200);
+            this.groupBox2.Size = new System.Drawing.Size(189, 190);
             this.groupBox2.TabIndex = 56;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Купон";
@@ -272,43 +272,43 @@ namespace tink_oblig
             // textBox9
             // 
             this.textBox9.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox9.Location = new System.Drawing.Point(9, 159);
+            this.textBox9.Location = new System.Drawing.Point(67, 160);
             this.textBox9.Name = "textBox9";
             this.textBox9.ReadOnly = true;
-            this.textBox9.Size = new System.Drawing.Size(144, 21);
+            this.textBox9.Size = new System.Drawing.Size(95, 21);
             this.textBox9.TabIndex = 61;
             // 
             // textBox8
             // 
             this.textBox8.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox8.Location = new System.Drawing.Point(9, 123);
+            this.textBox8.Location = new System.Drawing.Point(67, 125);
             this.textBox8.Name = "textBox8";
             this.textBox8.ReadOnly = true;
-            this.textBox8.Size = new System.Drawing.Size(143, 21);
+            this.textBox8.Size = new System.Drawing.Size(95, 21);
             this.textBox8.TabIndex = 60;
             // 
             // textBox7
             // 
             this.textBox7.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox7.Location = new System.Drawing.Point(9, 88);
+            this.textBox7.Location = new System.Drawing.Point(67, 89);
             this.textBox7.Name = "textBox7";
             this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(81, 21);
+            this.textBox7.Size = new System.Drawing.Size(95, 21);
             this.textBox7.TabIndex = 60;
             // 
             // textBox6
             // 
             this.textBox6.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox6.Location = new System.Drawing.Point(9, 52);
+            this.textBox6.Location = new System.Drawing.Point(67, 54);
             this.textBox6.Name = "textBox6";
             this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(143, 21);
+            this.textBox6.Size = new System.Drawing.Size(95, 21);
             this.textBox6.TabIndex = 60;
             // 
             // textBox5
             // 
             this.textBox5.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox5.Location = new System.Drawing.Point(94, 16);
+            this.textBox5.Location = new System.Drawing.Point(104, 16);
             this.textBox5.Name = "textBox5";
             this.textBox5.ReadOnly = true;
             this.textBox5.Size = new System.Drawing.Size(58, 21);
@@ -317,7 +317,7 @@ namespace tink_oblig
             // textBox4
             // 
             this.textBox4.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox4.Location = new System.Drawing.Point(9, 16);
+            this.textBox4.Location = new System.Drawing.Point(24, 16);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(58, 21);
@@ -326,17 +326,17 @@ namespace tink_oblig
             // label28
             // 
             this.label28.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label28.Location = new System.Drawing.Point(92, 88);
+            this.label28.Location = new System.Drawing.Point(1, 81);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(83, 21);
+            this.label28.Size = new System.Drawing.Size(60, 35);
             this.label28.TabIndex = 49;
             this.label28.Text = "Кол-во выплат";
-            this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label18
             // 
             this.label18.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label18.Location = new System.Drawing.Point(9, 38);
+            this.label18.Location = new System.Drawing.Point(10, 38);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(168, 13);
             this.label18.TabIndex = 48;
@@ -346,7 +346,7 @@ namespace tink_oblig
             // label13
             // 
             this.label13.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label13.Location = new System.Drawing.Point(153, 122);
+            this.label13.Location = new System.Drawing.Point(163, 124);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(24, 23);
             this.label13.TabIndex = 32;
@@ -356,7 +356,7 @@ namespace tink_oblig
             // label15
             // 
             this.label15.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label15.Location = new System.Drawing.Point(153, 158);
+            this.label15.Location = new System.Drawing.Point(163, 159);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(24, 23);
             this.label15.TabIndex = 47;
@@ -366,37 +366,37 @@ namespace tink_oblig
             // label9
             // 
             this.label9.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(9, 74);
+            this.label9.Location = new System.Drawing.Point(1, 46);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(168, 13);
+            this.label9.Size = new System.Drawing.Size(60, 35);
             this.label9.TabIndex = 46;
-            this.label9.Text = "Сумма прошлой выплаты";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label9.Text = "Прошлая выплата";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(9, 181);
+            this.label2.Location = new System.Drawing.Point(1, 153);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(167, 13);
+            this.label2.Size = new System.Drawing.Size(60, 35);
             this.label2.TabIndex = 45;
-            this.label2.Text = "Суммарный налог с купонов";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label2.Text = "Купонный налог";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label14
             // 
             this.label14.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label14.Location = new System.Drawing.Point(9, 144);
+            this.label14.Location = new System.Drawing.Point(9, 120);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(168, 13);
+            this.label14.Size = new System.Drawing.Size(52, 29);
             this.label14.TabIndex = 27;
             this.label14.Text = "Сумма выплат";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label11
             // 
             this.label11.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label11.Location = new System.Drawing.Point(153, 52);
+            this.label11.Location = new System.Drawing.Point(163, 53);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(24, 23);
             this.label11.TabIndex = 29;
@@ -406,7 +406,7 @@ namespace tink_oblig
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(68, 17);
+            this.label3.Location = new System.Drawing.Point(83, 17);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(12, 17);
             this.label3.TabIndex = 24;
@@ -416,7 +416,7 @@ namespace tink_oblig
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(153, 16);
+            this.label4.Location = new System.Drawing.Point(163, 16);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(24, 21);
             this.label4.TabIndex = 25;
@@ -436,7 +436,7 @@ namespace tink_oblig
             // label8
             // 
             this.label8.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(6, 74);
+            this.label8.Location = new System.Drawing.Point(6, 76);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(175, 13);
             this.label8.TabIndex = 24;
@@ -446,7 +446,7 @@ namespace tink_oblig
             // label10
             // 
             this.label10.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(6, 110);
+            this.label10.Location = new System.Drawing.Point(6, 114);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(175, 13);
             this.label10.TabIndex = 26;
@@ -465,7 +465,7 @@ namespace tink_oblig
             // prev_pay_lbl
             // 
             this.prev_pay_lbl.BackColor = System.Drawing.SystemColors.Control;
-            this.prev_pay_lbl.Location = new System.Drawing.Point(6, 52);
+            this.prev_pay_lbl.Location = new System.Drawing.Point(6, 54);
             this.prev_pay_lbl.Name = "prev_pay_lbl";
             this.prev_pay_lbl.ReadOnly = true;
             this.prev_pay_lbl.Size = new System.Drawing.Size(175, 21);
@@ -474,7 +474,7 @@ namespace tink_oblig
             // textBox3
             // 
             this.textBox3.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox3.Location = new System.Drawing.Point(6, 88);
+            this.textBox3.Location = new System.Drawing.Point(6, 92);
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(175, 21);
@@ -491,7 +491,7 @@ namespace tink_oblig
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.groupBox1.Location = new System.Drawing.Point(12, 89);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(187, 126);
+            this.groupBox1.Size = new System.Drawing.Size(187, 135);
             this.groupBox1.TabIndex = 55;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Даты";
@@ -508,7 +508,7 @@ namespace tink_oblig
             this.groupBox3.Controls.Add(this.textBox1);
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox3.Location = new System.Drawing.Point(12, 295);
+            this.groupBox3.Location = new System.Drawing.Point(12, 279);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(187, 101);
             this.groupBox3.TabIndex = 57;
@@ -614,7 +614,7 @@ namespace tink_oblig
             this.groupBox4.Controls.Add(this.textBox13);
             this.groupBox4.Controls.Add(this.label29);
             this.groupBox4.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox4.Location = new System.Drawing.Point(205, 295);
+            this.groupBox4.Location = new System.Drawing.Point(205, 279);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(189, 101);
             this.groupBox4.TabIndex = 70;
@@ -624,7 +624,7 @@ namespace tink_oblig
             // textBox11
             // 
             this.textBox11.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox11.Location = new System.Drawing.Point(66, 73);
+            this.textBox11.Location = new System.Drawing.Point(67, 73);
             this.textBox11.Name = "textBox11";
             this.textBox11.ReadOnly = true;
             this.textBox11.Size = new System.Drawing.Size(95, 21);
@@ -633,7 +633,7 @@ namespace tink_oblig
             // label23
             // 
             this.label23.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label23.Location = new System.Drawing.Point(162, 72);
+            this.label23.Location = new System.Drawing.Point(163, 72);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(24, 23);
             this.label23.TabIndex = 68;
@@ -643,7 +643,7 @@ namespace tink_oblig
             // textBox12
             // 
             this.textBox12.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox12.Location = new System.Drawing.Point(66, 46);
+            this.textBox12.Location = new System.Drawing.Point(67, 46);
             this.textBox12.Name = "textBox12";
             this.textBox12.ReadOnly = true;
             this.textBox12.Size = new System.Drawing.Size(95, 21);
@@ -652,7 +652,7 @@ namespace tink_oblig
             // label24
             // 
             this.label24.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label24.Location = new System.Drawing.Point(162, 45);
+            this.label24.Location = new System.Drawing.Point(163, 45);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(24, 23);
             this.label24.TabIndex = 66;
@@ -662,7 +662,7 @@ namespace tink_oblig
             // label25
             // 
             this.label25.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label25.Location = new System.Drawing.Point(2, 69);
+            this.label25.Location = new System.Drawing.Point(3, 69);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(58, 29);
             this.label25.TabIndex = 65;
@@ -672,7 +672,7 @@ namespace tink_oblig
             // label26
             // 
             this.label26.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label26.Location = new System.Drawing.Point(2, 41);
+            this.label26.Location = new System.Drawing.Point(3, 41);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(58, 29);
             this.label26.TabIndex = 64;
@@ -682,7 +682,7 @@ namespace tink_oblig
             // label27
             // 
             this.label27.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label27.Location = new System.Drawing.Point(2, 14);
+            this.label27.Location = new System.Drawing.Point(3, 14);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(58, 29);
             this.label27.TabIndex = 63;
@@ -692,7 +692,7 @@ namespace tink_oblig
             // textBox13
             // 
             this.textBox13.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox13.Location = new System.Drawing.Point(66, 19);
+            this.textBox13.Location = new System.Drawing.Point(67, 19);
             this.textBox13.Name = "textBox13";
             this.textBox13.ReadOnly = true;
             this.textBox13.Size = new System.Drawing.Size(95, 21);
@@ -701,7 +701,7 @@ namespace tink_oblig
             // label29
             // 
             this.label29.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label29.Location = new System.Drawing.Point(162, 18);
+            this.label29.Location = new System.Drawing.Point(163, 18);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(24, 23);
             this.label29.TabIndex = 61;
@@ -723,7 +723,7 @@ namespace tink_oblig
             this.groupBox5.Controls.Add(this.textBox16);
             this.groupBox5.Controls.Add(this.label35);
             this.groupBox5.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox5.Location = new System.Drawing.Point(205, 402);
+            this.groupBox5.Location = new System.Drawing.Point(205, 386);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(189, 136);
             this.groupBox5.TabIndex = 72;
@@ -733,7 +733,7 @@ namespace tink_oblig
             // textBox21
             // 
             this.textBox21.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox21.Location = new System.Drawing.Point(66, 100);
+            this.textBox21.Location = new System.Drawing.Point(67, 100);
             this.textBox21.Name = "textBox21";
             this.textBox21.ReadOnly = true;
             this.textBox21.Size = new System.Drawing.Size(95, 21);
@@ -742,7 +742,7 @@ namespace tink_oblig
             // label44
             // 
             this.label44.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label44.Location = new System.Drawing.Point(162, 99);
+            this.label44.Location = new System.Drawing.Point(163, 99);
             this.label44.Name = "label44";
             this.label44.Size = new System.Drawing.Size(24, 23);
             this.label44.TabIndex = 74;
@@ -752,7 +752,7 @@ namespace tink_oblig
             // label45
             // 
             this.label45.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label45.Location = new System.Drawing.Point(2, 96);
+            this.label45.Location = new System.Drawing.Point(3, 96);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(58, 29);
             this.label45.TabIndex = 73;
@@ -762,7 +762,7 @@ namespace tink_oblig
             // textBox14
             // 
             this.textBox14.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox14.Location = new System.Drawing.Point(66, 73);
+            this.textBox14.Location = new System.Drawing.Point(67, 73);
             this.textBox14.Name = "textBox14";
             this.textBox14.ReadOnly = true;
             this.textBox14.Size = new System.Drawing.Size(95, 21);
@@ -771,7 +771,7 @@ namespace tink_oblig
             // label30
             // 
             this.label30.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label30.Location = new System.Drawing.Point(162, 72);
+            this.label30.Location = new System.Drawing.Point(163, 72);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(24, 23);
             this.label30.TabIndex = 68;
@@ -781,7 +781,7 @@ namespace tink_oblig
             // textBox15
             // 
             this.textBox15.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox15.Location = new System.Drawing.Point(66, 46);
+            this.textBox15.Location = new System.Drawing.Point(67, 46);
             this.textBox15.Name = "textBox15";
             this.textBox15.ReadOnly = true;
             this.textBox15.Size = new System.Drawing.Size(95, 21);
@@ -790,7 +790,7 @@ namespace tink_oblig
             // label31
             // 
             this.label31.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label31.Location = new System.Drawing.Point(162, 45);
+            this.label31.Location = new System.Drawing.Point(163, 45);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(24, 23);
             this.label31.TabIndex = 66;
@@ -800,7 +800,7 @@ namespace tink_oblig
             // label32
             // 
             this.label32.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label32.Location = new System.Drawing.Point(2, 69);
+            this.label32.Location = new System.Drawing.Point(3, 69);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(58, 29);
             this.label32.TabIndex = 65;
@@ -810,7 +810,7 @@ namespace tink_oblig
             // label33
             // 
             this.label33.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label33.Location = new System.Drawing.Point(2, 41);
+            this.label33.Location = new System.Drawing.Point(3, 41);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(58, 29);
             this.label33.TabIndex = 64;
@@ -820,7 +820,7 @@ namespace tink_oblig
             // label34
             // 
             this.label34.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label34.Location = new System.Drawing.Point(2, 14);
+            this.label34.Location = new System.Drawing.Point(3, 14);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(58, 29);
             this.label34.TabIndex = 63;
@@ -830,7 +830,7 @@ namespace tink_oblig
             // textBox16
             // 
             this.textBox16.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox16.Location = new System.Drawing.Point(66, 19);
+            this.textBox16.Location = new System.Drawing.Point(67, 19);
             this.textBox16.Name = "textBox16";
             this.textBox16.ReadOnly = true;
             this.textBox16.Size = new System.Drawing.Size(95, 21);
@@ -839,7 +839,7 @@ namespace tink_oblig
             // label35
             // 
             this.label35.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label35.Location = new System.Drawing.Point(162, 18);
+            this.label35.Location = new System.Drawing.Point(163, 18);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(24, 23);
             this.label35.TabIndex = 61;
@@ -861,7 +861,7 @@ namespace tink_oblig
             this.groupBox6.Controls.Add(this.textBox19);
             this.groupBox6.Controls.Add(this.label41);
             this.groupBox6.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox6.Location = new System.Drawing.Point(12, 402);
+            this.groupBox6.Location = new System.Drawing.Point(12, 386);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(187, 136);
             this.groupBox6.TabIndex = 71;
@@ -992,7 +992,7 @@ namespace tink_oblig
             this.groupBox7.Controls.Add(this.textBox22);
             this.groupBox7.Controls.Add(this.label46);
             this.groupBox7.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox7.Location = new System.Drawing.Point(12, 534);
+            this.groupBox7.Location = new System.Drawing.Point(12, 518);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(187, 90);
             this.groupBox7.TabIndex = 73;
@@ -1054,7 +1054,7 @@ namespace tink_oblig
             this.groupBox8.Controls.Add(this.textBox24);
             this.groupBox8.Controls.Add(this.label49);
             this.groupBox8.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox8.Location = new System.Drawing.Point(205, 534);
+            this.groupBox8.Location = new System.Drawing.Point(205, 518);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(189, 90);
             this.groupBox8.TabIndex = 74;
@@ -1112,16 +1112,16 @@ namespace tink_oblig
             // 
             this.textBox26.BackColor = System.Drawing.SystemColors.Control;
             this.textBox26.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox26.Location = new System.Drawing.Point(19, 230);
+            this.textBox26.Location = new System.Drawing.Point(78, 239);
             this.textBox26.Name = "textBox26";
             this.textBox26.ReadOnly = true;
-            this.textBox26.Size = new System.Drawing.Size(154, 21);
+            this.textBox26.Size = new System.Drawing.Size(95, 21);
             this.textBox26.TabIndex = 77;
             // 
             // label52
             // 
             this.label52.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label52.Location = new System.Drawing.Point(174, 229);
+            this.label52.Location = new System.Drawing.Point(173, 238);
             this.label52.Name = "label52";
             this.label52.Size = new System.Drawing.Size(25, 23);
             this.label52.TabIndex = 76;
@@ -1131,18 +1131,18 @@ namespace tink_oblig
             // label53
             // 
             this.label53.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label53.Location = new System.Drawing.Point(19, 252);
+            this.label53.Location = new System.Drawing.Point(14, 227);
             this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(177, 13);
+            this.label53.Size = new System.Drawing.Size(58, 43);
             this.label53.TabIndex = 75;
             this.label53.Text = "Суммарная комиссия брокера";
-            this.label53.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label53.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // BoundWatchSellFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(406, 630);
+            this.ClientSize = new System.Drawing.Size(406, 614);
             this.Controls.Add(this.textBox26);
             this.Controls.Add(this.label52);
             this.Controls.Add(this.label53);
@@ -1168,7 +1168,6 @@ namespace tink_oblig
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(422, 669);
             this.Name = "BoundWatchSellFrm";
             ((System.ComponentModel.ISupportInitialize)(this.pic_box_pb)).EndInit();
             this.groupBox2.ResumeLayout(false);
