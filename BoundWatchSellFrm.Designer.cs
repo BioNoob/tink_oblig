@@ -118,11 +118,11 @@ namespace tink_oblig
             this.textBox22 = new System.Windows.Forms.TextBox();
             this.label46 = new System.Windows.Forms.Label();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.textBox24 = new System.Windows.Forms.TextBox();
-            this.label49 = new System.Windows.Forms.Label();
+            this.label51 = new System.Windows.Forms.Label();
             this.textBox25 = new System.Windows.Forms.TextBox();
             this.label50 = new System.Windows.Forms.Label();
-            this.label51 = new System.Windows.Forms.Label();
+            this.textBox24 = new System.Windows.Forms.TextBox();
+            this.label49 = new System.Windows.Forms.Label();
             this.textBox26 = new System.Windows.Forms.TextBox();
             this.label52 = new System.Windows.Forms.Label();
             this.label53 = new System.Windows.Forms.Label();
@@ -1060,24 +1060,15 @@ namespace tink_oblig
             this.groupBox8.TabIndex = 74;
             this.groupBox8.TabStop = false;
             // 
-            // textBox24
+            // label51
             // 
-            this.textBox24.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox24.Location = new System.Drawing.Point(7, 14);
-            this.textBox24.Name = "textBox24";
-            this.textBox24.ReadOnly = true;
-            this.textBox24.Size = new System.Drawing.Size(154, 21);
-            this.textBox24.TabIndex = 64;
-            // 
-            // label49
-            // 
-            this.label49.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label49.Location = new System.Drawing.Point(162, 13);
-            this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(25, 23);
-            this.label49.TabIndex = 63;
-            this.label49.Text = "RUB";
-            this.label49.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label51.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label51.Location = new System.Drawing.Point(6, 36);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(179, 13);
+            this.label51.TabIndex = 78;
+            this.label51.Text = "Профицит";
+            this.label51.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBox25
             // 
@@ -1098,15 +1089,24 @@ namespace tink_oblig
             this.label50.Text = "%";
             this.label50.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label51
+            // textBox24
             // 
-            this.label51.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label51.Location = new System.Drawing.Point(6, 36);
-            this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(179, 13);
-            this.label51.TabIndex = 78;
-            this.label51.Text = "Профицит";
-            this.label51.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.textBox24.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox24.Location = new System.Drawing.Point(7, 14);
+            this.textBox24.Name = "textBox24";
+            this.textBox24.ReadOnly = true;
+            this.textBox24.Size = new System.Drawing.Size(154, 21);
+            this.textBox24.TabIndex = 64;
+            // 
+            // label49
+            // 
+            this.label49.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label49.Location = new System.Drawing.Point(162, 13);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(25, 23);
+            this.label49.TabIndex = 63;
+            this.label49.Text = "RUB";
+            this.label49.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // textBox26
             // 
