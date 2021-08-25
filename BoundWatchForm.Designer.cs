@@ -100,6 +100,7 @@ namespace tink_oblig
             this.label26 = new System.Windows.Forms.Label();
             this.buy_back_lbl = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label41 = new System.Windows.Forms.Label();
             this.show_history_cmb = new System.Windows.Forms.Button();
             this.label42 = new System.Windows.Forms.Label();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
@@ -115,7 +116,6 @@ namespace tink_oblig
             this.cnt_sell_lbl = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
             this.summ_lbl_sell = new System.Windows.Forms.Label();
-            this.label41 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_box_pb)).BeginInit();
@@ -580,6 +580,7 @@ namespace tink_oblig
             this.avg_sum_price_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.avg_sum_price_lbl.Location = new System.Drawing.Point(64, 19);
             this.avg_sum_price_lbl.Name = "avg_sum_price_lbl";
+            this.avg_sum_price_lbl.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.avg_sum_price_lbl.Size = new System.Drawing.Size(95, 23);
             this.avg_sum_price_lbl.TabIndex = 36;
             this.avg_sum_price_lbl.Text = "price_summ";
@@ -911,6 +912,14 @@ namespace tink_oblig
             this.groupBox6.TabIndex = 51;
             this.groupBox6.TabStop = false;
             // 
+            // label41
+            // 
+            this.label41.Location = new System.Drawing.Point(5, 143);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(373, 160);
+            this.label41.TabIndex = 64;
+            this.label41.Text = resources.GetString("label41.Text");
+            // 
             // show_history_cmb
             // 
             this.show_history_cmb.Location = new System.Drawing.Point(47, 67);
@@ -1068,14 +1077,6 @@ namespace tink_oblig
             this.summ_lbl_sell.TabIndex = 42;
             this.summ_lbl_sell.Text = "profit_sum";
             this.summ_lbl_sell.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label41
-            // 
-            this.label41.Location = new System.Drawing.Point(5, 143);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(373, 160);
-            this.label41.TabIndex = 64;
-            this.label41.Text = resources.GetString("label41.Text");
             // 
             // BoundWatchForm
             // 
