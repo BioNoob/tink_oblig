@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace tink_oblig
 {
-    public partial class BoundWatchBuyFrm : UserControl
+    public partial class BoundWatchCntrlFrm : Form
     {
-        public BoundWatchBuyFrm()
+        public BoundWatchCntrlFrm()
         {
             InitializeComponent();
         }

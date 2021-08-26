@@ -9,7 +9,7 @@ using tink_oblig.classes;
 
 namespace tink_oblig
 {
-    public partial class BoundWatchSellFrm : Form
+    public partial class BoundWatchSellFrm : UserControl
     {
         Bound_sold Bound { get; set; }
         public BoundWatchSellFrm(Bound_sold bnd)
@@ -17,5 +17,6 @@ namespace tink_oblig
             InitializeComponent();
             Bound = bnd;
         }
+
     }
 }

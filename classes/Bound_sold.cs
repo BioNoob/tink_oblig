@@ -113,11 +113,21 @@ namespace tink_oblig.classes
         /// <summary>
         /// Дата закрытия (полсденей продажи)
         /// </summary>
-        public DateTime CloseDate
+        public DateTime Close_Date
         {
             get
             {
                 return _sell_list.Last().Date;
+            }
+        }
+        /// <summary>
+        /// Кол-во проданых при закрытии
+        /// </summary>
+        public int Close_cnt_sell
+        {
+            get 
+            {
+                return _sell_list.Last().Quantity;
             }
         }
         /// <summary>
