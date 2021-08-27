@@ -31,16 +31,16 @@ namespace tink_oblig
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BoundWatchCntrlFrm));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox26 = new System.Windows.Forms.TextBox();
+            this.broker_tax_total_lbl = new System.Windows.Forms.TextBox();
             this.label52 = new System.Windows.Forms.Label();
             this.label53 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.coupon_tax_lbl = new System.Windows.Forms.TextBox();
+            this.sum_coupon_lbl = new System.Windows.Forms.TextBox();
+            this.total_cnt_coupon_lbl = new System.Windows.Forms.TextBox();
+            this.last_coupon_lbl = new System.Windows.Forms.TextBox();
+            this.coupon_val_lbl = new System.Windows.Forms.TextBox();
+            this.coupon_prc_lbl = new System.Windows.Forms.TextBox();
             this.label28 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -52,7 +52,7 @@ namespace tink_oblig
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.end_pay_lbl = new System.Windows.Forms.TextBox();
             this.prev_pay_lbl = new System.Windows.Forms.TextBox();
             this.next_pay_lbl = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -69,7 +69,7 @@ namespace tink_oblig
             this.pic_box_pb = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.show_panel = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -78,7 +78,7 @@ namespace tink_oblig
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.textBox26);
+            this.panel1.Controls.Add(this.broker_tax_total_lbl);
             this.panel1.Controls.Add(this.label52);
             this.panel1.Controls.Add(this.label53);
             this.panel1.Controls.Add(this.groupBox2);
@@ -100,15 +100,15 @@ namespace tink_oblig
             this.panel1.Size = new System.Drawing.Size(406, 283);
             this.panel1.TabIndex = 0;
             // 
-            // textBox26
+            // broker_tax_total_lbl
             // 
-            this.textBox26.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox26.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox26.Location = new System.Drawing.Point(77, 240);
-            this.textBox26.Name = "textBox26";
-            this.textBox26.ReadOnly = true;
-            this.textBox26.Size = new System.Drawing.Size(95, 21);
-            this.textBox26.TabIndex = 93;
+            this.broker_tax_total_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.broker_tax_total_lbl.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.broker_tax_total_lbl.Location = new System.Drawing.Point(77, 240);
+            this.broker_tax_total_lbl.Name = "broker_tax_total_lbl";
+            this.broker_tax_total_lbl.ReadOnly = true;
+            this.broker_tax_total_lbl.Size = new System.Drawing.Size(95, 21);
+            this.broker_tax_total_lbl.TabIndex = 93;
             // 
             // label52
             // 
@@ -132,12 +132,12 @@ namespace tink_oblig
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.textBox9);
-            this.groupBox2.Controls.Add(this.textBox8);
-            this.groupBox2.Controls.Add(this.textBox7);
-            this.groupBox2.Controls.Add(this.textBox6);
-            this.groupBox2.Controls.Add(this.textBox5);
-            this.groupBox2.Controls.Add(this.textBox4);
+            this.groupBox2.Controls.Add(this.coupon_tax_lbl);
+            this.groupBox2.Controls.Add(this.sum_coupon_lbl);
+            this.groupBox2.Controls.Add(this.total_cnt_coupon_lbl);
+            this.groupBox2.Controls.Add(this.last_coupon_lbl);
+            this.groupBox2.Controls.Add(this.coupon_val_lbl);
+            this.groupBox2.Controls.Add(this.coupon_prc_lbl);
             this.groupBox2.Controls.Add(this.label28);
             this.groupBox2.Controls.Add(this.label18);
             this.groupBox2.Controls.Add(this.label13);
@@ -156,59 +156,59 @@ namespace tink_oblig
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Купон";
             // 
-            // textBox9
+            // coupon_tax_lbl
             // 
-            this.textBox9.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox9.Location = new System.Drawing.Point(67, 160);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.ReadOnly = true;
-            this.textBox9.Size = new System.Drawing.Size(95, 21);
-            this.textBox9.TabIndex = 61;
+            this.coupon_tax_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.coupon_tax_lbl.Location = new System.Drawing.Point(67, 160);
+            this.coupon_tax_lbl.Name = "coupon_tax_lbl";
+            this.coupon_tax_lbl.ReadOnly = true;
+            this.coupon_tax_lbl.Size = new System.Drawing.Size(95, 21);
+            this.coupon_tax_lbl.TabIndex = 61;
             // 
-            // textBox8
+            // sum_coupon_lbl
             // 
-            this.textBox8.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox8.Location = new System.Drawing.Point(67, 125);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.ReadOnly = true;
-            this.textBox8.Size = new System.Drawing.Size(95, 21);
-            this.textBox8.TabIndex = 60;
+            this.sum_coupon_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.sum_coupon_lbl.Location = new System.Drawing.Point(67, 125);
+            this.sum_coupon_lbl.Name = "sum_coupon_lbl";
+            this.sum_coupon_lbl.ReadOnly = true;
+            this.sum_coupon_lbl.Size = new System.Drawing.Size(95, 21);
+            this.sum_coupon_lbl.TabIndex = 60;
             // 
-            // textBox7
+            // total_cnt_coupon_lbl
             // 
-            this.textBox7.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox7.Location = new System.Drawing.Point(67, 89);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(95, 21);
-            this.textBox7.TabIndex = 60;
+            this.total_cnt_coupon_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.total_cnt_coupon_lbl.Location = new System.Drawing.Point(67, 89);
+            this.total_cnt_coupon_lbl.Name = "total_cnt_coupon_lbl";
+            this.total_cnt_coupon_lbl.ReadOnly = true;
+            this.total_cnt_coupon_lbl.Size = new System.Drawing.Size(95, 21);
+            this.total_cnt_coupon_lbl.TabIndex = 60;
             // 
-            // textBox6
+            // last_coupon_lbl
             // 
-            this.textBox6.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox6.Location = new System.Drawing.Point(67, 54);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(95, 21);
-            this.textBox6.TabIndex = 60;
+            this.last_coupon_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.last_coupon_lbl.Location = new System.Drawing.Point(67, 54);
+            this.last_coupon_lbl.Name = "last_coupon_lbl";
+            this.last_coupon_lbl.ReadOnly = true;
+            this.last_coupon_lbl.Size = new System.Drawing.Size(95, 21);
+            this.last_coupon_lbl.TabIndex = 60;
             // 
-            // textBox5
+            // coupon_val_lbl
             // 
-            this.textBox5.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox5.Location = new System.Drawing.Point(104, 16);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(58, 21);
-            this.textBox5.TabIndex = 60;
+            this.coupon_val_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.coupon_val_lbl.Location = new System.Drawing.Point(104, 16);
+            this.coupon_val_lbl.Name = "coupon_val_lbl";
+            this.coupon_val_lbl.ReadOnly = true;
+            this.coupon_val_lbl.Size = new System.Drawing.Size(58, 21);
+            this.coupon_val_lbl.TabIndex = 60;
             // 
-            // textBox4
+            // coupon_prc_lbl
             // 
-            this.textBox4.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox4.Location = new System.Drawing.Point(24, 16);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(58, 21);
-            this.textBox4.TabIndex = 59;
+            this.coupon_prc_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.coupon_prc_lbl.Location = new System.Drawing.Point(24, 16);
+            this.coupon_prc_lbl.Name = "coupon_prc_lbl";
+            this.coupon_prc_lbl.ReadOnly = true;
+            this.coupon_prc_lbl.Size = new System.Drawing.Size(58, 21);
+            this.coupon_prc_lbl.TabIndex = 59;
             // 
             // label28
             // 
@@ -312,7 +312,7 @@ namespace tink_oblig
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.end_pay_lbl);
             this.groupBox1.Controls.Add(this.prev_pay_lbl);
             this.groupBox1.Controls.Add(this.next_pay_lbl);
             this.groupBox1.Controls.Add(this.label10);
@@ -326,14 +326,14 @@ namespace tink_oblig
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Даты";
             // 
-            // textBox3
+            // end_pay_lbl
             // 
-            this.textBox3.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox3.Location = new System.Drawing.Point(6, 92);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(175, 21);
-            this.textBox3.TabIndex = 59;
+            this.end_pay_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.end_pay_lbl.Location = new System.Drawing.Point(6, 92);
+            this.end_pay_lbl.Name = "end_pay_lbl";
+            this.end_pay_lbl.ReadOnly = true;
+            this.end_pay_lbl.Size = new System.Drawing.Size(175, 21);
+            this.end_pay_lbl.TabIndex = 59;
             // 
             // prev_pay_lbl
             // 
@@ -489,21 +489,21 @@ namespace tink_oblig
             this.label5.Text = "Кол-во";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // panel2
+            // show_panel
             // 
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 283);
-            this.panel2.MinimumSize = new System.Drawing.Size(406, 366);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(406, 409);
-            this.panel2.TabIndex = 1;
+            this.show_panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.show_panel.Location = new System.Drawing.Point(0, 283);
+            this.show_panel.MinimumSize = new System.Drawing.Size(406, 366);
+            this.show_panel.Name = "show_panel";
+            this.show_panel.Size = new System.Drawing.Size(406, 409);
+            this.show_panel.TabIndex = 1;
             // 
             // BoundWatchCntrlFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(406, 692);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.show_panel);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -524,16 +524,16 @@ namespace tink_oblig
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBox26;
+        private System.Windows.Forms.TextBox broker_tax_total_lbl;
         private System.Windows.Forms.Label label52;
         private System.Windows.Forms.Label label53;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox coupon_tax_lbl;
+        private System.Windows.Forms.TextBox sum_coupon_lbl;
+        private System.Windows.Forms.TextBox total_cnt_coupon_lbl;
+        private System.Windows.Forms.TextBox last_coupon_lbl;
+        private System.Windows.Forms.TextBox coupon_val_lbl;
+        private System.Windows.Forms.TextBox coupon_prc_lbl;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label13;
@@ -545,7 +545,7 @@ namespace tink_oblig
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox end_pay_lbl;
         private System.Windows.Forms.TextBox prev_pay_lbl;
         private System.Windows.Forms.TextBox next_pay_lbl;
         private System.Windows.Forms.Label label10;
@@ -562,6 +562,6 @@ namespace tink_oblig
         private System.Windows.Forms.PictureBox pic_box_pb;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel show_panel;
     }
 }

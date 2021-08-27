@@ -103,8 +103,8 @@ namespace tink_oblig.classes
         //искать в истории
         public List<Operation> Operations_list { get; set; }
 
-        protected List<Operation> Operations_for_now { get; set; }
-        protected List<Operation> Operations_for_sold { get; set; }
+        //protected List<Operation> Operations_for_now { get; set; }
+        //protected List<Operation> Operations_for_sold { get; set; }
 
         //sell buy coupon taxcoupon partrepayment brokercomission
         //private List<Operation> _sell_list;
@@ -323,6 +323,7 @@ namespace tink_oblig.classes
                 return Market_price_total - Avg_buy_paid_total;
             }
         }
+
         public decimal Diff_price_sum_nkd
         {
             get

@@ -53,15 +53,16 @@ namespace tink_oblig
             this.control_panel.Dock = System.Windows.Forms.DockStyle.Top;
             this.control_panel.Location = new System.Drawing.Point(0, 0);
             this.control_panel.Name = "control_panel";
-            this.control_panel.Size = new System.Drawing.Size(391, 55);
+            this.control_panel.Size = new System.Drawing.Size(406, 55);
             this.control_panel.TabIndex = 0;
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.Image = global::tink_oblig.Properties.Resources.icons8_повтор;
-            this.pictureBox1.Location = new System.Drawing.Point(345, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(360, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(34, 34);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -95,7 +96,7 @@ namespace tink_oblig
             this.refresh_btn.BackColor = System.Drawing.Color.Transparent;
             this.refresh_btn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("refresh_btn.BackgroundImage")));
             this.refresh_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.refresh_btn.Location = new System.Drawing.Point(342, 9);
+            this.refresh_btn.Location = new System.Drawing.Point(357, 9);
             this.refresh_btn.Name = "refresh_btn";
             this.refresh_btn.Size = new System.Drawing.Size(40, 40);
             this.refresh_btn.TabIndex = 5;
@@ -125,18 +126,20 @@ namespace tink_oblig
             // 
             this.view_panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.view_panel.Location = new System.Drawing.Point(0, 55);
+            this.view_panel.MinimumSize = new System.Drawing.Size(406, 366);
             this.view_panel.Name = "view_panel";
-            this.view_panel.Size = new System.Drawing.Size(391, 542);
+            this.view_panel.Size = new System.Drawing.Size(406, 542);
             this.view_panel.TabIndex = 1;
             // 
             // ManagerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(391, 597);
+            this.ClientSize = new System.Drawing.Size(406, 597);
             this.Controls.Add(this.view_panel);
             this.Controls.Add(this.control_panel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(422, 636);
             this.Name = "ManagerForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Облигатор";

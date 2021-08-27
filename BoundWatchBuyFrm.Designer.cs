@@ -30,50 +30,51 @@ namespace tink_oblig
         private void InitializeComponent()
         {
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.buy_sum_nkd_lbl = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
-            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.buy_sum_market_price_lbl = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
-            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.buy_sum_lbl = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.buy_avg_nkd_lbl = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.buy_avg_market_price_lbl = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.buy_avg_lbl = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label41 = new System.Windows.Forms.Label();
-            this.textBox18 = new System.Windows.Forms.TextBox();
+            this.commision_lbl = new System.Windows.Forms.TextBox();
             this.label39 = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
-            this.textBox25 = new System.Windows.Forms.TextBox();
+            this.profit_prc_lbl = new System.Windows.Forms.TextBox();
             this.label50 = new System.Windows.Forms.Label();
-            this.textBox24 = new System.Windows.Forms.TextBox();
+            this.profit_sum_lbl = new System.Windows.Forms.TextBox();
             this.label49 = new System.Windows.Forms.Label();
-            this.textBox23 = new System.Windows.Forms.TextBox();
+            this.buyback_sum_lb = new System.Windows.Forms.TextBox();
             this.label47 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
-            this.textBox17 = new System.Windows.Forms.TextBox();
+            this.diff_price_total_lbl = new System.Windows.Forms.TextBox();
             this.label36 = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
-            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.nkd_now_lbl = new System.Windows.Forms.TextBox();
             this.label30 = new System.Windows.Forms.Label();
-            this.textBox15 = new System.Windows.Forms.TextBox();
+            this.market_price_now_lbl = new System.Windows.Forms.TextBox();
             this.label31 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
-            this.textBox16 = new System.Windows.Forms.TextBox();
+            this.sum_in_lbl = new System.Windows.Forms.TextBox();
             this.label35 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -81,14 +82,14 @@ namespace tink_oblig
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.textBox11);
+            this.groupBox4.Controls.Add(this.buy_sum_nkd_lbl);
             this.groupBox4.Controls.Add(this.label23);
-            this.groupBox4.Controls.Add(this.textBox12);
+            this.groupBox4.Controls.Add(this.buy_sum_market_price_lbl);
             this.groupBox4.Controls.Add(this.label24);
             this.groupBox4.Controls.Add(this.label25);
             this.groupBox4.Controls.Add(this.label26);
             this.groupBox4.Controls.Add(this.label27);
-            this.groupBox4.Controls.Add(this.textBox13);
+            this.groupBox4.Controls.Add(this.buy_sum_lbl);
             this.groupBox4.Controls.Add(this.label29);
             this.groupBox4.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.groupBox4.Location = new System.Drawing.Point(205, 1);
@@ -98,14 +99,14 @@ namespace tink_oblig
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Суммарные значения покупки";
             // 
-            // textBox11
+            // buy_sum_nkd_lbl
             // 
-            this.textBox11.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox11.Location = new System.Drawing.Point(66, 73);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.ReadOnly = true;
-            this.textBox11.Size = new System.Drawing.Size(95, 21);
-            this.textBox11.TabIndex = 69;
+            this.buy_sum_nkd_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.buy_sum_nkd_lbl.Location = new System.Drawing.Point(66, 73);
+            this.buy_sum_nkd_lbl.Name = "buy_sum_nkd_lbl";
+            this.buy_sum_nkd_lbl.ReadOnly = true;
+            this.buy_sum_nkd_lbl.Size = new System.Drawing.Size(95, 21);
+            this.buy_sum_nkd_lbl.TabIndex = 69;
             // 
             // label23
             // 
@@ -117,14 +118,14 @@ namespace tink_oblig
             this.label23.Text = "RUB";
             this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // textBox12
+            // buy_sum_market_price_lbl
             // 
-            this.textBox12.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox12.Location = new System.Drawing.Point(66, 46);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.ReadOnly = true;
-            this.textBox12.Size = new System.Drawing.Size(95, 21);
-            this.textBox12.TabIndex = 67;
+            this.buy_sum_market_price_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.buy_sum_market_price_lbl.Location = new System.Drawing.Point(66, 46);
+            this.buy_sum_market_price_lbl.Name = "buy_sum_market_price_lbl";
+            this.buy_sum_market_price_lbl.ReadOnly = true;
+            this.buy_sum_market_price_lbl.Size = new System.Drawing.Size(95, 21);
+            this.buy_sum_market_price_lbl.TabIndex = 67;
             // 
             // label24
             // 
@@ -166,14 +167,14 @@ namespace tink_oblig
             this.label27.Text = "Вложения";
             this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // textBox13
+            // buy_sum_lbl
             // 
-            this.textBox13.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox13.Location = new System.Drawing.Point(66, 19);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.ReadOnly = true;
-            this.textBox13.Size = new System.Drawing.Size(95, 21);
-            this.textBox13.TabIndex = 62;
+            this.buy_sum_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.buy_sum_lbl.Location = new System.Drawing.Point(66, 19);
+            this.buy_sum_lbl.Name = "buy_sum_lbl";
+            this.buy_sum_lbl.ReadOnly = true;
+            this.buy_sum_lbl.Size = new System.Drawing.Size(95, 21);
+            this.buy_sum_lbl.TabIndex = 62;
             // 
             // label29
             // 
@@ -187,14 +188,14 @@ namespace tink_oblig
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.textBox10);
+            this.groupBox3.Controls.Add(this.buy_avg_nkd_lbl);
             this.groupBox3.Controls.Add(this.label22);
-            this.groupBox3.Controls.Add(this.textBox2);
+            this.groupBox3.Controls.Add(this.buy_avg_market_price_lbl);
             this.groupBox3.Controls.Add(this.label21);
             this.groupBox3.Controls.Add(this.label20);
             this.groupBox3.Controls.Add(this.label17);
             this.groupBox3.Controls.Add(this.label19);
-            this.groupBox3.Controls.Add(this.textBox1);
+            this.groupBox3.Controls.Add(this.buy_avg_lbl);
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.groupBox3.Location = new System.Drawing.Point(12, 1);
@@ -204,14 +205,14 @@ namespace tink_oblig
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Средние значения покупки";
             // 
-            // textBox10
+            // buy_avg_nkd_lbl
             // 
-            this.textBox10.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox10.Location = new System.Drawing.Point(66, 73);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.ReadOnly = true;
-            this.textBox10.Size = new System.Drawing.Size(95, 21);
-            this.textBox10.TabIndex = 69;
+            this.buy_avg_nkd_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.buy_avg_nkd_lbl.Location = new System.Drawing.Point(66, 73);
+            this.buy_avg_nkd_lbl.Name = "buy_avg_nkd_lbl";
+            this.buy_avg_nkd_lbl.ReadOnly = true;
+            this.buy_avg_nkd_lbl.Size = new System.Drawing.Size(95, 21);
+            this.buy_avg_nkd_lbl.TabIndex = 69;
             // 
             // label22
             // 
@@ -223,14 +224,14 @@ namespace tink_oblig
             this.label22.Text = "RUB";
             this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // textBox2
+            // buy_avg_market_price_lbl
             // 
-            this.textBox2.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox2.Location = new System.Drawing.Point(66, 46);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(95, 21);
-            this.textBox2.TabIndex = 67;
+            this.buy_avg_market_price_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.buy_avg_market_price_lbl.Location = new System.Drawing.Point(66, 46);
+            this.buy_avg_market_price_lbl.Name = "buy_avg_market_price_lbl";
+            this.buy_avg_market_price_lbl.ReadOnly = true;
+            this.buy_avg_market_price_lbl.Size = new System.Drawing.Size(95, 21);
+            this.buy_avg_market_price_lbl.TabIndex = 67;
             // 
             // label21
             // 
@@ -272,14 +273,14 @@ namespace tink_oblig
             this.label19.Text = "Вложения";
             this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // textBox1
+            // buy_avg_lbl
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox1.Location = new System.Drawing.Point(66, 19);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(95, 21);
-            this.textBox1.TabIndex = 62;
+            this.buy_avg_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.buy_avg_lbl.Location = new System.Drawing.Point(66, 19);
+            this.buy_avg_lbl.Name = "buy_avg_lbl";
+            this.buy_avg_lbl.ReadOnly = true;
+            this.buy_avg_lbl.Size = new System.Drawing.Size(95, 21);
+            this.buy_avg_lbl.TabIndex = 62;
             // 
             // label12
             // 
@@ -293,29 +294,30 @@ namespace tink_oblig
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.label1);
             this.groupBox5.Controls.Add(this.label41);
-            this.groupBox5.Controls.Add(this.textBox18);
+            this.groupBox5.Controls.Add(this.commision_lbl);
             this.groupBox5.Controls.Add(this.label39);
             this.groupBox5.Controls.Add(this.label40);
             this.groupBox5.Controls.Add(this.label38);
-            this.groupBox5.Controls.Add(this.textBox25);
+            this.groupBox5.Controls.Add(this.profit_prc_lbl);
             this.groupBox5.Controls.Add(this.label50);
-            this.groupBox5.Controls.Add(this.textBox24);
+            this.groupBox5.Controls.Add(this.profit_sum_lbl);
             this.groupBox5.Controls.Add(this.label49);
-            this.groupBox5.Controls.Add(this.textBox23);
+            this.groupBox5.Controls.Add(this.buyback_sum_lb);
             this.groupBox5.Controls.Add(this.label47);
             this.groupBox5.Controls.Add(this.label48);
-            this.groupBox5.Controls.Add(this.textBox17);
+            this.groupBox5.Controls.Add(this.diff_price_total_lbl);
             this.groupBox5.Controls.Add(this.label36);
             this.groupBox5.Controls.Add(this.label37);
-            this.groupBox5.Controls.Add(this.textBox14);
+            this.groupBox5.Controls.Add(this.nkd_now_lbl);
             this.groupBox5.Controls.Add(this.label30);
-            this.groupBox5.Controls.Add(this.textBox15);
+            this.groupBox5.Controls.Add(this.market_price_now_lbl);
             this.groupBox5.Controls.Add(this.label31);
             this.groupBox5.Controls.Add(this.label32);
             this.groupBox5.Controls.Add(this.label33);
             this.groupBox5.Controls.Add(this.label34);
-            this.groupBox5.Controls.Add(this.textBox16);
+            this.groupBox5.Controls.Add(this.sum_in_lbl);
             this.groupBox5.Controls.Add(this.label35);
             this.groupBox5.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.groupBox5.Location = new System.Drawing.Point(12, 108);
@@ -336,15 +338,15 @@ namespace tink_oblig
             this.label41.TabIndex = 97;
             this.label41.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // textBox18
+            // commision_lbl
             // 
-            this.textBox18.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox18.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox18.Location = new System.Drawing.Point(66, 111);
-            this.textBox18.Name = "textBox18";
-            this.textBox18.ReadOnly = true;
-            this.textBox18.Size = new System.Drawing.Size(95, 21);
-            this.textBox18.TabIndex = 96;
+            this.commision_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.commision_lbl.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.commision_lbl.Location = new System.Drawing.Point(66, 111);
+            this.commision_lbl.Name = "commision_lbl";
+            this.commision_lbl.ReadOnly = true;
+            this.commision_lbl.Size = new System.Drawing.Size(95, 21);
+            this.commision_lbl.TabIndex = 96;
             // 
             // label39
             // 
@@ -376,14 +378,14 @@ namespace tink_oblig
             this.label38.Text = "Профит";
             this.label38.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // textBox25
+            // profit_prc_lbl
             // 
-            this.textBox25.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox25.Location = new System.Drawing.Point(259, 111);
-            this.textBox25.Name = "textBox25";
-            this.textBox25.ReadOnly = true;
-            this.textBox25.Size = new System.Drawing.Size(95, 21);
-            this.textBox25.TabIndex = 82;
+            this.profit_prc_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.profit_prc_lbl.Location = new System.Drawing.Point(259, 111);
+            this.profit_prc_lbl.Name = "profit_prc_lbl";
+            this.profit_prc_lbl.ReadOnly = true;
+            this.profit_prc_lbl.Size = new System.Drawing.Size(95, 21);
+            this.profit_prc_lbl.TabIndex = 82;
             // 
             // label50
             // 
@@ -395,14 +397,14 @@ namespace tink_oblig
             this.label50.Text = "%";
             this.label50.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // textBox24
+            // profit_sum_lbl
             // 
-            this.textBox24.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox24.Location = new System.Drawing.Point(259, 84);
-            this.textBox24.Name = "textBox24";
-            this.textBox24.ReadOnly = true;
-            this.textBox24.Size = new System.Drawing.Size(95, 21);
-            this.textBox24.TabIndex = 80;
+            this.profit_sum_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.profit_sum_lbl.Location = new System.Drawing.Point(259, 84);
+            this.profit_sum_lbl.Name = "profit_sum_lbl";
+            this.profit_sum_lbl.ReadOnly = true;
+            this.profit_sum_lbl.Size = new System.Drawing.Size(95, 21);
+            this.profit_sum_lbl.TabIndex = 80;
             // 
             // label49
             // 
@@ -414,14 +416,14 @@ namespace tink_oblig
             this.label49.Text = "RUB";
             this.label49.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // textBox23
+            // buyback_sum_lb
             // 
-            this.textBox23.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox23.Location = new System.Drawing.Point(66, 84);
-            this.textBox23.Name = "textBox23";
-            this.textBox23.ReadOnly = true;
-            this.textBox23.Size = new System.Drawing.Size(95, 21);
-            this.textBox23.TabIndex = 75;
+            this.buyback_sum_lb.BackColor = System.Drawing.SystemColors.Control;
+            this.buyback_sum_lb.Location = new System.Drawing.Point(66, 84);
+            this.buyback_sum_lb.Name = "buyback_sum_lb";
+            this.buyback_sum_lb.ReadOnly = true;
+            this.buyback_sum_lb.Size = new System.Drawing.Size(95, 21);
+            this.buyback_sum_lb.TabIndex = 75;
             // 
             // label47
             // 
@@ -443,14 +445,14 @@ namespace tink_oblig
             this.label48.Text = "Сумма погашений";
             this.label48.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // textBox17
+            // diff_price_total_lbl
             // 
-            this.textBox17.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox17.Location = new System.Drawing.Point(66, 47);
-            this.textBox17.Name = "textBox17";
-            this.textBox17.ReadOnly = true;
-            this.textBox17.Size = new System.Drawing.Size(95, 21);
-            this.textBox17.TabIndex = 72;
+            this.diff_price_total_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.diff_price_total_lbl.Location = new System.Drawing.Point(66, 47);
+            this.diff_price_total_lbl.Name = "diff_price_total_lbl";
+            this.diff_price_total_lbl.ReadOnly = true;
+            this.diff_price_total_lbl.Size = new System.Drawing.Size(95, 21);
+            this.diff_price_total_lbl.TabIndex = 72;
             // 
             // label36
             // 
@@ -472,14 +474,14 @@ namespace tink_oblig
             this.label37.Text = "Разница стоимости";
             this.label37.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // textBox14
+            // nkd_now_lbl
             // 
-            this.textBox14.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox14.Location = new System.Drawing.Point(259, 47);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.ReadOnly = true;
-            this.textBox14.Size = new System.Drawing.Size(95, 21);
-            this.textBox14.TabIndex = 69;
+            this.nkd_now_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.nkd_now_lbl.Location = new System.Drawing.Point(259, 47);
+            this.nkd_now_lbl.Name = "nkd_now_lbl";
+            this.nkd_now_lbl.ReadOnly = true;
+            this.nkd_now_lbl.Size = new System.Drawing.Size(95, 21);
+            this.nkd_now_lbl.TabIndex = 69;
             // 
             // label30
             // 
@@ -491,14 +493,14 @@ namespace tink_oblig
             this.label30.Text = "RUB";
             this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // textBox15
+            // market_price_now_lbl
             // 
-            this.textBox15.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox15.Location = new System.Drawing.Point(259, 19);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.ReadOnly = true;
-            this.textBox15.Size = new System.Drawing.Size(95, 21);
-            this.textBox15.TabIndex = 67;
+            this.market_price_now_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.market_price_now_lbl.Location = new System.Drawing.Point(259, 19);
+            this.market_price_now_lbl.Name = "market_price_now_lbl";
+            this.market_price_now_lbl.ReadOnly = true;
+            this.market_price_now_lbl.Size = new System.Drawing.Size(95, 21);
+            this.market_price_now_lbl.TabIndex = 67;
             // 
             // label31
             // 
@@ -540,14 +542,14 @@ namespace tink_oblig
             this.label34.Text = "Вложения";
             this.label34.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // textBox16
+            // sum_in_lbl
             // 
-            this.textBox16.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox16.Location = new System.Drawing.Point(66, 19);
-            this.textBox16.Name = "textBox16";
-            this.textBox16.ReadOnly = true;
-            this.textBox16.Size = new System.Drawing.Size(95, 21);
-            this.textBox16.TabIndex = 62;
+            this.sum_in_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.sum_in_lbl.Location = new System.Drawing.Point(66, 19);
+            this.sum_in_lbl.Name = "sum_in_lbl";
+            this.sum_in_lbl.ReadOnly = true;
+            this.sum_in_lbl.Size = new System.Drawing.Size(95, 21);
+            this.sum_in_lbl.TabIndex = 62;
             // 
             // label35
             // 
@@ -558,6 +560,17 @@ namespace tink_oblig
             this.label35.TabIndex = 61;
             this.label35.Text = "RUB";
             this.label35.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label1
+            // 
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(190, 8);
+            this.label1.Margin = new System.Windows.Forms.Padding(0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(1, 134);
+            this.label1.TabIndex = 98;
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // BoundWatchBuyFrm
             // 
@@ -581,49 +594,50 @@ namespace tink_oblig
 
         #endregion
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox buy_sum_nkd_lbl;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.TextBox buy_sum_market_price_lbl;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.TextBox buy_sum_lbl;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox buy_avg_nkd_lbl;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox buy_avg_market_price_lbl;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox buy_avg_lbl;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.TextBox textBox14;
+        private System.Windows.Forms.TextBox nkd_now_lbl;
         private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.TextBox textBox15;
+        private System.Windows.Forms.TextBox market_price_now_lbl;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.TextBox textBox16;
+        private System.Windows.Forms.TextBox sum_in_lbl;
         private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.TextBox textBox17;
+        private System.Windows.Forms.TextBox diff_price_total_lbl;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.TextBox textBox23;
+        private System.Windows.Forms.TextBox buyback_sum_lb;
         private System.Windows.Forms.Label label47;
         private System.Windows.Forms.Label label48;
         private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.TextBox textBox25;
+        private System.Windows.Forms.TextBox profit_prc_lbl;
         private System.Windows.Forms.Label label50;
-        private System.Windows.Forms.TextBox textBox24;
+        private System.Windows.Forms.TextBox profit_sum_lbl;
         private System.Windows.Forms.Label label49;
-        private System.Windows.Forms.TextBox textBox18;
+        private System.Windows.Forms.TextBox commision_lbl;
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.Label label1;
     }
 }

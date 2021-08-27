@@ -18,13 +18,13 @@ namespace tink_oblig.classes
         {
             Base = ps;
 
-            _buy_list = Operations_for_sold.Where(t => t.OperationType == ExtendedOperationType.Buy && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
-            _sell_list = Operations_for_sold.Where(t => t.OperationType == ExtendedOperationType.Sell && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
-            _coupon_list = Operations_for_sold.Where(t => t.OperationType == ExtendedOperationType.Coupon && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
-            _coupon_tax_list = Operations_for_sold.Where(t => t.OperationType == ExtendedOperationType.TaxCoupon && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
-            _partrepayment_list = Operations_for_sold.Where(t => t.OperationType == ExtendedOperationType.PartRepayment && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
-            _brokercomission_list = Operations_for_sold.Where(t => t.OperationType == ExtendedOperationType.BrokerCommission && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
-            _repayment_list = Operations_for_sold.Where(t => t.OperationType == ExtendedOperationType.Repayment && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
+            _buy_list = Operations_list.Where(t => t.OperationType == ExtendedOperationType.Buy && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
+            _sell_list = Operations_list.Where(t => t.OperationType == ExtendedOperationType.Sell && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
+            _coupon_list = Operations_list.Where(t => t.OperationType == ExtendedOperationType.Coupon && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
+            _coupon_tax_list = Operations_list.Where(t => t.OperationType == ExtendedOperationType.TaxCoupon && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
+            _partrepayment_list = Operations_list.Where(t => t.OperationType == ExtendedOperationType.PartRepayment && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
+            _brokercomission_list = Operations_list.Where(t => t.OperationType == ExtendedOperationType.BrokerCommission && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
+            _repayment_list = Operations_list.Where(t => t.OperationType == ExtendedOperationType.Repayment && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
 
 
             List<Operation> buf_list = new List<Operation>();
@@ -52,7 +52,7 @@ namespace tink_oblig.classes
         private List<Operation> _coupon_tax_list;
         private List<Operation> _partrepayment_list;
         private List<Operation> _brokercomission_list;
-        private List<Operation> _repayment_list;
+        private List<Operation> _repayment_list; //погошения бумаги... хз пока как оброботать
 
 
         public decimal Last_Coupon_payed
@@ -144,14 +144,56 @@ namespace tink_oblig.classes
         /// <summary>
         /// Сумма полученных платежей за все продажи
         /// </summary>
-        public decimal Summ_Sell
+        public decimal Summ_sell
         {
             get
             {
                 return _sell_list.Sum(t => t.Payment);
             }
         }
+        /// <summary>
+        /// Средняя полученных платежей за все продажи
+        /// </summary>
+        public decimal Summ_sell_avg
+        {
+            get
+            {
+                return Summ_sell / Cnt_sell;
+            }
+        }
 
+
+        public decimal Market_price_summ_sell
+        {
+            get
+            {
+                return _sell_list.Select(t => t.Payment).Sum();
+            }
+        }
+        public decimal Market_price_avg_sell
+        {
+            get
+            {
+                return _sell_list.Select(t => t.Payment).Sum() / Cnt_sell;
+            }
+        }
+
+        public decimal Nkd_summ_by_sell
+        {
+            get
+            {
+                var a = Market_price_summ_sell -
+                    (_sell_list.Select(t => t.Price).Sum() * Cnt_sell);
+                return a;
+            }
+        }
+        public decimal Nkd_avg_by_sell
+        {
+            get
+            {
+                return Nkd_summ_by_sell / Cnt_sell;
+            }
+        }
 
         private decimal _diff_sell;
         /// <summary>
@@ -169,6 +211,17 @@ namespace tink_oblig.classes
                 _diff_sell = value;
             }
         }
+        /// <summary>
+        /// Средняя разница по закрытым позициям
+        /// </summary>
+        public decimal Diff_sell_avg
+        {
+            get
+            {
+                return Diff_sell / Cnt_sell;
+            }
+        }
+
         public decimal Profit
         {
             get

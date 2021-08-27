@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using Tinkoff.Trading.OpenApi.Models;
+using PropertyChanged;
 using static tink_oblig.classes.Accounts;
+using System.ComponentModel;
 
 namespace tink_oblig.classes
 {
@@ -13,16 +14,16 @@ namespace tink_oblig.classes
         public event PropertyChangedEventHandler PropertyChanged;
         public Bounds(Account_m acc)
         {
-            _boundslist = new List<Bound>();
+            _boundslist = new List<Bound_Conclav>();
             Acc = acc;
         }
         public Bounds Copy ()
         {
-            var b =  new Bounds(this.Acc) { BoundsList = new List<Bound>(this.BoundsList) };
+            var b =  new Bounds(this.Acc) { BoundsList = new List<Bound_Conclav>(this.BoundsList) };
             return b;
         }
-        private List<Bound> _boundslist;
-        public List<Bound> BoundsList
+        private List<Bound_Conclav> _boundslist;
+        public List<Bound_Conclav> BoundsList
         {
             get
             {
