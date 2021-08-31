@@ -23,18 +23,18 @@ namespace tink_oblig
             Bound_Cnc = bnc;
 
             Mode = mod;
-            name_lbl.DataBindings.Add(new Binding("Text", Bound_s, "base.Base.Name", true, DataSourceUpdateMode.OnPropertyChanged));
-            ticker_lbl.DataBindings.Add(new Binding("Text", Bound_s, "base.Base.Ticker", true, DataSourceUpdateMode.OnPropertyChanged));
+            name_lbl.DataBindings.Add(new Binding("Text", Bound_s, " Bound_Cnc.Bound.Base.Name", true, DataSourceUpdateMode.OnPropertyChanged));
+            ticker_lbl.DataBindings.Add(new Binding("Text", Bound_s, " Bound_Cnc.Bound.Base.Ticker", true, DataSourceUpdateMode.OnPropertyChanged));
             pic_box_pb.DataBindings.Add(new Binding("Image", Bound_s, "Img_exct", true));
-            nominal_lbl.DataBindings.Add(new Binding("Text", Bound_s, "base.Nominal", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F1"));
-            pay_period_lbl.DataBindings.Add(new Binding("Text", Bound_s, "base.Pay_period", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "D"));
+            nominal_lbl.DataBindings.Add(new Binding("Text", Bound_s, " Bound_Cnc.Bound.Nominal", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F1"));
+            pay_period_lbl.DataBindings.Add(new Binding("Text", Bound_s, " Bound_Cnc.Bound.Pay_period", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "D"));
 
-            prev_pay_lbl.DataBindings.Add(new Binding("Text", Bound_s, "base.Prev_pay_dt", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "dd.MM.yyyy"));
-            next_pay_lbl.DataBindings.Add(new Binding("Text", Bound_s, "base.Next_pay_dt", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "dd.MM.yyyy"));
-            end_pay_lbl.DataBindings.Add(new Binding("Text", Bound_s, "base.End_pay_dt", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "dd.MM.yyyy"));
+            prev_pay_lbl.DataBindings.Add(new Binding("Text", Bound_s, " Bound_Cnc.Bound.Prev_pay_dt", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "dd.MM.yyyy"));
+            next_pay_lbl.DataBindings.Add(new Binding("Text", Bound_s, " Bound_Cnc.Bound.Next_pay_dt", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "dd.MM.yyyy"));
+            end_pay_lbl.DataBindings.Add(new Binding("Text", Bound_s, " Bound_Cnc.Bound.End_pay_dt", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "dd.MM.yyyy"));
 
-            coupon_prc_lbl.DataBindings.Add(new Binding("Text", Bound_s, "base.Cpn_Percent", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
-            coupon_val_lbl.DataBindings.Add(new Binding("Text", Bound_s, "base.Cpn_val", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
+            coupon_prc_lbl.DataBindings.Add(new Binding("Text", Bound_s, " Bound_Cnc.Bound.Cpn_Percent", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
+            coupon_val_lbl.DataBindings.Add(new Binding("Text", Bound_s, " Bound_Cnc.Bound.Cpn_val", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
 
             SwitchType(mod);
 
@@ -54,27 +54,27 @@ namespace tink_oblig
                     total_cnt_coupon_lbl.DataBindings.Add(new Binding("Text", Bound_n, "Coupon_Cnt_summ", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "D"));
                     sum_coupon_lbl.DataBindings.Add(new Binding("Text", Bound_n, "Coupon_summ", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
                     coupon_tax_lbl.DataBindings.Add(new Binding("Text", Bound_n, "Coupon_Tax_summ", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
-                    count_lbl.DataBindings.Add(new Binding("Text", Bound_n, "base.Base.Lots", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "D"));
-                    price_sum_lbl.DataBindings.Add(new Binding("Text", Bound_n, "base.Avg_buy_paid_total", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
+                    count_lbl.DataBindings.Add(new Binding("Text", Bound_n, " Bound_Cnc.Bound.Base.Lots", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "D"));
+                    price_sum_lbl.DataBindings.Add(new Binding("Text", Bound_n, " Bound_Cnc.Bound.Avg_buy_paid_total", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
                     broker_tax_total_lbl.DataBindings.Add(new Binding("Text", Bound_n, "Broker_comission_total", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
                     show_panel.Controls.Clear();
                     show_panel.Controls.Add(new BoundWatchBuyFrm(Bound_n) { Dock = DockStyle.Fill});
-                    this.Text = Bound_n.Base.Name;
+                    this.Text = Bound_Cnc.Bound.Base.Name;
                     break;
                 case SeeHistory.History:
                     last_coupon_lbl.DataBindings.Add(new Binding("Text", Bound_s, "Last_Coupon_payed", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
                     total_cnt_coupon_lbl.DataBindings.Add(new Binding("Text", Bound_s, "Coupon_Cnt_summ", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "D"));
                     sum_coupon_lbl.DataBindings.Add(new Binding("Text", Bound_s, "Coupon_summ", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
                     coupon_tax_lbl.DataBindings.Add(new Binding("Text", Bound_s, "Coupon_Tax_summ", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
-                    count_lbl.DataBindings.Add(new Binding("Text", Bound_s, "base.Base.Lots", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "D"));
-                    price_sum_lbl.DataBindings.Add(new Binding("Text", Bound_s, "base.Avg_buy_paid_total", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
+                    count_lbl.DataBindings.Add(new Binding("Text", Bound_s, " Bound_Cnc.Bound.Base.Lots", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "D"));
+                    price_sum_lbl.DataBindings.Add(new Binding("Text", Bound_s, " Bound_Cnc.Bound.Avg_buy_paid_total", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
                     broker_tax_total_lbl.DataBindings.Add(new Binding("Text", Bound_s, "Broker_comission_total", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
                     show_panel.Controls.Clear();
                     show_panel.Controls.Add(new BoundWatchSellFrm(Bound_s) { Dock = DockStyle.Fill });
-                    this.Text = Bound_s.Base.Name;
+                    this.Text = Bound_Cnc.Bound.Base.Name;
                     break;
                 case SeeHistory.WithHistory:
-                    this.Text = Bound_n.Base.Name;
+                    this.Text = Bound_Cnc.Bound.Base.Name;
                     break;
                 default:
                     break;

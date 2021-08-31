@@ -86,7 +86,7 @@ namespace tink_oblig.classes
                     var lpl = prtfl.Positions.Where(t => t.InstrumentType == InstrumentType.Bond).ToList();
                     foreach (var itm in lpl)
                     {
-                        lbd.BoundsList.Add(new Bound(itm)); //лист сейчас. Для истории надо грузить через операции..
+                        lbd.BoundsList.Add(new Bound_Conclav(new Bound(itm))); //лист сейчас. Для истории надо грузить через операции..
                     }
                     Portfolios.Add(lbd.Acc, lbd);
                 }
@@ -106,7 +106,7 @@ namespace tink_oblig.classes
         public async Task DoLoad_ObligList(Account_m acc, bool fl_refresh = false) //грузим инфу по портфелью
         {
             var bounds = Program.InnerAccount.Portfolios[acc];
-            var load_signal = bounds.BoundsList.Select(t => t.Operations_list).Select(t => t.Count).Sum(); //если операции загружены то > 0
+            var load_signal = bounds.BoundsList.Select(t => t.Bound.Operations_list).Select(t => t.Count).Sum(); //если операции загружены то > 0
             if (load_signal > 0)
             {
                 if (!fl_refresh)
@@ -117,12 +117,12 @@ namespace tink_oblig.classes
             }
             foreach (var item in bounds.BoundsList)
             {
-                item.Operations_list = await Program.CurrentContext.OperationsAsync(new DateTime(2015, 01, 01), DateTime.Now, item.Base.Figi, bounds.Acc.BrokerAccountId);
+                item.Bound.Operations_list = await Program.CurrentContext.OperationsAsync(new DateTime(2015, 01, 01), DateTime.Now, item.Bound.Base.Figi, bounds.Acc.BrokerAccountId);
             }
             await LoadAllBndHistory(bounds);
             foreach (var item in bounds.BoundsList)
             {
-                await LoadInfoBound(item);
+                await LoadInfoBound(item.Bound);
             }
             LoadObligInfoDone?.Invoke(Program.InnerAccount.Portfolios[acc]);
         }
@@ -168,7 +168,7 @@ namespace tink_oblig.classes
         {
             var z = await Program.CurrentContext.OperationsAsync(new DateTime(2015, 01, 01), DateTime.Now, "", bounds.Acc.BrokerAccountId);
             var selectedz = z.Where(t => t.InstrumentType == InstrumentType.Bond).Select(t => t.Figi).Distinct().ToList();
-            var notfnd = selectedz.Except(bounds.BoundsList.Select(t => t.Base.Figi)).ToList();
+            var notfnd = selectedz.Except(bounds.BoundsList.Select(t => t.Bound.Base.Figi)).ToList();
             //для этих получить инфу (
             foreach (var item in notfnd)
             {
@@ -186,8 +186,8 @@ namespace tink_oblig.classes
                 Bound b = new Bound(new Portfolio.Position(t.Name, item, t.Ticker, t.Isin, t.Type, cnt, 0, new MoneyAmount(t.Currency, expt_yeld), cnt, new MoneyAmount(t.Currency, avg), new MoneyAmount(t.Currency, avg_no_nkd)));
 
                 b.Operations_list = z.Where(t => t.Figi == item).ToList();
-                b.Simplify = true;
-                bounds.BoundsList.Add(b);
+
+                bounds.BoundsList.Add(new Bound_Conclav(b));
             }
         }
     }

@@ -12,10 +12,13 @@ namespace tink_oblig.classes
         public Bound_now Bound_now { get; set; }
         public Bound_sold Bound_sold { get; set; }
 
-        public Bound_Conclav(Bound_sold bns,Bound_now bnn)
+        public Bound Bound { get; set; }
+
+        public Bound_Conclav(Bound bnb)
         {
-            Bound_now = bnn;
-            Bound_sold = bns;
+            Bound = bnb;
+            Bound_now = new Bound_now(Bound);
+            Bound_sold = new Bound_sold(Bound);
         }
     }
 }

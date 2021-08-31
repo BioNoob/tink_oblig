@@ -12,17 +12,18 @@ using Tinkoff.Trading.OpenApi.Models;
 
 namespace tink_oblig.classes
 {
-    public class Bound_now : Bound, INotifyPropertyChanged
+    public class Bound_now : INotifyPropertyChanged //Bound,
     {
-        public Bound_now(Portfolio.Position ps) : base(ps)
+        Bound Bound { get; set; }
+        public Bound_now(Bound bnd)
         {
-            Base = ps;
-            _buy_list = Operations_list.Where(t => t.OperationType == ExtendedOperationType.Buy && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
-            _coupon_list = Operations_list.Where(t => t.OperationType == ExtendedOperationType.Coupon && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
-            _coupon_tax_list = Operations_list.Where(t => t.OperationType == ExtendedOperationType.TaxCoupon && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
-            _partrepayment_list = Operations_list.Where(t => t.OperationType == ExtendedOperationType.PartRepayment && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
-            _brokercomission_list = Operations_list.Where(t => t.OperationType == ExtendedOperationType.BrokerCommission && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
-            _repayment_list = Operations_list.Where(t => t.OperationType == ExtendedOperationType.Repayment && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
+            Bound = bnd;
+            _buy_list = Bound.Operations_list.Where(t => t.OperationType == ExtendedOperationType.Buy && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
+            _coupon_list = Bound.Operations_list.Where(t => t.OperationType == ExtendedOperationType.Coupon && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
+            _coupon_tax_list = Bound.Operations_list.Where(t => t.OperationType == ExtendedOperationType.TaxCoupon && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
+            _partrepayment_list = Bound.Operations_list.Where(t => t.OperationType == ExtendedOperationType.PartRepayment && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
+            _brokercomission_list = Bound.Operations_list.Where(t => t.OperationType == ExtendedOperationType.BrokerCommission && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
+            _repayment_list = Bound.Operations_list.Where(t => t.OperationType == ExtendedOperationType.Repayment && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
         }
         private List<Operation> _buy_list;
         private List<Operation> _coupon_list;
@@ -31,6 +32,7 @@ namespace tink_oblig.classes
         private List<Operation> _brokercomission_list;
         private List<Operation> _repayment_list; //погошения бумаги... хз пока как оброботать
 
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public decimal Last_Coupon_payed
         {
@@ -93,7 +95,7 @@ namespace tink_oblig.classes
         {
             get
             {
-                return Coupon_summ - Coupon_Tax_summ + Buy_Back_summ + Diff_price_sum_nkd
+                return Coupon_summ - Coupon_Tax_summ + Buy_Back_summ + Bound.Diff_price_sum_nkd
                     - Broker_comission_total;
             }
         }
@@ -101,7 +103,7 @@ namespace tink_oblig.classes
         {
             get
             {
-                return ((Profit * 100) / Avg_buy_paid_total);
+                return ((Profit * 100) / Bound.Avg_buy_paid_total);
             }
         }
 
