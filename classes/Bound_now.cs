@@ -14,7 +14,7 @@ namespace tink_oblig.classes
 {
     public class Bound_now : INotifyPropertyChanged //Bound,
     {
-        Bound Bound { get; set; }
+        public Bound Bound { get; set; }
         public Bound_now(Bound bnd)
         {
             Bound = bnd;

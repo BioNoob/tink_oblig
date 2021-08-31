@@ -22,34 +22,28 @@ namespace tink_oblig
             switch (SeeHistory)
             {
                 case SeeHistory.NoHistrory:
-                    Selected_portfail.BoundsList = Selected_portfail.BoundsList.Where(t => !t.Simplify).ToList();
+                    //Selected_portfail.BoundsList = Selected_portfail.BoundsList.Where(t => !t.Simplify).ToList();
+                    foreach (var bd in Selected_portfail.Bounds_Now)
+                    {
+                        LoadBounds(bd.Bound);
+                    }
                     buf_text = "Купите что-нибудь из облигаций";
                     break;
                 case SeeHistory.History:
-                    Selected_portfail.BoundsList = Selected_portfail.BoundsList.Where(t => t.Simplify).ToList();
+                    //Selected_portfail.BoundsList = Selected_portfail.BoundsList.Where(t => t.Simplify).ToList();
+                    foreach (var bd in Selected_portfail.Bounds_Sold)
+                    {
+                        LoadBounds(bd.Bound);
+                    }
                     buf_text = "Продайте что-нибудь из облигаций";
                     break;
                 case SeeHistory.WithHistory:
                     buf_text = "Купите что-нибудь из облигаций";
                     break;
             }
-            foreach (var bd in Selected_portfail.BoundsList.OrderByDescending(t=>t.Last_sell_dt))
-            {
-                switch (SeeHistory)
-                {
-                    case SeeHistory.NoHistrory:
-                        if (!bd.Simplify)
-                            LoadBounds(bd);
-                        break;
-                    case SeeHistory.History:
-                        if (bd.Simplify)
-                            LoadBounds(bd);
-                        break;
-                    case SeeHistory.WithHistory:
-                        LoadBounds(bd);
-                        break;
-                }
-            }
+
+
+            //отдельным методом
             if(Selected_portfail.BoundsList.Count < 1)
             {
                 BoundListLayPannel.RowCount++;
@@ -122,11 +116,11 @@ namespace tink_oblig
         {
             if (Selected_portfail.BoundsList.Count > 0)
             {
-                var a = Selected_portfail.BoundsList.Min(t => t.Profit_summ);
-                var l = Selected_portfail.BoundsList.Where(t => t.Profit_summ == a).Single(); //ОПЕРЕЙШЕН ЛИСТ ОГРОМНЫЙ ИЛИ В НЕМ ЧЕ ТО НЕ ТАК ( возможно в подгрузке истории LoadAllBndHistory)
-                BoundWatchForm bwf_worst = new BoundWatchForm(l);
-                bwf_worst.Tag = $"{l.Base.Ticker}";
-                bwf_worst.Show();
+                //var a = Selected_portfail.BoundsList.Min(t => t.Profit_summ);
+                //var l = Selected_portfail.BoundsList.Where(t => t.Profit_summ == a).Single(); //ОПЕРЕЙШЕН ЛИСТ ОГРОМНЫЙ ИЛИ В НЕМ ЧЕ ТО НЕ ТАК ( возможно в подгрузке истории LoadAllBndHistory)
+                //BoundWatchForm bwf_worst = new BoundWatchForm(l);
+                //bwf_worst.Tag = $"{l.Base.Ticker}";
+                //bwf_worst.Show();
             }
         }
         //private void change_history_btn_Click(object sender, EventArgs e)

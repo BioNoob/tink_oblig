@@ -45,7 +45,7 @@ namespace tink_oblig
                             }
                                 
             }
-            BoundWatchForm bwf = new BoundWatchForm(_Bnb);
+            BoundWatchCntrlFrm bwf = new BoundWatchCntrlFrm(_Bnb);
             bwf.StartPosition = FormStartPosition.CenterParent;
             bwf.Tag = $"{_Bnb.Base.Ticker}";
             bwf.Show();
