@@ -18,13 +18,13 @@ namespace tink_oblig
             Bound = bnd;
 
 
-            buy_avg_nkd_lbl.DataBindings.Add(new Binding("Text", Bound, "base.Nkd_one", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
-            buy_avg_market_price_lbl.DataBindings.Add(new Binding("Text", Bound, "base.Avg_buy_price_one", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
-            buy_avg_lbl.DataBindings.Add(new Binding("Text", Bound, "base.Avg_buy_paid_one", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
+            buy_avg_nkd_lbl.DataBindings.Add(new Binding("Text", Bound, "Bound.Nkd_one", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
+            buy_avg_market_price_lbl.DataBindings.Add(new Binding("Text", Bound, "Bound.Avg_buy_price_one", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
+            buy_avg_lbl.DataBindings.Add(new Binding("Text", Bound, "Bound.Avg_buy_paid_one", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
 
-            buy_sum_nkd_lbl.DataBindings.Add(new Binding("Text", Bound, "base.Nkd_sum", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
-            buy_sum_market_price_lbl.DataBindings.Add(new Binding("Text", Bound, "base.Avg_buy_price_total", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
-            buy_sum_lbl.DataBindings.Add(new Binding("Text", Bound, "base.Avg_buy_paid_total", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
+            buy_sum_nkd_lbl.DataBindings.Add(new Binding("Text", Bound, "Bound.Nkd_sum", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
+            buy_sum_market_price_lbl.DataBindings.Add(new Binding("Text", Bound, "Bound.Avg_buy_price_total", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
+            buy_sum_lbl.DataBindings.Add(new Binding("Text", Bound, "Bound.Avg_buy_paid_total", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
 
             sell_avg_diff_lbl.DataBindings.Add(new Binding("Text", Bound, "Diff_sell_avg", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
             sell_avg_lbl.DataBindings.Add(new Binding("Text", Bound, "Summ_sell_avg", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));

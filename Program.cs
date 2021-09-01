@@ -19,7 +19,7 @@ namespace tink_oblig
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm());
+            Application.Run(LoginForm);
         }
         private static Context _CurrentContext;
         public static Context CurrentContext
@@ -69,6 +69,7 @@ namespace tink_oblig
             return img;
 
         }
+        public static LoginForm LoginForm = new LoginForm();
     }
     public class xWebClient : WebClient
     {

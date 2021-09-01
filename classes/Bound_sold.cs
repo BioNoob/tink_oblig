@@ -1,13 +1,8 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using PropertyChanged;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
-using System.Net;
-using System.Text;
 using Tinkoff.Trading.OpenApi.Models;
 
 namespace tink_oblig.classes
@@ -34,7 +29,7 @@ namespace tink_oblig.classes
                 for (int i = 0; i < item.Quantity; i++)
                 {
                     buf_list.Add(new Operation(item.Id, OperationStatus.Done, new List<Trade>(), new MoneyAmount(Currency.Rub, item.Commission.Value / item.Trades.Sum(t => t.Quantity)), Currency.Rub,
-                        item.Payment / item.Trades.Sum(t => t.Quantity), item.Price, 1, null, item.Figi, item.InstrumentType, false, item.Date, item.OperationType));
+                        item.Payment / item.Trades.Sum(t => t.Quantity), item.Price, 1, 1, item.Figi, item.InstrumentType, false, item.Date, item.OperationType));
                 }
             }
             buf_list = buf_list.OrderBy(t => t.Date).ToList();
@@ -92,6 +87,13 @@ namespace tink_oblig.classes
                 return 0;
             }
         }
+        public int Coupon_cnt
+        {
+            get
+            {
+                return _coupon_list.Count;
+            }
+        }
         public decimal Buy_Back_summ
         {
             get
@@ -138,7 +140,7 @@ namespace tink_oblig.classes
         {
             get
             {
-                return _sell_list.Select(t => t.Trades).Sum(t => t.Select(t => t.Quantity).Sum());
+                return (int)_sell_list.Select(t => t.QuantityExecuted).Sum();//Select(t => t.Trades).Sum(t => t.Select(t => t.Quantity).Sum());
             }
         }
 

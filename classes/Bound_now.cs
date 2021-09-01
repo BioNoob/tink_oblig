@@ -1,13 +1,8 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using PropertyChanged;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
-using System.Net;
-using System.Text;
 using Tinkoff.Trading.OpenApi.Models;
 
 namespace tink_oblig.classes
@@ -58,6 +53,13 @@ namespace tink_oblig.classes
                 return 0;
             }
         }
+        public int Coupon_cnt
+        {
+            get
+            {
+                return _coupon_list.Count;  
+            }
+        }
         public decimal Coupon_Tax_summ
         {
             get
@@ -87,7 +89,7 @@ namespace tink_oblig.classes
         {
             get
             {
-                return _brokercomission_list.Sum(t => t.Payment);
+                return Math.Abs(_brokercomission_list.Sum(t => t.Payment));
             }
         }
 
@@ -95,15 +97,15 @@ namespace tink_oblig.classes
         {
             get
             {
-                return Coupon_summ - Coupon_Tax_summ + Buy_Back_summ + Bound.Diff_price_sum_nkd
-                    - Broker_comission_total;
+                return Coupon_summ - Coupon_Tax_summ + Buy_Back_summ + Diff_Price
+                    - Broker_comission_total + Bound.Nkd_for_now_sum;
             }
         }
         public decimal Profit_perc
         {
             get
             {
-                return ((Profit * 100) / Bound.Avg_buy_paid_total);
+                return ((Profit * 100) / Summ_buy);
             }
         }
 
@@ -144,7 +146,7 @@ namespace tink_oblig.classes
         {
             get
             {
-                return _buy_list.Select(t => t.Trades).Sum(t => t.Select(t => t.Quantity).Sum());
+                return (int)_buy_list.Select(t=>t.QuantityExecuted).Sum();//t => t.Trades).Sum(t => t.Select(t => t.Quantity).Sum()); //не правильно. Или что если были проаджи. следовательно фильтр
             }
         }
 
@@ -152,14 +154,14 @@ namespace tink_oblig.classes
         {
             get
             {
-                return _buy_list.Sum(t => t.Price);
+                return _buy_list.Sum(t => t.Price * (int)t.QuantityExecuted);
             }
         }
         public decimal Buy_avg_market_price
         {
             get
             {
-                return _buy_list.Sum(t => t.Price) / Cnt_buy;
+                return Buy_summ_market_price / Cnt_buy;
             }
         }
         public decimal Buy_summ_nkd
@@ -191,6 +193,27 @@ namespace tink_oblig.classes
             }
         }
 
+       public decimal Diff_Price
+        {
+            get
+            {
+                return Bound.Market_price_total - Summ_buy;
+            }
+        }
+        public decimal Diff_Price_avg
+        {
+            get
+            {
+                return Bound.Market_price - Avg_buy;
+            }
+        }
+        public Color Font_diff_clr
+        {
+            get
+            {
+                return Diff_Price >= 0 ? Color.DarkGreen : Color.DarkRed;
+            }
+        }
     }
 
 

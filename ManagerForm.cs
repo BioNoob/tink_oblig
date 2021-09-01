@@ -89,7 +89,12 @@ namespace tink_oblig
             if (string.IsNullOrEmpty(mes))
                 SwitchAcc();
             else
+            {
                 MessageBox.Show($"Ошибка загрузки информации:\n{mes}");
+                Program.LoginForm.Show();
+                this.Close();
+            }
+
             history_cmb.Enabled = true;
             account_switcher_cmb.Enabled = true;
             refresh_btn.Enabled = true;

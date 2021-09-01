@@ -33,7 +33,7 @@ namespace tink_oblig.classes
         }
         public Account GetBase()
         {
-            return new Account(BrokerAccountType,BrokerAccountId);
+            return new Account(BrokerAccountType, BrokerAccountId);
         }
         public string GetJson()
         {
@@ -51,7 +51,7 @@ namespace tink_oblig.classes
         {
             Portfolios = new Dictionary<Account_m, Bounds>();
         }
-        public enum SeeHistory 
+        public enum SeeHistory
         {
             NoHistrory = 1,
             History,
@@ -80,7 +80,6 @@ namespace tink_oblig.classes
                 var acc = await Program.CurrentContext.AccountsAsync();
                 foreach (var item in acc)
                 {
-                    var price_now = await Program.CurrentContext.MarketOrderbookAsync("", 1);
                     var prtfl = await Program.CurrentContext.PortfolioAsync(item.BrokerAccountId);
                     Bounds lbd = new Bounds(new Account_m(item.BrokerAccountType, item.BrokerAccountId));
                     var lpl = prtfl.Positions.Where(t => t.InstrumentType == InstrumentType.Bond).ToList();
@@ -107,24 +106,33 @@ namespace tink_oblig.classes
         {
             var bounds = Program.InnerAccount.Portfolios[acc];
             var load_signal = bounds.BoundsList.Select(t => t.Bound.Operations_list).Select(t => t.Count).Sum(); //если операции загружены то > 0
-            if (load_signal > 0)
+            try
             {
-                if (!fl_refresh)
+                if (load_signal > 0)
                 {
-                    LoadObligInfoDone?.Invoke(Program.InnerAccount.Portfolios[acc]);
-                    return;
+                    if (!fl_refresh)
+                    {
+                        LoadObligInfoDone?.Invoke(Program.InnerAccount.Portfolios[acc]);
+                        return;
+                    }
                 }
+                foreach (var item in bounds.BoundsList)
+                {
+                    item.Bound.Operations_list = await Program.CurrentContext.OperationsAsync(new DateTime(2015, 01, 01), DateTime.Now, item.Bound.Base.Figi, bounds.Acc.BrokerAccountId);
+                }
+                await LoadAllBndHistory(bounds);
+                foreach (var item in bounds.BoundsList)
+                {
+                    await LoadInfoBound(item.Bound);
+                }
+                LoadObligInfoDone?.Invoke(Program.InnerAccount.Portfolios[acc]);
             }
-            foreach (var item in bounds.BoundsList)
+            catch (Exception mes)
             {
-                item.Bound.Operations_list = await Program.CurrentContext.OperationsAsync(new DateTime(2015, 01, 01), DateTime.Now, item.Bound.Base.Figi, bounds.Acc.BrokerAccountId);
+                LoadObligInfoDone?.Invoke(Program.InnerAccount.Portfolios[acc], mes.Message);
+                throw;
             }
-            await LoadAllBndHistory(bounds);
-            foreach (var item in bounds.BoundsList)
-            {
-                await LoadInfoBound(item.Bound);
-            }
-            LoadObligInfoDone?.Invoke(Program.InnerAccount.Portfolios[acc]);
+
         }
         /// <summary>
         /// Копаем инфу с мосбиржи для бумажки

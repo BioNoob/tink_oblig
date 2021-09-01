@@ -1,12 +1,9 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using PropertyChanged;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
 using System.Net;
 using Tinkoff.Trading.OpenApi.Models;
 
@@ -172,35 +169,7 @@ namespace tink_oblig.classes
     */
         #endregion
 
-        public static void Splitter_sold_out(List<Operation> operations, ref List<Operation> sold_list, ref List<Operation> now_list)
-        {
-            /*
-             * Определить периоды когда позиция закрыта (или частично закрыта)
-             * все покупки в хронологическом порядке по одной штуке
-             * определяем участки закрытия берем даты где было продано
-             * по этим датам свичим между листами
-             */
-            var buy_list = operations.Where(t => t.OperationType == ExtendedOperationType.Buy && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
-            var sell_list = operations.Where(t => t.OperationType == ExtendedOperationType.Sell && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
-            List<Operation> buf_list = new List<Operation>();
-            foreach (var item in buy_list)
-            {
-                for (int i = 0; i < item.Quantity; i++)
-                {
-                    buf_list.Add(new Operation(item.Id, OperationStatus.Done, new List<Trade>(), new MoneyAmount(Currency.Rub, item.Commission.Value / item.Trades.Sum(t => t.Quantity)), Currency.Rub,
-                        item.Payment / item.Trades.Sum(t => t.Quantity), item.Price, 1, null, item.Figi, item.InstrumentType, false, item.Date, item.OperationType));
-                }
-            }
-            foreach (var item in sell_list)
-            {
-                int sold_cnt = item.Trades.Sum(t => t.Quantity);
-                var a = buf_list.Take(sold_cnt).Select(t => t.Date); //взяли операции с первой купленной (после последней продажи, или первой покупки)
-                sold_list.AddRange(operations.Where(t => t.Date < a.Last() && t.Date >= a.First()).ToList());
-                buf_list.RemoveRange(0, sold_cnt); // удаляем записанные
-            }
-            now_list = operations.Except(sold_list).ToList();//РАБОТАЕТ ЛИ?
 
-        }
 
         public decimal Nominal { get; set; }
         /// <summary>
@@ -230,7 +199,7 @@ namespace tink_oblig.classes
         {
             get
             {
-                return Avg_buy_price_one - Base.ExpectedYield.Value;
+                return Avg_buy_price_one + Base.ExpectedYield.Value / Base.Lots;
             }
         }
         /// <summary>
@@ -273,6 +242,14 @@ namespace tink_oblig.classes
             {
                 var days = (int)Math.Floor((DateTime.Now - Prev_pay_dt).TotalDays);
                 return (Cpn_val / Pay_period) * days;
+            }
+        }
+        public decimal Nkd_for_now_sum
+        {
+            get
+            {
+                var days = (int)Math.Floor((DateTime.Now - Prev_pay_dt).TotalDays);
+                return ((Cpn_val / Pay_period) * days) * Base.Lots;
             }
         }
         /// <summary>
