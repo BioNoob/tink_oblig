@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using Tinkoff.Trading.OpenApi.Models;
@@ -36,7 +37,7 @@ namespace tink_oblig.classes
              */
             sold_list = new List<Operation>();
             now_list = new List<Operation>();
-            operations = operations.Where(t => t.OperationType != ExtendedOperationType.BrokerCommission && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
+            //operations = operations.Where(t => t.OperationType != ExtendedOperationType.BrokerCommission && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
             var buy_list = operations.Where(t => t.OperationType == ExtendedOperationType.Buy && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
             var sell_list = operations.Where(t => t.OperationType == ExtendedOperationType.Sell && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
             List<Operation> buf_list = new List<Operation>();
@@ -51,19 +52,30 @@ namespace tink_oblig.classes
                         item.Payment / item.Trades.Sum(t => t.Quantity), item.Price, 1, null, item.Figi, item.InstrumentType, false, item.Date, item.OperationType));
                 }
             }
-
             //не хватает алгоритма учета действий при покупке
             //брокер комишен.. и тд
             //мож как то попробовать выцепить прост дипазаон по другому
-
             foreach (var item in sell_list)
             {
                 int sold_cnt = item.Trades.Sum(t => t.Quantity);
                 var a = buf_list.Take(sold_cnt).Select(t => t.Date).ToList(); //взяли операции с первой купленной (после последней продажи, или первой покупки)
-                var ttttt = operations.Where(t => t.Date <= a.Last() && t.Date >= a.First()).ToList(); //условие не рабоатет чет
-                var tttttt = ttttt.Select(t => t.Date).ToList();
-                sold_list.AddRange(operations.Where(t => t.Date < a.Last() && t.Date >= a.First()).ToList());
-                buf_list.RemoveRange(0, sold_cnt); // удаляем записанные
+                //дата следующей покупки
+                DateTime ?dt = null;
+                if (sold_cnt < buf_list.Count)
+                    dt = buf_list.Take(sold_cnt + 1).Select(t => t.Date).Last();
+                
+                if(dt != null)
+                {
+                    var q = operations.Where(t => t.Date >= a.First()).ToList();
+                    q = q.Where(t => t.Date < dt).ToList();
+                    sold_list.AddRange(q);
+                    buf_list.RemoveRange(0, sold_cnt); // удаляем записанные
+                }
+                else
+                {
+                    sold_list.AddRange(operations);
+                    return;
+                }
             }
             now_list = operations.Except(sold_list).ToList();//РАБОТАЕТ ЛИ?
         }
