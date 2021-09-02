@@ -50,7 +50,7 @@ namespace tink_oblig.classes
         private List<Operation> _brokercomission_list;
         private List<Operation> _repayment_list; //погошения бумаги... хз пока как оброботать
 
-
+        public int CompareTo(Bound_sold other) { return Profit_perc.CompareTo(other.Profit_perc); }
         public decimal Last_Coupon_payed
         {
             get
@@ -110,7 +110,7 @@ namespace tink_oblig.classes
         {
             get
             {
-                return _brokercomission_list.Sum(t => t.Payment);
+                return Math.Abs(_brokercomission_list.Sum(t => t.Payment));
             }
         }
         /// <summary>
@@ -170,14 +170,14 @@ namespace tink_oblig.classes
         {
             get
             {
-                return _sell_list.Select(t => t.Payment).Sum();
+                return _sell_list.Sum(t=>t.Price * (int)t.QuantityExecuted);
             }
         }
         public decimal Market_price_avg_sell
         {
             get
             {
-                return _sell_list.Select(t => t.Payment).Sum() / Cnt_sell;
+                return Market_price_summ_sell / Cnt_sell;
             }
         }
 
@@ -185,9 +185,7 @@ namespace tink_oblig.classes
         {
             get
             {
-                var a = Market_price_summ_sell -
-                    (_sell_list.Select(t => t.Price).Sum() * Cnt_sell);
-                return a;
+                return Summ_sell - Market_price_summ_sell;
             }
         }
         public decimal Nkd_avg_by_sell
@@ -277,6 +275,63 @@ namespace tink_oblig.classes
             get
             {
                 return Profit >= 0 ? Color.DarkGreen : Color.DarkRed;
+            }
+        }
+        public Color Font_diff_clr
+        {
+            get
+            {
+                return Diff_sell >= 0 ? Color.DarkGreen : Color.DarkRed;
+            }
+        }
+
+        public decimal Summ_buy
+        {
+            get
+            {
+                return Math.Abs(_buy_list.Sum(t => t.Payment));
+            }
+        }
+        public decimal Buy_summ_nkd
+        {
+            get
+            {
+                return Summ_buy - Buy_summ_market_price;
+            }
+        }
+        public decimal Buy_summ_market_price
+        {
+            get
+            {
+                return _buy_list.Sum(t => t.Price * (int)t.QuantityExecuted);
+            }
+        }
+        public decimal Buy_avg_nkd
+        {
+            get
+            {
+                return Avg_buy - Buy_avg_market_price;
+            }
+        }
+        public decimal Buy_avg_market_price
+        {
+            get
+            {
+                return Buy_summ_market_price / Cnt_buy;
+            }
+        }
+        public decimal Avg_buy
+        {
+            get
+            {
+                return Math.Abs(_buy_list.Sum(t => t.Payment)) / Cnt_buy;
+            }
+        }
+        public int Cnt_buy
+        {
+            get
+            {
+                return (int)_buy_list.Select(t => t.QuantityExecuted).Sum();
             }
         }
     }

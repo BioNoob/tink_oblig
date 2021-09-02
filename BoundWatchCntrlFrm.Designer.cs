@@ -31,9 +31,6 @@ namespace tink_oblig
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BoundWatchCntrlFrm));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.broker_tax_total_lbl = new System.Windows.Forms.TextBox();
-            this.label52 = new System.Windows.Forms.Label();
-            this.label53 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.coupon_tax_lbl = new System.Windows.Forms.TextBox();
             this.sum_coupon_lbl = new System.Windows.Forms.TextBox();
@@ -78,9 +75,6 @@ namespace tink_oblig
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.broker_tax_total_lbl);
-            this.panel1.Controls.Add(this.label52);
-            this.panel1.Controls.Add(this.label53);
             this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.pay_period_lbl);
@@ -99,36 +93,6 @@ namespace tink_oblig
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(406, 283);
             this.panel1.TabIndex = 0;
-            // 
-            // broker_tax_total_lbl
-            // 
-            this.broker_tax_total_lbl.BackColor = System.Drawing.SystemColors.Control;
-            this.broker_tax_total_lbl.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.broker_tax_total_lbl.Location = new System.Drawing.Point(77, 240);
-            this.broker_tax_total_lbl.Name = "broker_tax_total_lbl";
-            this.broker_tax_total_lbl.ReadOnly = true;
-            this.broker_tax_total_lbl.Size = new System.Drawing.Size(95, 21);
-            this.broker_tax_total_lbl.TabIndex = 93;
-            // 
-            // label52
-            // 
-            this.label52.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label52.Location = new System.Drawing.Point(172, 239);
-            this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(25, 23);
-            this.label52.TabIndex = 92;
-            this.label52.Text = "RUB";
-            this.label52.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label53
-            // 
-            this.label53.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label53.Location = new System.Drawing.Point(13, 228);
-            this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(58, 43);
-            this.label53.TabIndex = 91;
-            this.label53.Text = "Суммарная комиссия брокера";
-            this.label53.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // groupBox2
             // 
@@ -524,7 +488,6 @@ namespace tink_oblig
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox broker_tax_total_lbl;
         private System.Windows.Forms.Label label52;
         private System.Windows.Forms.Label label53;
         private System.Windows.Forms.GroupBox groupBox2;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -66,6 +67,19 @@ namespace tink_oblig
         private void exit_btn_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+        ImgInfo img = new ImgInfo();
+        
+        private void linkLabel1_Click(object sender, EventArgs e)
+        {
+            Process.Start("explorer.exe", "https://www.tinkoff.ru/invest/settings/");
+            if (img.Visible)
+            {
+                return;
+            }
+            img.Focus();
+            img.Location = new Point(Location.X + this.Size.Width / 2, Location.Y);
+            img.Show();
         }
     }
 }

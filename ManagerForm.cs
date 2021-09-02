@@ -93,6 +93,7 @@ namespace tink_oblig
                 MessageBox.Show($"Ошибка загрузки информации:\n{mes}");
                 Program.LoginForm.Show();
                 this.Close();
+                return;
             }
 
             history_cmb.Enabled = true;

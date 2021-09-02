@@ -57,7 +57,6 @@ namespace tink_oblig
                     coupon_tax_lbl.DataBindings.Add(new Binding("Text", Bound_n, "Coupon_Tax_summ", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
                     count_lbl.DataBindings.Add(new Binding("Text", Bound, "Base.Lots", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "D"));
                     price_sum_lbl.DataBindings.Add(new Binding("Text", Bound_n, "Buy_summ_market_price", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
-                    broker_tax_total_lbl.DataBindings.Add(new Binding("Text", Bound_n, "Broker_comission_total", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
                     show_panel.Controls.Clear();
                     show_panel.Controls.Add(new BoundWatchBuyFrm(Bound_n) { Dock = DockStyle.Fill });
                     this.Text = Bound_Cnc.Bound.Base.Name;
@@ -68,16 +67,10 @@ namespace tink_oblig
                     sum_coupon_lbl.DataBindings.Add(new Binding("Text", Bound_s, "Coupon_summ", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
                     coupon_tax_lbl.DataBindings.Add(new Binding("Text", Bound_s, "Coupon_Tax_summ", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
                     count_lbl.DataBindings.Add(new Binding("Text", Bound, "Base.Lots", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "D"));
-                    //price_sum_lbl.DataBindings.Add(new Binding("Text", Bound_s, "", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
-                    broker_tax_total_lbl.DataBindings.Add(new Binding("Text", Bound_s, "Broker_comission_total", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
+                    price_sum_lbl.DataBindings.Add(new Binding("Text", Bound_s, "Buy_summ_market_price", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
                     show_panel.Controls.Clear();
                     show_panel.Controls.Add(new BoundWatchSellFrm(Bound_s) { Dock = DockStyle.Fill });
                     this.Text = Bound_Cnc.Bound.Base.Name;
-                    break;
-                case SeeHistory.WithHistory:
-                    this.Text = Bound_Cnc.Bound.Base.Name;
-                    break;
-                default:
                     break;
             }
 

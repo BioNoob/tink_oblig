@@ -62,9 +62,9 @@ namespace tink_oblig
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.Image = global::tink_oblig.Properties.Resources.icons8_повтор;
-            this.pictureBox1.Location = new System.Drawing.Point(360, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(361, 13);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(34, 34);
+            this.pictureBox1.Size = new System.Drawing.Size(32, 32);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;

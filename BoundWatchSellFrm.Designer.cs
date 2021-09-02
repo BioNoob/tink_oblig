@@ -189,7 +189,7 @@ namespace tink_oblig
             // 
             // buy_avg_lbl
             // 
-            this.buy_avg_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.buy_avg_lbl.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.buy_avg_lbl.Location = new System.Drawing.Point(66, 19);
             this.buy_avg_lbl.Name = "buy_avg_lbl";
             this.buy_avg_lbl.ReadOnly = true;
@@ -295,7 +295,7 @@ namespace tink_oblig
             // 
             // buy_sum_lbl
             // 
-            this.buy_sum_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.buy_sum_lbl.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.buy_sum_lbl.Location = new System.Drawing.Point(66, 19);
             this.buy_sum_lbl.Name = "buy_sum_lbl";
             this.buy_sum_lbl.ReadOnly = true;
@@ -336,7 +336,7 @@ namespace tink_oblig
             // 
             // sell_sum_diff_lbl
             // 
-            this.sell_sum_diff_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.sell_sum_diff_lbl.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.sell_sum_diff_lbl.Location = new System.Drawing.Point(66, 100);
             this.sell_sum_diff_lbl.Name = "sell_sum_diff_lbl";
             this.sell_sum_diff_lbl.ReadOnly = true;
@@ -433,7 +433,7 @@ namespace tink_oblig
             // 
             // sell_sum_lbl
             // 
-            this.sell_sum_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.sell_sum_lbl.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.sell_sum_lbl.Location = new System.Drawing.Point(66, 19);
             this.sell_sum_lbl.Name = "sell_sum_lbl";
             this.sell_sum_lbl.ReadOnly = true;
@@ -482,7 +482,7 @@ namespace tink_oblig
             // 
             // sell_avg_lbl
             // 
-            this.sell_avg_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.sell_avg_lbl.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.sell_avg_lbl.Location = new System.Drawing.Point(66, 19);
             this.sell_avg_lbl.Name = "sell_avg_lbl";
             this.sell_avg_lbl.ReadOnly = true;
@@ -579,7 +579,7 @@ namespace tink_oblig
             // 
             // sell_avg_diff_lbl
             // 
-            this.sell_avg_diff_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.sell_avg_diff_lbl.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.sell_avg_diff_lbl.Location = new System.Drawing.Point(66, 100);
             this.sell_avg_diff_lbl.Name = "sell_avg_diff_lbl";
             this.sell_avg_diff_lbl.ReadOnly = true;

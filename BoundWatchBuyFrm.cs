@@ -15,8 +15,6 @@ namespace tink_oblig
             buy_avg_market_price_lbl.DataBindings.Add(new Binding("Text", Bound, "Buy_avg_market_price", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
             buy_avg_lbl.DataBindings.Add(new Binding("Text", Bound, "Avg_buy", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
 
-
-            
             buy_sum_nkd_lbl.DataBindings.Add(new Binding("Text", Bound, "Buy_summ_nkd", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
             buy_sum_market_price_lbl.DataBindings.Add(new Binding("Text", Bound, "Buy_summ_market_price", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
             buy_sum_lbl.DataBindings.Add(new Binding("Text", Bound, "Summ_buy", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));

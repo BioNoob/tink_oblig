@@ -51,7 +51,7 @@ namespace tink_oblig.classes
         {
             Portfolios = new Dictionary<Account_m, Bounds>();
         }
-        public enum SeeHistory
+        public enum SeeHistory : int
         {
             NoHistrory = 1,
             History,
@@ -119,6 +119,7 @@ namespace tink_oblig.classes
                 foreach (var item in bounds.BoundsList)
                 {
                     item.Bound.Operations_list = await Program.CurrentContext.OperationsAsync(new DateTime(2015, 01, 01), DateTime.Now, item.Bound.Base.Figi, bounds.Acc.BrokerAccountId);
+                    item.SetMode();
                 }
                 await LoadAllBndHistory(bounds);
                 foreach (var item in bounds.BoundsList)
@@ -130,7 +131,7 @@ namespace tink_oblig.classes
             catch (Exception mes)
             {
                 LoadObligInfoDone?.Invoke(Program.InnerAccount.Portfolios[acc], mes.Message);
-                throw;
+                //throw;
             }
 
         }
@@ -194,7 +195,7 @@ namespace tink_oblig.classes
                 Bound b = new Bound(new Portfolio.Position(t.Name, item, t.Ticker, t.Isin, t.Type, cnt, 0, new MoneyAmount(t.Currency, expt_yeld), cnt, new MoneyAmount(t.Currency, avg), new MoneyAmount(t.Currency, avg_no_nkd)));
 
                 b.Operations_list = z.Where(t => t.Figi == item).ToList();
-
+                
                 bounds.BoundsList.Add(new Bound_Conclav(b));
             }
         }

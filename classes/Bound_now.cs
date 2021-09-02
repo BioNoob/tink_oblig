@@ -28,7 +28,7 @@ namespace tink_oblig.classes
         private List<Operation> _repayment_list; //погошения бумаги... хз пока как оброботать
 
         public event PropertyChangedEventHandler PropertyChanged;
-
+        public int CompareTo(Bound_now other) { return Profit_perc.CompareTo(other.Profit_perc); }
         public decimal Last_Coupon_payed
         {
             get

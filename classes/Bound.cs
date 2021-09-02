@@ -27,6 +27,13 @@ namespace tink_oblig.classes
             Cpn_Percent = 0m;
             Operations_list = new List<Operation>();
         }
+
+        public Bound Copy()
+        {
+            var b = new Bound(this.Base) { Operations_list = new List<Operation>(this.Operations_list) };
+            return b;
+        }
+
         /// <summary>
         /// Флаг для пометки того что позиция по бумаге была закрыта и ее нет в списке портфеля 
         /// </summary>
