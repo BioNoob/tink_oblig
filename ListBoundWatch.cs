@@ -2,7 +2,6 @@
 using System.Drawing;
 using System.Windows.Forms;
 using tink_oblig.classes;
-using System.Linq;
 using static tink_oblig.classes.Accounts;
 
 namespace tink_oblig

@@ -137,6 +137,7 @@ namespace tink_oblig
             this.ClientSize = new System.Drawing.Size(406, 597);
             this.Controls.Add(this.view_panel);
             this.Controls.Add(this.control_panel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(422, 636);
             this.Name = "ManagerForm";

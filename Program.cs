@@ -3,7 +3,6 @@ using System.Drawing;
 using System.Net;
 using System.Windows.Forms;
 using tink_oblig.classes;
-using tink_oblig.Properties;
 using Tinkoff.Trading.OpenApi.Network;
 
 namespace tink_oblig
