@@ -1,10 +1,6 @@
 ﻿
 using Newtonsoft.Json;
 using System;
-using System.Data;
-using System.Linq;
-using System.Text.Json;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using tink_oblig.classes;
 using tink_oblig.Properties;
@@ -16,8 +12,8 @@ namespace tink_oblig
     public partial class ManagerForm : Form
     {
         public SeeHistory Mode { get; set; }
-        public Account_m Acc { get; set; }
-
+        //public Accounts Acc { get; set; }
+        private Account_m Acc_key { get; set; }
         private ViewForm _vf;
 
         public ManagerForm()
@@ -35,7 +31,7 @@ namespace tink_oblig
                         history_cmb.Items.Add("Закрытые позиции");
                         break;
                     case SeeHistory.WithHistory:
-                        history_cmb.Items.Add("Все позиции");
+                        history_cmb.Items.Add("Совместные позиции");
                         break;
                     default:
                         break;
@@ -87,7 +83,9 @@ namespace tink_oblig
         private void InnerAccount_LoadObligInfoDone(Bounds bnd, string mes = "")
         {
             if (string.IsNullOrEmpty(mes))
-                SwitchAcc();
+            {
+                SwitchAcc(bnd);
+            }
             else
             {
                 MessageBox.Show($"Ошибка загрузки информации:\n{mes}");
@@ -100,6 +98,12 @@ namespace tink_oblig
             account_switcher_cmb.Enabled = true;
             refresh_btn.Enabled = true;
             pictureBox1.Visible = false;
+            if (history_cmb.SelectedIndex < 0)
+            {
+                history_cmb.SelectedIndex = 0;
+                history_cmb_SelectionChangeCommitted(history_cmb, null);
+            }
+
         }
 
         private void LoadAccounts()
@@ -109,10 +113,14 @@ namespace tink_oblig
                 account_switcher_cmb.Items.Add(item);
             }
         }
-        private void SwitchAcc()
+        private void SwitchAcc(Bounds bnd)
         {
+            foreach (var item in bnd.BoundsList)
+            {
+                item.SetMode();
+            }
             view_panel.Controls.Clear();
-            _vf = new ViewForm(Program.InnerAccount.Portfolios[Acc], Mode);
+            _vf = new ViewForm(bnd, Mode);
             _vf.BorderStyle = BorderStyle.None;
             _vf.Dock = DockStyle.Fill;
             view_panel.Controls.Add(_vf);
@@ -120,29 +128,33 @@ namespace tink_oblig
 
         private async void account_switcher_cmb_SelectionChangeCommitted(object sender, System.EventArgs e)
         {
-            Acc = ((ComboBox)sender).SelectedItem as Account_m;
+            Acc_key = ((ComboBox)sender).SelectedItem as Account_m;
             history_cmb.Enabled = false;
             account_switcher_cmb.Enabled = false;
             refresh_btn.Enabled = false;
             pictureBox1.Visible = true;
-            await Program.InnerAccount.DoLoad_ObligList(Acc);
+            await Program.InnerAccount.DoLoad_ObligList(Acc_key);
 
         }
         private void history_cmb_SelectionChangeCommitted(object sender, System.EventArgs e)
         {
             Mode = (SeeHistory)history_cmb.SelectedIndex + 1;
-            SwitchAcc();
+            SwitchAcc(Program.InnerAccount.Portfolios[Acc_key]);
         }
 
         private async void refresh_btn_Click(object sender, System.EventArgs e)
         {
             //Обновлять все или текущий? DialogResult
-            await Program.InnerAccount.DoLoad_ObligList(Acc, true);
+            history_cmb.Enabled = false;
+            account_switcher_cmb.Enabled = false;
+            refresh_btn.Enabled = false;
+            pictureBox1.Visible = true;
+            await Program.InnerAccount.DoLoad_ObligList(Acc_key, true);
         }
 
         private void ManagerForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Settings.Default.SelectedAcc = Acc.GetJson();
+            Settings.Default.SelectedAcc = Acc_key.GetJson();
             Settings.Default.SelectedHistoryMode = (int)Mode;
             Settings.Default.Save();
             Settings.Default.Reload();

@@ -30,7 +30,16 @@ namespace tink_oblig.classes
 
         public Bound Copy()
         {
-            var b = new Bound(this.Base) { Operations_list = new List<Operation>(this.Operations_list) };
+            var b = new Bound(this.Base) 
+            { 
+                Operations_list = new List<Operation>(this.Operations_list), 
+                Next_pay_dt = this.Next_pay_dt,
+                End_pay_dt = this.End_pay_dt,
+                Pay_period = this.Pay_period,
+                Cpn_Percent = this.Cpn_Percent,
+                Cpn_val = this.Cpn_val,
+                Nominal = this.Nominal
+            };
             return b;
         }
 

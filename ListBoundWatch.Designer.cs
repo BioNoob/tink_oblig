@@ -204,7 +204,7 @@ namespace tink_oblig
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.BackColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(0, 100);
+            this.label7.Location = new System.Drawing.Point(0, 105);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(310, 1);
             this.label7.TabIndex = 15;

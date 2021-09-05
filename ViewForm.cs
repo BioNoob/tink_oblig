@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using tink_oblig.classes;
-using Tinkoff.Trading.OpenApi.Models;
 using static tink_oblig.classes.Accounts;
 
 namespace tink_oblig
@@ -25,6 +23,7 @@ namespace tink_oblig
             BoundListLayPannel.Controls.Clear();
             SeeHistory = history;
             Selected_portfail = acc.Copy();
+            Selected_portfail.BoundsList = Selected_portfail.BoundsList.Where(t => t.Avalibale_mode == history).ToList();
             Selected_portfail.Mode = history;
             string buf_text = "";
             switch (SeeHistory)
@@ -36,7 +35,7 @@ namespace tink_oblig
                     buf_text = "Продайте что-нибудь из облигаций";
                     break;
                 case SeeHistory.WithHistory:
-                    buf_text = "Купите что-нибудь из облигаций";
+                    buf_text = "Продайте и купите что-нибудь";
                     break;
             }
             foreach (var bd in Selected_portfail.BoundsList)//.Bounds_Now)
@@ -58,21 +57,6 @@ namespace tink_oblig
                 newOne.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
                 BoundListLayPannel.Controls.Add(newOne, 0, BoundListLayPannel.RowCount);
             }
-        }
-
-        private void LoadBounds(Bound_Conclav bd)
-        {
-            Call_cnt++;
-            BoundListLayPannel.RowCount++;
-            BoundListLayPannel.RowStyles.Add(new RowStyle(SizeType.AutoSize));
-            ListBoundWatch newOne = new ListBoundWatch(bd, SeeHistory);
-            newOne.BorderStyle = BorderStyle.None;
-            newOne.Dock = DockStyle.Top;
-            BoundListLayPannel.Controls.Add(newOne, 0, BoundListLayPannel.RowCount);
-        }
-
-        private void ViewForm_Load(object sender, EventArgs e)
-        {
             total_money_lbl.DataBindings.Add(new Binding("Text", Selected_portfail, "SumB_Cost", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
             summ_cpn_lbl.DataBindings.Add(new Binding("Text", Selected_portfail, "SumB_Coupons", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
 
@@ -90,6 +74,17 @@ namespace tink_oblig
             total_price_diff_lbl.DataBindings.Add(new Binding("ForeColor", Selected_portfail, "Font_Diff_Clr", true, DataSourceUpdateMode.OnPropertyChanged));
 
             buy_back_lbl.DataBindings.Add(new Binding("Text", Selected_portfail, "Buy_back", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
+        }
+
+        private void LoadBounds(Bound_Conclav bd)
+        {
+            Call_cnt++;
+            BoundListLayPannel.RowCount++;
+            BoundListLayPannel.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+            ListBoundWatch newOne = new ListBoundWatch(bd, SeeHistory);
+            newOne.BorderStyle = BorderStyle.None;
+            newOne.Dock = DockStyle.Top;
+            BoundListLayPannel.Controls.Add(newOne, 0, BoundListLayPannel.RowCount);
         }
 
         private void refresh_btn_Click(object sender, EventArgs e)

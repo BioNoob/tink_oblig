@@ -7,7 +7,7 @@ using Tinkoff.Trading.OpenApi.Models;
 
 namespace tink_oblig.classes
 {
-    public class Bound_sold : INotifyPropertyChanged
+    public class Bound_sold : INotifyPropertyChanged, IComparable
     {
         public Bound Bound { get; set; }
         public Bound_sold(Bound bnb)
@@ -50,7 +50,14 @@ namespace tink_oblig.classes
         private List<Operation> _brokercomission_list;
         private List<Operation> _repayment_list; //погошения бумаги... хз пока как оброботать
 
-        public int CompareTo(Bound_sold other) { return Profit_perc.CompareTo(other.Profit_perc); }
+        //public int CompareTo(Bound_sold other) { return Profit_perc.CompareTo(other.Profit_perc); }
+
+        public int CompareTo(object obj)
+        {
+            var b = obj as Bound_sold;
+            return Profit_perc.CompareTo(b.Profit_perc);
+        }
+
         public decimal Last_Coupon_payed
         {
             get

@@ -58,12 +58,6 @@ namespace tink_oblig.classes
             WithHistory
         }
         public Dictionary<Account_m, Bounds> Portfolios { get; set; }
-        private Bounds _selected_portf_bckp;
-        public Bounds Selected_portfail_backup { get { return _selected_portf_bckp; } }
-        public void SetSelectedPrtf(Bounds b)
-        {
-            _selected_portf_bckp = b;
-        }
 
         public delegate void JobInfo(bool ok, string mes = "");
         public delegate void JobBounds(Bounds bnd, string mes = "");
@@ -119,20 +113,21 @@ namespace tink_oblig.classes
                 foreach (var item in bounds.BoundsList)
                 {
                     item.Bound.Operations_list = await Program.CurrentContext.OperationsAsync(new DateTime(2015, 01, 01), DateTime.Now, item.Bound.Base.Figi, bounds.Acc.BrokerAccountId);
-                    item.SetMode();
+                    //item.SetMode();
                 }
                 await LoadAllBndHistory(bounds);
                 foreach (var item in bounds.BoundsList)
                 {
                     await LoadInfoBound(item.Bound);
+                    //item.SetMode();
                 }
-                LoadObligInfoDone?.Invoke(Program.InnerAccount.Portfolios[acc]);
+                LoadObligInfoDone?.Invoke(bounds);
             }
             catch (Exception mes)
             {
-                LoadObligInfoDone?.Invoke(Program.InnerAccount.Portfolios[acc], mes.Message);
+                LoadObligInfoDone?.Invoke(bounds, mes.Message);
                 //throw;
-            }
+            } 
 
         }
         /// <summary>

@@ -123,55 +123,61 @@ namespace tink_oblig
             // coupon_tax_lbl
             // 
             this.coupon_tax_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.coupon_tax_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.coupon_tax_lbl.Location = new System.Drawing.Point(67, 160);
             this.coupon_tax_lbl.Name = "coupon_tax_lbl";
             this.coupon_tax_lbl.ReadOnly = true;
-            this.coupon_tax_lbl.Size = new System.Drawing.Size(95, 21);
+            this.coupon_tax_lbl.Size = new System.Drawing.Size(95, 23);
             this.coupon_tax_lbl.TabIndex = 61;
             // 
             // sum_coupon_lbl
             // 
             this.sum_coupon_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.sum_coupon_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.sum_coupon_lbl.Location = new System.Drawing.Point(67, 125);
             this.sum_coupon_lbl.Name = "sum_coupon_lbl";
             this.sum_coupon_lbl.ReadOnly = true;
-            this.sum_coupon_lbl.Size = new System.Drawing.Size(95, 21);
+            this.sum_coupon_lbl.Size = new System.Drawing.Size(95, 23);
             this.sum_coupon_lbl.TabIndex = 60;
             // 
             // total_cnt_coupon_lbl
             // 
             this.total_cnt_coupon_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.total_cnt_coupon_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.total_cnt_coupon_lbl.Location = new System.Drawing.Point(67, 89);
             this.total_cnt_coupon_lbl.Name = "total_cnt_coupon_lbl";
             this.total_cnt_coupon_lbl.ReadOnly = true;
-            this.total_cnt_coupon_lbl.Size = new System.Drawing.Size(95, 21);
+            this.total_cnt_coupon_lbl.Size = new System.Drawing.Size(95, 23);
             this.total_cnt_coupon_lbl.TabIndex = 60;
             // 
             // last_coupon_lbl
             // 
             this.last_coupon_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.last_coupon_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.last_coupon_lbl.Location = new System.Drawing.Point(67, 54);
             this.last_coupon_lbl.Name = "last_coupon_lbl";
             this.last_coupon_lbl.ReadOnly = true;
-            this.last_coupon_lbl.Size = new System.Drawing.Size(95, 21);
+            this.last_coupon_lbl.Size = new System.Drawing.Size(95, 23);
             this.last_coupon_lbl.TabIndex = 60;
             // 
             // coupon_val_lbl
             // 
             this.coupon_val_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.coupon_val_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.coupon_val_lbl.Location = new System.Drawing.Point(104, 16);
             this.coupon_val_lbl.Name = "coupon_val_lbl";
             this.coupon_val_lbl.ReadOnly = true;
-            this.coupon_val_lbl.Size = new System.Drawing.Size(58, 21);
+            this.coupon_val_lbl.Size = new System.Drawing.Size(58, 23);
             this.coupon_val_lbl.TabIndex = 60;
             // 
             // coupon_prc_lbl
             // 
             this.coupon_prc_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.coupon_prc_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.coupon_prc_lbl.Location = new System.Drawing.Point(24, 16);
             this.coupon_prc_lbl.Name = "coupon_prc_lbl";
             this.coupon_prc_lbl.ReadOnly = true;
-            this.coupon_prc_lbl.Size = new System.Drawing.Size(58, 21);
+            this.coupon_prc_lbl.Size = new System.Drawing.Size(58, 23);
             this.coupon_prc_lbl.TabIndex = 59;
             // 
             // label28
@@ -293,28 +299,31 @@ namespace tink_oblig
             // end_pay_lbl
             // 
             this.end_pay_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.end_pay_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.end_pay_lbl.Location = new System.Drawing.Point(6, 92);
             this.end_pay_lbl.Name = "end_pay_lbl";
             this.end_pay_lbl.ReadOnly = true;
-            this.end_pay_lbl.Size = new System.Drawing.Size(175, 21);
+            this.end_pay_lbl.Size = new System.Drawing.Size(175, 23);
             this.end_pay_lbl.TabIndex = 59;
             // 
             // prev_pay_lbl
             // 
             this.prev_pay_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.prev_pay_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.prev_pay_lbl.Location = new System.Drawing.Point(6, 54);
             this.prev_pay_lbl.Name = "prev_pay_lbl";
             this.prev_pay_lbl.ReadOnly = true;
-            this.prev_pay_lbl.Size = new System.Drawing.Size(175, 21);
+            this.prev_pay_lbl.Size = new System.Drawing.Size(175, 23);
             this.prev_pay_lbl.TabIndex = 59;
             // 
             // next_pay_lbl
             // 
             this.next_pay_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.next_pay_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.next_pay_lbl.Location = new System.Drawing.Point(6, 16);
             this.next_pay_lbl.Name = "next_pay_lbl";
             this.next_pay_lbl.ReadOnly = true;
-            this.next_pay_lbl.Size = new System.Drawing.Size(175, 21);
+            this.next_pay_lbl.Size = new System.Drawing.Size(175, 23);
             this.next_pay_lbl.TabIndex = 58;
             // 
             // label10
@@ -459,20 +468,20 @@ namespace tink_oblig
             this.show_panel.Location = new System.Drawing.Point(0, 283);
             this.show_panel.MinimumSize = new System.Drawing.Size(406, 366);
             this.show_panel.Name = "show_panel";
-            this.show_panel.Size = new System.Drawing.Size(406, 409);
+            this.show_panel.Size = new System.Drawing.Size(406, 378);
             this.show_panel.TabIndex = 1;
             // 
             // BoundWatchCntrlFrm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(406, 692);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.ClientSize = new System.Drawing.Size(406, 661);
             this.Controls.Add(this.show_panel);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(422, 731);
+            this.MinimumSize = new System.Drawing.Size(422, 700);
             this.Name = "BoundWatchCntrlFrm";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

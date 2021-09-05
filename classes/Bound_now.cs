@@ -7,7 +7,7 @@ using Tinkoff.Trading.OpenApi.Models;
 
 namespace tink_oblig.classes
 {
-    public class Bound_now : INotifyPropertyChanged //Bound,
+    public class Bound_now : INotifyPropertyChanged, IComparable //Bound,
     {
         public Bound Bound { get; set; }
         public Bound_now(Bound bnd)
@@ -29,6 +29,14 @@ namespace tink_oblig.classes
 
         public event PropertyChangedEventHandler PropertyChanged;
         public int CompareTo(Bound_now other) { return Profit_perc.CompareTo(other.Profit_perc); }
+
+
+        public int CompareTo(object obj)
+        {
+            var b = obj as Bound_now;
+            return Profit_perc.CompareTo(b.Profit_perc);
+        }
+
         public decimal Last_Coupon_payed
         {
             get

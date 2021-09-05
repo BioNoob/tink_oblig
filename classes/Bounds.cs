@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using Tinkoff.Trading.OpenApi.Models;
-using PropertyChanged;
 using static tink_oblig.classes.Accounts;
-using System.ComponentModel;
 
 namespace tink_oblig.classes
 {
@@ -191,7 +190,10 @@ namespace tink_oblig.classes
         {
             get
             {
-                return (Sum_Profit * 100 / SumB_Cost);
+                if (SumB_Cost > 0)
+                    return (Sum_Profit * 100 / SumB_Cost);
+                else
+                    return 0;
             }
         }
 

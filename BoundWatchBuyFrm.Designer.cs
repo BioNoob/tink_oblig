@@ -50,6 +50,7 @@ namespace tink_oblig
             this.buy_avg_lbl = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -91,7 +92,6 @@ namespace tink_oblig
             this.label34 = new System.Windows.Forms.Label();
             this.sum_in_lbl = new System.Windows.Forms.TextBox();
             this.label35 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -119,10 +119,11 @@ namespace tink_oblig
             // buy_sum_nkd_lbl
             // 
             this.buy_sum_nkd_lbl.BackColor = System.Drawing.SystemColors.Control;
-            this.buy_sum_nkd_lbl.Location = new System.Drawing.Point(66, 73);
+            this.buy_sum_nkd_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buy_sum_nkd_lbl.Location = new System.Drawing.Point(66, 72);
             this.buy_sum_nkd_lbl.Name = "buy_sum_nkd_lbl";
             this.buy_sum_nkd_lbl.ReadOnly = true;
-            this.buy_sum_nkd_lbl.Size = new System.Drawing.Size(95, 21);
+            this.buy_sum_nkd_lbl.Size = new System.Drawing.Size(95, 23);
             this.buy_sum_nkd_lbl.TabIndex = 69;
             // 
             // label23
@@ -138,10 +139,11 @@ namespace tink_oblig
             // buy_sum_market_price_lbl
             // 
             this.buy_sum_market_price_lbl.BackColor = System.Drawing.SystemColors.Control;
-            this.buy_sum_market_price_lbl.Location = new System.Drawing.Point(66, 46);
+            this.buy_sum_market_price_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buy_sum_market_price_lbl.Location = new System.Drawing.Point(66, 45);
             this.buy_sum_market_price_lbl.Name = "buy_sum_market_price_lbl";
             this.buy_sum_market_price_lbl.ReadOnly = true;
-            this.buy_sum_market_price_lbl.Size = new System.Drawing.Size(95, 21);
+            this.buy_sum_market_price_lbl.Size = new System.Drawing.Size(95, 23);
             this.buy_sum_market_price_lbl.TabIndex = 67;
             // 
             // label24
@@ -187,10 +189,11 @@ namespace tink_oblig
             // buy_sum_lbl
             // 
             this.buy_sum_lbl.BackColor = System.Drawing.SystemColors.Control;
-            this.buy_sum_lbl.Location = new System.Drawing.Point(66, 19);
+            this.buy_sum_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buy_sum_lbl.Location = new System.Drawing.Point(66, 18);
             this.buy_sum_lbl.Name = "buy_sum_lbl";
             this.buy_sum_lbl.ReadOnly = true;
-            this.buy_sum_lbl.Size = new System.Drawing.Size(95, 21);
+            this.buy_sum_lbl.Size = new System.Drawing.Size(95, 23);
             this.buy_sum_lbl.TabIndex = 62;
             // 
             // label29
@@ -225,10 +228,11 @@ namespace tink_oblig
             // buy_avg_nkd_lbl
             // 
             this.buy_avg_nkd_lbl.BackColor = System.Drawing.SystemColors.Control;
-            this.buy_avg_nkd_lbl.Location = new System.Drawing.Point(66, 73);
+            this.buy_avg_nkd_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buy_avg_nkd_lbl.Location = new System.Drawing.Point(66, 72);
             this.buy_avg_nkd_lbl.Name = "buy_avg_nkd_lbl";
             this.buy_avg_nkd_lbl.ReadOnly = true;
-            this.buy_avg_nkd_lbl.Size = new System.Drawing.Size(95, 21);
+            this.buy_avg_nkd_lbl.Size = new System.Drawing.Size(95, 23);
             this.buy_avg_nkd_lbl.TabIndex = 69;
             // 
             // label22
@@ -244,10 +248,11 @@ namespace tink_oblig
             // buy_avg_market_price_lbl
             // 
             this.buy_avg_market_price_lbl.BackColor = System.Drawing.SystemColors.Control;
-            this.buy_avg_market_price_lbl.Location = new System.Drawing.Point(66, 46);
+            this.buy_avg_market_price_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buy_avg_market_price_lbl.Location = new System.Drawing.Point(66, 45);
             this.buy_avg_market_price_lbl.Name = "buy_avg_market_price_lbl";
             this.buy_avg_market_price_lbl.ReadOnly = true;
-            this.buy_avg_market_price_lbl.Size = new System.Drawing.Size(95, 21);
+            this.buy_avg_market_price_lbl.Size = new System.Drawing.Size(95, 23);
             this.buy_avg_market_price_lbl.TabIndex = 67;
             // 
             // label21
@@ -293,10 +298,11 @@ namespace tink_oblig
             // buy_avg_lbl
             // 
             this.buy_avg_lbl.BackColor = System.Drawing.SystemColors.Control;
-            this.buy_avg_lbl.Location = new System.Drawing.Point(66, 19);
+            this.buy_avg_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buy_avg_lbl.Location = new System.Drawing.Point(66, 18);
             this.buy_avg_lbl.Name = "buy_avg_lbl";
             this.buy_avg_lbl.ReadOnly = true;
-            this.buy_avg_lbl.Size = new System.Drawing.Size(95, 21);
+            this.buy_avg_lbl.Size = new System.Drawing.Size(95, 23);
             this.buy_avg_lbl.TabIndex = 62;
             // 
             // label12
@@ -360,6 +366,16 @@ namespace tink_oblig
             this.groupBox5.TabIndex = 96;
             this.groupBox5.TabStop = false;
             // 
+            // label16
+            // 
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label16.Location = new System.Drawing.Point(259, 3);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(95, 11);
+            this.label16.TabIndex = 115;
+            this.label16.Text = "Актуальная цена";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // label14
             // 
             this.label14.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -404,10 +420,11 @@ namespace tink_oblig
             // diff_price_avg_lbl
             // 
             this.diff_price_avg_lbl.BackColor = System.Drawing.SystemColors.Control;
-            this.diff_price_avg_lbl.Location = new System.Drawing.Point(66, 46);
+            this.diff_price_avg_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.diff_price_avg_lbl.Location = new System.Drawing.Point(66, 45);
             this.diff_price_avg_lbl.Name = "diff_price_avg_lbl";
             this.diff_price_avg_lbl.ReadOnly = true;
-            this.diff_price_avg_lbl.Size = new System.Drawing.Size(95, 21);
+            this.diff_price_avg_lbl.Size = new System.Drawing.Size(95, 23);
             this.diff_price_avg_lbl.TabIndex = 110;
             // 
             // label2
@@ -433,10 +450,11 @@ namespace tink_oblig
             // nkd_now_avg_lbl
             // 
             this.nkd_now_avg_lbl.BackColor = System.Drawing.SystemColors.Control;
-            this.nkd_now_avg_lbl.Location = new System.Drawing.Point(259, 46);
+            this.nkd_now_avg_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.nkd_now_avg_lbl.Location = new System.Drawing.Point(259, 45);
             this.nkd_now_avg_lbl.Name = "nkd_now_avg_lbl";
             this.nkd_now_avg_lbl.ReadOnly = true;
-            this.nkd_now_avg_lbl.Size = new System.Drawing.Size(95, 21);
+            this.nkd_now_avg_lbl.Size = new System.Drawing.Size(95, 23);
             this.nkd_now_avg_lbl.TabIndex = 107;
             // 
             // label4
@@ -452,10 +470,11 @@ namespace tink_oblig
             // market_price_avg_now_lbl
             // 
             this.market_price_avg_now_lbl.BackColor = System.Drawing.SystemColors.Control;
-            this.market_price_avg_now_lbl.Location = new System.Drawing.Point(259, 18);
+            this.market_price_avg_now_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.market_price_avg_now_lbl.Location = new System.Drawing.Point(259, 17);
             this.market_price_avg_now_lbl.Name = "market_price_avg_now_lbl";
             this.market_price_avg_now_lbl.ReadOnly = true;
-            this.market_price_avg_now_lbl.Size = new System.Drawing.Size(95, 21);
+            this.market_price_avg_now_lbl.Size = new System.Drawing.Size(95, 23);
             this.market_price_avg_now_lbl.TabIndex = 105;
             // 
             // label5
@@ -501,10 +520,11 @@ namespace tink_oblig
             // avg_in_lbl
             // 
             this.avg_in_lbl.BackColor = System.Drawing.SystemColors.Control;
-            this.avg_in_lbl.Location = new System.Drawing.Point(66, 18);
+            this.avg_in_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.avg_in_lbl.Location = new System.Drawing.Point(66, 17);
             this.avg_in_lbl.Name = "avg_in_lbl";
             this.avg_in_lbl.ReadOnly = true;
-            this.avg_in_lbl.Size = new System.Drawing.Size(95, 21);
+            this.avg_in_lbl.Size = new System.Drawing.Size(95, 23);
             this.avg_in_lbl.TabIndex = 100;
             // 
             // label9
@@ -542,11 +562,11 @@ namespace tink_oblig
             // commision_lbl
             // 
             this.commision_lbl.BackColor = System.Drawing.SystemColors.Control;
-            this.commision_lbl.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.commision_lbl.Location = new System.Drawing.Point(66, 185);
+            this.commision_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.commision_lbl.Location = new System.Drawing.Point(66, 184);
             this.commision_lbl.Name = "commision_lbl";
             this.commision_lbl.ReadOnly = true;
-            this.commision_lbl.Size = new System.Drawing.Size(95, 21);
+            this.commision_lbl.Size = new System.Drawing.Size(95, 23);
             this.commision_lbl.TabIndex = 96;
             // 
             // label39
@@ -582,10 +602,11 @@ namespace tink_oblig
             // profit_prc_lbl
             // 
             this.profit_prc_lbl.BackColor = System.Drawing.SystemColors.Control;
-            this.profit_prc_lbl.Location = new System.Drawing.Point(259, 185);
+            this.profit_prc_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.profit_prc_lbl.Location = new System.Drawing.Point(259, 184);
             this.profit_prc_lbl.Name = "profit_prc_lbl";
             this.profit_prc_lbl.ReadOnly = true;
-            this.profit_prc_lbl.Size = new System.Drawing.Size(95, 21);
+            this.profit_prc_lbl.Size = new System.Drawing.Size(95, 23);
             this.profit_prc_lbl.TabIndex = 82;
             // 
             // label50
@@ -601,16 +622,17 @@ namespace tink_oblig
             // profit_sum_lbl
             // 
             this.profit_sum_lbl.BackColor = System.Drawing.SystemColors.Control;
-            this.profit_sum_lbl.Location = new System.Drawing.Point(259, 158);
+            this.profit_sum_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.profit_sum_lbl.Location = new System.Drawing.Point(259, 157);
             this.profit_sum_lbl.Name = "profit_sum_lbl";
             this.profit_sum_lbl.ReadOnly = true;
-            this.profit_sum_lbl.Size = new System.Drawing.Size(95, 21);
+            this.profit_sum_lbl.Size = new System.Drawing.Size(95, 23);
             this.profit_sum_lbl.TabIndex = 80;
             // 
             // label49
             // 
             this.label49.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label49.Location = new System.Drawing.Point(355, 155);
+            this.label49.Location = new System.Drawing.Point(355, 156);
             this.label49.Name = "label49";
             this.label49.Size = new System.Drawing.Size(25, 23);
             this.label49.TabIndex = 79;
@@ -620,10 +642,11 @@ namespace tink_oblig
             // buyback_sum_lb
             // 
             this.buyback_sum_lb.BackColor = System.Drawing.SystemColors.Control;
-            this.buyback_sum_lb.Location = new System.Drawing.Point(66, 158);
+            this.buyback_sum_lb.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buyback_sum_lb.Location = new System.Drawing.Point(66, 157);
             this.buyback_sum_lb.Name = "buyback_sum_lb";
             this.buyback_sum_lb.ReadOnly = true;
-            this.buyback_sum_lb.Size = new System.Drawing.Size(95, 21);
+            this.buyback_sum_lb.Size = new System.Drawing.Size(95, 23);
             this.buyback_sum_lb.TabIndex = 75;
             // 
             // label47
@@ -649,10 +672,11 @@ namespace tink_oblig
             // diff_price_total_lbl
             // 
             this.diff_price_total_lbl.BackColor = System.Drawing.SystemColors.Control;
-            this.diff_price_total_lbl.Location = new System.Drawing.Point(66, 116);
+            this.diff_price_total_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.diff_price_total_lbl.Location = new System.Drawing.Point(66, 115);
             this.diff_price_total_lbl.Name = "diff_price_total_lbl";
             this.diff_price_total_lbl.ReadOnly = true;
-            this.diff_price_total_lbl.Size = new System.Drawing.Size(95, 21);
+            this.diff_price_total_lbl.Size = new System.Drawing.Size(95, 23);
             this.diff_price_total_lbl.TabIndex = 72;
             // 
             // label36
@@ -678,10 +702,11 @@ namespace tink_oblig
             // nkd_now_lbl
             // 
             this.nkd_now_lbl.BackColor = System.Drawing.SystemColors.Control;
-            this.nkd_now_lbl.Location = new System.Drawing.Point(259, 116);
+            this.nkd_now_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.nkd_now_lbl.Location = new System.Drawing.Point(259, 115);
             this.nkd_now_lbl.Name = "nkd_now_lbl";
             this.nkd_now_lbl.ReadOnly = true;
-            this.nkd_now_lbl.Size = new System.Drawing.Size(95, 21);
+            this.nkd_now_lbl.Size = new System.Drawing.Size(95, 23);
             this.nkd_now_lbl.TabIndex = 69;
             // 
             // label30
@@ -697,10 +722,11 @@ namespace tink_oblig
             // market_price_now_lbl
             // 
             this.market_price_now_lbl.BackColor = System.Drawing.SystemColors.Control;
-            this.market_price_now_lbl.Location = new System.Drawing.Point(259, 88);
+            this.market_price_now_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.market_price_now_lbl.Location = new System.Drawing.Point(259, 87);
             this.market_price_now_lbl.Name = "market_price_now_lbl";
             this.market_price_now_lbl.ReadOnly = true;
-            this.market_price_now_lbl.Size = new System.Drawing.Size(95, 21);
+            this.market_price_now_lbl.Size = new System.Drawing.Size(95, 23);
             this.market_price_now_lbl.TabIndex = 67;
             // 
             // label31
@@ -746,10 +772,11 @@ namespace tink_oblig
             // sum_in_lbl
             // 
             this.sum_in_lbl.BackColor = System.Drawing.SystemColors.Control;
-            this.sum_in_lbl.Location = new System.Drawing.Point(66, 88);
+            this.sum_in_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.sum_in_lbl.Location = new System.Drawing.Point(66, 87);
             this.sum_in_lbl.Name = "sum_in_lbl";
             this.sum_in_lbl.ReadOnly = true;
-            this.sum_in_lbl.Size = new System.Drawing.Size(95, 21);
+            this.sum_in_lbl.Size = new System.Drawing.Size(95, 23);
             this.sum_in_lbl.TabIndex = 62;
             // 
             // label35
@@ -761,16 +788,6 @@ namespace tink_oblig
             this.label35.TabIndex = 61;
             this.label35.Text = "RUB";
             this.label35.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label16
-            // 
-            this.label16.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label16.Location = new System.Drawing.Point(259, 3);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(95, 11);
-            this.label16.TabIndex = 115;
-            this.label16.Text = "Актуальная цена";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // BoundWatchBuyFrm
             // 
