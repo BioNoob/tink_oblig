@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using tink_oblig.Properties;
 using Tinkoff.Trading.OpenApi.Network;
 
 namespace tink_oblig
@@ -12,8 +13,18 @@ namespace tink_oblig
         public LoginForm()
         {
             InitializeComponent();
+            id_save_chk.Checked = true;
+            if (Settings.Default.AccID != null && Settings.Default.AccID.Count > 0)
+            {
+                foreach (var item in Settings.Default.AccID)
+                {
+                    keypare_cmb.Items.Add(item);
+                }
+                keypare_cmb.SelectedIndex = 0;
+            }
+
         }
-        public async Task<bool> do_login(string token = "t.lQPDdG2GWl7DHrLTdOrmbh1M3bCnq5k_tflcuHC7mETEO8p4_jqXCjrzBceN_FSWlUM2JmBjvB5DaNI1j09v0g")
+        public async Task<bool> do_login(string token)
         {
             var connection = ConnectionFactory.GetConnection(token);
             var context = connection.Context;
@@ -36,15 +47,35 @@ namespace tink_oblig
             login_btn.Enabled = false;
             bool result;
             if (string.IsNullOrEmpty(keypare_cmb.SelectedText))
-                result = await Task.Run(() => do_login()); //await do_login();
+            {
+                MessageBox.Show("Введите API ключ!","Ошибка");
+                login_btn.Enabled = true;
+                return;
+            }
             else
-                result = await Task.Run(() => do_login(keypare_cmb.SelectedText));
+            {
+                var t = keypare_cmb.SelectedText;
+                result = await Task.Run(() => do_login(t));
+            }
             if (result)
             {
-
-                //Settings.Default.SelectedAcc = "";
-                //Settings.Default.SelectedHistoryMode = 0;
-                //Settings.Default.Save();
+                if (id_save_chk.Checked)
+                {
+                    if (Settings.Default.AccID == null)
+                        Settings.Default.AccID = new System.Collections.Specialized.StringCollection();
+                    Settings.Default.AccID.Add(keypare_cmb.SelectedText);
+                }
+                else
+                {
+                    if (Settings.Default.AccID.Contains(keypare_cmb.SelectedText))
+                    {
+                        DialogResult ult = MessageBox.Show($"Удалить из сохранненых ключей\n{keypare_cmb.SelectedText} ?", "Удаление", MessageBoxButtons.YesNo);
+                        if (ult == DialogResult.Yes)
+                            Settings.Default.AccID.Remove(keypare_cmb.SelectedText);
+                    }
+                }
+                Settings.Default.Save();
+                Settings.Default.Reload();
                 ManagerForm mf = new ManagerForm();
                 mf.StartPosition = FormStartPosition.CenterParent;
                 mf.Show();
@@ -52,7 +83,6 @@ namespace tink_oblig
             }
             else
             {
-                //MessageBox.Show("Test");
                 login_btn.Enabled = true;
             }
         }
@@ -62,7 +92,7 @@ namespace tink_oblig
             Application.Exit();
         }
         ImgInfo img = new ImgInfo();
-        
+
         private void linkLabel1_Click(object sender, EventArgs e)
         {
             Process.Start("explorer.exe", "https://www.tinkoff.ru/invest/settings/");
@@ -73,6 +103,11 @@ namespace tink_oblig
             img.Focus();
             img.Location = new Point(Location.X + this.Size.Width / 2, Location.Y);
             img.Show();
+        }
+
+        private void id_save_chk_Click(object sender, EventArgs e)
+        {
+            //id_save_chk.Checked = !id_save_chk.Checked;
         }
     }
 }

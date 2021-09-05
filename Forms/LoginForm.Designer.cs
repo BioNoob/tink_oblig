@@ -33,6 +33,7 @@
             this.exit_btn = new System.Windows.Forms.Button();
             this.keypare_cmb = new System.Windows.Forms.ComboBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.id_save_chk = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // login_btn
@@ -75,6 +76,17 @@
             this.linkLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.linkLabel1.Click += new System.EventHandler(this.linkLabel1_Click);
             // 
+            // id_save_chk
+            // 
+            this.id_save_chk.Location = new System.Drawing.Point(85, 41);
+            this.id_save_chk.Name = "id_save_chk";
+            this.id_save_chk.Size = new System.Drawing.Size(177, 24);
+            this.id_save_chk.TabIndex = 3;
+            this.id_save_chk.Text = "Сохранить ключ";
+            this.id_save_chk.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.id_save_chk.UseVisualStyleBackColor = true;
+            this.id_save_chk.Click += new System.EventHandler(this.id_save_chk_Click);
+            // 
             // LoginForm
             // 
             this.AcceptButton = this.login_btn;
@@ -84,6 +96,7 @@
             this.CancelButton = this.exit_btn;
             this.ClientSize = new System.Drawing.Size(347, 85);
             this.ControlBox = false;
+            this.Controls.Add(this.id_save_chk);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.keypare_cmb);
             this.Controls.Add(this.exit_btn);
@@ -107,6 +120,7 @@
         private System.Windows.Forms.Button exit_btn;
         private System.Windows.Forms.ComboBox keypare_cmb;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.CheckBox id_save_chk;
     }
 }
 

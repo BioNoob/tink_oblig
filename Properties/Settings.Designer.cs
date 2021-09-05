@@ -46,5 +46,16 @@ namespace tink_oblig.Properties {
                 this["SelectedHistoryMode"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Collections.Specialized.StringCollection AccID {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["AccID"]));
+            }
+            set {
+                this["AccID"] = value;
+            }
+        }
     }
 }
