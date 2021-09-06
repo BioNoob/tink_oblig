@@ -63,6 +63,7 @@
             this.keypare_cmb.Name = "keypare_cmb";
             this.keypare_cmb.Size = new System.Drawing.Size(323, 23);
             this.keypare_cmb.TabIndex = 1;
+            this.keypare_cmb.TextUpdate += new System.EventHandler(this.keypare_cmb_TextUpdate);
             // 
             // linkLabel1
             // 
