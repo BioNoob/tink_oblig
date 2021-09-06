@@ -76,7 +76,7 @@ namespace tink_oblig
             this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label3.Location = new System.Drawing.Point(193, 32);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(139, 19);
+            this.label3.Size = new System.Drawing.Size(158, 19);
             this.label3.TabIndex = 7;
             this.label3.Text = "Включение истории";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -86,7 +86,7 @@ namespace tink_oblig
             this.history_cmb.FormattingEnabled = true;
             this.history_cmb.Location = new System.Drawing.Point(193, 6);
             this.history_cmb.Name = "history_cmb";
-            this.history_cmb.Size = new System.Drawing.Size(139, 23);
+            this.history_cmb.Size = new System.Drawing.Size(158, 23);
             this.history_cmb.TabIndex = 6;
             this.history_cmb.SelectionChangeCommitted += new System.EventHandler(this.history_cmb_SelectionChangeCommitted);
             // 

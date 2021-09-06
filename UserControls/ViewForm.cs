@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using tink_oblig.classes;
@@ -21,6 +22,10 @@ namespace tink_oblig
         {
             Call_cnt = 0;
             BoundListLayPannel.Controls.Clear();
+            BoundListLayPannel.RowCount = 1;
+            BoundListLayPannel.RowStyles.Clear();
+            BoundListLayPannel.AutoScroll = false;
+            BoundListLayPannel.AutoScroll = true;
             SeeHistory = history;
             Selected_portfail = acc.Copy();
             Selected_portfail.BoundsList = Selected_portfail.BoundsList.Where(t => t.Avalibale_mode == history | t.Avalibale_mode == SeeHistory.WithHistory).ToList();
@@ -70,6 +75,13 @@ namespace tink_oblig
                 newOne.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
                 BoundListLayPannel.Controls.Add(newOne, 0, BoundListLayPannel.RowCount);
             }
+            foreach (Control c in panel1.Controls)
+            {
+                if (c is TextBox)
+                {
+                    c.DataBindings.Clear();
+                }
+            }
             total_money_lbl.DataBindings.Add(new Binding("Text", Selected_portfail, "SumB_Cost", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
             summ_cpn_lbl.DataBindings.Add(new Binding("Text", Selected_portfail, "SumB_Coupons", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
 
@@ -100,11 +112,6 @@ namespace tink_oblig
             BoundListLayPannel.Controls.Add(newOne, 0, BoundListLayPannel.RowCount);
         }
 
-        private void refresh_btn_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void better_profit_btn_Click(object sender, EventArgs e)
         {
             if (Selected_portfail.BoundsList.Count > 0)
@@ -131,9 +138,10 @@ namespace tink_oblig
                         break;
 
                 }
-                BoundWatchCntrlFrm bwf_worst = new BoundWatchCntrlFrm(bc, SeeHistory);
-                bwf_worst.Tag = $"{bc.Bound.Base.Ticker}";
-                bwf_worst.Show();
+                BoundWatchCntrlFrm bwf_better = new BoundWatchCntrlFrm(bc, SeeHistory);
+                Program.ShowedForms.Add(new TagWatcher(bc.Bound.Base.Name, SeeHistory));
+                //bwf_better.Tag = $"{bc.Bound.Base.Ticker}";
+                bwf_better.Show();
             }
 
         }
@@ -165,9 +173,15 @@ namespace tink_oblig
 
                 }
                 BoundWatchCntrlFrm bwf_worst = new BoundWatchCntrlFrm(bc, SeeHistory);
-                bwf_worst.Tag = $"{bc.Bound.Base.Ticker}";
+                Program.ShowedForms.Add(new TagWatcher(bc.Bound.Base.Name, SeeHistory));
+                //bwf_worst.Tag = Program.ShowedForms.Last();//$"{bc.Bound.Base.Ticker}";
                 bwf_worst.Show();
             }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
         //private void change_history_btn_Click(object sender, EventArgs e)
         //{

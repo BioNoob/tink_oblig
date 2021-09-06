@@ -122,7 +122,7 @@ namespace tink_oblig
             // 
             // coupon_tax_lbl
             // 
-            this.coupon_tax_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.coupon_tax_lbl.BackColor = System.Drawing.Color.Lavender;
             this.coupon_tax_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.coupon_tax_lbl.Location = new System.Drawing.Point(67, 160);
             this.coupon_tax_lbl.Name = "coupon_tax_lbl";
@@ -132,7 +132,7 @@ namespace tink_oblig
             // 
             // sum_coupon_lbl
             // 
-            this.sum_coupon_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.sum_coupon_lbl.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.sum_coupon_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.sum_coupon_lbl.Location = new System.Drawing.Point(67, 125);
             this.sum_coupon_lbl.Name = "sum_coupon_lbl";
@@ -483,6 +483,7 @@ namespace tink_oblig
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(422, 700);
             this.Name = "BoundWatchCntrlFrm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.BoundWatchCntrlFrm_FormClosed);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

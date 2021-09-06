@@ -54,6 +54,7 @@ namespace tink_oblig.classes
         public Image Img_exct { get; private set; }
         public Color Img_color { get; private set; }
         public Color Text_color { get; private set; }
+        ///https://www.tinkoff.ru/api/trading/symbols/brands?brandId=%D0%A4%D0%BB%D0%B0%D0%B9%20%D0%9F%D0%BB%D1%8D%D0%BD%D0%B8%D0%BD%D0%B3
         public void LoadImagePath()
         {
             xWebClient wx = new xWebClient();

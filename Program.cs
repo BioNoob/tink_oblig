@@ -1,9 +1,11 @@
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Net;
 using System.Windows.Forms;
 using tink_oblig.classes;
 using Tinkoff.Trading.OpenApi.Network;
+using static tink_oblig.classes.Accounts;
 
 namespace tink_oblig
 {
@@ -18,6 +20,7 @@ namespace tink_oblig
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            ShowedForms = new List<TagWatcher>();
             Application.Run(LoginForm);
         }
         private static Context _CurrentContext;
@@ -69,6 +72,14 @@ namespace tink_oblig
 
         }
         public static LoginForm LoginForm = new LoginForm();
+        public static ManagerForm mf;
+        public static int Counter = 0;
+        public static List<TagWatcher> ShowedForms { get; set; }
+        public static void RemoveFromShowed(TagWatcher rm)
+        {
+            ShowedForms.Remove(rm);
+            Counter = rm.Index;
+        }
     }
     public class xWebClient : WebClient
     {
@@ -77,6 +88,36 @@ namespace tink_oblig
             WebRequest w = base.GetWebRequest(uri);
             w.Timeout = 100000;
             return w;
+        }
+    }
+    public class TagWatcher
+    {
+        public string Name { get; private set; }
+        public int Index { get; private set; }
+
+        public SeeHistory Mode { get; private set; }
+        public TagWatcher(string name, SeeHistory md)
+        {
+            Name = name;
+            Mode = md;
+            Index = Program.Counter++;
+        }
+        public override string ToString()
+        {
+            string buf = "";
+            switch (Mode)
+            {
+                case SeeHistory.NoHistrory:
+                    buf = "Открытые позиции";
+                    break;
+                case SeeHistory.History:
+                    buf = "Закрытые позиции";
+                    break;
+                case SeeHistory.WithHistory:
+                    buf = "Совместные позиции";
+                    break;
+            }
+            return $"{Name}  {buf}";
         }
     }
 }

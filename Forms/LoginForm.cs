@@ -77,9 +77,9 @@ namespace tink_oblig
                 }
                 Settings.Default.Save();
                 Settings.Default.Reload();
-                ManagerForm mf = new ManagerForm();
-                mf.StartPosition = FormStartPosition.CenterParent;
-                mf.Show();
+                Program.mf = new ManagerForm() { StartPosition = FormStartPosition.Manual };
+                Program.mf.Location = new Point(this.Location.X, this.Location.Y - Program.mf.Height / 2);
+                Program.mf.Show();
                 this.Hide();
             }
             else
@@ -103,7 +103,7 @@ namespace tink_oblig
             }
             img.Focus();
             img.Location = new Point(Location.X + this.Size.Width / 2, Location.Y);
-            img.Show();
+            img.ShowDialog();
         }
 
         private void id_save_chk_Click(object sender, EventArgs e)

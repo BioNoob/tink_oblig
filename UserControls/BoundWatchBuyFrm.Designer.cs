@@ -67,7 +67,6 @@ namespace tink_oblig
             this.label8 = new System.Windows.Forms.Label();
             this.avg_in_lbl = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.label41 = new System.Windows.Forms.Label();
             this.commision_lbl = new System.Windows.Forms.TextBox();
             this.label39 = new System.Windows.Forms.Label();
@@ -188,7 +187,7 @@ namespace tink_oblig
             // 
             // buy_sum_lbl
             // 
-            this.buy_sum_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.buy_sum_lbl.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.buy_sum_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buy_sum_lbl.Location = new System.Drawing.Point(66, 18);
             this.buy_sum_lbl.Name = "buy_sum_lbl";
@@ -334,7 +333,6 @@ namespace tink_oblig
             this.groupBox5.Controls.Add(this.label8);
             this.groupBox5.Controls.Add(this.avg_in_lbl);
             this.groupBox5.Controls.Add(this.label9);
-            this.groupBox5.Controls.Add(this.label1);
             this.groupBox5.Controls.Add(this.label41);
             this.groupBox5.Controls.Add(this.commision_lbl);
             this.groupBox5.Controls.Add(this.label39);
@@ -537,17 +535,6 @@ namespace tink_oblig
             this.label9.Text = "RUB";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label1
-            // 
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(191, 9);
-            this.label1.Margin = new System.Windows.Forms.Padding(0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1, 205);
-            this.label1.TabIndex = 98;
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // label41
             // 
             this.label41.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -561,7 +548,7 @@ namespace tink_oblig
             // 
             // commision_lbl
             // 
-            this.commision_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.commision_lbl.BackColor = System.Drawing.Color.Lavender;
             this.commision_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.commision_lbl.Location = new System.Drawing.Point(66, 184);
             this.commision_lbl.Name = "commision_lbl";
@@ -641,7 +628,7 @@ namespace tink_oblig
             // 
             // buyback_sum_lb
             // 
-            this.buyback_sum_lb.BackColor = System.Drawing.SystemColors.Control;
+            this.buyback_sum_lb.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.buyback_sum_lb.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buyback_sum_lb.Location = new System.Drawing.Point(66, 157);
             this.buyback_sum_lb.Name = "buyback_sum_lb";
@@ -671,7 +658,7 @@ namespace tink_oblig
             // 
             // diff_price_total_lbl
             // 
-            this.diff_price_total_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.diff_price_total_lbl.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.diff_price_total_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.diff_price_total_lbl.Location = new System.Drawing.Point(66, 115);
             this.diff_price_total_lbl.Name = "diff_price_total_lbl";
@@ -701,7 +688,7 @@ namespace tink_oblig
             // 
             // nkd_now_lbl
             // 
-            this.nkd_now_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.nkd_now_lbl.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.nkd_now_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.nkd_now_lbl.Location = new System.Drawing.Point(259, 115);
             this.nkd_now_lbl.Name = "nkd_now_lbl";
@@ -721,7 +708,7 @@ namespace tink_oblig
             // 
             // market_price_now_lbl
             // 
-            this.market_price_now_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.market_price_now_lbl.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.market_price_now_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.market_price_now_lbl.Location = new System.Drawing.Point(259, 87);
             this.market_price_now_lbl.Name = "market_price_now_lbl";

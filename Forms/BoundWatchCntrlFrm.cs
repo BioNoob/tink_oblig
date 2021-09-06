@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Linq;
 using System.Windows.Forms;
 using tink_oblig.classes;
 using static tink_oblig.classes.Accounts;
@@ -17,8 +18,9 @@ namespace tink_oblig
         {
             InitializeComponent();
             Bound_Cnc = bnc;
-
             Mode = mod;
+            Program.ShowedForms.Add(new TagWatcher(Bound_Cnc.Bound.Base.Name, Mode));
+            Tag = Program.ShowedForms.Last();
             name_lbl.DataBindings.Add(new Binding("Text", Bound, "Base.Name", true, DataSourceUpdateMode.OnPropertyChanged));
             ticker_lbl.DataBindings.Add(new Binding("Text", Bound, "Base.Ticker", true, DataSourceUpdateMode.OnPropertyChanged));
             pic_box_pb.DataBindings.Add(new Binding("Image", Bound, "Img_exct", true));
@@ -50,25 +52,30 @@ namespace tink_oblig
                     total_cnt_coupon_lbl.DataBindings.Add(new Binding("Text", Bound_n, "Coupon_cnt", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "D"));
                     sum_coupon_lbl.DataBindings.Add(new Binding("Text", Bound_n, "Coupon_summ", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
                     coupon_tax_lbl.DataBindings.Add(new Binding("Text", Bound_n, "Coupon_Tax_summ", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
-                    count_lbl.DataBindings.Add(new Binding("Text", Bound, "Base.Lots", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "D"));
+                    count_lbl.DataBindings.Add(new Binding("Text", Bound_n, "Cnt_buy", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "D"));
                     price_sum_lbl.DataBindings.Add(new Binding("Text", Bound_n, "Buy_summ_market_price", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
                     show_panel.Controls.Clear();
                     show_panel.Controls.Add(new BoundWatchBuyFrm(Bound_n) { Dock = DockStyle.Fill });
-                    this.Text = Bound_Cnc.Bound.Base.Name;
+                    //this.Text = Bound_Cnc.Bound.Base.Name;
                     break;
                 case SeeHistory.History:
                     last_coupon_lbl.DataBindings.Add(new Binding("Text", Bound_s, "Last_Coupon_payed", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
                     total_cnt_coupon_lbl.DataBindings.Add(new Binding("Text", Bound_s, "Coupon_cnt", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "D"));
                     sum_coupon_lbl.DataBindings.Add(new Binding("Text", Bound_s, "Coupon_summ", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
                     coupon_tax_lbl.DataBindings.Add(new Binding("Text", Bound_s, "Coupon_Tax_summ", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
-                    count_lbl.DataBindings.Add(new Binding("Text", Bound, "Base.Lots", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "D"));
+                    count_lbl.DataBindings.Add(new Binding("Text", Bound_s, "Cnt_sell", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "D"));
                     price_sum_lbl.DataBindings.Add(new Binding("Text", Bound_s, "Buy_summ_market_price", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
                     show_panel.Controls.Clear();
                     show_panel.Controls.Add(new BoundWatchSellFrm(Bound_s) { Dock = DockStyle.Fill });
-                    this.Text = Bound_Cnc.Bound.Base.Name;
+                    //this.Text = Bound_Cnc.Bound.Base.Name;
                     break;
             }
+            this.Text = ((TagWatcher)Tag).ToString();
+        }
 
+        private void BoundWatchCntrlFrm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Program.RemoveFromShowed((TagWatcher)this.Tag);
         }
     }
 }

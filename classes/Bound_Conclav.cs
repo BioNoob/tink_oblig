@@ -23,6 +23,26 @@ namespace tink_oblig.classes
             Bound = bnb;
             SetMode();
         }
+        public decimal Money_sum
+        {
+            get
+            {
+                if (Avalibale_mode == SeeHistory.WithHistory)
+                    return Bound_now.Summ_buy + Bound_sold.Summ_sell;
+                else
+                    return 0;
+            }
+        }
+        public int Cnt_sum
+        {
+            get
+            {
+                if (Avalibale_mode == SeeHistory.WithHistory)
+                    return Bound_now.Cnt_buy + Bound_sold.Cnt_sell;
+                else
+                    return 0;
+            }
+        }
         public void SetMode()
         {
             if (Bound.Operations_list.Count < 1)

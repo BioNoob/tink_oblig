@@ -645,7 +645,7 @@ namespace tink_oblig
             // 
             // commision_lbl
             // 
-            this.commision_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.commision_lbl.BackColor = System.Drawing.Color.Lavender;
             this.commision_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.commision_lbl.Location = new System.Drawing.Point(66, 46);
             this.commision_lbl.Name = "commision_lbl";
@@ -725,7 +725,7 @@ namespace tink_oblig
             // 
             // buyback_sum_lb
             // 
-            this.buyback_sum_lb.BackColor = System.Drawing.SystemColors.Control;
+            this.buyback_sum_lb.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.buyback_sum_lb.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buyback_sum_lb.Location = new System.Drawing.Point(66, 19);
             this.buyback_sum_lb.Name = "buyback_sum_lb";

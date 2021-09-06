@@ -31,22 +31,19 @@ namespace tink_oblig
         {
             this.BoundListLayPannel = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.total_price_diff_lbl = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.worst_ptofit_btn = new System.Windows.Forms.Button();
             this.better_profit_btn = new System.Windows.Forms.Button();
-            this.total_profit_perc_lbl = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.buy_back_lbl = new System.Windows.Forms.TextBox();
-            this.total_profit_lbl = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.total_cpn_taxes_lbl = new System.Windows.Forms.TextBox();
             this.total_cnt_cpn_lbl = new System.Windows.Forms.TextBox();
-            this.total_price_diff_lbl = new System.Windows.Forms.TextBox();
             this.total_cnt_lbl = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -58,6 +55,9 @@ namespace tink_oblig
             this.summ_cpn_lbl = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.total_money_lbl = new System.Windows.Forms.TextBox();
+            this.total_cpn_taxes_lbl = new System.Windows.Forms.TextBox();
+            this.total_profit_lbl = new System.Windows.Forms.TextBox();
+            this.total_profit_perc_lbl = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -79,20 +79,20 @@ namespace tink_oblig
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.total_profit_perc_lbl);
+            this.panel1.Controls.Add(this.total_profit_lbl);
+            this.panel1.Controls.Add(this.total_cpn_taxes_lbl);
+            this.panel1.Controls.Add(this.total_price_diff_lbl);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.label18);
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.total_profit_perc_lbl);
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.buy_back_lbl);
-            this.panel1.Controls.Add(this.total_profit_lbl);
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.label12);
             this.panel1.Controls.Add(this.label16);
             this.panel1.Controls.Add(this.label15);
-            this.panel1.Controls.Add(this.total_cpn_taxes_lbl);
             this.panel1.Controls.Add(this.total_cnt_cpn_lbl);
-            this.panel1.Controls.Add(this.total_price_diff_lbl);
             this.panel1.Controls.Add(this.total_cnt_lbl);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label6);
@@ -109,6 +109,21 @@ namespace tink_oblig
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(395, 162);
             this.panel1.TabIndex = 5;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // total_price_diff_lbl
+            // 
+            this.total_price_diff_lbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.total_price_diff_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.total_price_diff_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.total_price_diff_lbl.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.total_price_diff_lbl.Location = new System.Drawing.Point(263, 3);
+            this.total_price_diff_lbl.Name = "total_price_diff_lbl";
+            this.total_price_diff_lbl.ReadOnly = true;
+            this.total_price_diff_lbl.Size = new System.Drawing.Size(100, 23);
+            this.total_price_diff_lbl.TabIndex = 66;
+            this.total_price_diff_lbl.Text = "diff price";
+            this.total_price_diff_lbl.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label8
             // 
@@ -123,7 +138,7 @@ namespace tink_oblig
             // label18
             // 
             this.label18.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label18.Location = new System.Drawing.Point(112, 86);
+            this.label18.Location = new System.Drawing.Point(112, 85);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(24, 23);
             this.label18.TabIndex = 65;
@@ -163,22 +178,11 @@ namespace tink_oblig
             this.better_profit_btn.UseVisualStyleBackColor = true;
             this.better_profit_btn.Click += new System.EventHandler(this.better_profit_btn_Click);
             // 
-            // total_profit_perc_lbl
-            // 
-            this.total_profit_perc_lbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.total_profit_perc_lbl.Location = new System.Drawing.Point(161, 86);
-            this.total_profit_perc_lbl.Name = "total_profit_perc_lbl";
-            this.total_profit_perc_lbl.ReadOnly = true;
-            this.total_profit_perc_lbl.Size = new System.Drawing.Size(69, 23);
-            this.total_profit_perc_lbl.TabIndex = 64;
-            this.total_profit_perc_lbl.Text = "perc profit";
-            this.total_profit_perc_lbl.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
             // label10
             // 
             this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label10.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(365, 86);
+            this.label10.Location = new System.Drawing.Point(365, 85);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(24, 23);
             this.label10.TabIndex = 64;
@@ -189,7 +193,8 @@ namespace tink_oblig
             // 
             this.buy_back_lbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buy_back_lbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.buy_back_lbl.Location = new System.Drawing.Point(263, 86);
+            this.buy_back_lbl.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.buy_back_lbl.Location = new System.Drawing.Point(263, 85);
             this.buy_back_lbl.Name = "buy_back_lbl";
             this.buy_back_lbl.ReadOnly = true;
             this.buy_back_lbl.Size = new System.Drawing.Size(100, 23);
@@ -197,21 +202,10 @@ namespace tink_oblig
             this.buy_back_lbl.Text = "cashback";
             this.buy_back_lbl.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // total_profit_lbl
-            // 
-            this.total_profit_lbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.total_profit_lbl.Location = new System.Drawing.Point(4, 86);
-            this.total_profit_lbl.Name = "total_profit_lbl";
-            this.total_profit_lbl.ReadOnly = true;
-            this.total_profit_lbl.Size = new System.Drawing.Size(107, 23);
-            this.total_profit_lbl.TabIndex = 63;
-            this.total_profit_lbl.Text = "profit";
-            this.total_profit_lbl.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
             // label9
             // 
             this.label9.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(4, 109);
+            this.label9.Location = new System.Drawing.Point(4, 108);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(107, 13);
             this.label9.TabIndex = 51;
@@ -222,7 +216,7 @@ namespace tink_oblig
             // 
             this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label12.Location = new System.Drawing.Point(263, 109);
+            this.label12.Location = new System.Drawing.Point(263, 108);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(100, 13);
             this.label12.TabIndex = 62;
@@ -233,7 +227,7 @@ namespace tink_oblig
             // 
             this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label16.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label16.Location = new System.Drawing.Point(365, 43);
+            this.label16.Location = new System.Drawing.Point(365, 42);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(24, 23);
             this.label16.TabIndex = 59;
@@ -251,40 +245,16 @@ namespace tink_oblig
             this.label15.Text = "RUB";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // total_cpn_taxes_lbl
-            // 
-            this.total_cpn_taxes_lbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.total_cpn_taxes_lbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.total_cpn_taxes_lbl.Location = new System.Drawing.Point(263, 42);
-            this.total_cpn_taxes_lbl.Name = "total_cpn_taxes_lbl";
-            this.total_cpn_taxes_lbl.ReadOnly = true;
-            this.total_cpn_taxes_lbl.Size = new System.Drawing.Size(100, 23);
-            this.total_cpn_taxes_lbl.TabIndex = 56;
-            this.total_cpn_taxes_lbl.Text = "taxes cnt";
-            this.total_cpn_taxes_lbl.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
             // total_cnt_cpn_lbl
             // 
             this.total_cnt_cpn_lbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.total_cnt_cpn_lbl.Location = new System.Drawing.Point(161, 41);
+            this.total_cnt_cpn_lbl.Location = new System.Drawing.Point(161, 42);
             this.total_cnt_cpn_lbl.Name = "total_cnt_cpn_lbl";
             this.total_cnt_cpn_lbl.ReadOnly = true;
             this.total_cnt_cpn_lbl.Size = new System.Drawing.Size(69, 23);
             this.total_cnt_cpn_lbl.TabIndex = 55;
             this.total_cnt_cpn_lbl.Text = "get cpn";
             this.total_cnt_cpn_lbl.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // total_price_diff_lbl
-            // 
-            this.total_price_diff_lbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.total_price_diff_lbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.total_price_diff_lbl.Location = new System.Drawing.Point(263, 3);
-            this.total_price_diff_lbl.Name = "total_price_diff_lbl";
-            this.total_price_diff_lbl.ReadOnly = true;
-            this.total_price_diff_lbl.Size = new System.Drawing.Size(100, 23);
-            this.total_price_diff_lbl.TabIndex = 54;
-            this.total_price_diff_lbl.Text = "diff price";
-            this.total_price_diff_lbl.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // total_cnt_lbl
             // 
@@ -342,7 +312,7 @@ namespace tink_oblig
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(112, 43);
+            this.label5.Location = new System.Drawing.Point(112, 42);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(24, 23);
             this.label5.TabIndex = 46;
@@ -352,7 +322,7 @@ namespace tink_oblig
             // label24
             // 
             this.label24.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label24.Location = new System.Drawing.Point(112, 3);
+            this.label24.Location = new System.Drawing.Point(112, 2);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(24, 23);
             this.label24.TabIndex = 45;
@@ -362,9 +332,9 @@ namespace tink_oblig
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(2, 65);
+            this.label2.Location = new System.Drawing.Point(4, 65);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(107, 13);
+            this.label2.Size = new System.Drawing.Size(105, 13);
             this.label2.TabIndex = 10;
             this.label2.Text = "Купонные выплаты";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -401,6 +371,46 @@ namespace tink_oblig
             this.total_money_lbl.Text = "summ total";
             this.total_money_lbl.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // total_cpn_taxes_lbl
+            // 
+            this.total_cpn_taxes_lbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.total_cpn_taxes_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.total_cpn_taxes_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.total_cpn_taxes_lbl.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.total_cpn_taxes_lbl.Location = new System.Drawing.Point(263, 42);
+            this.total_cpn_taxes_lbl.Name = "total_cpn_taxes_lbl";
+            this.total_cpn_taxes_lbl.ReadOnly = true;
+            this.total_cpn_taxes_lbl.Size = new System.Drawing.Size(100, 23);
+            this.total_cpn_taxes_lbl.TabIndex = 67;
+            this.total_cpn_taxes_lbl.Text = "taxes cnt";
+            this.total_cpn_taxes_lbl.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // total_profit_lbl
+            // 
+            this.total_profit_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.total_profit_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.total_profit_lbl.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.total_profit_lbl.Location = new System.Drawing.Point(4, 85);
+            this.total_profit_lbl.Name = "total_profit_lbl";
+            this.total_profit_lbl.ReadOnly = true;
+            this.total_profit_lbl.Size = new System.Drawing.Size(107, 23);
+            this.total_profit_lbl.TabIndex = 68;
+            this.total_profit_lbl.Text = "profit sum";
+            this.total_profit_lbl.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // total_profit_perc_lbl
+            // 
+            this.total_profit_perc_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.total_profit_perc_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.total_profit_perc_lbl.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.total_profit_perc_lbl.Location = new System.Drawing.Point(161, 85);
+            this.total_profit_perc_lbl.Name = "total_profit_perc_lbl";
+            this.total_profit_perc_lbl.ReadOnly = true;
+            this.total_profit_perc_lbl.Size = new System.Drawing.Size(69, 23);
+            this.total_profit_perc_lbl.TabIndex = 69;
+            this.total_profit_perc_lbl.Text = "perc profit";
+            this.total_profit_perc_lbl.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // ViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -430,9 +440,7 @@ namespace tink_oblig
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox total_cpn_taxes_lbl;
         private System.Windows.Forms.TextBox total_cnt_cpn_lbl;
-        private System.Windows.Forms.TextBox total_price_diff_lbl;
         private System.Windows.Forms.TextBox total_cnt_lbl;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label4;
@@ -444,10 +452,12 @@ namespace tink_oblig
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox total_profit_perc_lbl;
-        private System.Windows.Forms.TextBox total_profit_lbl;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button better_profit_btn;
         private System.Windows.Forms.Button worst_ptofit_btn;
+        private System.Windows.Forms.TextBox total_price_diff_lbl;
+        private System.Windows.Forms.TextBox total_profit_lbl;
+        private System.Windows.Forms.TextBox total_cpn_taxes_lbl;
+        private System.Windows.Forms.TextBox total_profit_perc_lbl;
     }
 }

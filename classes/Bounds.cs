@@ -16,9 +16,9 @@ namespace tink_oblig.classes
             _boundslist = new List<Bound_Conclav>();
             Acc = acc;
         }
-        public Bounds Copy ()
+        public Bounds Copy()
         {
-            var b =  new Bounds(this.Acc) { BoundsList = new List<Bound_Conclav>(this.BoundsList) };
+            var b = new Bounds(this.Acc) { BoundsList = new List<Bound_Conclav>(this.BoundsList) };
             return b;
         }
         private List<Bound_Conclav> _boundslist;
@@ -30,7 +30,7 @@ namespace tink_oblig.classes
             }
             set
             {
-                _boundslist = value; 
+                _boundslist = value;
             }
         }
         public Account_m Acc { get; set; }
@@ -53,14 +53,14 @@ namespace tink_oblig.classes
         {
             get
             {
-                return BoundsList.Select(t => t.Bound_now).ToList();
+                return BoundsList.Where(t => t.Bound_now != null).Select(t => t.Bound_now).ToList();
             }
         }
         public List<Bound_sold> Bounds_Sold
         {
             get
             {
-                return BoundsList.Select(t => t.Bound_sold).ToList();
+                return BoundsList.Where(t => t.Bound_sold != null).Select(t => t.Bound_sold).ToList();
             }
         }
 

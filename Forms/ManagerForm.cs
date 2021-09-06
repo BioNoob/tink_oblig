@@ -1,6 +1,7 @@
 ﻿
 using Newtonsoft.Json;
 using System;
+using System.Linq;
 using System.Windows.Forms;
 using tink_oblig.classes;
 using tink_oblig.Properties;
@@ -25,13 +26,13 @@ namespace tink_oblig
                 switch (item)
                 {
                     case SeeHistory.NoHistrory:
-                        history_cmb.Items.Add("Открытые позиции");
+                        history_cmb.Items.Add($"Открытые позиции\t\t");
                         break;
                     case SeeHistory.History:
-                        history_cmb.Items.Add("Закрытые позиции");
+                        history_cmb.Items.Add($"Закрытые позиции\t\t");
                         break;
                     case SeeHistory.WithHistory:
-                        history_cmb.Items.Add("Совместные позиции");
+                        history_cmb.Items.Add($"Совместные позиции\t");
                         break;
                     default:
                         break;
@@ -98,6 +99,26 @@ namespace tink_oblig
             account_switcher_cmb.Enabled = true;
             refresh_btn.Enabled = true;
             pictureBox1.Visible = false;
+            int si = history_cmb.SelectedIndex;
+            history_cmb.Items.Clear();
+            foreach (SeeHistory item in Enum.GetValues(typeof(SeeHistory)))
+            {
+                switch (item)
+                {
+                    case SeeHistory.NoHistrory:
+                        history_cmb.Items.Add($"Открытые позиции {bnd.Bounds_Now.Count}");
+                        break;
+                    case SeeHistory.History:
+                        history_cmb.Items.Add($"Закрытые позиции {bnd.Bounds_Sold.Count}");
+                        break;
+                    case SeeHistory.WithHistory:
+                        history_cmb.Items.Add($"Совместные позиции {bnd.BoundsList.Where(t=>t.Avalibale_mode == SeeHistory.WithHistory).Count()}");
+                        break;
+                    default:
+                        break;
+                }
+            }
+            history_cmb.SelectedIndex = si;
             if (history_cmb.SelectedIndex < 0)
             {
                 history_cmb.SelectedIndex = 0;
@@ -119,11 +140,17 @@ namespace tink_oblig
             {
                 item.SetMode();
             }
-            view_panel.Controls.Clear();
-            _vf = new ViewForm(bnd, Mode);
-            _vf.BorderStyle = BorderStyle.None;
-            _vf.Dock = DockStyle.Fill;
-            view_panel.Controls.Add(_vf);
+            //view_panel.Controls.Clear();
+            if (_vf == null)
+            {
+                _vf = new ViewForm(bnd, Mode);
+                _vf.BorderStyle = BorderStyle.None;
+                _vf.Dock = DockStyle.Fill;
+                view_panel.Controls.Add(_vf);
+            }
+            else
+                _vf.Switch_representation(bnd, Mode);
+
         }
 
         private async void account_switcher_cmb_SelectionChangeCommitted(object sender, System.EventArgs e)
