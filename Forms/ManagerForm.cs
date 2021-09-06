@@ -26,13 +26,13 @@ namespace tink_oblig
                 switch (item)
                 {
                     case SeeHistory.NoHistrory:
-                        history_cmb.Items.Add($"Открытые позиции\t\t");
+                        history_cmb.Items.Add($"Открытые позиции");
                         break;
                     case SeeHistory.History:
-                        history_cmb.Items.Add($"Закрытые позиции\t\t");
+                        history_cmb.Items.Add($"Закрытые позиции");
                         break;
                     case SeeHistory.WithHistory:
-                        history_cmb.Items.Add($"Совместные позиции\t");
+                        history_cmb.Items.Add($"Совместные позиции");
                         break;
                     default:
                         break;
@@ -46,28 +46,26 @@ namespace tink_oblig
         {
             account_switcher_cmb.SelectionChangeCommitted -= account_switcher_cmb_SelectionChangeCommitted;
             history_cmb.SelectionChangeCommitted -= history_cmb_SelectionChangeCommitted;
-            Account_m acm = null;
+            Account_m Load_m = null;
 
             if (!string.IsNullOrEmpty(Settings.Default.SelectedAcc))
             {
-                Account acma = JsonConvert.DeserializeObject<Account>(Settings.Default.SelectedAcc);
-                acm = new Account_m(acma.BrokerAccountType, acma.BrokerAccountId);
+                Account Load = JsonConvert.DeserializeObject<Account>(Settings.Default.SelectedAcc);
+                Load_m = new Account_m(Load.BrokerAccountType, Load.BrokerAccountId);
             }
-            if (acm != null)
+            if (Load_m != null)
             {
                 foreach (var item in account_switcher_cmb.Items)
                 {
-                    if (((Account_m)item).BrokerAccountId == acm.BrokerAccountId)
+                    if (((Account_m)item).BrokerAccountId == Load_m.BrokerAccountId)
                     {
                         account_switcher_cmb.SelectedItem = item;
                         break;
                     }
                 }
             }
-            else
-            {
+            if (account_switcher_cmb.SelectedIndex == -1)
                 account_switcher_cmb.SelectedIndex = 0;
-            }
             Mode = (SeeHistory)Settings.Default.SelectedHistoryMode;
             if ((int)Mode == 0)
             {
@@ -112,7 +110,7 @@ namespace tink_oblig
                         history_cmb.Items.Add($"Закрытые позиции {bnd.Bounds_Sold.Count}");
                         break;
                     case SeeHistory.WithHistory:
-                        history_cmb.Items.Add($"Совместные позиции {bnd.BoundsList.Where(t=>t.Avalibale_mode == SeeHistory.WithHistory).Count()}");
+                        history_cmb.Items.Add($"Совместные позиции {bnd.BoundsList.Where(t => t.Avalibale_mode == SeeHistory.WithHistory).Count()}");
                         break;
                     default:
                         break;

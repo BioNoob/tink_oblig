@@ -73,12 +73,10 @@ namespace tink_oblig
         }
         public static LoginForm LoginForm = new LoginForm();
         public static ManagerForm mf;
-        public static int Counter = 0;
         public static List<TagWatcher> ShowedForms { get; set; }
         public static void RemoveFromShowed(TagWatcher rm)
         {
             ShowedForms.Remove(rm);
-            Counter = rm.Index;
         }
     }
     public class xWebClient : WebClient
@@ -93,14 +91,12 @@ namespace tink_oblig
     public class TagWatcher
     {
         public string Name { get; private set; }
-        public int Index { get; private set; }
 
         public SeeHistory Mode { get; private set; }
         public TagWatcher(string name, SeeHistory md)
         {
             Name = name;
             Mode = md;
-            Index = Program.Counter++;
         }
         public override string ToString()
         {

@@ -64,9 +64,9 @@ namespace tink_oblig
             if (See == SeeHistory.WithHistory)
             {
                 BoundWatchCntrlFrm bwf1 = new BoundWatchCntrlFrm(_Bnb, SeeHistory.NoHistrory);
-                bwf1.StartPosition = FormStartPosition.Manual;
+                bwf1.StartPosition = FormStartPosition.WindowsDefaultLocation;
                 //bwf1.Tag = Program.ShowedForms.Last();//$"{_Bnb.Bound.Base.Ticker}";
-                bwf1.Location = new Point(Program.mf.Location.X + Program.mf.Size.Width + 211 * Program.ShowedForms.Last().Index, Program.mf.Location.Y);
+                //bwf1.Location = new Point(Program.mf.Location.X + Program.mf.Size.Width + 211 * Program.ShowedForms.Last().Index, Program.mf.Location.Y + 10 * Program.ShowedForms.Last().Index);
                 bwf1.Show();
                 BoundWatchCntrlFrm bwf = new BoundWatchCntrlFrm(_Bnb, SeeHistory.History);
                 bwf.StartPosition = FormStartPosition.Manual;
@@ -77,8 +77,8 @@ namespace tink_oblig
             else
             {
                 BoundWatchCntrlFrm bwf1 = new BoundWatchCntrlFrm(_Bnb, See);
-                bwf1.StartPosition = FormStartPosition.Manual;
-                bwf1.Location = new Point(Program.mf.Location.X + Program.mf.Size.Width + 211 * Program.ShowedForms.Last().Index, Program.mf.Location.Y);
+                bwf1.StartPosition = FormStartPosition.WindowsDefaultLocation;
+                //bwf1.Location = new Point(Program.mf.Location.X + Program.mf.Size.Width + 211 * Program.ShowedForms.Last().Index, Program.mf.Location.Y + 10 * Program.ShowedForms.Last().Index);
                 //bwf1.Tag = Program.ShowedForms.Last();//$"{_Bnb.Bound.Base.Ticker}";
                 bwf1.Show();
             }
