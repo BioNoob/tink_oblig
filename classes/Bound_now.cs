@@ -97,7 +97,9 @@ namespace tink_oblig.classes
         {
             get
             {
-                return Math.Abs(_brokercomission_list.Sum(t => t.Payment));
+                var asgard = _buy_list.Select(t => t.Commission).Sum(t=>t.Value);
+                return Math.Abs(asgard);
+                //return Math.Abs(_brokercomission_list.Sum(t => t.Payment));
             }
         }
 

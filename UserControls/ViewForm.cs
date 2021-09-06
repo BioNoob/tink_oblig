@@ -23,8 +23,7 @@ namespace tink_oblig
             BoundListLayPannel.Controls.Clear();
             SeeHistory = history;
             Selected_portfail = acc.Copy();
-            Selected_portfail.BoundsList = Selected_portfail.BoundsList.Where(t => t.Avalibale_mode == history).ToList();
-            Selected_portfail.Mode = history;
+            Selected_portfail.BoundsList = Selected_portfail.BoundsList.Where(t => t.Avalibale_mode == history | t.Avalibale_mode == SeeHistory.WithHistory).ToList();
             string buf_text = "";
             switch (SeeHistory)
             {
@@ -38,10 +37,24 @@ namespace tink_oblig
                     buf_text = "Продайте и купите что-нибудь";
                     break;
             }
+            Selected_portfail.Mode = history;
             foreach (var bd in Selected_portfail.BoundsList)//.Bounds_Now)
             {
-                if (bd.Avalibale_mode == SeeHistory)
-                    LoadBounds(bd);
+                switch (bd.Avalibale_mode)
+                {
+                    case SeeHistory.NoHistrory:
+                        if (bd.Avalibale_mode == SeeHistory)
+                            LoadBounds(bd);
+                        break;
+                    case SeeHistory.History:
+                        if (bd.Avalibale_mode == SeeHistory)
+                            LoadBounds(bd);
+                        break;
+                    case SeeHistory.WithHistory:
+                        LoadBounds(bd);
+                        break;
+                }
+
             }
             //отдельным методом
             if (Call_cnt < 1)

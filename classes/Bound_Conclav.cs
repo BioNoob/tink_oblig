@@ -58,9 +58,13 @@ namespace tink_oblig.classes
              */
             sold_list = new List<Operation>();
             now_list = new List<Operation>();
+            var copyoper = new List<Operation>(operations);
             //operations = operations.Where(t => t.OperationType != ExtendedOperationType.BrokerCommission && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
             var buy_list = operations.Where(t => t.OperationType == ExtendedOperationType.Buy && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
             var sell_list = operations.Where(t => t.OperationType == ExtendedOperationType.Sell && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
+            copyoper = operations.Except(buy_list).ToList();
+            copyoper = copyoper.Except(sell_list).ToList();
+            copyoper = copyoper.OrderBy(t => t.Date).ToList();
             List<Operation> buf_list = new List<Operation>();
 
             //создаем список покупочных операций поштучно
@@ -70,32 +74,46 @@ namespace tink_oblig.classes
                 for (int i = 0; i < item.QuantityExecuted; i++)
                 {
                     buf_list.Add(new Operation(item.Id, item.Status, new List<Trade>(), new MoneyAmount(Currency.Rub, item.Commission.Value / item.Trades.Sum(t => t.Quantity)), Currency.Rub,
-                        item.Payment / item.Trades.Sum(t => t.Quantity), item.Price, 1, null, item.Figi, item.InstrumentType, false, item.Date, item.OperationType));
+                        item.Payment / item.Trades.Sum(t => t.Quantity), item.Price, 1, 1, item.Figi, item.InstrumentType, false, item.Date, item.OperationType));
                 }
+
             }
             foreach (var item in sell_list)
             {
+                //в любом случае должны быть взяты столько сколько купленно + продано
+                //не хватает обработки случаев когда комиссия раньше покупки
                 int sold_cnt = item.Trades.Sum(t => t.Quantity);
                 var a = buf_list.Take(sold_cnt).Select(t => t.Date).ToList(); //взяли операции с первой купленной (после последней продажи, или первой покупки)
+
                 //дата следующей покупки
                 DateTime? dt = null;
                 if (sold_cnt < buf_list.Count)
                     dt = buf_list.Take(sold_cnt + 1).Select(t => t.Date).Last();
 
-                if (dt != null)
+                List<Operation> q = new List<Operation>();
+
+                if (dt != null && dt != a.Last())
                 {
-                    var q = operations.Where(t => t.Date >= a.First()).ToList();
+                    q = copyoper.Where(t => t.Date >= a.First()).ToList();
                     q = q.Where(t => t.Date < dt).ToList();
-                    sold_list.AddRange(q);
-                    buf_list.RemoveRange(0, sold_cnt); // удаляем записанные
                 }
                 else
                 {
-                    sold_list.AddRange(operations.Except(sold_list)); //не верна или верна?
-                    return;
+                    q = copyoper.Where(t => t.Date >= a.First()).ToList();
+                    q = q.Where(t => t.Date <= item.Date).ToList();
+                    //sold_list.AddRange(operations.Except(sold_list)); //не верна или верна?
+                    //return;
                 }
+                copyoper = copyoper.Except(q).ToList(); //режем записанные в кушке
+                sold_list.AddRange(q); //промежуточные события между покупкой продажей
+                sold_list.AddRange(buf_list.Take(sold_cnt).ToList()); //покупки
+                sold_list.Add(item); //продажа
+                sold_list = sold_list.OrderBy(t => t.Date).ToList();
+                buf_list.RemoveRange(0, sold_cnt); // удаляем записанные
             }
-            now_list = operations.Except(sold_list).ToList();
+            now_list.AddRange(buf_list);//= operations.Except(sold_list).ToList();
+            now_list.AddRange(copyoper.Except(sold_list));
+            now_list = now_list.OrderBy(t => t.Date).ToList();
         }
     }
 }

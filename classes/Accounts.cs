@@ -110,6 +110,12 @@ namespace tink_oblig.classes
                         return;
                     }
                 }
+                if(bounds.BoundsList.Count == 0)
+                {
+                    LoadObligInfoDone?.Invoke(bounds);
+                    return;
+                }
+                    
                 foreach (var item in bounds.BoundsList)
                 {
                     item.Bound.Operations_list = await Program.CurrentContext.OperationsAsync(new DateTime(2015, 01, 01), DateTime.Now, item.Bound.Base.Figi, bounds.Acc.BrokerAccountId);

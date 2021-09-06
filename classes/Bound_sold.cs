@@ -23,16 +23,16 @@ namespace tink_oblig.classes
             _repayment_list = Bound.Operations_list.Where(t => t.OperationType == ExtendedOperationType.Repayment && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
 
 
-            List<Operation> buf_list = new List<Operation>();
-            foreach (var item in _buy_list)
-            {
-                for (int i = 0; i < item.Quantity; i++)
-                {
-                    buf_list.Add(new Operation(item.Id, OperationStatus.Done, new List<Trade>(), new MoneyAmount(Currency.Rub, item.Commission.Value / item.Trades.Sum(t => t.Quantity)), Currency.Rub,
-                        item.Payment / item.Trades.Sum(t => t.Quantity), item.Price, 1, 1, item.Figi, item.InstrumentType, false, item.Date, item.OperationType));
-                }
-            }
-            buf_list = buf_list.OrderBy(t => t.Date).ToList();
+            List<Operation> buf_list = new List<Operation>(_buy_list);
+            //foreach (var item in _buy_list)
+            //{
+            //    for (int i = 0; i < item.Quantity; i++)
+            //    {
+            //        buf_list.Add(new Operation(item.Id, OperationStatus.Done, new List<Trade>(), new MoneyAmount(Currency.Rub, item.Commission.Value / item.Trades.Sum(t => t.Quantity)), Currency.Rub,
+            //            item.Payment / item.Trades.Sum(t => t.Quantity), item.Price, 1, 1, item.Figi, item.InstrumentType, false, item.Date, item.OperationType));
+            //    }
+            //}
+            //buf_list = buf_list.OrderBy(t => t.Date).ToList();
             foreach (var item in _sell_list)
             {
                 int sold_cnt = item.Trades.Sum(t => t.Quantity);
@@ -117,7 +117,10 @@ namespace tink_oblig.classes
         {
             get
             {
-                return Math.Abs(_brokercomission_list.Sum(t => t.Payment));
+                var asgard = _buy_list.Select(t => t.Commission).Sum(t => t.Value);
+                var midgard = _sell_list.Select(t => t.Commission).Sum(t => t.Value);
+                return Math.Abs(asgard) + Math.Abs(midgard);
+                //return Math.Abs(_brokercomission_list.Sum(t => t.Payment));
             }
         }
         /// <summary>

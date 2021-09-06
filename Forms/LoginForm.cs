@@ -48,7 +48,7 @@ namespace tink_oblig
             bool result;
             if (string.IsNullOrEmpty(keypare_cmb.SelectedText))
             {
-                MessageBox.Show("Введите API ключ!","Ошибка");
+                MessageBox.Show("Введите API ключ!", "Ошибка");
                 login_btn.Enabled = true;
                 return;
             }
@@ -63,7 +63,8 @@ namespace tink_oblig
                 {
                     if (Settings.Default.AccID == null)
                         Settings.Default.AccID = new System.Collections.Specialized.StringCollection();
-                    Settings.Default.AccID.Add(keypare_cmb.SelectedText);
+                    if (!Settings.Default.AccID.Contains(keypare_cmb.SelectedText))
+                        Settings.Default.AccID.Add(keypare_cmb.SelectedText);
                 }
                 else
                 {
