@@ -143,6 +143,15 @@ namespace tink_oblig.classes
         /// <returns></returns>
         public static async Task LoadInfoBound(Bound bo)//string ticker) грузим с мос биржи
         {
+
+            //список амортизаций
+            //https://iss.moex.com/iss/statistics/engines/stock/markets/bonds/bondization/RU000A101483.json?from=2021-01-01&till=2021-12-31&start=0&limit=20&iss.only=amortizations,amortizations.cursor&sort_order=desc&iss.json=extended&iss.meta=off&lang=ru&is_traded=1
+            //список купонов
+            //https://iss.moex.com/iss/statistics/engines/stock/markets/bonds/bondization/RU000A101483.json?from=2021-01-01&till=2021-12-31&start=0&limit=20&iss.only=coupons,coupons.cursor&sort_order=desc&iss.json=extended&iss.meta=off&lang=ru&is_traded=1
+            //список оферт
+            //https://iss.moex.com/iss/statistics/engines/stock/markets/bonds/bondization/RU000A101483.json?from=2021-01-01&till=2021-12-31&start=0&limit=20&iss.only=offers,offers.cursor&sort_order=desc&iss.json=extended&iss.meta=off&lang=ru&is_traded=1
+
+
             string xmlStr;
             using (var wc = new WebClient())
             {
