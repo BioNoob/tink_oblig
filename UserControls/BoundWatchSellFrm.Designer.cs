@@ -462,7 +462,7 @@ namespace tink_oblig
             // 
             // close_dt_lbl
             // 
-            this.close_dt_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.close_dt_lbl.BackColor = System.Drawing.Color.MistyRose;
             this.close_dt_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.close_dt_lbl.Location = new System.Drawing.Point(66, 14);
             this.close_dt_lbl.Name = "close_dt_lbl";

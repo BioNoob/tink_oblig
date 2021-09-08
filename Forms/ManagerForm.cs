@@ -181,6 +181,7 @@ namespace tink_oblig
         {
             Settings.Default.SelectedAcc = Acc_key.GetJson();
             Settings.Default.SelectedHistoryMode = (int)Mode;
+            Settings.Default.SortMode = _vf.LastSelectedIndx;
             Settings.Default.Save();
             Settings.Default.Reload();
             Application.Exit();

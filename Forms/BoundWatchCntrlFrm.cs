@@ -34,6 +34,29 @@ namespace tink_oblig
             coupon_prc_lbl.DataBindings.Add(new Binding("Text", Bound, "Cpn_Percent", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
             coupon_val_lbl.DataBindings.Add(new Binding("Text", Bound, "Cpn_val", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
 
+
+            offert_date_lbl.DataBindings.Add(new Binding("Enabled", Bound, "HaveOffert", true, DataSourceUpdateMode.OnPropertyChanged));
+            offert_pay_lbl.DataBindings.Add(new Binding("Enabled", Bound, "HaveOffert", true, DataSourceUpdateMode.OnPropertyChanged));
+            offert_pay_prc_lbl.DataBindings.Add(new Binding("Enabled", Bound, "HaveOffert", true, DataSourceUpdateMode.OnPropertyChanged));
+            offert_pay_sum_lbl.DataBindings.Add(new Binding("Enabled", Bound, "HaveOffert", true, DataSourceUpdateMode.OnPropertyChanged));
+            amort_date_lbl.DataBindings.Add(new Binding("Enabled", Bound, "HaveAmort", true, DataSourceUpdateMode.OnPropertyChanged));
+            amort_pay_lbl.DataBindings.Add(new Binding("Enabled", Bound, "HaveAmort", true, DataSourceUpdateMode.OnPropertyChanged));
+            amort_pay_prc_lbl.DataBindings.Add(new Binding("Enabled", Bound, "HaveAmort", true, DataSourceUpdateMode.OnPropertyChanged));
+            amort_pay_sum_lbl.DataBindings.Add(new Binding("Enabled", Bound, "HaveAmort", true, DataSourceUpdateMode.OnPropertyChanged));
+            if (Bound.HaveOffert)
+            {
+                offert_date_lbl.DataBindings.Add(new Binding("Text", Bound.ClouserOffert, "offerdate", true, DataSourceUpdateMode.OnPropertyChanged, "", "dd.MM.yyyy"));
+                offert_pay_lbl.DataBindings.Add(new Binding("Text", Bound.ClouserOffert, "facevalue", true, DataSourceUpdateMode.OnPropertyChanged, "", "F2"));
+                offert_pay_prc_lbl.DataBindings.Add(new Binding("Text", Bound, "OffertPerc", true, DataSourceUpdateMode.OnPropertyChanged, "", "F1"));
+            }
+            if(Bound.HaveAmort)
+            {
+                amort_date_lbl.DataBindings.Add(new Binding("Text", Bound.ClouserAmort, "amortdate", true, DataSourceUpdateMode.OnPropertyChanged, "", "dd.MM.yyyy"));
+                amort_pay_lbl.DataBindings.Add(new Binding("Text", Bound.ClouserAmort, "value", true, DataSourceUpdateMode.OnPropertyChanged, "", "F2"));
+                amort_pay_prc_lbl.DataBindings.Add(new Binding("Text", Bound.ClouserAmort, "valueprc", true, DataSourceUpdateMode.OnPropertyChanged, "", "F1"));
+            }
+
+
             SwitchType(mod);
 
             GraphicsPath gp = new GraphicsPath();
@@ -54,6 +77,9 @@ namespace tink_oblig
                     coupon_tax_lbl.DataBindings.Add(new Binding("Text", Bound_n, "Coupon_Tax_summ", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
                     count_lbl.DataBindings.Add(new Binding("Text", Bound_n, "Cnt_buy", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "D"));
                     price_sum_lbl.DataBindings.Add(new Binding("Text", Bound_n, "Buy_summ_market_price", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
+                    first_buy_dt_lbl.DataBindings.Add(new Binding("Text", Bound_n, "Open_Date", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "dd.MM.yyyy"));
+                    amort_pay_sum_lbl.DataBindings.Add(new Binding("Text", Bound_n, "AmortSum", true, DataSourceUpdateMode.OnPropertyChanged, "", "F2"));
+                    offert_pay_sum_lbl.DataBindings.Add(new Binding("Text", Bound_n, "OffertSum", true, DataSourceUpdateMode.OnPropertyChanged, "", "F2"));
                     show_panel.Controls.Clear();
                     show_panel.Controls.Add(new BoundWatchBuyFrm(Bound_n) { Dock = DockStyle.Fill });
                     //this.Text = Bound_Cnc.Bound.Base.Name;
@@ -65,6 +91,9 @@ namespace tink_oblig
                     coupon_tax_lbl.DataBindings.Add(new Binding("Text", Bound_s, "Coupon_Tax_summ", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
                     count_lbl.DataBindings.Add(new Binding("Text", Bound_s, "Cnt_sell", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "D"));
                     price_sum_lbl.DataBindings.Add(new Binding("Text", Bound_s, "Buy_summ_market_price", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
+                    first_buy_dt_lbl.DataBindings.Add(new Binding("Text", Bound_s, "Open_Date", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "dd.MM.yyyy"));
+                    amort_pay_sum_lbl.DataBindings.Add(new Binding("Text", Bound_s, "AmortSum", true, DataSourceUpdateMode.OnPropertyChanged, "", "F2"));
+                    offert_pay_sum_lbl.DataBindings.Add(new Binding("Text", Bound_s, "OffertSum", true, DataSourceUpdateMode.OnPropertyChanged, "", "F2"));
                     show_panel.Controls.Clear();
                     show_panel.Controls.Add(new BoundWatchSellFrm(Bound_s) { Dock = DockStyle.Fill });
                     //this.Text = Bound_Cnc.Bound.Base.Name;

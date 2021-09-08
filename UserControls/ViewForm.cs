@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using tink_oblig.classes;
+using tink_oblig.Properties;
 using static tink_oblig.classes.Accounts;
 
 namespace tink_oblig
@@ -10,11 +11,14 @@ namespace tink_oblig
     public partial class ViewForm : UserControl
     {
         public Bounds Selected_portfail { get; set; }
+        public int LastSelectedIndx { get { return sorting_mode_cmb.SelectedIndex; } }
         SeeHistory SeeHistory { get; set; }
         public ViewForm(Bounds acc, SeeHistory history)
         {
             //Program.InnerAccount.LoadInfoDone += InnerAccount_LoadInfoDone;
             InitializeComponent();
+            sorting_mode_cmb.SelectedIndex = Settings.Default.SortMode;
+             //ГРУЗИТЬ СЕЙВИТЬ!
             Switch_representation(acc, history);
         }
         private int Call_cnt = 0;
@@ -59,7 +63,6 @@ namespace tink_oblig
                         LoadBounds(bd);
                         break;
                 }
-
             }
             //отдельным методом
             if (Call_cnt < 1)
@@ -99,6 +102,7 @@ namespace tink_oblig
             total_price_diff_lbl.DataBindings.Add(new Binding("ForeColor", Selected_portfail, "Font_Diff_Clr", true, DataSourceUpdateMode.OnPropertyChanged));
 
             buy_back_lbl.DataBindings.Add(new Binding("Text", Selected_portfail, "Buy_back", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
+            sorting_mode_cmb_SelectedIndexChanged(null,new EventArgs());
         }
 
         private void LoadBounds(Bound_Conclav bd)
@@ -107,6 +111,7 @@ namespace tink_oblig
             BoundListLayPannel.RowCount++;
             BoundListLayPannel.RowStyles.Add(new RowStyle(SizeType.AutoSize));
             ListBoundWatch newOne = new ListBoundWatch(bd, SeeHistory);
+            newOne.Tag = bd;
             newOne.BorderStyle = BorderStyle.None;
             newOne.Dock = DockStyle.Top;
             BoundListLayPannel.Controls.Add(newOne, 0, BoundListLayPannel.RowCount);
@@ -183,8 +188,137 @@ namespace tink_oblig
         {
 
         }
+
+        private void sorting_mode_cmb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (BoundListLayPannel.Controls.Count < 2)
+                return;
+            List<ListBoundWatch> lbwl = new List<ListBoundWatch>();
+            foreach (var item in BoundListLayPannel.Controls)
+            {
+                lbwl.Add(item as ListBoundWatch);
+            }
+            switch (sorting_mode_cmb.SelectedIndex)
+            {
+                case 0:
+                    switch (SeeHistory)
+                    {
+                        case SeeHistory.NoHistrory:
+                            lbwl = lbwl.OrderBy(t => t._Bnb.Bound_now.Profit_perc).ToList();
+                            break;
+                        case SeeHistory.History:
+                            lbwl = lbwl.OrderBy(t => t._Bnb.Bound_sold.Profit_perc).ToList();
+                            break;
+                        case SeeHistory.WithHistory:
+                            lbwl = lbwl.OrderBy(t => t._Bnb.Profit_perc).ToList();
+                            break;
+                    }
+
+                    break;
+                case 1:
+                    switch (SeeHistory)
+                    {
+                        case SeeHistory.NoHistrory:
+                            lbwl = lbwl.OrderByDescending(t => t._Bnb.Bound_now.Profit_perc).ToList();
+                            break;
+                        case SeeHistory.History:
+                            lbwl = lbwl.OrderByDescending(t => t._Bnb.Bound_sold.Profit_perc).ToList();
+                            break;
+                        case SeeHistory.WithHistory:
+                            lbwl = lbwl.OrderByDescending(t => t._Bnb.Profit_perc).ToList();
+                            break;
+                    }
+                    break;
+                case 2:
+                    switch (SeeHistory)
+                    {
+                        case SeeHistory.NoHistrory:
+                            lbwl = lbwl.OrderBy(t => t._Bnb.Bound_now.Open_Date).ToList();
+                            break;
+                        case SeeHistory.History:
+                            lbwl = lbwl.OrderBy(t => t._Bnb.Bound_sold.Open_Date).ToList();
+                            break;
+                        case SeeHistory.WithHistory:
+                            lbwl = lbwl.OrderBy(t => t._Bnb.Bound_now.Open_Date).ToList();
+                            break;
+                    }
+                    break;
+                case 3:
+                    switch (SeeHistory)
+                    {
+                        case SeeHistory.NoHistrory:
+                            lbwl = lbwl.OrderByDescending(t => t._Bnb.Bound_now.Open_Date).ToList();
+                            break;
+                        case SeeHistory.History:
+                            lbwl = lbwl.OrderByDescending(t => t._Bnb.Bound_sold.Open_Date).ToList();
+                            break;
+                        case SeeHistory.WithHistory:
+                            lbwl = lbwl.OrderByDescending(t => t._Bnb.Bound_now.Open_Date).ToList();
+                            break;
+                    }
+                    break;
+                case 4:
+                    switch (SeeHistory)
+                    {
+                        case SeeHistory.NoHistrory:
+                            lbwl = lbwl.OrderBy(t => t._Bnb.Bound_now.Cnt_buy).ToList();
+                            break;
+                        case SeeHistory.History:
+                            lbwl = lbwl.OrderBy(t => t._Bnb.Bound_sold.Cnt_buy).ToList();
+                            break;
+                        case SeeHistory.WithHistory:
+                            lbwl = lbwl.OrderBy(t => t._Bnb.Cnt_sum).ToList();
+                            break;
+                    }
+                    break;
+                case 5:
+                    switch (SeeHistory)
+                    {
+                        case SeeHistory.NoHistrory:
+                            lbwl = lbwl.OrderByDescending(t => t._Bnb.Bound_now.Cnt_buy).ToList();
+                            break;
+                        case SeeHistory.History:
+                            lbwl = lbwl.OrderByDescending(t => t._Bnb.Bound_sold.Cnt_buy).ToList();
+                            break;
+                        case SeeHistory.WithHistory:
+                            lbwl = lbwl.OrderByDescending(t => t._Bnb.Cnt_sum).ToList();
+                            break;
+                    }
+                    break;
+                case 6:
+                    lbwl = lbwl.OrderBy(t => t._Bnb.Bound.Cpn_Percent).ToList();
+                    break;
+                case 7:
+                    lbwl = lbwl.OrderByDescending(t => t._Bnb.Bound.Cpn_Percent).ToList();
+                    break;
+                case 8:
+                    lbwl = lbwl.OrderBy(t => t._Bnb.Bound.Next_pay_dt).ToList();
+                    break;
+                case 9:
+                    lbwl = lbwl.OrderByDescending(t => t._Bnb.Bound.Next_pay_dt).ToList();
+                    break;
+            }
+            BoundListLayPannel.Controls.Clear();
+            int a = 1;
+            foreach (var item in lbwl)
+            {
+                BoundListLayPannel.Controls.Add(item, 0, a);
+                a++;
+            }
+        }
         //private void change_history_btn_Click(object sender, EventArgs e)
         //{
+        /*
+        Доходность ▲ 0
+Доходность ▼ 1
+Дата покупки ▲ 2
+Дата покупки ▼ 3
+Количество ▲ 4
+Количество ▼ 5
+Процент купона ▲ 6
+Процент купона ▼ 7
+
+        */
         //    ViewForm vfm = new ViewForm(Program.InnerAccount.Selected_portfail_backup, SeeHistory.History);
         //    vfm.Show();
         //}

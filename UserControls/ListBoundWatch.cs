@@ -9,7 +9,7 @@ namespace tink_oblig
 {
     public partial class ListBoundWatch : UserControl
     {
-        Bound_Conclav _Bnb;
+        public Bound_Conclav _Bnb { get; set; }
         SeeHistory See;
         public ListBoundWatch(Bound_Conclav bnb, SeeHistory see)
         {
@@ -36,14 +36,29 @@ namespace tink_oblig
                 case SeeHistory.NoHistrory:
                     price_sum_lbl.DataBindings.Add(new Binding("Text", _Bnb.Bound_now, "Bound.Market_price_total", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
                     count_lbl.DataBindings.Add(new Binding("Text", _Bnb.Bound_now, "Cnt_buy", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "D"));
+                    profit_sum_lbl.DataBindings.Add(new Binding("Text", _Bnb.Bound_now, "Profit_string", true, DataSourceUpdateMode.OnPropertyChanged));
+                    profit_prc_lbl.DataBindings.Add(new Binding("Text", _Bnb.Bound_now, "Profit_perc_string", true, DataSourceUpdateMode.OnPropertyChanged));
+                    profit_sum_lbl.DataBindings.Add(new Binding("ForeColor", _Bnb.Bound_now, "Font_profit_clr", true, DataSourceUpdateMode.OnPropertyChanged));
+                    profit_prc_lbl.DataBindings.Add(new Binding("ForeColor", _Bnb.Bound_now, "Font_profit_clr", true, DataSourceUpdateMode.OnPropertyChanged));
+                    first_buy_dt_lbl.DataBindings.Add(new Binding("Text", _Bnb.Bound_now, "Open_Date", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "dd.MM.yyyy"));
                     break;
                 case SeeHistory.History:
                     price_sum_lbl.DataBindings.Add(new Binding("Text", _Bnb.Bound_sold, "Summ_sell", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
                     count_lbl.DataBindings.Add(new Binding("Text", _Bnb.Bound_sold, "Cnt_sell", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "D"));
+                    profit_sum_lbl.DataBindings.Add(new Binding("Text", _Bnb.Bound_sold, "Profit_string", true, DataSourceUpdateMode.OnPropertyChanged));
+                    profit_prc_lbl.DataBindings.Add(new Binding("Text", _Bnb.Bound_sold, "Profit_perc_string", true, DataSourceUpdateMode.OnPropertyChanged));
+                    profit_sum_lbl.DataBindings.Add(new Binding("ForeColor", _Bnb.Bound_sold, "Font_profit_clr", true, DataSourceUpdateMode.OnPropertyChanged));
+                    profit_prc_lbl.DataBindings.Add(new Binding("ForeColor", _Bnb.Bound_sold, "Font_profit_clr", true, DataSourceUpdateMode.OnPropertyChanged));
+                    first_buy_dt_lbl.DataBindings.Add(new Binding("Text", _Bnb.Bound_sold, "Open_Date", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "dd.MM.yyyy"));
                     break;
                 case SeeHistory.WithHistory:
                     count_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Cnt_sum", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "D"));
                     price_sum_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Money_sum", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "F2"));
+                    profit_sum_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Profit_string", true, DataSourceUpdateMode.OnPropertyChanged));
+                    profit_prc_lbl.DataBindings.Add(new Binding("Text", _Bnb, "Profit_perc_string", true, DataSourceUpdateMode.OnPropertyChanged));
+                    profit_sum_lbl.DataBindings.Add(new Binding("ForeColor", _Bnb, "Font_profit_clr", true, DataSourceUpdateMode.OnPropertyChanged));
+                    profit_prc_lbl.DataBindings.Add(new Binding("ForeColor", _Bnb, "Font_profit_clr", true, DataSourceUpdateMode.OnPropertyChanged));
+                    first_buy_dt_lbl.DataBindings.Add(new Binding("Text", _Bnb.Bound_now, "Open_Date", true, DataSourceUpdateMode.OnPropertyChanged, 0m, "dd.MM.yyyy"));
                     break;
             }
 

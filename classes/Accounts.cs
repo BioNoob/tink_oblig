@@ -110,12 +110,12 @@ namespace tink_oblig.classes
                         return;
                     }
                 }
-                if(bounds.BoundsList.Count == 0)
-                {
-                    LoadObligInfoDone?.Invoke(bounds);
-                    return;
-                }
-                    
+                //if (bounds.BoundsList.Count == 0)
+                //{
+                //    LoadObligInfoDone?.Invoke(bounds);
+                //    return;
+                //}
+
                 foreach (var item in bounds.BoundsList)
                 {
                     item.Bound.Operations_list = await Program.CurrentContext.OperationsAsync(new DateTime(2015, 01, 01), DateTime.Now, item.Bound.Base.Figi, bounds.Acc.BrokerAccountId);
@@ -133,7 +133,7 @@ namespace tink_oblig.classes
             {
                 LoadObligInfoDone?.Invoke(bounds, mes.Message);
                 //throw;
-            } 
+            }
 
         }
         /// <summary>
@@ -143,7 +143,9 @@ namespace tink_oblig.classes
         /// <returns></returns>
         public static async Task LoadInfoBound(Bound bo)//string ticker) грузим с мос биржи
         {
-
+            //либо смотреть по дате амортизации, либо по оферте.. остановимся тут
+            //также возможно по тиньку (См https://www.tinkoff.ru/api/trading/bonds/get?ticker={Base.Ticker
+            //
             //список амортизаций
             //https://iss.moex.com/iss/statistics/engines/stock/markets/bonds/bondization/RU000A101483.json?from=2021-01-01&till=2021-12-31&start=0&limit=20&iss.only=amortizations,amortizations.cursor&sort_order=desc&iss.json=extended&iss.meta=off&lang=ru&is_traded=1
             //список купонов
@@ -152,11 +154,14 @@ namespace tink_oblig.classes
             //https://iss.moex.com/iss/statistics/engines/stock/markets/bonds/bondization/RU000A101483.json?from=2021-01-01&till=2021-12-31&start=0&limit=20&iss.only=offers,offers.cursor&sort_order=desc&iss.json=extended&iss.meta=off&lang=ru&is_traded=1
 
 
+            ///https://iss.moex.com/iss/statistics/engines/stock/markets/bonds/bondization/{bo.Base.Ticker}.xml?from={DateTime.Now}&till={bo.End_pay_dt}&iss.only=amortizations,amortizations.cursor,amortizations,amortizations.cursor&sort_order=desc&iss.json=extended&iss.meta=off
+
             string xmlStr;
             using (var wc = new WebClient())
             {
                 xmlStr = await wc.DownloadStringTaskAsync($"https://iss.moex.com/iss/securities/{bo.Base.Ticker}.xml");
             }
+
             var xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(xmlStr);
             var xDoc = XDocument.Parse(xmlDoc.OuterXml);
@@ -176,6 +181,42 @@ namespace tink_oblig.classes
             bo.Pay_period = int.TryParse(dic["COUPONFREQUENCY"], NumberStyles.Float, CultureInfo.InvariantCulture, out i) ? 365 / i : 0;
             bo.Cpn_Percent = decimal.TryParse(dic["COUPONPERCENT"], NumberStyles.Float, CultureInfo.InvariantCulture, out b) ? b : 0;
             bo.Cpn_val = decimal.TryParse(dic["COUPONVALUE"], NumberStyles.Float, CultureInfo.InvariantCulture, out b) ? b : 0;
+            using (var wc = new WebClient())
+            {
+                var l = bo.End_pay_dt;
+                l = l.AddDays(-1);
+                xmlStr = await wc.DownloadStringTaskAsync($"https://iss.moex.com/iss/statistics/engines/stock/markets/bonds/bondization/{bo.Base.Ticker}.xml?from={DateTime.Now.ToString("yyyy-MM-dd")}&till={l.ToString("yyyy-MM-dd")}&sort_order=desc&iss.json=extended&iss.meta=off");
+            }
+
+            xmlDoc = new XmlDocument();
+            xmlDoc.LoadXml(xmlStr);
+            xDoc = XDocument.Parse(xmlDoc.OuterXml);
+
+            var ls = xDoc.Descendants("data").Where(t => t.Attribute("id").Value == "offers").Descendants("rows").Descendants("row").ToList();
+
+            foreach (var item in ls)
+            {
+                if (item.Attributes().Where(t => t.Name == "name").Count() > 0)
+                {
+                    var a = DateTime.TryParse(item.Attributes("offerdate").Select(x => x.Value).Single(), out dt) ? dt : dt;
+                    var c = decimal.TryParse(item.Attributes("facevalue").Select(x => x.Value).Single(), NumberStyles.Float, CultureInfo.InvariantCulture, out b) ? b : 0;
+                    bo.Offerts.Add(new Offert() { facevalue = c, offerdate = a });
+                }
+            }
+            ls = xDoc.Descendants("data").Where(t => t.Attribute("id").Value == "amortizations").Descendants("rows").Descendants("row").ToList();
+
+            foreach (var item in ls)
+            {
+                if (item.Attributes().Where(t => t.Name == "name").Count() > 0)
+                {
+                    var a = DateTime.TryParse(item.Attributes("amortdate").Select(x => x.Value).Single(), out dt) ? dt : dt;
+                    var c = decimal.TryParse(item.Attributes("value").Select(x => x.Value).Single(), NumberStyles.Float, CultureInfo.InvariantCulture, out b) ? b : 0;
+                    var d = decimal.TryParse(item.Attributes("valueprc").Select(x => x.Value).Single(), NumberStyles.Float, CultureInfo.InvariantCulture, out b) ? b : 0;
+                    bo.Amortizations.Add(new Amortization() { amortdate = a, value = c, valueprc = d });
+                }
+            }
+            bo.Amortizations = bo.Amortizations.OrderBy(t => t.amortdate).ToList();
+            bo.Offerts = bo.Offerts.OrderBy(t => t.offerdate).ToList();
             bo.LoadImagePath();
         }
         /// <summary>
@@ -193,6 +234,8 @@ namespace tink_oblig.classes
             {
                 var t = await Program.CurrentContext.MarketSearchByFigiAsync(item);
                 var data = z.Where(t => t.Figi == item && t.OperationType == ExtendedOperationType.Buy && t.Status == OperationStatus.Done).ToList();
+                if (data.Count < 1)
+                    continue;
                 //смотреть в трейдс а не в общем(
                 var trd = data.Select(a => a.Trades).ToList();
                 var cnt = trd.Sum(a => a.Sum(c => c.Quantity));
@@ -205,7 +248,7 @@ namespace tink_oblig.classes
                 Bound b = new Bound(new Portfolio.Position(t.Name, item, t.Ticker, t.Isin, t.Type, cnt, 0, new MoneyAmount(t.Currency, expt_yeld), cnt, new MoneyAmount(t.Currency, avg), new MoneyAmount(t.Currency, avg_no_nkd)));
 
                 b.Operations_list = z.Where(t => t.Figi == item).ToList();
-                
+
                 bounds.BoundsList.Add(new Bound_Conclav(b));
             }
         }

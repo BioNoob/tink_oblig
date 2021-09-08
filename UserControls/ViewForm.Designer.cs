@@ -31,10 +31,15 @@ namespace tink_oblig
         {
             this.BoundListLayPannel = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.total_profit_perc_lbl = new System.Windows.Forms.TextBox();
+            this.total_profit_lbl = new System.Windows.Forms.TextBox();
+            this.total_cpn_taxes_lbl = new System.Windows.Forms.TextBox();
             this.total_price_diff_lbl = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.sorting_mode_cmb = new System.Windows.Forms.ComboBox();
             this.worst_ptofit_btn = new System.Windows.Forms.Button();
             this.better_profit_btn = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
@@ -55,9 +60,6 @@ namespace tink_oblig
             this.summ_cpn_lbl = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.total_money_lbl = new System.Windows.Forms.TextBox();
-            this.total_cpn_taxes_lbl = new System.Windows.Forms.TextBox();
-            this.total_profit_lbl = new System.Windows.Forms.TextBox();
-            this.total_profit_perc_lbl = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -73,7 +75,7 @@ namespace tink_oblig
             this.BoundListLayPannel.Padding = new System.Windows.Forms.Padding(5);
             this.BoundListLayPannel.RowCount = 1;
             this.BoundListLayPannel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.BoundListLayPannel.Size = new System.Drawing.Size(395, 431);
+            this.BoundListLayPannel.Size = new System.Drawing.Size(395, 436);
             this.BoundListLayPannel.TabIndex = 4;
             // 
             // panel1
@@ -105,11 +107,51 @@ namespace tink_oblig
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.total_money_lbl);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 431);
+            this.panel1.Location = new System.Drawing.Point(0, 436);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(395, 162);
             this.panel1.TabIndex = 5;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // total_profit_perc_lbl
+            // 
+            this.total_profit_perc_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.total_profit_perc_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.total_profit_perc_lbl.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.total_profit_perc_lbl.Location = new System.Drawing.Point(161, 85);
+            this.total_profit_perc_lbl.Name = "total_profit_perc_lbl";
+            this.total_profit_perc_lbl.ReadOnly = true;
+            this.total_profit_perc_lbl.Size = new System.Drawing.Size(69, 23);
+            this.total_profit_perc_lbl.TabIndex = 69;
+            this.total_profit_perc_lbl.Text = "perc profit";
+            this.total_profit_perc_lbl.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // total_profit_lbl
+            // 
+            this.total_profit_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.total_profit_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.total_profit_lbl.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.total_profit_lbl.Location = new System.Drawing.Point(4, 85);
+            this.total_profit_lbl.Name = "total_profit_lbl";
+            this.total_profit_lbl.ReadOnly = true;
+            this.total_profit_lbl.Size = new System.Drawing.Size(107, 23);
+            this.total_profit_lbl.TabIndex = 68;
+            this.total_profit_lbl.Text = "profit sum";
+            this.total_profit_lbl.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // total_cpn_taxes_lbl
+            // 
+            this.total_cpn_taxes_lbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.total_cpn_taxes_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.total_cpn_taxes_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.total_cpn_taxes_lbl.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.total_cpn_taxes_lbl.Location = new System.Drawing.Point(263, 42);
+            this.total_cpn_taxes_lbl.Name = "total_cpn_taxes_lbl";
+            this.total_cpn_taxes_lbl.ReadOnly = true;
+            this.total_cpn_taxes_lbl.Size = new System.Drawing.Size(100, 23);
+            this.total_cpn_taxes_lbl.TabIndex = 67;
+            this.total_cpn_taxes_lbl.Text = "taxes cnt";
+            this.total_cpn_taxes_lbl.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // total_price_diff_lbl
             // 
@@ -147,21 +189,58 @@ namespace tink_oblig
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.label11);
+            this.panel2.Controls.Add(this.sorting_mode_cmb);
             this.panel2.Controls.Add(this.worst_ptofit_btn);
             this.panel2.Controls.Add(this.better_profit_btn);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 125);
+            this.panel2.Location = new System.Drawing.Point(0, 120);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(393, 35);
+            this.panel2.Size = new System.Drawing.Size(393, 40);
             this.panel2.TabIndex = 65;
+            // 
+            // label11
+            // 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label11.Location = new System.Drawing.Point(117, 1);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(159, 12);
+            this.label11.TabIndex = 52;
+            this.label11.Text = "Сортировка";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // sorting_mode_cmb
+            // 
+            this.sorting_mode_cmb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sorting_mode_cmb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.sorting_mode_cmb.FormattingEnabled = true;
+            this.sorting_mode_cmb.Items.AddRange(new object[] {
+            "Доходность ▲",
+            "Доходность ▼",
+            "Дата покупки ▲",
+            "Дата покупки ▼",
+            "Количество ▲",
+            "Количество ▼",
+            "Процент купона ▲",
+            "Процент купона ▼",
+            "Дата купона ▲",
+            "Дата купона ▼"});
+            this.sorting_mode_cmb.Location = new System.Drawing.Point(117, 14);
+            this.sorting_mode_cmb.Name = "sorting_mode_cmb";
+            this.sorting_mode_cmb.Size = new System.Drawing.Size(159, 23);
+            this.sorting_mode_cmb.TabIndex = 9;
+            this.sorting_mode_cmb.SelectedIndexChanged += new System.EventHandler(this.sorting_mode_cmb_SelectedIndexChanged);
             // 
             // worst_ptofit_btn
             // 
             this.worst_ptofit_btn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.worst_ptofit_btn.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.worst_ptofit_btn.Location = new System.Drawing.Point(282, 2);
+            this.worst_ptofit_btn.Location = new System.Drawing.Point(282, 3);
             this.worst_ptofit_btn.Name = "worst_ptofit_btn";
-            this.worst_ptofit_btn.Size = new System.Drawing.Size(107, 30);
+            this.worst_ptofit_btn.Size = new System.Drawing.Size(107, 34);
             this.worst_ptofit_btn.TabIndex = 8;
             this.worst_ptofit_btn.Text = "худший показатель";
             this.worst_ptofit_btn.UseVisualStyleBackColor = true;
@@ -170,9 +249,9 @@ namespace tink_oblig
             // better_profit_btn
             // 
             this.better_profit_btn.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.better_profit_btn.Location = new System.Drawing.Point(4, 2);
+            this.better_profit_btn.Location = new System.Drawing.Point(4, 3);
             this.better_profit_btn.Name = "better_profit_btn";
-            this.better_profit_btn.Size = new System.Drawing.Size(107, 30);
+            this.better_profit_btn.Size = new System.Drawing.Size(107, 34);
             this.better_profit_btn.TabIndex = 7;
             this.better_profit_btn.Text = "лучший показатель";
             this.better_profit_btn.UseVisualStyleBackColor = true;
@@ -371,46 +450,6 @@ namespace tink_oblig
             this.total_money_lbl.Text = "summ total";
             this.total_money_lbl.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // total_cpn_taxes_lbl
-            // 
-            this.total_cpn_taxes_lbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.total_cpn_taxes_lbl.BackColor = System.Drawing.SystemColors.Control;
-            this.total_cpn_taxes_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.total_cpn_taxes_lbl.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.total_cpn_taxes_lbl.Location = new System.Drawing.Point(263, 42);
-            this.total_cpn_taxes_lbl.Name = "total_cpn_taxes_lbl";
-            this.total_cpn_taxes_lbl.ReadOnly = true;
-            this.total_cpn_taxes_lbl.Size = new System.Drawing.Size(100, 23);
-            this.total_cpn_taxes_lbl.TabIndex = 67;
-            this.total_cpn_taxes_lbl.Text = "taxes cnt";
-            this.total_cpn_taxes_lbl.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // total_profit_lbl
-            // 
-            this.total_profit_lbl.BackColor = System.Drawing.SystemColors.Control;
-            this.total_profit_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.total_profit_lbl.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.total_profit_lbl.Location = new System.Drawing.Point(4, 85);
-            this.total_profit_lbl.Name = "total_profit_lbl";
-            this.total_profit_lbl.ReadOnly = true;
-            this.total_profit_lbl.Size = new System.Drawing.Size(107, 23);
-            this.total_profit_lbl.TabIndex = 68;
-            this.total_profit_lbl.Text = "profit sum";
-            this.total_profit_lbl.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // total_profit_perc_lbl
-            // 
-            this.total_profit_perc_lbl.BackColor = System.Drawing.SystemColors.Control;
-            this.total_profit_perc_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.total_profit_perc_lbl.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.total_profit_perc_lbl.Location = new System.Drawing.Point(161, 85);
-            this.total_profit_perc_lbl.Name = "total_profit_perc_lbl";
-            this.total_profit_perc_lbl.ReadOnly = true;
-            this.total_profit_perc_lbl.Size = new System.Drawing.Size(69, 23);
-            this.total_profit_perc_lbl.TabIndex = 69;
-            this.total_profit_perc_lbl.Text = "perc profit";
-            this.total_profit_perc_lbl.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
             // ViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -420,7 +459,7 @@ namespace tink_oblig
             this.DoubleBuffered = true;
             this.MinimumSize = new System.Drawing.Size(395, 288);
             this.Name = "ViewForm";
-            this.Size = new System.Drawing.Size(395, 593);
+            this.Size = new System.Drawing.Size(395, 598);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -459,5 +498,7 @@ namespace tink_oblig
         private System.Windows.Forms.TextBox total_profit_lbl;
         private System.Windows.Forms.TextBox total_cpn_taxes_lbl;
         private System.Windows.Forms.TextBox total_profit_perc_lbl;
+        private System.Windows.Forms.ComboBox sorting_mode_cmb;
+        private System.Windows.Forms.Label label11;
     }
 }
