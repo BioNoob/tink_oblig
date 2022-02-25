@@ -57,5 +57,29 @@ namespace tink_oblig.Properties {
                 this["AccID"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int LastID_indx {
+            get {
+                return ((int)(this["LastID_indx"]));
+            }
+            set {
+                this["LastID_indx"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int SortMode {
+            get {
+                return ((int)(this["SortMode"]));
+            }
+            set {
+                this["SortMode"] = value;
+            }
+        }
     }
 }

@@ -123,6 +123,10 @@ namespace tink_oblig.classes
                 //return Math.Abs(_brokercomission_list.Sum(t => t.Payment));
             }
         }
+
+        public decimal? OffertSum { get { if (Bound.HaveOffert) return Bound.ClouserOffert.facevalue * Cnt_sell; else return null; } }
+        public decimal? AmortSum { get { if (Bound.HaveAmort) return Bound.ClouserAmort.value * Cnt_sell; else return null; } }
+
         /// <summary>
         /// Дата закрытия (полсденей продажи)
         /// </summary>
@@ -131,6 +135,13 @@ namespace tink_oblig.classes
             get
             {
                 return _sell_list.Last().Date;
+            }
+        }
+        public DateTime Open_Date
+        {
+            get
+            {
+                return _buy_list.First().Date;
             }
         }
         /// <summary>

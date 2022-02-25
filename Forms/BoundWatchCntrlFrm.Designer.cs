@@ -31,6 +31,28 @@ namespace tink_oblig
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BoundWatchCntrlFrm));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.offert_pay_sum_lbl = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.offert_pay_prc_lbl = new System.Windows.Forms.TextBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.offert_pay_lbl = new System.Windows.Forms.TextBox();
+            this.offert_date_lbl = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.amort_pay_sum_lbl = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.amort_pay_prc_lbl = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.amort_pay_lbl = new System.Windows.Forms.TextBox();
+            this.amort_date_lbl = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.coupon_tax_lbl = new System.Windows.Forms.TextBox();
             this.sum_coupon_lbl = new System.Windows.Forms.TextBox();
@@ -49,6 +71,8 @@ namespace tink_oblig
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.first_buy_dt_lbl = new System.Windows.Forms.TextBox();
+            this.lbl = new System.Windows.Forms.Label();
             this.end_pay_lbl = new System.Windows.Forms.TextBox();
             this.prev_pay_lbl = new System.Windows.Forms.TextBox();
             this.next_pay_lbl = new System.Windows.Forms.TextBox();
@@ -68,6 +92,8 @@ namespace tink_oblig
             this.label5 = new System.Windows.Forms.Label();
             this.show_panel = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_box_pb)).BeginInit();
@@ -75,6 +101,8 @@ namespace tink_oblig
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.groupBox3);
+            this.panel1.Controls.Add(this.groupBox4);
             this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.pay_period_lbl);
@@ -91,8 +119,250 @@ namespace tink_oblig
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(406, 283);
+            this.panel1.Size = new System.Drawing.Size(406, 382);
             this.panel1.TabIndex = 0;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label19);
+            this.groupBox3.Controls.Add(this.label23);
+            this.groupBox3.Controls.Add(this.offert_pay_sum_lbl);
+            this.groupBox3.Controls.Add(this.label29);
+            this.groupBox3.Controls.Add(this.offert_pay_prc_lbl);
+            this.groupBox3.Controls.Add(this.label31);
+            this.groupBox3.Controls.Add(this.offert_pay_lbl);
+            this.groupBox3.Controls.Add(this.offert_date_lbl);
+            this.groupBox3.Controls.Add(this.label12);
+            this.groupBox3.Controls.Add(this.label17);
+            this.groupBox3.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBox3.Location = new System.Drawing.Point(11, 281);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(187, 98);
+            this.groupBox3.TabIndex = 91;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Оферта";
+            // 
+            // label19
+            // 
+            this.label19.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label19.Location = new System.Drawing.Point(103, 80);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(83, 13);
+            this.label19.TabIndex = 115;
+            this.label19.Text = "Сум. погашение";
+            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label23
+            // 
+            this.label23.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label23.Location = new System.Drawing.Point(103, 41);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(83, 13);
+            this.label23.TabIndex = 114;
+            this.label23.Text = "Ед. погашение";
+            this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // offert_pay_sum_lbl
+            // 
+            this.offert_pay_sum_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.offert_pay_sum_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.offert_pay_sum_lbl.Location = new System.Drawing.Point(103, 57);
+            this.offert_pay_sum_lbl.Name = "offert_pay_sum_lbl";
+            this.offert_pay_sum_lbl.ReadOnly = true;
+            this.offert_pay_sum_lbl.Size = new System.Drawing.Size(58, 23);
+            this.offert_pay_sum_lbl.TabIndex = 113;
+            // 
+            // label29
+            // 
+            this.label29.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label29.Location = new System.Drawing.Point(162, 57);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(24, 21);
+            this.label29.TabIndex = 112;
+            this.label29.Text = "RUB";
+            this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // offert_pay_prc_lbl
+            // 
+            this.offert_pay_prc_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.offert_pay_prc_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.offert_pay_prc_lbl.Location = new System.Drawing.Point(6, 57);
+            this.offert_pay_prc_lbl.Name = "offert_pay_prc_lbl";
+            this.offert_pay_prc_lbl.ReadOnly = true;
+            this.offert_pay_prc_lbl.Size = new System.Drawing.Size(58, 23);
+            this.offert_pay_prc_lbl.TabIndex = 110;
+            // 
+            // label31
+            // 
+            this.label31.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label31.Location = new System.Drawing.Point(65, 57);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(24, 21);
+            this.label31.TabIndex = 109;
+            this.label31.Text = "%";
+            this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // offert_pay_lbl
+            // 
+            this.offert_pay_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.offert_pay_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.offert_pay_lbl.Location = new System.Drawing.Point(103, 18);
+            this.offert_pay_lbl.Name = "offert_pay_lbl";
+            this.offert_pay_lbl.ReadOnly = true;
+            this.offert_pay_lbl.Size = new System.Drawing.Size(58, 23);
+            this.offert_pay_lbl.TabIndex = 96;
+            // 
+            // offert_date_lbl
+            // 
+            this.offert_date_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.offert_date_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.offert_date_lbl.Location = new System.Drawing.Point(4, 18);
+            this.offert_date_lbl.Name = "offert_date_lbl";
+            this.offert_date_lbl.ReadOnly = true;
+            this.offert_date_lbl.Size = new System.Drawing.Size(93, 23);
+            this.offert_date_lbl.TabIndex = 94;
+            this.offert_date_lbl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label12
+            // 
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label12.Location = new System.Drawing.Point(6, 41);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(91, 13);
+            this.label12.TabIndex = 93;
+            this.label12.Text = "Дата";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label17
+            // 
+            this.label17.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label17.Location = new System.Drawing.Point(162, 18);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(24, 21);
+            this.label17.TabIndex = 95;
+            this.label17.Text = "RUB";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.label25);
+            this.groupBox4.Controls.Add(this.amort_pay_sum_lbl);
+            this.groupBox4.Controls.Add(this.label26);
+            this.groupBox4.Controls.Add(this.amort_pay_prc_lbl);
+            this.groupBox4.Controls.Add(this.label24);
+            this.groupBox4.Controls.Add(this.label20);
+            this.groupBox4.Controls.Add(this.amort_pay_lbl);
+            this.groupBox4.Controls.Add(this.amort_date_lbl);
+            this.groupBox4.Controls.Add(this.label21);
+            this.groupBox4.Controls.Add(this.label22);
+            this.groupBox4.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBox4.Location = new System.Drawing.Point(204, 281);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(187, 98);
+            this.groupBox4.TabIndex = 92;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Амортизация";
+            // 
+            // label25
+            // 
+            this.label25.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label25.Location = new System.Drawing.Point(103, 80);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(83, 13);
+            this.label25.TabIndex = 108;
+            this.label25.Text = "Сум. погашение";
+            this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // amort_pay_sum_lbl
+            // 
+            this.amort_pay_sum_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.amort_pay_sum_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.amort_pay_sum_lbl.Location = new System.Drawing.Point(103, 57);
+            this.amort_pay_sum_lbl.Name = "amort_pay_sum_lbl";
+            this.amort_pay_sum_lbl.ReadOnly = true;
+            this.amort_pay_sum_lbl.Size = new System.Drawing.Size(58, 23);
+            this.amort_pay_sum_lbl.TabIndex = 107;
+            // 
+            // label26
+            // 
+            this.label26.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label26.Location = new System.Drawing.Point(162, 57);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(24, 21);
+            this.label26.TabIndex = 106;
+            this.label26.Text = "RUB";
+            this.label26.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // amort_pay_prc_lbl
+            // 
+            this.amort_pay_prc_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.amort_pay_prc_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.amort_pay_prc_lbl.Location = new System.Drawing.Point(6, 57);
+            this.amort_pay_prc_lbl.Name = "amort_pay_prc_lbl";
+            this.amort_pay_prc_lbl.ReadOnly = true;
+            this.amort_pay_prc_lbl.Size = new System.Drawing.Size(58, 23);
+            this.amort_pay_prc_lbl.TabIndex = 104;
+            // 
+            // label24
+            // 
+            this.label24.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label24.Location = new System.Drawing.Point(65, 57);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(24, 21);
+            this.label24.TabIndex = 103;
+            this.label24.Text = "%";
+            this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label20
+            // 
+            this.label20.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label20.Location = new System.Drawing.Point(103, 41);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(83, 13);
+            this.label20.TabIndex = 102;
+            this.label20.Text = "Ед. погашение";
+            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // amort_pay_lbl
+            // 
+            this.amort_pay_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.amort_pay_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.amort_pay_lbl.Location = new System.Drawing.Point(103, 18);
+            this.amort_pay_lbl.Name = "amort_pay_lbl";
+            this.amort_pay_lbl.ReadOnly = true;
+            this.amort_pay_lbl.Size = new System.Drawing.Size(58, 23);
+            this.amort_pay_lbl.TabIndex = 101;
+            // 
+            // amort_date_lbl
+            // 
+            this.amort_date_lbl.BackColor = System.Drawing.SystemColors.Control;
+            this.amort_date_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.amort_date_lbl.Location = new System.Drawing.Point(4, 18);
+            this.amort_date_lbl.Name = "amort_date_lbl";
+            this.amort_date_lbl.ReadOnly = true;
+            this.amort_date_lbl.Size = new System.Drawing.Size(93, 23);
+            this.amort_date_lbl.TabIndex = 99;
+            this.amort_date_lbl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label21
+            // 
+            this.label21.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label21.Location = new System.Drawing.Point(6, 41);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(91, 13);
+            this.label21.TabIndex = 98;
+            this.label21.Text = "Дата";
+            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label22
+            // 
+            this.label22.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label22.Location = new System.Drawing.Point(162, 18);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(24, 21);
+            this.label22.TabIndex = 100;
+            this.label22.Text = "RUB";
+            this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // groupBox2
             // 
@@ -282,6 +552,8 @@ namespace tink_oblig
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.first_buy_dt_lbl);
+            this.groupBox1.Controls.Add(this.lbl);
             this.groupBox1.Controls.Add(this.end_pay_lbl);
             this.groupBox1.Controls.Add(this.prev_pay_lbl);
             this.groupBox1.Controls.Add(this.next_pay_lbl);
@@ -291,10 +563,31 @@ namespace tink_oblig
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.groupBox1.Location = new System.Drawing.Point(11, 90);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(187, 135);
+            this.groupBox1.Size = new System.Drawing.Size(187, 190);
             this.groupBox1.TabIndex = 89;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Даты";
+            // 
+            // first_buy_dt_lbl
+            // 
+            this.first_buy_dt_lbl.BackColor = System.Drawing.Color.MistyRose;
+            this.first_buy_dt_lbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.first_buy_dt_lbl.Location = new System.Drawing.Point(6, 153);
+            this.first_buy_dt_lbl.Name = "first_buy_dt_lbl";
+            this.first_buy_dt_lbl.ReadOnly = true;
+            this.first_buy_dt_lbl.Size = new System.Drawing.Size(175, 23);
+            this.first_buy_dt_lbl.TabIndex = 92;
+            this.first_buy_dt_lbl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lbl
+            // 
+            this.lbl.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbl.Location = new System.Drawing.Point(6, 175);
+            this.lbl.Name = "lbl";
+            this.lbl.Size = new System.Drawing.Size(175, 13);
+            this.lbl.TabIndex = 91;
+            this.lbl.Text = "Первая покупка";
+            this.lbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // end_pay_lbl
             // 
@@ -305,6 +598,7 @@ namespace tink_oblig
             this.end_pay_lbl.ReadOnly = true;
             this.end_pay_lbl.Size = new System.Drawing.Size(175, 23);
             this.end_pay_lbl.TabIndex = 59;
+            this.end_pay_lbl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // prev_pay_lbl
             // 
@@ -315,6 +609,7 @@ namespace tink_oblig
             this.prev_pay_lbl.ReadOnly = true;
             this.prev_pay_lbl.Size = new System.Drawing.Size(175, 23);
             this.prev_pay_lbl.TabIndex = 59;
+            this.prev_pay_lbl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // next_pay_lbl
             // 
@@ -325,6 +620,7 @@ namespace tink_oblig
             this.next_pay_lbl.ReadOnly = true;
             this.next_pay_lbl.Size = new System.Drawing.Size(175, 23);
             this.next_pay_lbl.TabIndex = 58;
+            this.next_pay_lbl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label10
             // 
@@ -464,8 +760,8 @@ namespace tink_oblig
             // 
             // show_panel
             // 
-            this.show_panel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.show_panel.Location = new System.Drawing.Point(0, 283);
+            this.show_panel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.show_panel.Location = new System.Drawing.Point(0, 381);
             this.show_panel.MinimumSize = new System.Drawing.Size(406, 366);
             this.show_panel.Name = "show_panel";
             this.show_panel.Size = new System.Drawing.Size(406, 378);
@@ -474,18 +770,22 @@ namespace tink_oblig
             // BoundWatchCntrlFrm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(406, 661);
+            this.ClientSize = new System.Drawing.Size(406, 759);
             this.Controls.Add(this.show_panel);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(422, 700);
+            this.MinimumSize = new System.Drawing.Size(422, 798);
             this.Name = "BoundWatchCntrlFrm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.BoundWatchCntrlFrm_FormClosed);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -536,5 +836,29 @@ namespace tink_oblig
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel show_panel;
+        private System.Windows.Forms.TextBox first_buy_dt_lbl;
+        private System.Windows.Forms.Label lbl;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.TextBox offert_pay_lbl;
+        private System.Windows.Forms.TextBox offert_date_lbl;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox amort_pay_lbl;
+        private System.Windows.Forms.TextBox amort_date_lbl;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox offert_pay_sum_lbl;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.TextBox offert_pay_prc_lbl;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.TextBox amort_pay_sum_lbl;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TextBox amort_pay_prc_lbl;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label23;
     }
 }

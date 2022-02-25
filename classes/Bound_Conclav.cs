@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using Tinkoff.Trading.OpenApi.Models;
 using static tink_oblig.classes.Accounts;
@@ -43,6 +44,65 @@ namespace tink_oblig.classes
                     return 0;
             }
         }
+        public decimal Profit
+        {
+            get
+            {
+                if (Avalibale_mode == SeeHistory.WithHistory)
+                    return Bound_now.Profit + Bound_sold.Profit;
+                else
+                    return 0;
+            }
+        }
+        public decimal Profit_perc
+        {
+            get
+            {
+                if (Avalibale_mode == SeeHistory.WithHistory)
+                {
+                    if (Profit == 0)
+                        return 0;
+                    return ((Profit * 100) / Money_sum);
+                }
+                else
+                    return 0;
+
+            }
+        }
+
+        public string Profit_perc_string
+        {
+            get
+            {
+                if (Profit_perc > 0)
+                    return string.Format("+{0:#0.0}", Math.Abs(Profit_perc));
+                else if (Profit_perc < 0)
+                    return string.Format("-{0:#0.0}", Math.Abs(Profit_perc));
+                else
+                    return string.Format("{0:#0.0}", Math.Abs(Profit_perc));
+            }
+        }
+        public string Profit_string
+        {
+            get
+            {
+                if (Profit > 0)
+                    return string.Format("+{0:#0.00}", Math.Abs(Profit));
+                else if (Profit < 0)
+                    return string.Format("-{0:#0.00}", Math.Abs(Profit));
+                else
+                    return string.Format("{0:#0.00}", Math.Abs(Profit));
+            }
+        }
+        public Color Font_profit_clr
+        {
+            get
+            {
+                return Profit >= 0 ? Color.DarkGreen : Color.DarkRed;
+            }
+        }
+
+
         public void SetMode()
         {
             if (Bound.Operations_list.Count < 1)
@@ -84,6 +144,7 @@ namespace tink_oblig.classes
             var sell_list = operations.Where(t => t.OperationType == ExtendedOperationType.Sell && t.Status == OperationStatus.Done).OrderBy(t => t.Date).ToList();
             copyoper = operations.Except(buy_list).ToList();
             copyoper = copyoper.Except(sell_list).ToList();
+            copyoper = copyoper.Except(copyoper.Where(t => t.Status != OperationStatus.Done)).ToList();
             copyoper = copyoper.OrderBy(t => t.Date).ToList();
             List<Operation> buf_list = new List<Operation>();
 
@@ -120,7 +181,10 @@ namespace tink_oblig.classes
                 else
                 {
                     q = copyoper.Where(t => t.Date >= a.First()).ToList();
-                    q = q.Where(t => t.Date <= item.Date).ToList();
+
+                    if (sold_cnt != buf_list.Count)
+                        q = q.Where(t => t.Date <= item.Date).ToList();
+
                     //sold_list.AddRange(operations.Except(sold_list)); //не верна или верна?
                     //return;
                 }

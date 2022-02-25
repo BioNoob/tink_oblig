@@ -20,7 +20,11 @@ namespace tink_oblig
                 {
                     keypare_cmb.Items.Add(item);
                 }
-                keypare_cmb.SelectedIndex = 0;
+                var indx_id = Settings.Default.LastID_indx;
+                if (indx_id >= 0)
+                    keypare_cmb.SelectedIndex = indx_id;
+                else
+                    keypare_cmb.SelectedIndex = 0;
             }
 
         }
@@ -45,8 +49,9 @@ namespace tink_oblig
         private async void login_btn_Click(object sender, EventArgs e)
         {
             login_btn.Enabled = false;
+            exit_btn.Select();
             bool result;
-            if (string.IsNullOrEmpty(keypare_cmb.SelectedText))
+            if (string.IsNullOrEmpty(keypare_cmb.Text))//SelectedItem.ToString()))
             {
                 MessageBox.Show("Введите API ключ!", "Ошибка");
                 login_btn.Enabled = true;
@@ -54,7 +59,7 @@ namespace tink_oblig
             }
             else
             {
-                var t = keypare_cmb.SelectedText;
+                var t = keypare_cmb.Text;//SelectedItem.ToString();
                 result = await Task.Run(() => do_login(t));
             }
             if (result)
@@ -63,16 +68,22 @@ namespace tink_oblig
                 {
                     if (Settings.Default.AccID == null)
                         Settings.Default.AccID = new System.Collections.Specialized.StringCollection();
-                    if (!Settings.Default.AccID.Contains(keypare_cmb.SelectedText))
-                        Settings.Default.AccID.Add(keypare_cmb.SelectedText);
+                    if (!Settings.Default.AccID.Contains(keypare_cmb.Text))//SelectedItem.ToString()))
+                        Settings.Default.AccID.Add(keypare_cmb.Text);//SelectedItem.ToString());
+                    Settings.Default.LastID_indx = keypare_cmb.SelectedIndex;
                 }
                 else
                 {
-                    if (Settings.Default.AccID.Contains(keypare_cmb.SelectedText))
+                    if (Settings.Default.AccID.Contains(keypare_cmb.SelectedItem.ToString()))
                     {
-                        DialogResult ult = MessageBox.Show($"Удалить из сохранненых ключей\n{keypare_cmb.SelectedText} ?", "Удаление", MessageBoxButtons.YesNo);
+                        DialogResult ult = MessageBox.Show($"Удалить из сохранненых ключей\n{keypare_cmb.Text} ?", "Удаление", MessageBoxButtons.YesNo);
                         if (ult == DialogResult.Yes)
-                            Settings.Default.AccID.Remove(keypare_cmb.SelectedText);
+                        {
+                            Settings.Default.AccID.Remove(keypare_cmb.Text);//SelectedItem.ToString());
+                            keypare_cmb.Items.RemoveAt(keypare_cmb.SelectedIndex);
+                            Settings.Default.LastID_indx = keypare_cmb.SelectedIndex != 0 ? keypare_cmb.SelectedIndex - 1 : 0;
+                        }
+
                     }
                 }
                 Settings.Default.Save();
@@ -109,6 +120,10 @@ namespace tink_oblig
         private void id_save_chk_Click(object sender, EventArgs e)
         {
             //id_save_chk.Checked = !id_save_chk.Checked;
+        }
+
+        private void keypare_cmb_TextUpdate(object sender, EventArgs e)
+        {
         }
     }
 }

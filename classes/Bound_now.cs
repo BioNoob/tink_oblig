@@ -49,6 +49,20 @@ namespace tink_oblig.classes
                 return 0;
             }
         }
+
+        public decimal? OffertSum { get { if (Bound.HaveOffert) return Bound.ClouserOffert.facevalue * Cnt_buy; else return null; } }
+        public decimal? AmortSum { get { if (Bound.HaveAmort) return Bound.ClouserAmort.value * Cnt_buy; else return null; } }
+
+        /// <summary>
+        /// Дата первой покупки
+        /// </summary>
+        public DateTime Open_Date
+        {
+            get
+            {
+                return _buy_list.First().Date;
+            }
+        }
         public decimal Coupon_summ
         {
             get

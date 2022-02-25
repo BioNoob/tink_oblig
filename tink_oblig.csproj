@@ -5,6 +5,15 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
     <ApplicationIcon>anchor.ico</ApplicationIcon>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>yasma.corp.pfx</AssemblyOriginatorKeyFile>
+    <DelaySign>false</DelaySign>
+    <Authors>Yasma.corp ©</Authors>
+    <Product>Облигатор Тинькофф API</Product>
+    <PackageId>Облигатор</PackageId>
+    <AssemblyVersion>1.0.0.1</AssemblyVersion>
+    <FileVersion>1.0.0.1</FileVersion>
+    <AssemblyName>ObliGGaTOR</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
